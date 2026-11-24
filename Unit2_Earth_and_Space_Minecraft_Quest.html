@@ -1,0 +1,2704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unit 2: Earth & Space — Armyere's Minecraft Space Quest</title>
+  <style>
+    :root {
+      --apple-bg: #f5f5f7;
+      --apple-bg-elevated: rgba(255, 255, 255, 0.86);
+      --apple-card: #ffffff;
+      --apple-text: #1d1d1f;
+      --apple-subtext: #6e6e73;
+      --apple-border: rgba(0, 0, 0, 0.08);
+      --apple-blue: #0071e3;
+      --apple-blue-hover: #0077ed;
+      --apple-blue-soft: rgba(0, 113, 227, 0.1);
+      --apple-green: #28cd41;
+      --apple-green-soft: #eafbf0;
+      --apple-red: #ff3b30;
+      --apple-red-soft: #fff0ef;
+      --apple-orange: #ff9500;
+      --apple-purple: #af52de;
+      --mc-emerald: #17dd62;
+      --mc-gold: #ffaa00;
+      --mc-diamond: #3de0e8;
+      --mc-xp: #80ff20;
+      --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+    }
+
+    body.dark-mode {
+      --apple-bg: #0b0d13;
+      --apple-bg-elevated: rgba(24, 26, 36, 0.86);
+      --apple-card: #161822;
+      --apple-text: #f5f5f7;
+      --apple-subtext: #9a9aa6;
+      --apple-border: rgba(255, 255, 255, 0.12);
+      --apple-blue: #2997ff;
+      --apple-blue-hover: #47a5ff;
+      --apple-blue-soft: rgba(41, 151, 255, 0.16);
+      --apple-green: #30d158;
+      --apple-green-soft: rgba(48, 209, 88, 0.14);
+      --apple-red: #ff453a;
+      --apple-red-soft: rgba(255, 69, 58, 0.15);
+      --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background-color: var(--apple-bg);
+      color: var(--apple-text);
+      line-height: 1.55;
+      padding-bottom: 90px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(0, 113, 227, 0.07), transparent 35%),
+        radial-gradient(circle at 85% 15%, rgba(175, 82, 222, 0.07), transparent 35%);
+    }
+
+    /* Top Sticky Navigation & Quick Controls */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      background: var(--apple-bg-elevated);
+      border-bottom: 1px solid var(--apple-border);
+      padding: 10px 20px;
+    }
+
+    .top-nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, #0071e3, #5e5ce6);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 6px;
+      background: rgba(120, 120, 128, 0.12);
+      padding: 4px;
+      border-radius: 999px;
+    }
+
+    .nav-tab {
+      border: none;
+      background: transparent;
+      color: var(--apple-text);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-tab.active {
+      background: var(--apple-card);
+      color: var(--apple-blue);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      border: 1px solid var(--apple-border);
+      background: var(--apple-card);
+      color: var(--apple-text);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+
+    /* Hero Banner */
+    .hero-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--apple-blue);
+      margin-bottom: 6px;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--apple-text) 30%, #0071e3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--apple-subtext);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* PINNED / STICKY MINECRAFT SPACE BATTLE ARENA HUD */
+    .sticky-hud-wrapper {
+      position: sticky;
+      top: 52px;
+      z-index: 95;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      background: linear-gradient(180deg, var(--apple-bg) 75%, rgba(245, 245, 247, 0));
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      margin-bottom: 14px;
+    }
+
+    body.dark-mode .sticky-hud-wrapper {
+      background: linear-gradient(180deg, var(--apple-bg) 75%, rgba(11, 13, 19, 0));
+    }
+
+    .battle-arena-card {
+      background: linear-gradient(160deg, #131829 0%, #1d2540 55%, #122b38 100%);
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 12px 18px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+      border: 1.5px solid rgba(61, 224, 232, 0.28);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .battle-arena-card.flash-hit {
+      border-color: #30d158;
+      box-shadow: 0 0 28px rgba(48, 209, 88, 0.45);
+    }
+
+    .battle-arena-card.flash-hurt {
+      border-color: #ff453a;
+      box-shadow: 0 0 28px rgba(255, 69, 58, 0.5);
+    }
+
+    .battle-arena-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(2px 2px at 40px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 140px 80px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1.5px 1.5px at 280px 40px, #ffd60a, transparent),
+        radial-gradient(2px 2px at 460px 100px, #fff, transparent),
+        radial-gradient(2px 2px at 680px 35px, #3de0e8, transparent),
+        radial-gradient(1.5px 1.5px at 880px 75px, #fff, transparent),
+        radial-gradient(2px 2px at 980px 25px, #ffaa00, transparent);
+      pointer-events: none;
+      opacity: 0.55;
+    }
+
+    .arena-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .xp-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .mc-pill {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mc-pill.emerald {
+      color: #6bff9c;
+      border-color: rgba(23, 221, 98, 0.4);
+    }
+
+    .mc-pill.streak {
+      color: #ffd60a;
+      border-color: rgba(255, 214, 10, 0.4);
+    }
+
+    .arena-stage {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.32);
+      border-radius: 14px;
+      padding: 10px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 760px) {
+      .arena-stage {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .fighter-box {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .fighter-box.enemy {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+
+    @media (max-width: 760px) {
+      .fighter-box, .fighter-box.enemy {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .avatar-frame {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(61, 224, 232, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+      transition: transform 0.25s ease;
+    }
+
+    .floating-dmg {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 13px;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 10;
+      animation: floatUpFade 1.2s ease forwards;
+    }
+
+    .floating-dmg.hit {
+      background: #30d158;
+      color: #052e16;
+      box-shadow: 0 4px 10px rgba(48, 209, 88, 0.5);
+    }
+
+    .floating-dmg.hurt {
+      background: #ff453a;
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(255, 69, 58, 0.5);
+    }
+
+    @keyframes floatUpFade {
+      0% { opacity: 1; transform: translate(-50%, 0) scale(0.9); }
+      25% { opacity: 1; transform: translate(-50%, -12px) scale(1.08); }
+      100% { opacity: 0; transform: translate(-50%, -26px) scale(0.95); }
+    }
+
+    .fighter-box.enemy .avatar-frame {
+      border-color: rgba(255, 69, 58, 0.7);
+    }
+
+    .fighter-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .fighter-name {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .fighter-box.enemy .fighter-name {
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 760px) {
+      .fighter-name, .fighter-box.enemy .fighter-name {
+        justify-content: center;
+      }
+    }
+
+    .fighter-role {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: 8px;
+    }
+
+    .hearts-row {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .fighter-box.enemy .hearts-row {
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 760px) {
+      .hearts-row, .fighter-box.enemy .hearts-row {
+        justify-content: center;
+      }
+    }
+
+    .heart-icon {
+      font-size: 18px;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+    }
+
+    .heart-icon.lost {
+      opacity: 0.25;
+      filter: grayscale(1);
+    }
+
+    .hp-bar-outer {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .hp-bar-inner {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .hp-bar-inner.player-hp {
+      background: linear-gradient(90deg, #30d158, #80ff20);
+    }
+
+    .hp-bar-inner.enemy-hp {
+      background: linear-gradient(90deg, #ff453a, #ff9f0a);
+    }
+
+    .vs-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 0 8px;
+    }
+
+    .vs-badge {
+      background: linear-gradient(135deg, #ff9500, #ff3b30);
+      color: #fff;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      letter-spacing: 0.06em;
+      box-shadow: 0 4px 14px rgba(255, 59, 48, 0.45);
+    }
+
+    .battle-log-ticker {
+      margin-top: 8px;
+      background: rgba(0, 0, 0, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-size: 13px;
+      color: #e5f9ff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .question-card {
+      scroll-margin-top: 265px;
+    }
+
+    .mc-inline-result {
+      background: linear-gradient(135deg, #131829, #1d2b3a);
+      color: #fff;
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 13.5px;
+      border: 1px solid rgba(61, 224, 232, 0.35);
+    }
+
+    .next-quest-btn {
+      background: #30d158;
+      color: #052e16;
+      border: none;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: transform 0.15s ease;
+    }
+
+    .next-quest-btn:hover {
+      transform: translateY(-1px) scale(1.03);
+    }
+
+    /* Hotbar Inventory */
+    .hotbar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hotbar-slot {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .hotbar-slot:hover {
+      transform: translateY(-2px) scale(1.06);
+      border-color: #3de0e8;
+      background: rgba(61, 224, 232, 0.18);
+    }
+
+    .hotbar-count {
+      position: absolute;
+      bottom: 1px;
+      right: 4px;
+      font-size: 10px;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 1px 2px #000;
+    }
+
+    /* Combat Animations */
+    @keyframes shakeHit {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-10px) rotate(-4deg); }
+      40% { transform: translateX(10px) rotate(4deg); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+    }
+
+    @keyframes lungeAttack {
+      0%, 100% { transform: translateX(0) scale(1); }
+      40% { transform: translateX(26px) scale(1.12); }
+    }
+
+    @keyframes enemyLunge {
+      0%, 100% { transform: translateX(0) scale(1); }
+      40% { transform: translateX(-26px) scale(1.12); }
+    }
+
+    .anim-shake {
+      animation: shakeHit 0.45s ease;
+    }
+
+    .anim-lunge {
+      animation: lungeAttack 0.4s ease;
+    }
+
+    .anim-enemy-lunge {
+      animation: enemyLunge 0.4s ease;
+    }
+
+    /* Stage / Category Filter Pills */
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-pill {
+      border: 1px solid var(--apple-border);
+      background: var(--apple-card);
+      color: var(--apple-text);
+      padding: 8px 15px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-pill:hover {
+      border-color: var(--apple-blue);
+    }
+
+    .filter-pill.active {
+      background: var(--apple-blue);
+      color: #ffffff;
+      border-color: var(--apple-blue);
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.28);
+    }
+
+    /* Quiz Layout & Question Card */
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .question-card {
+      background: var(--apple-card);
+      border-radius: var(--radius-lg);
+      padding: 26px 28px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--apple-border);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .q-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .q-badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .q-badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 11px;
+      border-radius: 999px;
+      background: var(--apple-blue-soft);
+      color: var(--apple-blue);
+    }
+
+    .q-badge.vocab {
+      background: rgba(175, 82, 222, 0.12);
+      color: var(--apple-purple);
+    }
+
+    .q-badge.reward {
+      background: rgba(255, 149, 0, 0.14);
+      color: var(--apple-orange);
+    }
+
+    .q-text-en {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--apple-text);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .q-text-zh {
+      font-size: 14.5px;
+      color: var(--apple-subtext);
+      margin-bottom: 18px;
+    }
+
+    .options-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      background: var(--apple-bg);
+      border: 2px solid transparent;
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      font-size: 15.5px;
+      font-weight: 500;
+      color: var(--apple-text);
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: all 0.18s ease;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: rgba(0, 113, 227, 0.4);
+      transform: translateX(2px);
+    }
+
+    .option-btn.selected {
+      border-color: var(--apple-blue);
+      background: var(--apple-blue-soft);
+    }
+
+    .option-btn.correct-choice {
+      border-color: var(--apple-green) !important;
+      background: var(--apple-green-soft) !important;
+    }
+
+    .option-btn.wrong-choice {
+      border-color: var(--apple-red) !important;
+      background: var(--apple-red-soft) !important;
+    }
+
+    .opt-letter {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--apple-card);
+      border: 1px solid var(--apple-border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13.5px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .option-btn.selected .opt-letter {
+      background: var(--apple-blue);
+      color: #fff;
+      border-color: var(--apple-blue);
+    }
+
+    .option-btn.correct-choice .opt-letter {
+      background: var(--apple-green);
+      color: #fff;
+      border-color: var(--apple-green);
+    }
+
+    .option-btn.wrong-choice .opt-letter {
+      background: var(--apple-red);
+      color: #fff;
+      border-color: var(--apple-red);
+    }
+
+    .q-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .confirm-btn {
+      background: linear-gradient(135deg, #0071e3, #0055b3);
+      color: #ffffff;
+      border: none;
+      border-radius: 999px;
+      padding: 11px 24px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(0, 113, 227, 0.32);
+      transition: all 0.2s ease;
+    }
+
+    .confirm-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 113, 227, 0.42);
+    }
+
+    .confirm-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    /* Explanation Box (Bilingual EN + ZH) */
+    .explanation-box {
+      margin-top: 18px;
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      border: 1.5px solid var(--apple-border);
+      display: none;
+      animation: fadeIn 0.28s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .explanation-box.show {
+      display: block;
+    }
+
+    .explanation-box.is-correct {
+      background: var(--apple-green-soft);
+      border-color: var(--apple-green);
+    }
+
+    .explanation-box.is-wrong {
+      background: var(--apple-red-soft);
+      border-color: var(--apple-red);
+    }
+
+    .exp-status-title {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .explanation-box.is-correct .exp-status-title {
+      color: #15803d;
+    }
+
+    body.dark-mode .explanation-box.is-correct .exp-status-title {
+      color: #4ade80;
+    }
+
+    .explanation-box.is-wrong .exp-status-title {
+      color: #b91c1c;
+    }
+
+    body.dark-mode .explanation-box.is-wrong .exp-status-title {
+      color: #f87171;
+    }
+
+    .exp-en, .exp-zh {
+      font-size: 14.5px;
+      margin-bottom: 8px;
+      line-height: 1.55;
+    }
+
+    .exp-key-point {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(120, 120, 128, 0.25);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--apple-subtext);
+    }
+
+    /* Knowledge Organiser / Study Cards Section */
+    .study-section {
+      display: none;
+    }
+
+    .study-section.active {
+      display: block;
+    }
+
+    .quiz-section {
+      display: none;
+    }
+
+    .quiz-section.active {
+      display: block;
+    }
+
+    .section-heading {
+      font-size: 24px;
+      font-weight: 800;
+      margin: 26px 0 14px;
+      letter-spacing: -0.015em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Solar System Interactive Row */
+    .solar-strip {
+      background: linear-gradient(135deg, #0b1021, #192442);
+      color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .planets-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .planet-chip {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      padding: 12px 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .planet-chip:hover, .planet-chip.active {
+      background: rgba(61, 224, 232, 0.2);
+      border-color: #3de0e8;
+      transform: translateY(-3px);
+    }
+
+    .planet-emoji {
+      font-size: 28px;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .planet-name-en {
+      font-weight: 700;
+      font-size: 13px;
+      display: block;
+    }
+
+    .planet-name-zh {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .planet-detail-banner {
+      margin-top: 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* Vocab Grid */
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .vocab-card {
+      background: var(--apple-card);
+      border: 1px solid var(--apple-border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .vocab-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .vocab-word {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--apple-blue);
+    }
+
+    .vocab-zh-tag {
+      font-size: 13px;
+      font-weight: 700;
+      background: var(--apple-blue-soft);
+      color: var(--apple-blue);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .vocab-def-en {
+      font-size: 14px;
+      color: var(--apple-text);
+      font-weight: 500;
+    }
+
+    .vocab-def-zh {
+      font-size: 13.5px;
+      color: var(--apple-subtext);
+    }
+
+    .knowledge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .ko-card {
+      background: var(--apple-card);
+      border: 1px solid var(--apple-border);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .ko-card h3 {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--apple-blue);
+    }
+
+    .ko-card p {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .ko-card .zh-block {
+      color: var(--apple-subtext);
+      font-size: 13.5px;
+      padding-top: 8px;
+      border-top: 1px solid var(--apple-border);
+    }
+  </style>
+</head>
+<body>
+  <!-- Sticky Apple + Minecraft Top Navigation -->
+  <nav class="top-nav">
+    <div class="top-nav-inner">
+      <div class="brand-title">
+        <span class="brand-badge">G5 Science · Unit 2</span>
+        <span>🌍 Earth & Space × ⚔️ Armyere Quest</span>
+      </div>
+      <div class="nav-tabs">
+        <button class="nav-tab active" id="tabBtnQuiz" onclick="switchMainTab('quiz')">⚔️ Battle Quiz (闯关刷题)</button>
+        <button class="nav-tab" id="tabBtnStudy" onclick="switchMainTab('study')">📚 Knowledge Organiser (知识复习)</button>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" onclick="useGoldenApple()" title="Use a Golden Apple to restore 1 Heart!">
+          🍎 Heal (<span id="appleCountNav">3</span>)
+        </button>
+        <button class="icon-btn" id="soundBtn" onclick="toggleSound()">🔊 SFX: ON</button>
+        <button class="icon-btn" id="themeBtn" onclick="toggleDarkMode()">🌙 Dark</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Hero Header -->
+    <header class="hero-header">
+      <div class="hero-eyebrow">Unit 2 Knowledge Organiser · Interactive Battle Arena</div>
+      <h1 class="hero-title">Earth & Space: Armyere's Galactic Defense</h1>
+      <p class="hero-subtitle">
+        Help <strong>Player Armyere</strong> defeat Space Creepers, Astro Skeletons & the Ender Dragon by mastering every Vocabulary Word and Science Knowledge Point! Select an option and click <strong>Confirm Attack (确认攻击)</strong>.
+      </p>
+    </header>
+
+    <!-- PINNED / STICKY MINECRAFT BATTLE ARENA HUD (Always visible while scrolling questions!) -->
+    <div class="sticky-hud-wrapper">
+    <section class="battle-arena-card" id="battleArenaCard">
+      <div class="arena-top-bar">
+        <div class="xp-badge-group">
+          <span class="mc-pill emerald">💎 Level <span id="playerLevel">1</span> Space Knight</span>
+          <span class="mc-pill">✨ XP: <span id="playerXP">0</span></span>
+          <span class="mc-pill streak">🔥 Streak: <span id="playerStreak">0</span></span>
+          <span class="mc-pill">🏆 Mobs Defeated: <span id="mobsDefeated">0</span></span>
+        </div>
+        <div class="hotbar-wrap" title="Armyere's Minecraft Hotbar Inventory (Click Golden Apple to Heal!)">
+          <div class="hotbar-slot" title="Enchanted Diamond Sword (+25 DMG)">⚔️<span class="hotbar-count">I</span></div>
+          <div class="hotbar-slot" onclick="useGoldenApple()" title="Click to eat Golden Apple (+1 ❤️)">🍎<span class="hotbar-count" id="slotApples">3</span></div>
+          <div class="hotbar-slot" title="Space Shield (Blocks mob counter-attacks)">🛡️<span class="hotbar-count" id="slotShields">1</span></div>
+          <div class="hotbar-slot" title="Emeralds Earned">💚<span class="hotbar-count" id="slotEmeralds">0</span></div>
+          <div class="hotbar-slot" title="Astronomer's Spyglass">🔭<span class="hotbar-count" id="slotStars">0</span></div>
+          <div class="hotbar-slot" title="Totem of Undying (Auto-revive)">🗿<span class="hotbar-count" id="slotTotems">1</span></div>
+        </div>
+      </div>
+
+      <div class="arena-stage">
+        <!-- Player Armyere -->
+        <div class="fighter-box player" id="playerBox">
+          <div class="avatar-frame" id="playerAvatar">
+            <!-- Pixel-art SVG for Player Armyere in Diamond Helmet -->
+            <svg width="62" height="62" viewBox="0 0 16 16" shape-rendering="crispEdges">
+              <!-- Diamond Helmet -->
+              <rect x="3" y="1" width="10" height="3" fill="#3de0e8"/>
+              <rect x="2" y="2" width="1" height="6" fill="#28b5bd"/>
+              <rect x="13" y="2" width="1" height="6" fill="#28b5bd"/>
+              <rect x="7" y="4" width="2" height="2" fill="#3de0e8"/>
+              <!-- Face -->
+              <rect x="3" y="4" width="10" height="6" fill="#f1c27d"/>
+              <!-- Eyes -->
+              <rect x="4" y="6" width="2" height="1" fill="#ffffff"/>
+              <rect x="5" y="6" width="1" height="1" fill="#1d4ed8"/>
+              <rect x="10" y="6" width="2" height="1" fill="#ffffff"/>
+              <rect x="10" y="6" width="1" height="1" fill="#1d4ed8"/>
+              <!-- Smile -->
+              <rect x="6" y="8" width="4" height="1" fill="#9a5b3e"/>
+              <!-- Diamond Chestplate -->
+              <rect x="3" y="10" width="10" height="5" fill="#3de0e8"/>
+              <rect x="5" y="10" width="6" height="3" fill="#7cf3f9"/>
+              <!-- Sword on right -->
+              <rect x="14" y="5" width="1" height="6" fill="#7cf3f9"/>
+              <rect x="13" y="11" width="3" height="1" fill="#a16207"/>
+            </svg>
+          </div>
+          <div class="fighter-info">
+            <div class="fighter-name">
+              <span>🛡️ Player: Armyere</span>
+            </div>
+            <div class="fighter-role">Galactic Astronomer & Diamond Warrior</div>
+            <div class="hearts-row" id="playerHeartsRow">
+              <span class="heart-icon">❤️</span>
+              <span class="heart-icon">❤️</span>
+              <span class="heart-icon">❤️</span>
+              <span class="heart-icon">❤️</span>
+              <span class="heart-icon">❤️</span>
+            </div>
+            <div class="hp-bar-outer">
+              <div class="hp-bar-inner player-hp" id="playerHpBar" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VS Center -->
+        <div class="vs-center">
+          <div class="vs-badge">VS</div>
+          <div style="font-size: 12px; color: rgba(255,255,255,0.75); font-weight: 600;" id="waveIndicator">Wave 1 / 6</div>
+        </div>
+
+        <!-- Enemy Mob -->
+        <div class="fighter-box enemy" id="enemyBox">
+          <div class="avatar-frame" id="enemyAvatar">
+            <!-- Injected dynamically by JS based on current mob -->
+          </div>
+          <div class="fighter-info">
+            <div class="fighter-name">
+              <span id="enemyName">💥 Space Creeper (太空苦力怕)</span>
+            </div>
+            <div class="fighter-role" id="enemyRole">Hostile Mob · Explodes if you miss!</div>
+            <div class="hearts-row" id="enemyHeartsRow">
+              <span class="heart-icon">💚</span>
+              <span class="heart-icon">💚</span>
+              <span class="heart-icon">💚</span>
+              <span class="heart-icon">💚</span>
+            </div>
+            <div class="hp-bar-outer">
+              <div class="hp-bar-inner enemy-hp" id="enemyHpBar" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="battle-log-ticker">
+        <span id="battleLogText">⚔️ Ready for battle! Answer a question below and click <strong>Confirm Attack</strong> to strike the Space Creeper!</span>
+        <span style="font-weight: 700; color: #80ff20;" id="scoreSummaryText">Score: 0 / 0 Correct</span>
+      </div>
+    </section>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- TAB 1: BATTLE QUIZ SECTION (36 MULTIPLE CHOICE QUESTIONS)         -->
+    <!-- ================================================================= -->
+    <section class="quiz-section active" id="sectionQuiz">
+      <div class="filter-bar">
+        <div class="filter-pills">
+          <button class="filter-pill active" onclick="filterQuestions('all', this)">🌟 All Quests (全部 36 题)</button>
+          <button class="filter-pill" onclick="filterQuestions('vocab', this)">📖 Key Vocabulary (重点词汇 14 题)</button>
+          <button class="filter-pill" onclick="filterQuestions('solar', this)">🪐 Solar System & Moon (太阳系与月球 8 题)</button>
+          <button class="filter-pill" onclick="filterQuestions('earth', this)">🌍 Earth's Rotation & Orbit (地球自转与公转 8 题)</button>
+          <button class="filter-pill" onclick="filterQuestions('models', this)">🔭 Models & Astronomers (日心说与天文学家 6 题)</button>
+          <button class="filter-pill" onclick="filterQuestions('wrong', this)">🔥 Mistake Retry (错题重练 <span id="wrongCountBadge">0</span>)</button>
+        </div>
+        <div>
+          <button class="icon-btn" onclick="resetAllQuestions()">🔄 Reset Battle</button>
+        </div>
+      </div>
+
+      <div class="quiz-grid" id="questionsContainer">
+        <!-- Populated by JavaScript Question Engine -->
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 2: KNOWLEDGE ORGANISER (BILINGUAL EN + ZH STUDY GUIDE)        -->
+    <!-- ================================================================= -->
+    <section class="study-section" id="sectionStudy">
+      <!-- Interactive Solar System Strip -->
+      <div class="solar-strip">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <div>
+            <div style="font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:#3de0e8; font-weight:700;">Interactive Diagram · 我们的太阳系 (不按比例 Not to scale)</div>
+            <h2 style="font-size:22px; font-weight:800; margin-top:2px;">☀️ Our Solar System Explorer (点击星球查看中英考点)</h2>
+          </div>
+          <span style="font-size:12.5px; background:rgba(255,255,255,0.12); padding:5px 12px; border-radius:999px;">
+            Mnemonic: <strong>M</strong>y <strong>V</strong>ery <strong>E</strong>asy <strong>M</strong>ethod <strong>J</strong>ust <strong>S</strong>peeds <strong>U</strong>p <strong>N</strong>aming
+          </span>
+        </div>
+
+        <div class="planets-row">
+          <div class="planet-chip active" onclick="showPlanetInfo('sun', this)">
+            <span class="planet-emoji">☀️</span>
+            <span class="planet-name-en">The Sun</span>
+            <span class="planet-name-zh">太阳 (恒星)</span>
+          </div>
+          <div class="planet-chip" onclick="showPlanetInfo('mercury', this)">
+            <span class="planet-emoji">🪨</span>
+            <span class="planet-name-en">1. Mercury</span>
+            <span class="planet-name-zh">水星 (岩石)</span>
+          </div>
+          <div class="planet-chip" onclick="showPlanetInfo('venus', this)">
+            <span class="planet-emoji">🌕</span>
+            <span class="planet-name-en">2. Venus</span>
+            <span class="planet-name-zh">金星 (岩石)</span>
+          </div>
+          <div class="planet-chip" onclick="showPlanetInfo('earth', this)">
+            <span class="planet-emoji">🌍</span>
+            <span class="planet-name-en">3. Earth</span>
+            <span class="planet-name-zh">地球 (岩石)</span>
+          </div>
+          <div class="planet-chip" onclick="showPlanetInfo('mars', this)">
+            <span class="planet-emoji">🔴</span>
+            <span class="planet-name-en">4. Mars</span>
+            <span class="planet-name-zh">火星 (岩石)</span>
+          </div>
+          <div class="planet-chip" onclick="showPlanetInfo('jupiter', this)">
+            <span class="planet-emoji">🟠</span>
+            <span class="planet-name-en">5. Jupiter</span>
+            <span class="planet-name-zh">木星 (气态)</span>
+          </div>
+          <div class="planet-chip" onclick="showPlanetInfo('saturn', this)">
+            <span class="planet-emoji">🪐</span>
+            <span class="planet-name-en">6. Saturn</span>
+            <span class="planet-name-zh">土星 (气态)</span>
+          </div>
+          <div class="planet-chip" onclick="showPlanetInfo('uranus', this)">
+            <span class="planet-emoji">🧊</span>
+            <span class="planet-name-en">7. Uranus</span>
+            <span class="planet-name-zh">天王星 (气态)</span>
+          </div>
+          <div class="planet-chip" onclick="showPlanetInfo('neptune', this)">
+            <span class="planet-emoji">🔵</span>
+            <span class="planet-name-en">8. Neptune</span>
+            <span class="planet-name-zh">海王星 (气态)</span>
+          </div>
+          <div class="planet-chip" onclick="showPlanetInfo('pluto', this)">
+            <span class="planet-emoji">❄️</span>
+            <span class="planet-name-en">Pluto (2006)</span>
+            <span class="planet-name-zh">冥王星 (矮行星)</span>
+          </div>
+        </div>
+
+        <div class="planet-detail-banner" id="planetDetailBanner">
+          <strong>☀️ The Sun (太阳):</strong> A huge star that Earth and the other planets in our solar system orbit around. It is a giant ball of gas held together by its own gravity. It does NOT move across the sky—Earth's rotation makes it appear to move!<br/>
+          <span style="color:#a5f3fc;">中文考点：太阳是一颗巨大的恒星，地球和太阳系其他行星都围绕它运行。太阳本身并不会在天空中移动，我们看到太阳东升西落是因为地球的自转。</span>
+        </div>
+      </div>
+
+      <!-- Key Vocabulary Cards (All 13+ PDF terms) -->
+      <h2 class="section-heading">📖 Key Vocabulary (重点单词 · 中英双语完全对照)</h2>
+      <div class="vocab-grid">
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">1. Sun</span><span class="vocab-zh-tag">太阳</span></div>
+          <div class="vocab-def-en">A huge star that Earth and the other planets in our solar system orbit around.</div>
+          <div class="vocab-def-zh">围绕着地球和太阳系其他行星运行的一颗巨大的恒星。（地球与太阳系其他行星都绕着这颗巨大恒星公转。）</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">2. Star</span><span class="vocab-zh-tag">恒星</span></div>
+          <div class="vocab-def-en">A giant ball of gas held together by its own gravity.</div>
+          <div class="vocab-def-zh">由自身引力（gravity）聚集在一起的巨大气体球。</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">3. Moon</span><span class="vocab-zh-tag">月球</span></div>
+          <div class="vocab-def-en">A natural satellite which orbits Earth or other planets.</div>
+          <div class="vocab-def-zh">围绕地球或者其他行星运行的天然卫星（PDF译注中也常考：Moon is a natural satellite）。</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">4. Planet</span><span class="vocab-zh-tag">行星</span></div>
+          <div class="vocab-def-en">A large object, round or nearly round, that orbits a star.</div>
+          <div class="vocab-def-zh">环绕恒星运行的圆形或接近圆形的大型物体。</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">5. Sphere</span><span class="vocab-zh-tag">球体</span></div>
+          <div class="vocab-def-en">A round 3D shape in the shape of a ball.</div>
+          <div class="vocab-def-zh">像球一样的圆形三维（3D）立体形状。</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">6. Spherical bodies</span><span class="vocab-zh-tag">球形体 / 球状天体</span></div>
+          <div class="vocab-def-en">Astronomical objects shaped like spheres.</div>
+          <div class="vocab-def-zh">形状像球体一样的天体（如太阳、地球、月球和各大行星）。</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">7. Satellite</span><span class="vocab-zh-tag">卫星</span></div>
+          <div class="vocab-def-en">Any object or body in space that orbits something else, for example: the Moon is a satellite of Earth.</div>
+          <div class="vocab-def-zh">在太空中绕着其他物体运行的任何物体，例如：月球是地球的卫星。</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">8. Orbit</span><span class="vocab-zh-tag">轨道 / 公转</span></div>
+          <div class="vocab-def-en">To move in a regular, repeating curved path around another object.</div>
+          <div class="vocab-def-zh">以规律的、重复的曲线路径围绕另一个物体移动（公转）。</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">9. Rotate</span><span class="vocab-zh-tag">旋转 / 自转</span></div>
+          <div class="vocab-def-en">To spin. E.g. Earth rotates on its own axis.</div>
+          <div class="vocab-def-zh">旋转、自转。例如：地球绕着自己的自转轴旋转。</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">10. Axis</span><span class="vocab-zh-tag">轴 / 地轴</span></div>
+          <div class="vocab-def-en">An imaginary line that a body rotates around. E.g. Earth’s axis (imaginary line) runs from the North Pole to the South Pole.</div>
+          <div class="vocab-def-zh">物体绕其旋转的假想线。例如：从北极（North Pole）到南极（South Pole）的地轴（假想线）。</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">11. Geocentric model</span><span class="vocab-zh-tag">地心说</span></div>
+          <div class="vocab-def-en">A belief people used to have that other planets and the Sun orbited around Earth.</div>
+          <div class="vocab-def-zh">人们过去曾经持有的信念：认为其他行星和太阳都围绕地球运行。</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">12. Heliocentric model</span><span class="vocab-zh-tag">日心说</span></div>
+          <div class="vocab-def-en">The structure of the Solar System where the planets orbit around the Sun.</div>
+          <div class="vocab-def-zh">行星围绕太阳运行的太阳系结构模型。</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">13. Astronomer</span><span class="vocab-zh-tag">天文学家</span></div>
+          <div class="vocab-def-en">Someone who studies or is an expert in astronomy (space science).</div>
+          <div class="vocab-def-zh">研究天文学（空间科学）或是天文学专家的人。</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">14. Celestial bodies</span><span class="vocab-zh-tag">天体</span></div>
+          <div class="vocab-def-en">Natural objects visible in space, such as the Sun, Moon, planets, and stars.</div>
+          <div class="vocab-def-zh">宇宙空间中的天然天体（如太阳、月球、行星和恒星）。</div>
+        </div>
+      </div>
+
+      <!-- Key Knowledge Points Grid -->
+      <h2 class="section-heading">🧠 Key Knowledge Points (核心知识点全解)</h2>
+      <div class="knowledge-grid">
+        <div class="ko-card">
+          <h3>🪨 Rocky vs. 💨 Gas Planets (岩石行星与气态行星)</h3>
+          <p><strong>Rocky Planets (4):</strong> <strong>Mercury, Venus, Earth, and Mars</strong> are rocky planets. They are mostly made up of <strong>metal and rock</strong>.</p>
+          <p><strong>Gas Planets (4):</strong> <strong>Jupiter, Saturn, Uranus, and Neptune</strong> are mostly made up of <strong>gases (helium and hydrogen)</strong>, although they do have <strong>cores made up of rock and metal</strong>.</p>
+          <div class="zh-block">
+            <strong>中文精讲：</strong>水星、金星、地球和火星是<strong>岩石行星</strong>，主要由<strong>金属和岩石</strong>构成。木星、土星、天王星和海王星主要由<strong>气体（氦气 helium 和氢气 hydrogen）</strong>组成，但它们的<strong>核心（cores）也是由岩石和金属组成的</strong>！
+          </div>
+        </div>
+
+        <div class="ko-card">
+          <h3>🌙 The Moon & Pluto (月球运动与冥王星)</h3>
+          <p><strong>The Moon:</strong> Orbits Earth in an <strong>oval-shaped path</strong> while spinning on its axis. At various times in a month, the Moon appears to be different shapes because as the Moon rotates/orbits round Earth, <strong>the Sun lights up different parts of it</strong>.</p>
+          <p><strong>Pluto:</strong> Used to be considered a planet, but was reclassified as a <strong>dwarf planet in 2006</strong>.</p>
+          <div class="zh-block">
+            <strong>中文精讲：</strong>月球自转的同时以<strong>椭圆形轨道（oval-shaped path）</strong>绕地球运行。一月之中月相变化是因为<strong>太阳照亮了月球的不同部分</strong>。冥王星曾在 <strong>2006 年被重新归类为矮行星（dwarf planet）</strong>。
+          </div>
+        </div>
+
+        <div class="ko-card">
+          <h3>🌍 Earth's Rotation, Orbit & Day/Night (地球自转、公转与昼夜)</h3>
+          <p><strong>Rotation (自转):</strong> Earth rotates (spins) on its axis once every <strong>24 hours</strong>.</p>
+          <p><strong>Orbit (公转):</strong> At the same time, Earth is orbiting (revolving) around the Sun, taking <strong>a little more than 365 days</strong>.</p>
+          <p><strong>Day & Night:</strong> <strong>Daytime</strong> occurs when the side of Earth is facing <strong>towards</strong> the Sun; <strong>Night</strong> occurs when facing <strong>away</strong> from the Sun.</p>
+          <div class="zh-block">
+            <strong>中文精讲：</strong>地球绕自转轴每 <strong>24 小时</strong>完成一次完整自转；同时绕太阳公转，需要 <strong>365 天多一点</strong>。朝向太阳的一面是<strong>白天（Daytime）</strong>，背对太阳的一面是<strong>夜晚（Night）</strong>。
+          </div>
+        </div>
+
+        <div class="ko-card">
+          <h3>🔭 Apparent Sun Movement & Astronomers (太阳视运动与天文学家)</h3>
+          <p><strong>Does the Sun move?</strong> It appears to us that the Sun moves across the sky during the day, <strong>but the Sun does not move at all</strong>. It seems to move <strong>because of the movements of Earth</strong>.</p>
+          <p><strong>Astronomers:</strong> The work and ideas of many astronomers (such as <strong>Nicolaus Copernicus</strong> and <strong>Kepler</strong>) combined over many years to develop the <strong>heliocentric model</strong>. <strong>Galileo’s work on gravity</strong> allowed astronomers to understand how planets stayed in orbit.</p>
+          <div class="zh-block">
+            <strong>中文精讲：</strong>太阳看起来在天空中移动，但<strong>太阳根本没有移动</strong>，这是因为<strong>地球的运动</strong>造成的。<strong>哥白尼（Copernicus）和开普勒（Kepler）</strong>等天文学家多年的研究发展出了<strong>日心说</strong>；而<strong>伽利略（Galileo）对引力（gravity）的研究</strong>让天文学家明白了行星如何保持在轨道上运行。
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    // =========================================================================
+    // COMPLETE QUESTION BANK (36 QUESTIONS: VOCABULARY + KNOWLEDGE POINTS)
+    // Based 100% on Grade 5 Science: Unit 2 Earth and Space Knowledge Organiser
+    // =========================================================================
+    const QUESTIONS = [
+      // ---------------- STAGE 1: KEY VOCABULARY (14 Questions) ----------------
+      {
+        id: 1,
+        category: "vocab",
+        catLabel: "📖 Key Vocabulary · 重点词汇",
+        reward: "+25 DMG · +10 XP",
+        qEn: "Which vocabulary word is defined as 'A giant ball of gas held together by its own gravity'?",
+        qZh: "哪一个单词的定义是“由自身引力聚集在一起的巨大气体球”？",
+        options: [
+          "Planet (行星)",
+          "Star (恒星)",
+          "Satellite (卫星)",
+          "Moon (月球)"
+        ],
+        answer: 1,
+        expEn: "Correct! According to the Knowledge Organiser, a Star is a giant ball of gas held together by its own gravity.",
+        expZh: "回答正确！根据知识手册（KO），恒星（Star）是由自身引力（gravity）聚集在一起的巨大气体球。",
+        keyPoint: "Vocab Check: Star = A giant ball of gas held together by its own gravity."
+      },
+      {
+        id: 2,
+        category: "vocab",
+        catLabel: "📖 Key Vocabulary · 重点词汇",
+        reward: "+25 DMG · +10 XP",
+        qEn: "What is the exact definition of the 'Sun' in our Unit 2 Knowledge Organiser?",
+        qZh: "在第二单元知识手册中，“Sun（太阳）”的准确定义是什么？",
+        options: [
+          "A rocky planet that moves across the sky every 24 hours.",
+          "A natural satellite which orbits Earth in an oval path.",
+          "A huge star that Earth and the other planets in our solar system orbit around.",
+          "An imaginary line running from the North Pole to the South Pole."
+        ],
+        answer: 2,
+        expEn: "Spot on! The Sun is a huge star that Earth and the other planets in our solar system orbit around.",
+        expZh: "完全正确！太阳（Sun）是地球和太阳系中其他行星围绕运行的一颗巨大的恒星（a huge star）。",
+        keyPoint: "Vocab Check: Sun = A huge star at the center of our solar system."
+      },
+      {
+        id: 3,
+        category: "vocab",
+        catLabel: "📖 Key Vocabulary · 重点词汇",
+        reward: "+25 DMG · +10 XP",
+        qEn: "What do we call 'A natural satellite which orbits Earth or other planets'?",
+        qZh: "“围绕地球或其他行星运行的天然卫星”对应哪个重点单词？",
+        options: [
+          "Moon (月球 / 天然卫星)",
+          "Star (恒星)",
+          "Sphere (球体)",
+          "Axis (自转轴)"
+        ],
+        answer: 0,
+        expEn: "Great strike! A Moon is defined as a natural satellite which orbits Earth or other planets.",
+        expZh: "漂亮的一击！月球（Moon）的定义就是围绕地球或其他行星运行的天然卫星（natural satellite）。",
+        keyPoint: "Vocab Check: Moon = A natural satellite which orbits Earth or other planets."
+      },
+      {
+        id: 4,
+        category: "vocab",
+        catLabel: "📖 Key Vocabulary · 重点词汇",
+        reward: "+25 DMG · +10 XP",
+        qEn: "How does the Knowledge Organiser define a 'Planet'?",
+        qZh: "知识手册是如何定义“Planet（行星）”的？",
+        options: [
+          "A giant ball of gas that gives off its own light.",
+          "A large object, round or nearly round, that orbits a star.",
+          "Any small rock that falls toward Earth's atmosphere.",
+          "An object that stays at the center of the universe without moving."
+        ],
+        answer: 1,
+        expEn: "Exact hit! A Planet is a large object, round or nearly round, that orbits a star.",
+        expZh: "精准命中！行星（Planet）是环绕恒星（star）运行的圆形或接近圆形的大型物体。",
+        keyPoint: "Vocab Check: Planet = A large object, round or nearly round, that orbits a star."
+      },
+      {
+        id: 5,
+        category: "vocab",
+        catLabel: "📖 Key Vocabulary · 重点词汇",
+        reward: "+25 DMG · +10 XP",
+        qEn: "What is the difference between 'Sphere' and 'Spherical bodies'?",
+        qZh: "“Sphere（球体）”与“Spherical bodies（球形天体）”的含义分别是什么？",
+        options: [
+          "A Sphere is a flat 2D circle; Spherical bodies are cube blocks like in Minecraft.",
+          "A Sphere is a round 3D shape in the shape of a ball; Spherical bodies are astronomical objects shaped like spheres.",
+          "A Sphere is an orbit path; Spherical bodies are imaginary lines.",
+          "They both mean a scientist who studies space."
+        ],
+        answer: 1,
+        expEn: "Awesome! In Minecraft blocks are cubes, but in real space, a 'Sphere' is a round 3D shape in the shape of a ball, and 'Spherical bodies' are astronomical objects shaped like spheres!",
+        expZh: "太棒了！在《我的世界》里方块是立方体，但在真实宇宙中，Sphere（球体）是像球一样的圆形3D立体形状，而 Spherical bodies（球形体）则是形状像球体的天体！",
+        keyPoint: "Vocab Check: Sphere (3D ball shape) vs. Spherical bodies (astronomical objects shaped like spheres)."
+      },
+      {
+        id: 6,
+        category: "vocab",
+        catLabel: "📖 Key Vocabulary · 重点词汇",
+        reward: "+25 DMG · +10 XP",
+        qEn: "Which term means 'Any object or body in space that orbits something else (for example: the Moon is a ___ of Earth)'?",
+        qZh: "哪个词汇指“在太空中绕着其他物体运行的任何物体（例如：月球是地球的___）”？",
+        options: [
+          "Satellite (卫星)",
+          "Star (恒星)",
+          "Axis (轴)",
+          "Astronomer (天文学家)"
+        ],
+        answer: 0,
+        expEn: "Direct hit! A Satellite is any object or body in space that orbits something else. For example, the Moon is a natural satellite of Earth.",
+        expZh: "正中目标！卫星（Satellite）是指在太空中围绕其他物体运行的任何物体，例如月球就是地球的卫星。",
+        keyPoint: "Vocab Check: Satellite = Any object or body in space that orbits something else."
+      },
+      {
+        id: 7,
+        category: "vocab",
+        catLabel: "📖 Key Vocabulary · 重点词汇",
+        reward: "+25 DMG · +10 XP",
+        qEn: "What does the verb 'Orbit' mean in science?",
+        qZh: "在科学中，“Orbit（公转/沿轨道运行）”是什么意思？",
+        options: [
+          "To spin in one place on an imaginary line.",
+          "To move in a regular, repeating curved path around another object.",
+          "To explode like a Creeper in outer space.",
+          "To shine light onto a dark planet."
+        ],
+        answer: 1,
+        expEn: "Critical hit! To 'Orbit' means to move in a regular, repeating curved path around another object (e.g., Earth orbits the Sun).",
+        expZh: "暴击命中！Orbit（轨道/公转）是指以规律的、重复的曲线路径围绕另一个物体移动（例如地球绕太阳公转）。",
+        keyPoint: "Vocab Check: Orbit = To move in a regular, repeating curved path around another object."
+      },
+      {
+        id: 8,
+        category: "vocab",
+        catLabel: "📖 Key Vocabulary · 重点词汇",
+        reward: "+25 DMG · +10 XP",
+        qEn: "Which word means 'To spin (E.g. Earth spins on its own axis)'?",
+        qZh: "哪一个单词表示“旋转/自转（例如：地球绕自己的轴自转）”？",
+        options: [
+          "Reclassify (重新归类)",
+          "Orbit (公转)",
+          "Rotate (自转 / 旋转)",
+          "Combine (结合)"
+        ],
+        answer: 2,
+        expEn: "Well done! 'Rotate' means to spin—for example, Earth rotates on its own axis once every 24 hours.",
+        expZh: "干得漂亮！Rotate 的意思是旋转、自转，例如地球每24小时绕自转轴旋转（rotates on its own axis）一周。",
+        keyPoint: "Vocab Check: Rotate = To spin (Earth rotates on its own axis)."
+      },
+      {
+        id: 9,
+        category: "vocab",
+        catLabel: "📖 Key Vocabulary · 重点词汇",
+        reward: "+25 DMG · +10 XP",
+        qEn: "What is an 'Axis'?",
+        qZh: "什么是“Axis（自转轴 / 地轴）”？",
+        options: [
+          "A physical metal rod sticking out of the North and South Poles.",
+          "An imaginary line that a body rotates around (running from the North Pole to the South Pole on Earth).",
+          "The oval-shaped path that the Moon takes around Earth.",
+          "A telescope used by Galileo to study gravity."
+        ],
+        answer: 1,
+        expEn: "Correct! An axis is an imaginary line that a body rotates around. Earth's axis runs from the North Pole to the South Pole.",
+        expZh: "回答正确！轴（Axis）是物体绕其旋转的假想线（imaginary line）。地球的地轴从北极（North Pole）延伸到南极（South Pole）。",
+        keyPoint: "Vocab Check: Axis = An imaginary line that a body rotates around."
+      },
+      {
+        id: 10,
+        category: "vocab",
+        catLabel: "📖 Key Vocabulary · 重点词汇",
+        reward: "+25 DMG · +10 XP",
+        qEn: "Which model was 'A belief people used to have that other planets and the Sun orbited around Earth'?",
+        qZh: "哪一个模型是“人们过去曾经认为其他行星和太阳都围绕地球运行的观点”？",
+        options: [
+          "Heliocentric model (日心说)",
+          "Geocentric model (地心说)",
+          "Spherical model (球体模型)",
+          "Dwarf planet model (矮行星模型)"
+        ],
+        answer: 1,
+        expEn: "Nice! 'Geo-' means Earth. The Geocentric model was the old belief that other planets and the Sun orbited around Earth.",
+        expZh: "太棒了！词根“Geo-”代表地球。地心说（Geocentric model）是人们过去认为其他行星和太阳都绕地球运行的旧观念。",
+        keyPoint: "Vocab Check: Geocentric model = Earth-centered belief (Geo = Earth)."
+      },
+      {
+        id: 11,
+        category: "vocab",
+        catLabel: "📖 Key Vocabulary · 重点词汇",
+        reward: "+25 DMG · +10 XP",
+        qEn: "Which model describes 'The structure of the Solar System where the planets orbit around the Sun'?",
+        qZh: "哪一个模型描述了“行星围绕太阳运行的太阳系结构”？",
+        options: [
+          "Geocentric model (地心说)",
+          "Lunar oval model (月球椭圆模型)",
+          "Heliocentric model (日心说)",
+          "Flat Earth model (平地模型)"
+        ],
+        answer: 2,
+        expEn: "Superb! 'Helio-' means Sun. The Heliocentric model is the structure of the Solar System where the planets orbit around the Sun.",
+        expZh: "非常出色！词根“Helio-”代表太阳。日心说（Heliocentric model）是指行星围绕太阳运行的太阳系结构。",
+        keyPoint: "Vocab Check: Heliocentric model = Sun-centered Solar System structure (Helio = Sun)."
+      },
+      {
+        id: 12,
+        category: "vocab",
+        catLabel: "📖 Key Vocabulary · 重点词汇",
+        reward: "+25 DMG · +10 XP",
+        qEn: "What do we call 'Someone who studies or is an expert in astronomy (space science)'?",
+        qZh: "“研究天文学（空间科学）或是天文学专家的人”被称为什么？",
+        options: [
+          "Astrologer (占星师)",
+          "Astronomer (天文学家)",
+          "Satellite (卫星)",
+          "Geologist (地质学家)"
+        ],
+        answer: 1,
+        expEn: "Correct! An Astronomer (like Copernicus, Kepler, or Galileo) is someone who studies or is an expert in astronomy (space science).",
+        expZh: "正确！天文学家（Astronomer，例如哥白尼、开普勒、伽利略）是指研究天文学（空间科学）或该领域专家的人。",
+        keyPoint: "Vocab Check: Astronomer = Someone who studies or is an expert in astronomy."
+      },
+      {
+        id: 13,
+        category: "vocab",
+        catLabel: "📖 Key Vocabulary · 重点词汇",
+        reward: "+25 DMG · +10 XP",
+        qEn: "On the Solar System diagram, what term is used for natural objects in space such as planets, the Sun, and the Moon?",
+        qZh: "在太阳系示意图中，用来统称太空中如行星、太阳、月球等天体的词汇是什么？",
+        options: [
+          "Celestial bodies (天体)",
+          "Imaginary axes (假想轴)",
+          "Gas cores (气体核心)",
+          "Redstone blocks (红石方块)"
+        ],
+        answer: 0,
+        expEn: "Great job! The diagram labels objects in space as 'celestial bodies' (天体).",
+        expZh: "干得好！太阳系图表中将太空中的这些自然星体标注为“celestial bodies（天体）”。",
+        keyPoint: "Vocab Check: Celestial bodies = 天体."
+      },
+      {
+        id: 14,
+        category: "vocab",
+        catLabel: "📖 Key Vocabulary · 重点词汇",
+        reward: "+25 DMG · +10 XP",
+        qEn: "Armyere is reading his Chinese-English Science notes. Which pair of English and Chinese terms is MATCHED CORRECTLY?",
+        qZh: "Armyere 正在核对他的中英科学笔记。下列哪一组中英文词汇配对是【完全正确】的？",
+        options: [
+          "Rotate = 公转轨道 ; Orbit = 自转轴",
+          "Geocentric model = 日心说 ; Heliocentric model = 地心说",
+          "Spherical bodies = 球形体/球状天体 ; Axis = 轴（假想线）",
+          "Satellite = 恒星 ; Star = 卫星"
+        ],
+        answer: 2,
+        expEn: "Spot on! 'Spherical bodies' = 球形体, and 'Axis' = 轴 (an imaginary line). Don't mix up Rotate (自转) vs. Orbit (公转/轨道), or Geocentric (地心说) vs. Heliocentric (日心说)!",
+        expZh: "完全正确！Spherical bodies 是球形体，Axis 是轴（假想线）。切记不要把 Rotate（自转）和 Orbit（公转/轨道）混淆，也不要把 Geocentric（地心说）和 Heliocentric（日心说）记反哦！",
+        keyPoint: "Bilingual Mastery: Rotate (自转), Orbit (轨道/公转), Geocentric (地心说), Heliocentric (日心说)."
+      },
+
+      // ---------------- STAGE 2: SOLAR SYSTEM, PLANETS & MOON (8 Questions) ----------------
+      {
+        id: 15,
+        category: "solar",
+        catLabel: "🪐 Solar System & Moon · 太阳系与月球",
+        reward: "+30 DMG · +15 XP",
+        qEn: "Which list shows the 4 ROCKY planets in our Solar System?",
+        qZh: "下列哪一组准确列出了太阳系中的 4 颗【岩石行星（rocky planets）】？",
+        options: [
+          "Jupiter, Saturn, Uranus, and Neptune",
+          "Mercury, Venus, Earth, and Mars",
+          "Earth, Moon, Sun, and Pluto",
+          "Mercury, Mars, Jupiter, and Pluto"
+        ],
+        answer: 1,
+        expEn: "Boom! Mercury, Venus, Earth, and Mars are the four rocky planets. They are closest to the Sun and mostly made up of metal and rock.",
+        expZh: "一击必杀！水星（Mercury）、金星（Venus）、地球（Earth）和火星（Mars）是四颗岩石行星，它们主要由金属和岩石（metal and rock）构成。",
+        keyPoint: "Rocky Planets = Mercury, Venus, Earth, Mars (水、金、地、火)."
+      },
+      {
+        id: 16,
+        category: "solar",
+        catLabel: "🪐 Solar System & Moon · 太阳系与月球",
+        reward: "+30 DMG · +15 XP",
+        qEn: "What are the rocky planets (Mercury, Venus, Earth, and Mars) mostly made up of?",
+        qZh: "水星、金星、地球和火星这四颗岩石行星主要由什么物质构成？",
+        options: [
+          "Helium and hydrogen gases only",
+          "Metal and rock (金属和岩石)",
+          "Ice and water vapour only",
+          "Liquid lava and clouds"
+        ],
+        answer: 1,
+        expEn: "Correct! The Knowledge Organiser states: 'Mercury, Venus, Earth and Mars are rocky planets. They are mostly made up of metal and rock.'",
+        expZh: "回答正确！知识手册明确指出：水星、金星、地球和火星是岩石行星，它们大多由金属和岩石（metal and rock）构成。",
+        keyPoint: "Rocky planets composition = mostly metal and rock."
+      },
+      {
+        id: 17,
+        category: "solar",
+        catLabel: "🪐 Solar System & Moon · 太阳系与月球",
+        reward: "+30 DMG · +15 XP",
+        qEn: "Jupiter, Saturn, Uranus, and Neptune are mostly made up of which two gases, and what are their cores made of?",
+        qZh: "木星、土星、天王星和海王星主要由哪两种气体组成？它们的核心（cores）又是由什么组成的？",
+        options: [
+          "Gases: oxygen and nitrogen; Cores: pure ice",
+          "Gases: helium and hydrogen; Cores: rock and metal",
+          "Gases: carbon dioxide and steam; Cores: खाली (empty space)",
+          "Gases: helium and neon; Cores: pure gas with no solid core"
+        ],
+        answer: 1,
+        expEn: "Brilliant detail! Jupiter, Saturn, Uranus, and Neptune are mostly made up of gases (helium and hydrogen), although they DO have cores made up of rock and metal!",
+        expZh: "细节满分！木星、土星、天王星和海王星主要由气体——氦（helium）和氢（hydrogen）组成，尽管如此，它们的核心（cores）仍然是由岩石和金属（rock and metal）组成的！",
+        keyPoint: "Gas Giants = mostly helium & hydrogen gases, WITH cores made of rock and metal!"
+      },
+      {
+        id: 18,
+        category: "solar",
+        catLabel: "🪐 Solar System & Moon · 太阳系与月球",
+        reward: "+30 DMG · +15 XP",
+        qEn: "What happened to Pluto in 2006?",
+        qZh: "在 2006 年，冥王星（Pluto）发生了什么分类变化？",
+        options: [
+          "It crashed into Neptune and disappeared.",
+          "It was discovered to be a small star.",
+          "It used to be considered a planet, but was reclassified as a dwarf planet in 2006.",
+          "It became Earth's second natural satellite."
+        ],
+        answer: 2,
+        expEn: "Spot on! Pluto used to be considered a planet, but was reclassified as a dwarf planet (矮行星) in 2006.",
+        expZh: "完全正确！冥王星（Pluto）曾被认为是一颗行星，但在 2006 年被重新归类为矮行星（dwarf planet）。",
+        keyPoint: "Pluto = reclassified as a dwarf planet in 2006."
+      },
+      {
+        id: 19,
+        category: "solar",
+        catLabel: "🪐 Solar System & Moon · 太阳系与月球",
+        reward: "+30 DMG · +15 XP",
+        qEn: "What shape is the path of the Moon's orbit around Earth?",
+        qZh: "月球围绕地球公转的轨道是什么形状的？",
+        options: [
+          "A square Minecraft block path (正方形路径)",
+          "An oval-shaped path (椭圆形轨道)",
+          "A straight zig-zag line (折线路径)",
+          "A triangle path around Mars (三角形路径)"
+        ],
+        answer: 1,
+        expEn: "Correct! The Knowledge Organiser states: 'The Moon orbits Earth in an oval-shaped path while spinning on its axis.'",
+        expZh: "正确！知识手册指出：“月球绕自转轴旋转的同时，以椭圆形轨道（oval-shaped path）绕地球运行。”",
+        keyPoint: "Moon's orbit = oval-shaped path while spinning on its axis."
+      },
+      {
+        id: 20,
+        category: "solar",
+        catLabel: "🪐 Solar System & Moon · 太阳系与月球",
+        reward: "+30 DMG · +15 XP",
+        qEn: "Why does the Moon appear to be different shapes at various times in a month?",
+        qZh: "为什么在一个月的不同时间里，月亮看起来会呈现出不同的形状（月相变化）？",
+        options: [
+          "Because the Moon physically grows bigger and shrinks smaller every week.",
+          "Because as the Moon rotates/orbits round Earth, the Sun lights up different parts of it.",
+          "Because clouds in Earth's sky cover the Moon in a regular monthly pattern.",
+          "Because the Moon turns its own internal light on and off."
+        ],
+        answer: 1,
+        expEn: "Fantastic! At various times in a month, the Moon appears to be different shapes because as the Moon moves round Earth, the Sun lights up different parts of it.",
+        expZh: "太棒了！在一个月的不同时间里月亮看起来形状不同，这是因为当月球绕地球运转时，太阳照亮了它的不同部分（the Sun lights up different parts of it）。",
+        keyPoint: "Moon phases = The Sun lights up different parts of the Moon as it moves around Earth."
+      },
+      {
+        id: 21,
+        category: "solar",
+        catLabel: "🪐 Solar System & Moon · 太阳系与月球",
+        reward: "+30 DMG · +15 XP",
+        qEn: "What is the correct order of the 8 planets starting from the one CLOSEST to the Sun?",
+        qZh: "从离太阳【最近】的行星开始，太阳系八大行星的正确排列顺序是什么？",
+        options: [
+          "Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune",
+          "Venus, Mercury, Earth, Mars, Saturn, Jupiter, Uranus, Neptune",
+          "Mercury, Mars, Earth, Venus, Jupiter, Saturn, Neptune, Uranus",
+          "Earth, Moon, Mars, Venus, Mercury, Jupiter, Saturn, Uranus"
+        ],
+        answer: 0,
+        expEn: "Legendary combo! From closest to farthest from the Sun: 1. Mercury (水星), 2. Venus (金星), 3. Earth (地球), 4. Mars (火星), 5. Jupiter (木星), 6. Saturn (土星), 7. Uranus (天王星), 8. Neptune (海王星).",
+        expZh: "完美连击！按离太阳由近到远的顺序依次是：1.水星(Mercury)、2.金星(Venus)、3.地球(Earth)、4.火星(Mars)、5.木星(Jupiter)、6.土星(Saturn)、7.天王星(Uranus)、8.海王星(Neptune)。",
+        keyPoint: "Planet Order: Mercury → Venus → Earth → Mars → Jupiter → Saturn → Uranus → Neptune."
+      },
+      {
+        id: 22,
+        category: "solar",
+        catLabel: "🪐 Solar System & Moon · 太阳系与月球",
+        reward: "+30 DMG · +15 XP",
+        qEn: "On the Solar System diagram, it says 'Our Solar System (not to scale)'. What does 'not to scale' mean?",
+        qZh: "太阳系图上标注了“Our Solar System (not to scale)”，请问什么是“not to scale（不按比例）”？",
+        options: [
+          "The planets have no weight or mass.",
+          "The sizes and distances shown in the drawing are not drawn in their true real-life proportions.",
+          "There are actually no planets in the Solar System.",
+          "The planets do not orbit the Sun."
+        ],
+        answer: 1,
+        expEn: "Smart thinking! 'Not to scale' means the illustration shows the planets clearly so we can see them, rather than drawing their exact real-life relative sizes and huge distances.",
+        expZh: "非常聪明！“Not to scale（不按比例）”意思是图画为了让我们看清楚各颗星球，没有按照真实宇宙中悬殊的体积比例和极其遥远的距离比例来绘制。",
+        keyPoint: "Diagram Literacy: 'Not to scale' = sizes/distances are illustrative, not in exact proportion."
+      },
+
+      // ---------------- STAGE 3: EARTH'S ROTATION, ORBIT & DAY/NIGHT (8 Questions) ----------------
+      {
+        id: 23,
+        category: "earth",
+        catLabel: "🌍 Earth's Rotation & Orbit · 地球自转与公转",
+        reward: "+30 DMG · +15 XP",
+        qEn: "How long does it take for Earth to do one full rotation (spin) on its axis?",
+        qZh: "地球绕自转轴完成一次完整的自转（full rotation）需要多长时间？",
+        options: [
+          "Once every 24 hours (每24小时一次)",
+          "Once every 365 days (每365天一次)",
+          "Once every 28 days (每28天一次)",
+          "Once every 12 hours (每12小时一次)"
+        ],
+        answer: 0,
+        expEn: "Direct hit! Earth rotates (spins) on its axis and does a full rotation once in every 24 hours.",
+        expZh: "直接命中！地球绕自转轴自转（rotates on its axis），每 24 小时进行一次完整的旋转。",
+        keyPoint: "Earth's full rotation on its axis = once every 24 hours."
+      },
+      {
+        id: 24,
+        category: "earth",
+        catLabel: "🌍 Earth's Rotation & Orbit · 地球自转与公转",
+        reward: "+30 DMG · +15 XP",
+        qEn: "How long does it take for Earth to orbit (revolve) once around the Sun?",
+        qZh: "地球围绕太阳公转（orbit / revolve）一周需要多长时间？",
+        options: [
+          "Exactly 24 hours",
+          "About 30 days (one month)",
+          "A little more than 365 days (365天多一点)",
+          "100 years"
+        ],
+        answer: 2,
+        expEn: "Awesome! At the same time that Earth is rotating, it is also orbiting (revolving) around the Sun. It takes a little more than 365 days (approx. 365¼ days) to orbit the Sun.",
+        expZh: "太棒了！在地球自转的同时，它也在绕太阳公转（orbiting/revolving）。绕太阳运行一周需要 365 天多一点的时间（约365.25天）。",
+        keyPoint: "Earth's orbit around the Sun = a little more than 365 days."
+      },
+      {
+        id: 25,
+        category: "earth",
+        catLabel: "🌍 Earth's Rotation & Orbit · 地球自转与公转",
+        reward: "+30 DMG · +15 XP",
+        qEn: "True or False: Earth stops rotating on its axis while it orbits around the Sun.",
+        qZh: "判断对错：当地球绕太阳公转时，它会停止绕自己的地轴自转。",
+        options: [
+          "True — Earth can only do one movement at a time.",
+          "False — At the same time that Earth is rotating on its axis, it is ALSO orbiting (revolving) around the Sun.",
+          "True — Earth only rotates during the summer.",
+          "False — Earth does not orbit the Sun at all."
+        ],
+        answer: 1,
+        expEn: "Correct! The Knowledge Organiser specifically emphasizes: 'At the same time that Earth is rotating, it is also orbiting (revolving) around the Sun.'",
+        expZh: "回答正确！知识手册特别强调：“在地球自转的同时（At the same time），它也在绕太阳公转（orbiting/revolving）。”两者是同时进行的！",
+        keyPoint: "Simultaneous motion: Earth rotates on its axis AND orbits the Sun at the same time."
+      },
+      {
+        id: 26,
+        category: "earth",
+        catLabel: "🌍 Earth's Rotation & Orbit · 地球自转与公转",
+        reward: "+30 DMG · +15 XP",
+        qEn: "When does DAYTIME occur on a part of Earth?",
+        qZh: "地球上的某一个地区在什么时候是【白天（Daytime）】？",
+        options: [
+          "When that side of Earth is facing AWAY from the Sun.",
+          "When that side of Earth is facing TOWARDS the Sun.",
+          "When the Moon blocks the Sun completely.",
+          "When Earth is closest to Jupiter."
+        ],
+        answer: 1,
+        expEn: "Spot on! Daytime occurs when the side of Earth is facing towards the Sun.",
+        expZh: "完全正确！当地球的一侧朝向太阳（facing towards the Sun）的时候，这一侧就是白天（Daytime）。",
+        keyPoint: "Daytime = side of Earth facing TOWARDS the Sun."
+      },
+      {
+        id: 27,
+        category: "earth",
+        catLabel: "🌍 Earth's Rotation & Orbit · 地球自转与公转",
+        reward: "+30 DMG · +15 XP",
+        qEn: "When does NIGHT occur on a part of Earth?",
+        qZh: "地球上的某一个地区在什么时候是【夜晚（Night）】？",
+        options: [
+          "When the Sun turns off its fire at bedtime.",
+          "When that side of Earth is facing AWAY from the Sun.",
+          "When that side of Earth is facing TOWARDS the Sun.",
+          "When Earth stops orbiting the Sun for 12 hours."
+        ],
+        answer: 1,
+        expEn: "Exact hit! Night occurs when the side of Earth is facing away from the Sun.",
+        expZh: "精准命中！当地球的一侧背对着太阳（facing away from the Sun）的时候，这一侧就是晚上（Night）。",
+        keyPoint: "Night = side of Earth facing AWAY from the Sun."
+      },
+      {
+        id: 28,
+        category: "earth",
+        catLabel: "🌍 Earth's Rotation & Orbit · 地球自转与公转",
+        reward: "+30 DMG · +15 XP",
+        qEn: "Why does it appear to us that the Sun moves across the sky during the day?",
+        qZh: "为什么在我们看来，白天太阳似乎在天空中移动？",
+        options: [
+          "Because the Sun orbits rapidly around Earth every 24 hours.",
+          "The Sun does NOT move across our sky at all; it seems to move because of the movements (rotation) of Earth.",
+          "Because the wind pushes the Sun from east to west.",
+          "Because the Moon pulls the Sun across the sky."
+        ],
+        answer: 1,
+        expEn: "Crucial science fact! 'It appears to us that the Sun moves across the sky during the day, but the Sun does not move at all. It seems to us that the Sun moves because of the movements of Earth.'",
+        expZh: "核心必考知识点！“在我们看来太阳白天在天空中移动，但太阳根本没有移动（the Sun does not move at all）。在我们看来太阳的运动是因为地球的运动（movements of Earth）。”",
+        keyPoint: "Apparent movement of the Sun = caused by the movements (rotation) of Earth!"
+      },
+      {
+        id: 29,
+        category: "earth",
+        catLabel: "🌍 Earth's Rotation & Orbit · 地球自转与公转",
+        reward: "+30 DMG · +15 XP",
+        qEn: "Where does Earth's imaginary axis run from and to?",
+        qZh: "地球的假想自转轴（Earth's axis）是从哪里延伸到哪里的？",
+        options: [
+          "From the Sun to the Moon",
+          "From the North Pole to the South Pole (从北极到南极)",
+          "From Mercury to Neptune",
+          "From London to Beijing"
+        ],
+        answer: 1,
+        expEn: "Correct! Earth's axis (an imaginary line) runs from the North Pole to the South Pole.",
+        expZh: "回答正确！地轴（Earth's axis）是一条从北极（North Pole）延伸到南极（South Pole）的假想线。",
+        keyPoint: "Earth's axis = runs from the North Pole to the South Pole."
+      },
+      {
+        id: 30,
+        category: "earth",
+        catLabel: "🌍 Earth's Rotation & Orbit · 地球自转与公转",
+        reward: "+30 DMG · +15 XP",
+        qEn: "In the Knowledge Organiser, which synonym in brackets is given for 'rotates' and which synonym is given for 'orbiting'?",
+        qZh: "在英文知识手册中，rotates（自转）和 orbiting（公转）括号里给出的同义词分别是什么？",
+        options: [
+          "rotates (spins) ; orbiting (revolving)",
+          "rotates (falls) ; orbiting (jumping)",
+          "rotates (glowing) ; orbiting (stopping)",
+          "rotates (revolving) ; orbiting (floating)"
+        ],
+        answer: 0,
+        expEn: "Sharp eyes! The text says: 'Earth rotates (spins) on its axis' and 'it is also orbiting (revolving) around the Sun.'",
+        expZh: "火眼金睛！原文写道：“Earth rotates (spins) on its axis”（地球绕轴自转/旋转）以及“orbiting (revolving) around the Sun”（绕太阳公转/环绕运行）。",
+        keyPoint: "Key Vocabulary Synonyms: rotates = spins; orbiting = revolving."
+      },
+
+      // ---------------- STAGE 4: MODELS & FAMOUS ASTRONOMERS (6 Questions) ----------------
+      {
+        id: 31,
+        category: "models",
+        catLabel: "🔭 Models & Astronomers · 日心说与天文学家",
+        reward: "+40 DMG · +20 XP (BOSS)",
+        qEn: "Years ago, before modern telescopes and space science, what did people believe in the Geocentric model?",
+        qZh: "许多年前，在“地心说（Geocentric model）”中，人们相信什么？",
+        options: [
+          "That all planets and the Sun orbited around Earth (认为其他行星和太阳都围绕地球运行).",
+          "That Earth and other planets orbited around the Sun.",
+          "That Pluto was the largest star in the galaxy.",
+          "That the Moon was at the center of the Solar System."
+        ],
+        answer: 0,
+        expEn: "Direct hit on the Boss! Years ago, under the Geocentric model, people believed that other planets and the Sun orbited around Earth.",
+        expZh: "重创 Boss！很多年前，在地心说（Geocentric model）下，人们曾认为其他行星和太阳都围绕地球运行。",
+        keyPoint: "Geocentric model = Old belief that planets and the Sun orbited Earth."
+      },
+      {
+        id: 32,
+        category: "models",
+        catLabel: "🔭 Models & Astronomers · 日心说与天文学家",
+        reward: "+40 DMG · +20 XP (BOSS)",
+        qEn: "Which two astronomers are named in the Knowledge Organiser whose work and ideas combined over many years to develop the HELIOCENTRIC model?",
+        qZh: "知识手册中提到了哪两位天文学家，他们多年的工作和想法结合在一起，促成了【日心说（heliocentric model）】的形成？",
+        options: [
+          "Copernicus and Kepler (哥白尼和开普勒)",
+          "Steve and Alex",
+          "Newton and Einstein",
+          "Aristotle and Ptolemy"
+        ],
+        answer: 0,
+        expEn: "Mega Critical Hit! 'The work and ideas of many astronomers (such as Copernicus and Kepler) combined over many years before the idea of the heliocentric model was developed.'",
+        expZh: "超级暴击！知识手册写道：“在日心说（heliocentric model）形成之前，许多天文学家（如哥白尼 Copernicus 和开普勒 Kepler）的工作和想法结合了很多年。”",
+        keyPoint: "Heliocentric model astronomers = Nicolaus Copernicus & Kepler."
+      },
+      {
+        id: 33,
+        category: "models",
+        catLabel: "🔭 Models & Astronomers · 日心说与天文学家",
+        reward: "+40 DMG · +20 XP (BOSS)",
+        qEn: "What did GALILEO'S work on gravity allow astronomers to understand?",
+        qZh: "伽利略（Galileo）对引力（gravity）的研究使天文学家理解了什么？",
+        options: [
+          "How to build a rocket to land on Pluto.",
+          "How planets stayed in orbit (行星是如何在轨道上运行的).",
+          "Why the Moon is made of green cheese.",
+          "How to turn helium gas into diamond armor."
+        ],
+        answer: 1,
+        expEn: "Brilliant! 'Galileo’s work on gravity allowed astronomers to understand how planets stayed in orbit.'",
+        expZh: "太棒了！“伽利略对引力的研究（Galileo’s work on gravity）使天文学家能够理解行星是如何在轨道上运行的（how planets stayed in orbit）。”",
+        keyPoint: "Galileo's work on gravity = explained how planets stayed in orbit."
+      },
+      {
+        id: 34,
+        category: "models",
+        catLabel: "🔭 Models & Astronomers · 日心说与天文学家",
+        reward: "+40 DMG · +20 XP (BOSS)",
+        qEn: "What is the full name of the famous astronomer pictured next to the Key Vocabulary on Page 2?",
+        qZh: "知识手册第2页重点单词旁边配有画像的著名天文学家全名叫什么？",
+        options: [
+          "Nicolaus Copernicus (尼古拉斯·哥白尼)",
+          "Charles Darwin (查尔斯·达尔文)",
+          "Thomas Edison (托马斯·爱迪生)",
+          "Louis Pasteur (路易斯·巴斯德)"
+        ],
+        answer: 0,
+        expEn: "Great observation! The portrait on Page 2 is labeled 'Nicolaus Copernicus' (尼古拉斯·哥白尼), a pioneer of the heliocentric model.",
+        expZh: "观察得非常仔细！第2页肖像下方的标注正是“Nicolaus Copernicus（尼古拉斯·哥白尼）”，他是日心说的重要奠基人。",
+        keyPoint: "Portrait on Page 2 = Nicolaus Copernicus."
+      },
+      {
+        id: 35,
+        category: "models",
+        catLabel: "🔭 Models & Astronomers · 日心说与天文学家",
+        reward: "+40 DMG · +20 XP (BOSS)",
+        qEn: "How was the idea of the heliocentric model developed?",
+        qZh: "日心说（heliocentric model）这一科学理论是如何发展出来的？",
+        options: [
+          "One single person guessed it in one afternoon without any evidence.",
+          "The work and ideas of many astronomers (such as Copernicus and Kepler) combined over many years.",
+          "People voted on it in 2006 when Pluto became a dwarf planet.",
+          "It was written on a stone found on Mars."
+        ],
+        answer: 1,
+        expEn: "Exactly! Scientific models take teamwork across history: the work and ideas of many astronomers combined over many years before the heliocentric model was developed.",
+        expZh: "完全正确！科学模型的建立凝聚了历代科学家的心血：许多天文学家（如哥白尼和开普勒）的工作和想法经过多年的积累与结合，才最终形成了日心说。",
+        keyPoint: "Nature of Science: Many astronomers' work and ideas combined over many years."
+      },
+      {
+        id: 36,
+        category: "models",
+        catLabel: "🔭 Models & Astronomers · 日心说与天文学家",
+        reward: "+50 DMG · +30 XP (FINAL BOSS)",
+        qEn: "FINAL BOSS CHALLENGE: Compare the Geocentric and Heliocentric models. Which statement is 100% TRUE?",
+        qZh: "【终极末影龙 Boss 战】对比地心说与日心说，下列哪一项陈述是 100% 正确的？",
+        options: [
+          "In the Geocentric model, the Sun is at the center; in the Heliocentric model, Earth is at the center.",
+          "In the Geocentric model, people believed planets and the Sun orbited Earth; in the Heliocentric model, planets orbit around the Sun.",
+          "Both models state that the Moon is at the center of our Solar System.",
+          "Galileo proved the Geocentric model is the structure of our Solar System today."
+        ],
+        answer: 1,
+        expEn: "VICTORY STRIKE! In the Geocentric model (old belief), planets and the Sun orbited Earth. In the Heliocentric model (true Solar System structure), the planets orbit around the Sun!",
+        expZh: "终极胜利一击！在地心说（Geocentric model，过去的观念）中，人们认为行星和太阳绕地球转；而在日心说（Heliocentric model，真实的太阳系结构）中，行星围绕太阳运行！",
+        keyPoint: "Final Mastery: Geocentric (Earth-centered old belief) vs. Heliocentric (Sun-centered true structure)."
+      }
+    ];
+
+    // =========================================================================
+    // MINECRAFT ENEMY MOBS (6 WAVES WITH PIXEL-ART SVGs)
+    // =========================================================================
+    const MOBS = [
+      {
+        name: "💥 Space Creeper (太空苦力怕)",
+        role: "Wave 1 Hostile Mob · Hisses & explodes when you miss!",
+        maxHearts: 4,
+        heartIcon: "💚",
+        svg: `<svg width="60" height="60" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="2" y="2" width="12" height="12" fill="#22c55e"/>
+          <rect x="3" y="3" width="3" height="2" fill="#4ade80"/>
+          <rect x="10" y="10" width="3" height="3" fill="#16a34a"/>
+          <rect x="4" y="5" width="2" height="2" fill="#111827"/>
+          <rect x="10" y="5" width="2" height="2" fill="#111827"/>
+          <rect x="7" y="7" width="2" height="3" fill="#111827"/>
+          <rect x="5" y="9" width="2" height="4" fill="#111827"/>
+          <rect x="9" y="9" width="2" height="4" fill="#111827"/>
+        </svg>`
+      },
+      {
+        name: "🏹 Astro Skeleton (星际骷髅射手)",
+        role: "Wave 2 Hostile Mob · Shoots meteor arrows from orbit!",
+        maxHearts: 5,
+        heartIcon: "🤍",
+        svg: `<svg width="60" height="60" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="2" y="2" width="12" height="12" fill="#e5e7eb"/>
+          <rect x="2" y="2" width="12" height="2" fill="#d1d5db"/>
+          <rect x="4" y="6" width="3" height="2" fill="#1f2937"/>
+          <rect x="9" y="6" width="3" height="2" fill="#1f2937"/>
+          <rect x="7" y="8" width="2" height="2" fill="#4b5563"/>
+          <rect x="4" y="11" width="8" height="1" fill="#1f2937"/>
+          <rect x="5" y="10" width="1" height="3" fill="#9ca3af"/>
+          <rect x="10" y="10" width="1" height="3" fill="#9ca3af"/>
+        </svg>`
+      },
+      {
+        name: "🧟 Gravity Zombie (引力僵尸)",
+        role: "Wave 3 Hostile Mob · Tries to pull planets out of orbit!",
+        maxHearts: 5,
+        heartIcon: "💚",
+        svg: `<svg width="60" height="60" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="2" y="2" width="12" height="12" fill="#4d7c0f"/>
+          <rect x="3" y="3" width="10" height="3" fill="#3f6212"/>
+          <rect x="4" y="7" width="2" height="2" fill="#111827"/>
+          <rect x="10" y="7" width="2" height="2" fill="#111827"/>
+          <rect x="7" y="9" width="2" height="1" fill="#1a2e05"/>
+          <rect x="5" y="11" width="6" height="2" fill="#365314"/>
+        </svg>`
+      },
+      {
+        name: "🔮 Geocentric Enderman (地心说末影人)",
+        role: "Wave 4 Mini-Boss · Teleports & confuses Orbit vs Rotate!",
+        maxHearts: 6,
+        heartIcon: "💜",
+        svg: `<svg width="60" height="60" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="2" y="2" width="12" height="12" fill="#111827"/>
+          <rect x="3" y="7" width="3" height="2" fill="#f0abfc"/>
+          <rect x="4" y="7" width="1" height="2" fill="#d946ef"/>
+          <rect x="10" y="7" width="3" height="2" fill="#f0abfc"/>
+          <rect x="11" y="7" width="1" height="2" fill="#d946ef"/>
+          <rect x="6" y="12" width="4" height="1" fill="#374151"/>
+        </svg>`
+      },
+      {
+        name: "🔥 Solar Blaze (太阳烈焰人)",
+        role: "Wave 5 Elite Guard · Guarding Helium & Hydrogen Gas Giants!",
+        maxHearts: 6,
+        heartIcon: "🧡",
+        svg: `<svg width="60" height="60" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="3" y="3" width="10" height="10" fill="#f59e0b"/>
+          <rect x="4" y="4" width="8" height="3" fill="#fbbf24"/>
+          <rect x="4" y="7" width="2" height="2" fill="#111827"/>
+          <rect x="10" y="7" width="2" height="2" fill="#111827"/>
+          <rect x="5" y="7" width="1" height="1" fill="#fef08a"/>
+          <rect x="11" y="7" width="1" height="1" fill="#fef08a"/>
+          <rect x="1" y="5" width="1" height="7" fill="#fde047"/>
+          <rect x="14" y="4" width="1" height="7" fill="#fde047"/>
+        </svg>`
+      },
+      {
+        name: "🐉 Galactic Ender Dragon (银河末影龙 BOSS)",
+        role: "Wave 6 Final Boss · Master of the Solar System!",
+        maxHearts: 10,
+        heartIcon: "💜",
+        svg: `<svg width="60" height="60" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="2" y="4" width="12" height="9" fill="#18181b"/>
+          <rect x="3" y="2" width="2" height="3" fill="#52525b"/>
+          <rect x="11" y="2" width="2" height="3" fill="#52525b"/>
+          <rect x="3" y="7" width="3" height="2" fill="#e879f9"/>
+          <rect x="10" y="7" width="3" height="2" fill="#e879f9"/>
+          <rect x="5" y="11" width="6" height="2" fill="#a855f7"/>
+        </svg>`
+      }
+    ];
+
+    // =========================================================================
+    // PLANET EXPLORER DATA (FOR TAB 2 KNOWLEDGE ORGANISER)
+    // =========================================================================
+    const PLANET_INFO = {
+      sun: {
+        en: "☀️ <strong>The Sun (太阳):</strong> A huge star that Earth and the other planets in our solar system orbit around. A Star is a giant ball of gas held together by its own gravity. The Sun does NOT move across the sky—it seems to move because of the movements (rotation) of Earth!",
+        zh: "中文考点：太阳是一颗巨大的恒星（huge star），由自身引力聚集在一起的巨大气体球。太阳本身根本没有移动，白天太阳看起来东升西落是因为地球的自转！"
+      },
+      mercury: {
+        en: "🪨 <strong>1. Mercury (水星):</strong> The closest planet to the Sun and one of the 4 <strong>rocky planets</strong> (with Venus, Earth, and Mars). Mostly made up of <strong>metal and rock</strong>.",
+        zh: "中文考点：距离太阳第1近的行星，属于四颗岩石行星（rocky planets）之一，主要由金属和岩石（metal and rock）构成。"
+      },
+      venus: {
+        en: "🌕 <strong>2. Venus (金星):</strong> The 2nd planet from the Sun and one of the 4 <strong>rocky planets</strong>. Mostly made up of <strong>metal and rock</strong>.",
+        zh: "中文考点：距离太阳第2近的行星，属于岩石行星，主要由金属和岩石构成。"
+      },
+      earth: {
+        en: "🌍 <strong>3. Earth (地球):</strong> Our home! A <strong>rocky planet</strong> (made of metal and rock). Earth <strong>rotates (spins) on its axis once every 24 hours</strong> (causing Day and Night) while <strong>orbiting the Sun in a little more than 365 days</strong>.",
+        zh: "中文考点：距离太阳第3近的岩石行星。每 24 小时绕地轴（North Pole 到 South Pole 的假想线）自转一周产生昼夜；同时绕太阳公转，耗时 365 天多一点。"
+      },
+      mars: {
+        en: "🔴 <strong>4. Mars (火星):</strong> The 4th planet from the Sun and the last of the 4 <strong>rocky planets</strong> (Mercury, Venus, Earth, Mars). Mostly made up of <strong>metal and rock</strong>.",
+        zh: "中文考点：距离太阳第4近的行星，也是四颗岩石行星（水、金、地、火）中的最后一颗，主要由金属和岩石构成。"
+      },
+      jupiter: {
+        en: "🟠 <strong>5. Jupiter (木星):</strong> The largest planet and the 5th from the Sun. Mostly made up of <strong>gases (helium and hydrogen)</strong>, although it has a <strong>core made up of rock and metal</strong>.",
+        zh: "中文考点：距离太阳第5近的气态巨行星。主要由气体（氦气 helium 和氢气 hydrogen）组成，但它的核心（core）由岩石和金属组成！"
+      },
+      saturn: {
+        en: "🪐 <strong>6. Saturn (土星):</strong> The 6th planet from the Sun. Like Jupiter, Uranus, and Neptune, it is mostly made up of <strong>gases (helium and hydrogen)</strong> with a <strong>core made up of rock and metal</strong>.",
+        zh: "中文考点：距离太阳第6近的行星，主要由氦气和氢气组成，核心由岩石和金属构成。"
+      },
+      uranus: {
+        en: "🧊 <strong>7. Uranus (天王星):</strong> The 7th planet from the Sun. Mostly made up of <strong>gases (helium and hydrogen)</strong>, with a <strong>core made up of rock and metal</strong>.",
+        zh: "中文考点：距离太阳第7近的行星，同样主要由气体（氦和氢）组成，核心由岩石和金属组成。"
+      },
+      neptune: {
+        en: "🔵 <strong>8. Neptune (海王星):</strong> The 8th and farthest planet from the Sun. Mostly made up of <strong>gases (helium and hydrogen)</strong>, with a <strong>core made up of rock and metal</strong>.",
+        zh: "中文考点：距离太阳第8近（最远）的行星，主要由气体（氦和氢）组成，核心由岩石和金属组成。"
+      },
+      pluto: {
+        en: "❄️ <strong>Pluto (冥王星):</strong> Pluto used to be considered a planet, but was <strong>reclassified as a dwarf planet in 2006</strong>!",
+        zh: "中文考点：冥王星曾被认为是一颗行星，但在 2006 年被重新归类为矮行星（dwarf planet）！"
+      }
+    };
+
+    // =========================================================================
+    // GAME STATE & AUDIO SYNTHESIZER
+    // =========================================================================
+    let state = {
+      playerHearts: 5,
+      maxPlayerHearts: 5,
+      xp: 0,
+      level: 1,
+      streak: 0,
+      mobsDefeated: 0,
+      currentMobIdx: 0,
+      enemyHearts: MOBS[0].maxHearts,
+      apples: 3,
+      shields: 1,
+      emeralds: 0,
+      stars: 0,
+      totems: 1,
+      soundOn: true,
+      currentFilter: "all",
+      selectedOptions: {}, // qId -> optionIndex
+      answeredStatus: {},  // qId -> 'correct' | 'wrong'
+      battleSnapshots: {}, // qId -> string HTML of battle result
+      wrongSet: new Set()
+    };
+
+    // Web Audio API Retro Sound Effects (No external MP3 required!)
+    let audioCtx = null;
+    function playSFX(type) {
+      if (!state.soundOn) return;
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === "suspended") audioCtx.resume();
+        const now = audioCtx.currentTime;
+
+        if (type === "hit") {
+          // Sword slash + XP ding
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(520, now);
+          osc.frequency.exponentialRampToValueAtTime(980, now + 0.14);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.18);
+        } else if (type === "kill") {
+          // Mob defeated fanfare
+          [523.25, 659.25, 783.99, 1046.5].forEach((freq, idx) => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(freq, now + idx * 0.07);
+            gain.gain.setValueAtTime(0.16, now + idx * 0.07);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.07 + 0.22);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(now + idx * 0.07);
+            osc.stop(now + idx * 0.07 + 0.22);
+          });
+        } else if (type === "hurt") {
+          // Creeper explosion / damage thud
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "sawtooth";
+          osc.frequency.setValueAtTime(170, now);
+          osc.frequency.exponentialRampToValueAtTime(55, now + 0.28);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.3);
+        } else if (type === "heal") {
+          // Golden Apple chime
+          [440, 660, 880].forEach((freq, idx) => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(freq, now + idx * 0.06);
+            gain.gain.setValueAtTime(0.14, now + idx * 0.06);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.06 + 0.18);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(now + idx * 0.06);
+            osc.stop(now + idx * 0.06 + 0.18);
+          });
+        }
+      } catch (e) {}
+    }
+
+    // =========================================================================
+    // RENDER HUD & QUESTIONS
+    // =========================================================================
+    function updateHUD() {
+      const mob = MOBS[state.currentMobIdx];
+      document.getElementById("playerLevel").textContent = state.level;
+      document.getElementById("playerXP").textContent = state.xp;
+      document.getElementById("playerStreak").textContent = state.streak;
+      document.getElementById("mobsDefeated").textContent = state.mobsDefeated;
+
+      document.getElementById("slotApples").textContent = state.apples;
+      document.getElementById("appleCountNav").textContent = state.apples;
+      document.getElementById("slotShields").textContent = state.shields;
+      document.getElementById("slotEmeralds").textContent = state.emeralds;
+      document.getElementById("slotStars").textContent = state.stars;
+      document.getElementById("slotTotems").textContent = state.totems;
+
+      // Player Hearts
+      const pHeartsHtml = [];
+      for (let i = 0; i < state.maxPlayerHearts; i++) {
+        pHeartsHtml.push(`<span class="heart-icon ${i < state.playerHearts ? "" : "lost"}">❤️</span>`);
+      }
+      document.getElementById("playerHeartsRow").innerHTML = pHeartsHtml.join("");
+      const pPct = Math.max(0, Math.round((state.playerHearts / state.maxPlayerHearts) * 100));
+      document.getElementById("playerHpBar").style.width = pPct + "%";
+
+      // Enemy Mob
+      document.getElementById("waveIndicator").textContent = `Wave ${state.currentMobIdx + 1} / ${MOBS.length}`;
+      document.getElementById("enemyName").textContent = mob.name;
+      document.getElementById("enemyRole").textContent = mob.role;
+      document.getElementById("enemyAvatar").innerHTML = mob.svg;
+
+      const eHeartsHtml = [];
+      for (let i = 0; i < mob.maxHearts; i++) {
+        eHeartsHtml.push(`<span class="heart-icon ${i < state.enemyHearts ? "" : "lost"}">${mob.heartIcon}</span>`);
+      }
+      document.getElementById("enemyHeartsRow").innerHTML = eHeartsHtml.join("");
+      const ePct = Math.max(0, Math.round((state.enemyHearts / mob.maxHearts) * 100));
+      document.getElementById("enemyHpBar").style.width = ePct + "%";
+
+      // Score summary
+      const totalAnswered = Object.keys(state.answeredStatus).length;
+      const totalCorrect = Object.values(state.answeredStatus).filter(v => v === "correct").length;
+      document.getElementById("scoreSummaryText").textContent = `Score: ${totalCorrect} / ${totalAnswered} Correct (${QUESTIONS.length} Total)`;
+      document.getElementById("wrongCountBadge").textContent = state.wrongSet.size;
+    }
+
+    function renderQuestions() {
+      const container = document.getElementById("questionsContainer");
+      const letters = ["A", "B", "C", "D"];
+
+      const filtered = QUESTIONS.filter(q => {
+        if (state.currentFilter === "all") return true;
+        if (state.currentFilter === "wrong") return state.wrongSet.has(q.id);
+        return q.category === state.currentFilter;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="question-card" style="text-align:center; padding:40px 24px;">
+            <div style="font-size:42px; margin-bottom:10px;">🏆</div>
+            <h3 style="font-size:20px; font-weight:800; margin-bottom:6px;">No Mistakes in the Retry Camp! (当前没有错题！)</h3>
+            <p style="color:var(--apple-subtext); font-size:14.5px;">
+              Player Armyere has cleared all mistakes! Switch back to <strong>All Quests (全部 36 题)</strong> to keep battling!
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(q => {
+        const selectedIdx = state.selectedOptions[q.id];
+        const status = state.answeredStatus[q.id]; // undefined | 'correct' | 'wrong'
+        const isLocked = status !== undefined;
+
+        const optionsHtml = q.options.map((optText, idx) => {
+          let cls = "option-btn";
+          if (selectedIdx === idx) cls += " selected";
+          if (isLocked) {
+            if (idx === q.answer) cls += " correct-choice";
+            else if (selectedIdx === idx && idx !== q.answer) cls += " wrong-choice";
+          }
+          return `
+            <button class="${cls}" onclick="selectOption(${q.id}, ${idx})" ${isLocked ? "disabled" : ""}>
+              <span class="opt-letter">${letters[idx]}</span>
+              <span>${optText}</span>
+            </button>
+          `;
+        }).join("");
+
+        let expBoxHtml = "";
+        if (isLocked) {
+          const isCorrect = status === "correct";
+          const snapMsg = state.battleSnapshots[q.id] || (isCorrect
+            ? "⚔️ Armyere struck the enemy mob for -1 Heart & gained +15 XP!"
+            : "💥 Enemy mob counter-attacked! Review the explanation below.");
+          expBoxHtml = `
+            <div class="explanation-box show ${isCorrect ? "is-correct" : "is-wrong"}">
+              <div class="mc-inline-result">
+                <span>${snapMsg}</span>
+                <button class="next-quest-btn" onclick="scrollToNextQuestion(${q.id})">
+                  ⬇️ Next Question (下一题)
+                </button>
+              </div>
+              <div class="exp-status-title">
+                ${isCorrect
+                  ? "✅ Direct Hit! Correct Answer! (回答正确 · 暴击命中敌人！)"
+                  : `❌ Missed! The Correct Answer is Option ${letters[q.answer]} (回答有误 · 正确答案是 ${letters[q.answer]})`
+                }
+              </div>
+              <div class="exp-en">🇬🇧 <strong>English Explanation:</strong> ${q.expEn}</div>
+              <div class="exp-zh">🇨🇳 <strong>中文解析：</strong>${q.expZh}</div>
+              <div class="exp-key-point">📌 ${q.keyPoint}</div>
+            </div>
+          `;
+        }
+
+        return `
+          <article class="question-card" id="qCard_${q.id}">
+            <div class="q-header">
+              <div class="q-badges">
+                <span class="q-badge">Quest #${q.id}</span>
+                <span class="q-badge ${q.category === "vocab" ? "vocab" : ""}">${q.catLabel}</span>
+                <span class="q-badge reward">⚔️ ${q.reward}</span>
+              </div>
+              ${isLocked ? `
+                <button class="icon-btn" onclick="retrySingleQuestion(${q.id})" title="Try this question again">
+                  🔁 Retry Question (重做本题)
+                </button>
+              ` : ""}
+            </div>
+
+            <div class="q-text-en">${q.qEn}</div>
+            <div class="q-text-zh">${q.qZh}</div>
+
+            <div class="options-list">
+              ${optionsHtml}
+            </div>
+
+            <div class="q-actions">
+              <button
+                class="confirm-btn"
+                onclick="confirmAnswer(${q.id})"
+                ${selectedIdx === undefined || isLocked ? "disabled" : ""}
+              >
+                ⚔️ Confirm Attack (确认答案)
+              </button>
+              <span style="font-size:13px; color:var(--apple-subtext);">
+                ${isLocked
+                  ? (status === "correct" ? "🌟 Quest Cleared!" : "💡 Read the bilingual explanation below & click Retry!")
+                  : (selectedIdx !== undefined ? `Selected Option ${letters[selectedIdx]} — Click Confirm Attack!` : "Select an option (A/B/C/D), then click Confirm Attack.")
+                }
+              </span>
+            </div>
+
+            ${expBoxHtml}
+          </article>
+        `;
+      }).join("");
+    }
+
+    // =========================================================================
+    // INTERACTION HANDLERS (SELECT, CONFIRM, BATTLE ENGINE)
+    // =========================================================================
+    function selectOption(qId, optIdx) {
+      if (state.answeredStatus[qId] !== undefined) return;
+      state.selectedOptions[qId] = optIdx;
+      renderQuestions();
+    }
+
+    function confirmAnswer(qId) {
+      const q = QUESTIONS.find(item => item.id === qId);
+      const chosen = state.selectedOptions[qId];
+      if (!q || chosen === undefined || state.answeredStatus[qId] !== undefined) return;
+
+      const isCorrect = chosen === q.answer;
+      state.answeredStatus[qId] = isCorrect ? "correct" : "wrong";
+
+      const playerAvatar = document.getElementById("playerAvatar");
+      const enemyAvatar = document.getElementById("enemyAvatar");
+      const logEl = document.getElementById("battleLogText");
+      const currentMob = MOBS[state.currentMobIdx];
+
+      if (isCorrect) {
+        state.wrongSet.delete(qId);
+        state.streak += 1;
+        state.xp += 15;
+        state.emeralds += 1;
+        state.stars += 1;
+        state.level = 1 + Math.floor(state.xp / 60);
+
+        // Animate Player Lunge & Enemy Hit
+        playerAvatar.classList.remove("anim-lunge");
+        enemyAvatar.classList.remove("anim-shake");
+        void playerAvatar.offsetWidth;
+        playerAvatar.classList.add("anim-lunge");
+        enemyAvatar.classList.add("anim-shake");
+
+        state.enemyHearts -= 1;
+
+        let bonusMsg = "";
+        if (state.streak % 3 === 0) {
+          if (state.playerHearts < state.maxPlayerHearts) {
+            state.playerHearts += 1;
+            bonusMsg = " 🔥 3-Streak Combo! Armyere recovered +1 ❤️ Heart!";
+          } else {
+            state.apples += 1;
+            bonusMsg = " 🔥 3-Streak Combo! Armyere crafted +1 🍎 Golden Apple!";
+          }
+        }
+
+        if (state.enemyHearts <= 0) {
+          playSFX("kill");
+          state.mobsDefeated += 1;
+          state.xp += 25;
+          state.shields += 1;
+          const defeatedName = currentMob.name;
+          state.currentMobIdx = (state.currentMobIdx + 1) % MOBS.length;
+          state.enemyHearts = MOBS[state.currentMobIdx].maxHearts;
+          logEl.innerHTML = `🏆 <strong>VICTORY!</strong> Armyere defeated <strong>${defeatedName}</strong> & looted +1 🛡️ Space Shield! Next wave: <strong>${MOBS[state.currentMobIdx].name}</strong>!`;
+        } else {
+          playSFX("hit");
+          logEl.innerHTML = `⚔️ <strong>Direct Hit!</strong> Armyere slashed <strong>${currentMob.name}</strong> for -1 Heart! (+15 XP, +1 💚 Emerald)${bonusMsg}`;
+        }
+      } else {
+        // Wrong Answer -> Enemy Counter-Attack!
+        state.wrongSet.add(qId);
+        state.streak = 0;
+        playSFX("hurt");
+
+        enemyAvatar.classList.remove("anim-enemy-lunge");
+        playerAvatar.classList.remove("anim-shake");
+        void enemyAvatar.offsetWidth;
+        enemyAvatar.classList.add("anim-enemy-lunge");
+        playerAvatar.classList.add("anim-shake");
+
+        if (state.shields > 0) {
+          state.shields -= 1;
+          logEl.innerHTML = `🛡️ <strong>Blocked!</strong> ${currentMob.name} attacked, but Armyere's <strong>Space Shield</strong> absorbed the hit! Check the bilingual explanation below.`;
+        } else {
+          state.playerHearts -= 1;
+          if (state.playerHearts <= 0) {
+            if (state.totems > 0) {
+              state.totems -= 1;
+              state.playerHearts = state.maxPlayerHearts;
+              logEl.innerHTML = `🗿 <strong>Totem of Undying Activated!</strong> Armyere revived with full ❤️❤️❤️❤️❤️ Hearts! Read the explanation and keep fighting!`;
+            } else {
+              state.playerHearts = 3;
+              logEl.innerHTML = `🍎 <strong>Emergency Respawn!</strong> Armyere respawned at the Space Beacon with 3 ❤️ Hearts!`;
+            }
+          } else {
+            logEl.innerHTML = `💥 <strong>Ouch!</strong> ${currentMob.name} counter-attacked! Armyere lost -1 ❤️ Heart. Click <strong>🍎 Heal</strong> or get a 3-Streak to heal!`;
+          }
+        }
+      }
+
+      state.battleSnapshots[qId] = logEl.innerHTML;
+      const arenaCard = document.getElementById("battleArenaCard");
+      arenaCard.classList.remove("flash-hit", "flash-hurt");
+      void arenaCard.offsetWidth;
+      arenaCard.classList.add(isCorrect ? "flash-hit" : "flash-hurt");
+
+      updateHUD();
+      renderQuestions();
+
+      // Show floating combat popup on the pinned HUD avatar
+      const targetAvatar = document.getElementById(isCorrect ? "enemyAvatar" : "playerAvatar");
+      if (targetAvatar) {
+        const badge = document.createElement("div");
+        badge.className = "floating-dmg " + (isCorrect ? "hit" : "hurt");
+        badge.textContent = isCorrect ? "⚔️ -1 HP! +15 XP" : "💥 -1 ❤️";
+        targetAvatar.appendChild(badge);
+        setTimeout(() => badge.remove(), 1200);
+      }
+    }
+
+    function scrollToNextQuestion(currentQId) {
+      const cards = Array.from(document.querySelectorAll(".question-card"));
+      const currentCard = document.getElementById("qCard_" + currentQId);
+      const idx = cards.indexOf(currentCard);
+      if (idx !== -1 && idx + 1 < cards.length) {
+        cards[idx + 1].scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function retrySingleQuestion(qId) {
+      delete state.answeredStatus[qId];
+      delete state.selectedOptions[qId];
+      delete state.battleSnapshots[qId];
+      renderQuestions();
+      updateHUD();
+    }
+
+    function useGoldenApple() {
+      const logEl = document.getElementById("battleLogText");
+      if (state.apples <= 0) {
+        logEl.innerHTML = `🍎 No Golden Apples left! Get a 3-question streak to earn more Golden Apples!`;
+        return;
+      }
+      if (state.playerHearts >= state.maxPlayerHearts) {
+        logEl.innerHTML = `❤️ Armyere is already at full health (5 / 5 Hearts)!`;
+        return;
+      }
+      state.apples -= 1;
+      state.playerHearts = Math.min(state.maxPlayerHearts, state.playerHearts + 1);
+      playSFX("heal");
+      logEl.innerHTML = `🍎 <strong>Yum!</strong> Armyere ate a Golden Apple and restored +1 ❤️ Heart!`;
+      updateHUD();
+    }
+
+    function filterQuestions(category, btnEl) {
+      state.currentFilter = category;
+      document.querySelectorAll(".filter-pill").forEach(b => b.classList.remove("active"));
+      if (btnEl) btnEl.classList.add("active");
+      renderQuestions();
+    }
+
+    function resetAllQuestions() {
+      state.selectedOptions = {};
+      state.answeredStatus = {};
+      state.battleSnapshots = {};
+      state.wrongSet.clear();
+      state.playerHearts = 5;
+      state.streak = 0;
+      state.currentMobIdx = 0;
+      state.enemyHearts = MOBS[0].maxHearts;
+      document.getElementById("battleLogText").innerHTML = `🔄 Battle reset! Player Armyere is ready with full hearts!`;
+      updateHUD();
+      renderQuestions();
+    }
+
+    function switchMainTab(tab) {
+      const quizSec = document.getElementById("sectionQuiz");
+      const studySec = document.getElementById("sectionStudy");
+      const btnQuiz = document.getElementById("tabBtnQuiz");
+      const btnStudy = document.getElementById("tabBtnStudy");
+
+      if (tab === "quiz") {
+        quizSec.classList.add("active");
+        studySec.classList.remove("active");
+        btnQuiz.classList.add("active");
+        btnStudy.classList.remove("active");
+      } else {
+        quizSec.classList.remove("active");
+        studySec.classList.add("active");
+        btnQuiz.classList.remove("active");
+        btnStudy.classList.add("active");
+      }
+    }
+
+    function showPlanetInfo(key, chipEl) {
+      document.querySelectorAll(".planet-chip").forEach(c => c.classList.remove("active"));
+      if (chipEl) chipEl.classList.add("active");
+      const info = PLANET_INFO[key];
+      if (info) {
+        document.getElementById("planetDetailBanner").innerHTML = `
+          <div>${info.en}</div>
+          <div style="color:#a5f3fc; margin-top:6px;">${info.zh}</div>
+        `;
+      }
+    }
+
+    function toggleSound() {
+      state.soundOn = !state.soundOn;
+      document.getElementById("soundBtn").textContent = state.soundOn ? "🔊 SFX: ON" : "🔇 SFX: OFF";
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      document.getElementById("themeBtn").textContent = isDark ? "☀️ Light" : "🌙 Dark";
+    }
+
+    // Initialize on load
+    updateHUD();
+    renderQuestions();
+  </script>
+</body>
+</html>
