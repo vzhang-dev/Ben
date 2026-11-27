@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Armyere's Learning Park ⛏️ Noobs Enter, Legends Respawn!</title>
+  <style>
+    :root {
+      --sky-top: #5c94fc;
+      --sky-bottom: #a6d8ff;
+      --grass-top: #56a026;
+      --grass-edge: #6bc42e;
+      --dirt-dark: #6b4728;
+      --dirt-mid: #865932;
+      --dirt-light: #9b693d;
+      --stone-bg: #3b3b3b;
+      --panel-bg: #c6c6c6;
+      --panel-light: #ffffff;
+      --panel-dark: #555555;
+      --btn-bg: #737373;
+      --btn-hover: #5b8731;
+      --emerald: #17dd62;
+      --diamond: #3de0e8;
+      --gold: #ffaa00;
+      --redstone: #ff3b30;
+      --pixel-font: "Courier New", Courier, "Menlo", "Monaco", monospace;
+      --ui-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body.night-mode {
+      --sky-top: #070b1e;
+      --sky-bottom: #1a244d;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--ui-font);
+      color: #fff;
+      background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 62%, var(--grass-top) 62%, var(--dirt-mid) 66%, var(--dirt-dark) 100%);
+      background-attachment: fixed;
+      overflow-x: hidden;
+      position: relative;
+      transition: background 0.5s ease;
+    }
+
+    /* Pixelated Minecraft Sky & Terrain Layer */
+    .mc-world-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    /* Pixel Sun / Moon */
+    .mc-celestial {
+      position: absolute;
+      top: 48px;
+      right: 9%;
+      width: 76px;
+      height: 76px;
+      background: #fff275;
+      box-shadow:
+        inset -8px -8px 0 #ffd026,
+        inset 8px 8px 0 #ffffb5,
+        0 0 0 6px rgba(255, 242, 117, 0.35),
+        0 0 36px rgba(255, 224, 66, 0.6);
+      transition: all 0.5s ease;
+    }
+
+    body.night-mode .mc-celestial {
+      background: #e2e8f0;
+      box-shadow:
+        inset -10px -10px 0 #94a3b8,
+        inset 8px 8px 0 #ffffff,
+        0 0 0 6px rgba(226, 232, 240, 0.2),
+        0 0 30px rgba(226, 232, 240, 0.5);
+    }
+
+    /* Stars in Night Mode */
+    .stars {
+      position: absolute;
+      inset: 0 0 40% 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      background-image:
+        radial-gradient(2px 2px at 12% 18%, #fff 100%, transparent),
+        radial-gradient(3px 3px at 28% 8%, #fff 100%, transparent),
+        radial-gradient(2px 2px at 45% 26%, #fff 100%, transparent),
+        radial-gradient(3px 3px at 66% 14%, #fff 100%, transparent),
+        radial-gradient(2px 2px at 82% 28%, #fff 100%, transparent),
+        radial-gradient(2px 2px at 91% 12%, #fff 100%, transparent),
+        radial-gradient(3px 3px at 18% 36%, #fff 100%, transparent),
+        radial-gradient(2px 2px at 56% 38%, #fff 100%, transparent);
+    }
+
+    body.night-mode .stars {
+      opacity: 0.9;
+    }
+
+    /* Blocky Clouds */
+    .cloud {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.92);
+      height: 28px;
+      box-shadow: 0 6px 0 rgba(210, 225, 245, 0.85);
+      animation: floatCloud linear infinite;
+    }
+
+    body.night-mode .cloud {
+      background: rgba(148, 163, 184, 0.35);
+      box-shadow: 0 6px 0 rgba(71, 85, 105, 0.45);
+    }
+
+    .cloud::before,
+    .cloud::after {
+      content: '';
+      position: absolute;
+      background: inherit;
+      box-shadow: inherit;
+    }
+
+    .cloud-1 {
+      width: 140px;
+      top: 70px;
+      left: -180px;
+      animation-duration: 48s;
+    }
+    .cloud-1::before {
+      width: 76px;
+      height: 22px;
+      top: -22px;
+      left: 28px;
+    }
+
+    .cloud-2 {
+      width: 190px;
+      top: 150px;
+      left: -220px;
+      animation-duration: 65s;
+      animation-delay: -22s;
+    }
+    .cloud-2::before {
+      width: 110px;
+      height: 24px;
+      top: -24px;
+      left: 40px;
+    }
+
+    .cloud-3 {
+      width: 120px;
+      top: 105px;
+      left: -150px;
+      animation-duration: 54s;
+      animation-delay: -37s;
+    }
+    .cloud-3::before {
+      width: 64px;
+      height: 20px;
+      top: -20px;
+      left: 22px;
+    }
+
+    @keyframes floatCloud {
+      from { transform: translateX(-200px); }
+      to { transform: translateX(calc(100vw + 260px)); }
+    }
+
+    /* Bottom Voxel Grass + Dirt Pattern */
+    .voxel-ground {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 38vh;
+      z-index: 0;
+      background-color: var(--dirt-mid);
+      background-image:
+        linear-gradient(90deg, rgba(0,0,0,0.08) 50%, transparent 50%),
+        linear-gradient(rgba(0,0,0,0.08) 50%, transparent 50%);
+      background-size: 32px 32px;
+      border-top: 18px solid var(--grass-top);
+      box-shadow: inset 0 10px 0 var(--grass-edge), 0 -4px 0 #2e5d12;
+    }
+
+    /* Main Container */
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+
+    /* Top HUD Bar */
+    .hud-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+      background: rgba(0, 0, 0, 0.62);
+      border: 4px solid #222;
+      box-shadow: inset 0 0 0 2px #555;
+      padding: 10px 16px;
+    }
+
+    .hud-stats {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-family: var(--pixel-font);
+      font-weight: 900;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+    }
+
+    .hearts {
+      color: #ff3b30;
+      text-shadow: 2px 2px 0 #4a0000;
+      letter-spacing: 2px;
+    }
+
+    .xp-badge {
+      color: #80ff20;
+      text-shadow: 2px 2px 0 #1b4d00;
+    }
+
+    .mode-btn {
+      font-family: var(--pixel-font);
+      font-weight: 900;
+      font-size: 0.9rem;
+      background: #737373;
+      color: #fff;
+      border: 3px solid #1e1e1e;
+      box-shadow: inset -3px -3px 0 #444, inset 3px 3px 0 #aaa;
+      padding: 8px 14px;
+      cursor: pointer;
+      text-shadow: 2px 2px 0 #222;
+      transition: transform 0.1s;
+    }
+
+    .mode-btn:hover {
+      background: #5b8731;
+      box-shadow: inset -3px -3px 0 #38571c, inset 3px 3px 0 #8cd147;
+    }
+
+    .mode-btn:active {
+      transform: translateY(2px);
+    }
+
+    /* Hero Signboard */
+    .hero-sign {
+      text-align: center;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          #8f6133 0px,
+          #8f6133 24px,
+          #7c5229 24px,
+          #7c5229 28px
+        );
+      border: 6px solid #3d2510;
+      box-shadow:
+        inset 0 0 0 4px #ab7946,
+        0 12px 0 rgba(0, 0, 0, 0.35);
+      padding: 28px 22px 24px;
+      margin-bottom: 34px;
+      position: relative;
+    }
+
+    /* Splash text like Minecraft Title Screen */
+    .splash-text {
+      display: inline-block;
+      font-family: var(--pixel-font);
+      font-weight: 900;
+      font-size: 0.95rem;
+      color: #ffff55;
+      text-shadow: 2px 2px 0 #3f3f00;
+      background: rgba(0, 0, 0, 0.38);
+      padding: 6px 12px;
+      margin-bottom: 14px;
+      cursor: pointer;
+      transform: rotate(-2deg);
+      animation: pulseSplash 1.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseSplash {
+      from { transform: rotate(-2deg) scale(0.97); }
+      to { transform: rotate(-2deg) scale(1.05); }
+    }
+
+    .hero-title {
+      font-family: var(--pixel-font);
+      font-weight: 900;
+      font-size: clamp(1.6rem, 4.2vw, 2.75rem);
+      letter-spacing: 1px;
+      line-height: 1.25;
+      color: #ffffff;
+      text-shadow:
+        0 4px 0 #3b3b3b,
+        4px 4px 0 #1f1f1f,
+        -2px -2px 0 #4f4f4f;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-family: var(--pixel-font);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #ffe7b8;
+      text-shadow: 2px 2px 0 #3b210c;
+    }
+
+    /* Category Grid */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 24px;
+    }
+
+    /* Minecraft Inventory Chest Card */
+    .mc-card {
+      background: #c6c6c6;
+      color: #1e1e1e;
+      border: 4px solid #1a1a1a;
+      box-shadow:
+        inset -4px -4px 0 #555555,
+        inset 4px 4px 0 #ffffff,
+        0 10px 0 rgba(0, 0, 0, 0.35);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mc-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 4px solid #8b8b8b;
+    }
+
+    .mc-icon-box {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      font-size: 1.85rem;
+      background: #8b8b8b;
+      border: 3px solid #373737;
+      box-shadow: inset -3px -3px 0 #ffffff, inset 3px 3px 0 #555555;
+      flex-shrink: 0;
+    }
+
+    .mc-card-title {
+      font-family: var(--pixel-font);
+      font-weight: 900;
+      font-size: 1.35rem;
+      letter-spacing: 1px;
+      line-height: 1.2;
+      color: #222;
+      text-shadow: 2px 2px 0 #e8e8e8;
+    }
+
+    .mc-card-tag {
+      display: inline-block;
+      margin-top: 4px;
+      font-family: var(--pixel-font);
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 3px 8px;
+      color: #fff;
+      background: #3f3f3f;
+    }
+
+    .tag-english { background: #2563eb; }
+    .tag-science { background: #15803d; }
+    .tag-maths { background: #b45309; }
+
+    /* Quest Links List */
+    .quest-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      list-style: none;
+    }
+
+    .quest-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      text-decoration: none;
+      background: #737373;
+      color: #ffffff;
+      padding: 14px 16px;
+      border: 3px solid #141414;
+      box-shadow:
+        inset -3px -3px 0 #444444,
+        inset 3px 3px 0 #a8a8a8;
+      transition: transform 0.1s ease, background 0.15s ease;
+    }
+
+    .quest-link:hover {
+      background: #5b8731;
+      box-shadow:
+        inset -3px -3px 0 #38571c,
+        inset 3px 3px 0 #8cd147;
+      transform: translateY(-2px);
+    }
+
+    .quest-link:active {
+      transform: translateY(1px);
+    }
+
+    .quest-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .quest-badge {
+      font-family: var(--pixel-font);
+      font-weight: 900;
+      font-size: 0.92rem;
+      color: #ffff55;
+      text-shadow: 1px 1px 0 #222;
+    }
+
+    .quest-filename {
+      font-family: var(--ui-font);
+      font-weight: 800;
+      font-size: 0.96rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 0 #222222;
+      word-break: break-all;
+    }
+
+    .quest-arrow {
+      font-family: var(--pixel-font);
+      font-weight: 900;
+      font-size: 1rem;
+      color: #80ff20;
+      text-shadow: 2px 2px 0 #1d3b00;
+      flex-shrink: 0;
+    }
+
+    /* Empty Slot (Maths) */
+    .empty-slot {
+      background: #8b8b8b;
+      border: 3px dashed #4a4a4a;
+      box-shadow: inset 3px 3px 0 #616161, inset -3px -3px 0 #b5b5b5;
+      padding: 24px 16px;
+      text-align: center;
+      color: #2b2b2b;
+    }
+
+    .empty-slot-icon {
+      font-size: 2.1rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .empty-slot-title {
+      font-family: var(--pixel-font);
+      font-weight: 900;
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 8px;
+      color: #222;
+    }
+
+    .empty-slot-desc {
+      font-family: var(--pixel-font);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #1f2937;
+    }
+
+    /* Footer Hotbar */
+    .mc-hotbar-wrap {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .mc-hotbar {
+      display: inline-flex;
+      background: #8b8b8b;
+      border: 4px solid #1e1e1e;
+      padding: 4px;
+      gap: 4px;
+      box-shadow: 0 8px 0 rgba(0, 0, 0, 0.35);
+    }
+
+    .hotbar-slot {
+      width: 48px;
+      height: 48px;
+      background: #8b8b8b;
+      border: 3px solid #373737;
+      box-shadow: inset -2px -2px 0 #ffffff, inset 2px 2px 0 #555555;
+      display: grid;
+      place-items: center;
+      font-size: 1.45rem;
+      user-select: none;
+    }
+
+    .hotbar-slot.active {
+      border-color: #ffffff;
+      outline: 3px solid #1e1e1e;
+      transform: scale(1.06);
+      z-index: 1;
+    }
+
+    @media (max-width: 640px) {
+      .hotbar-slot:nth-child(n+6) {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minecraft Sky & World Background -->
+  <div class="mc-world-bg" aria-hidden="true">
+    <div class="stars"></div>
+    <div class="mc-celestial"></div>
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="voxel-ground"></div>
+  </div>
+
+  <main class="container">
+    <!-- Top Player HUD -->
+    <header class="hud-bar">
+      <div class="hud-stats">
+        <span>👤 Player: <strong>Armyere</strong></span>
+        <span class="hearts" title="Health">❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</span>
+        <span class="xp-badge">✨ LVL 99 BRAIN CRAFTER</span>
+      </div>
+      <button class="mode-btn" id="toggleTimeBtn" type="button">
+        🌙 Toggle Night / Day
+      </button>
+    </header>
+
+    <!-- Wooden Signboard Title -->
+    <section class="hero-sign">
+      <div class="splash-text" id="splashText">Creeper? Aww Man! Time to Study!</div>
+      <h1 class="hero-title">⛏️ ARMYERE'S LEARNING PARK 🏰</h1>
+      <p class="hero-subtitle">Where Homework Drops Diamonds &amp; Brain Cells Level Up!</p>
+    </section>
+
+    <!-- Subject Chest Categories -->
+    <section class="category-grid">
+
+      <!-- 1. ENGLISH (Reading & Vocabulary) -->
+      <article class="mc-card">
+        <div>
+          <div class="mc-card-header">
+            <div class="mc-icon-box">📖</div>
+            <div>
+              <h2 class="mc-card-title">ENGLISH</h2>
+              <span class="mc-card-tag tag-english">Reading, Writing &amp; Vocabulary</span>
+            </div>
+          </div>
+
+          <ul class="quest-list">
+            <li>
+              <a class="quest-link" href="minecraft_tips_reader.html">
+                <div class="quest-info">
+                  <span class="quest-badge">📜 Reading Quest</span>
+                  <span class="quest-filename">Minecraft Tips</span>
+                </div>
+                <span class="quest-arrow">PLAY ▶</span>
+              </a>
+            </li>
+            <li>
+              <a class="quest-link" href="Vocabulary_Check_Tool.html">
+                <div class="quest-info">
+                  <span class="quest-badge">⚔️ Vocabulary Battle</span>
+                  <span class="quest-filename">Vocabulary</span>
+                </div>
+                <span class="quest-arrow">PLAY ▶</span>
+              </a>
+            </li>
+            <li>
+              <a class="quest-link" href="persuasive_writing_coach.html">
+                <div class="quest-info">
+                  <span class="quest-badge">🌱 Writing Coach</span>
+                  <span class="quest-filename">Persuasive Writing Coach</span>
+                </div>
+                <span class="quest-arrow">PLAY ▶</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 2. SCIENCE (Unit 2...) -->
+      <article class="mc-card">
+        <div>
+          <div class="mc-card-header">
+            <div class="mc-icon-box">🚀</div>
+            <div>
+              <h2 class="mc-card-title">CLASS</h2>
+              <span class="mc-card-tag tag-science">Science</span>
+            </div>
+          </div>
+
+          <ul class="quest-list">
+            <li>
+              <a class="quest-link" href="Unit2_Earth_and_Space_Minecraft_Quest.html">
+                <div class="quest-info">
+                  <span class="quest-badge">🌍 Unit 2 Quest</span>
+                  <span class="quest-filename">Science Unit 2: Earth and Space</span>
+                </div>
+                <span class="quest-arrow">PLAY ▶</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 3. MATHS (Now Empty) -->
+      <article class="mc-card">
+        <div>
+          <div class="mc-card-header">
+            <div class="mc-icon-box">🧮</div>
+            <div>
+              <h2 class="mc-card-title">MATHS</h2>
+              <span class="mc-card-tag tag-maths">Redstone Logic &amp; Numbers</span>
+            </div>
+          </div>
+
+          <div class="empty-slot">
+            <span class="empty-slot-icon">🚧⛏️</span>
+            <p class="empty-slot-title">CHUNK STILL GENERATING...</p>
+            <p class="empty-slot-desc">
+              No quests in this chest yet! Villagers are still mining the numbers.
+            </p>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Minecraft Bottom Inventory Hotbar -->
+    <footer class="mc-hotbar-wrap" aria-label="Decorative Minecraft Hotbar">
+      <div class="mc-hotbar">
+        <div class="hotbar-slot active" title="Diamond Sword">🗡️</div>
+        <div class="hotbar-slot" title="Enchanted Book">📘</div>
+        <div class="hotbar-slot" title="Pickaxe">⛏️</div>
+        <div class="hotbar-slot" title="Rocket">🚀</div>
+        <div class="hotbar-slot" title="Golden Apple">🍎</div>
+        <div class="hotbar-slot" title="Emerald">💎</div>
+        <div class="hotbar-slot" title="Torch">🔥</div>
+        <div class="hotbar-slot" title="Compass">🧭</div>
+        <div class="hotbar-slot" title="Trophy">🏆</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const splashes = [
+      "Creeper? Aww Man! Time to Study!",
+      "100% Pure Brain Diamonds!",
+      "Endermen Stole My Homework!",
+      "Powered by Redstone & Snacks!",
+      "AFK Farming Knowledge..."
+    ];
+
+    const splashEl = document.getElementById('splashText');
+    splashEl.addEventListener('click', () => {
+      const next = splashes[Math.floor(Math.random() * splashes.length)];
+      splashEl.textContent = next;
+    });
+
+    const toggleBtn = document.getElementById('toggleTimeBtn');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('night-mode');
+      const isNight = document.body.classList.contains('night-mode');
+      toggleBtn.textContent = isNight ? '☀️ Toggle Day / Night' : '🌙 Toggle Night / Day';
+    });
+  </script>
+</body>
+</html>

@@ -511,6 +511,431 @@
     .btn-reset:hover {
       background: var(--accent-blue-light);
     }
+
+    /* Segmented Control / Category Filter */
+    .filter-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto 32px;
+      max-width: 820px;
+      padding: 0 20px;
+    }
+
+    .segmented-control {
+      background: rgba(118, 118, 128, 0.12);
+      padding: 4px;
+      border-radius: 12px;
+      display: inline-flex;
+      gap: 4px;
+    }
+    @media (prefers-color-scheme: dark) {
+      .segmented-control {
+        background: rgba(118, 118, 128, 0.24);
+      }
+    }
+
+    .segment-btn {
+      border: none;
+      background: transparent;
+      padding: 8px 20px;
+      border-radius: 9px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .segment-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .segment-btn.active {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      .segment-btn.active {
+        background: #2C2C2E;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+      }
+    }
+
+    .category-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 18px 0 6px;
+    }
+
+    .category-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-blue);
+      white-space: nowrap;
+    }
+
+    .category-title.survival {
+      color: #FF9500;
+    }
+
+    .category-line {
+      height: 1px;
+      background: var(--bg-card-border);
+      flex: 1;
+    }
+
+    body.dark-mode {
+      --bg-primary: #0b0d13;
+      --bg-card: rgba(24, 26, 36, 0.88);
+      --bg-card-border: rgba(255, 255, 255, 0.12);
+      --text-primary: #F5F5F7;
+      --text-secondary: #A1A1A6;
+      --accent-blue: #2997FF;
+      --accent-blue-hover: #47A5FF;
+      --accent-blue-light: rgba(41, 151, 255, 0.15);
+      --success-green: #30D158;
+      --success-light: rgba(48, 209, 88, 0.15);
+      --error-red: #FF453A;
+      --error-light: rgba(255, 69, 58, 0.15);
+      --shadow-sm: 0 2px 10px rgba(0,0,0,0.3);
+      --shadow-md: 0 8px 30px rgba(0,0,0,0.45);
+    }
+
+    body.dark-mode header {
+      background-color: rgba(11, 13, 19, 0.85);
+    }
+
+    body.dark-mode .segment-btn.active {
+      background: #2C2C2E;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .icon-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      color: var(--text-primary);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent-blue);
+    }
+
+    /* Sticky Minecraft Battle Arena HUD */
+    .sticky-hud-wrapper {
+      position: sticky;
+      top: 63px;
+      z-index: 90;
+      max-width: 820px;
+      margin: 0 auto 24px;
+      padding: 0 20px;
+    }
+
+    .battle-arena-card {
+      background: linear-gradient(160deg, #131829 0%, #1d2540 55%, #122b38 100%);
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 12px 16px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+      border: 1.5px solid rgba(61, 224, 232, 0.32);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .battle-arena-card.flash-hit {
+      border-color: #30d158;
+      box-shadow: 0 0 28px rgba(48, 209, 88, 0.5);
+    }
+
+    .battle-arena-card.flash-hurt {
+      border-color: #ff453a;
+      box-shadow: 0 0 28px rgba(255, 69, 58, 0.55);
+    }
+
+    .arena-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .xp-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .mc-pill {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .mc-pill.emerald {
+      color: #6bff9c;
+      border-color: rgba(23, 221, 98, 0.4);
+    }
+
+    .mc-pill.streak {
+      color: #ffd60a;
+      border-color: rgba(255, 214, 10, 0.4);
+    }
+
+    .hotbar-wrap {
+      display: inline-flex;
+      background: rgba(0, 0, 0, 0.45);
+      border: 2px solid #555;
+      border-radius: 8px;
+      padding: 2px;
+      gap: 3px;
+    }
+
+    .hotbar-slot {
+      width: 32px;
+      height: 32px;
+      background: rgba(139, 139, 139, 0.35);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .hotbar-slot:hover {
+      border-color: #fff;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .hotbar-count {
+      position: absolute;
+      bottom: 0px;
+      right: 2px;
+      font-size: 9px;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 1px 1px 0 #000;
+    }
+
+    .arena-stage {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.32);
+      border-radius: 12px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 680px) {
+      .arena-stage {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .fighter-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .fighter-box.enemy {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+
+    @media (max-width: 680px) {
+      .fighter-box, .fighter-box.enemy {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .avatar-frame {
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(61, 224, 232, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .fighter-box.enemy .avatar-frame {
+      border-color: rgba(255, 69, 58, 0.7);
+    }
+
+    .fighter-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .fighter-name {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+
+    .fighter-role {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: 4px;
+    }
+
+    .hearts-row {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 5px;
+    }
+
+    .fighter-box.enemy .hearts-row {
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 680px) {
+      .hearts-row, .fighter-box.enemy .hearts-row {
+        justify-content: center;
+      }
+    }
+
+    .heart-icon {
+      font-size: 14px;
+      transition: transform 0.2s ease;
+    }
+
+    .heart-icon.lost {
+      opacity: 0.25;
+      filter: grayscale(1);
+    }
+
+    .hp-bar-outer {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .hp-bar-inner {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.35s ease;
+    }
+
+    .hp-bar-inner.player-hp {
+      background: linear-gradient(90deg, #30d158, #80ff20);
+    }
+
+    .hp-bar-inner.enemy-hp {
+      background: linear-gradient(90deg, #ff453a, #ff9f0a);
+    }
+
+    .vs-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .vs-badge {
+      background: linear-gradient(135deg, #ff9500, #ff3b30);
+      color: #fff;
+      font-weight: 900;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .battle-log-ticker {
+      margin-top: 8px;
+      background: rgba(0, 0, 0, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 9px;
+      padding: 6px 12px;
+      font-size: 12.5px;
+      color: #e5f9ff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .floating-dmg {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: 999px;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 10;
+      animation: floatUpFade 1.1s ease forwards;
+    }
+
+    .floating-dmg.hit {
+      background: #30d158;
+      color: #052e16;
+    }
+
+    .floating-dmg.hurt {
+      background: #ff453a;
+      color: #fff;
+    }
+
+    @keyframes floatUpFade {
+      0% { opacity: 1; transform: translate(-50%, 0) scale(0.9); }
+      30% { opacity: 1; transform: translate(-50%, -12px) scale(1.08); }
+      100% { opacity: 0; transform: translate(-50%, -24px) scale(0.95); }
+    }
+
+    .tip-card {
+      scroll-margin-top: 260px;
+    }
+
   </style>
 </head>
 <body>
@@ -519,29 +944,135 @@
   <header>
     <div class="nav-container">
       <div class="logo-area">
-        <div class="app-badge">M</div>
-        <div class="logo-title">Minecraft Tips</div>
+        <a href="index.html" class="icon-btn" title="Back to Armyere's Learning Park">🏰 Park Home</a>
+        <div class="app-badge">⛏️</div>
+        <div class="logo-title">Minecraft Tips &bull; Armyere's Reading Quest</div>
       </div>
-      <div class="score-badge" id="scoreBadge">
-        <span>Score:</span> <strong id="scoreCount">0 / 7</strong>
+      <div class="nav-actions">
+        <button class="icon-btn" onclick="useGoldenApple()" title="Eat a Golden Apple to restore 1 Heart!">
+          🍎 Heal (<span id="appleCountNav">3</span>)
+        </button>
+        <button class="icon-btn" id="soundBtn" onclick="toggleSound()">🔊 SFX: ON</button>
+        <button class="icon-btn" id="themeBtn" onclick="toggleDarkMode()">🌙 Dark</button>
+        <div class="score-badge" id="scoreBadge">
+          <span>Score:</span> <strong id="scoreCount">0 / 17</strong>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-eyebrow">The Basics &bull; Reading & Comprehension</div>
-    <h1 class="hero-title">Mastering the Basics</h1>
-    <p class="hero-desc">Read through each foundational tip carefully, then test your knowledge with the vocabulary and comprehension check below.</p>
+    <div class="hero-eyebrow">⛏️ Survival &amp; PvP Reading Quest &bull; 17 Challenges</div>
+    <h1 class="hero-title">Minecraft Tips: Armyere's Reading Arena</h1>
   </section>
+
+  <!-- Sticky Minecraft Battle Arena HUD -->
+  <div class="sticky-hud-wrapper">
+    <section class="battle-arena-card" id="battleArenaCard">
+      <div class="arena-top-bar">
+        <div class="xp-badge-group">
+          <span class="mc-pill emerald">💎 Lvl <span id="playerLevel">1</span> Survival Crafter</span>
+          <span class="mc-pill">✨ XP: <span id="playerXP">0</span></span>
+          <span class="mc-pill streak">🔥 Streak: <span id="playerStreak">0</span></span>
+          <span class="mc-pill">🏆 Mobs Defeated: <span id="mobsDefeated">0</span></span>
+        </div>
+        <div class="hotbar-wrap" title="Armyere's Minecraft Hotbar (Click Golden Apple to Heal!)">
+          <div class="hotbar-slot" title="Enchanted Diamond Sword">⚔️<span class="hotbar-count">I</span></div>
+          <div class="hotbar-slot" onclick="useGoldenApple()" title="Click to eat Golden Apple (+1 ❤️)">🍎<span class="hotbar-count" id="slotApples">3</span></div>
+          <div class="hotbar-slot" title="Emeralds Earned">💚<span class="hotbar-count" id="slotEmeralds">0</span></div>
+          <div class="hotbar-slot" title="Enchanted Books Read">📘<span class="hotbar-count" id="slotBooks">0</span></div>
+          <div class="hotbar-slot" title="Totem of Undying (Auto-revive)">🗿<span class="hotbar-count" id="slotTotems">1</span></div>
+        </div>
+      </div>
+
+      <div class="arena-stage">
+        <!-- Player Armyere -->
+        <div class="fighter-box player" id="playerBox">
+          <div class="avatar-frame" id="playerAvatar">
+            <svg width="46" height="46" viewBox="0 0 16 16" shape-rendering="crispEdges">
+              <rect x="3" y="1" width="10" height="3" fill="#3de0e8"/>
+              <rect x="2" y="2" width="1" height="6" fill="#28b5bd"/>
+              <rect x="13" y="2" width="1" height="6" fill="#28b5bd"/>
+              <rect x="7" y="4" width="2" height="2" fill="#3de0e8"/>
+              <rect x="3" y="4" width="10" height="6" fill="#f1c27d"/>
+              <rect x="4" y="6" width="2" height="1" fill="#ffffff"/>
+              <rect x="5" y="6" width="1" height="1" fill="#1d4ed8"/>
+              <rect x="10" y="6" width="2" height="1" fill="#ffffff"/>
+              <rect x="10" y="6" width="1" height="1" fill="#1d4ed8"/>
+              <rect x="6" y="8" width="4" height="1" fill="#9a5b3e"/>
+              <rect x="3" y="10" width="10" height="5" fill="#3de0e8"/>
+              <rect x="5" y="10" width="6" height="3" fill="#7cf3f9"/>
+            </svg>
+          </div>
+          <div class="fighter-info">
+            <div class="fighter-name">🛡️ Player: Armyere</div>
+            <div class="fighter-role">Master Reader &amp; Diamond Crafter</div>
+            <div class="hearts-row" id="playerHeartsRow">
+              <span class="heart-icon">❤️</span>
+              <span class="heart-icon">❤️</span>
+              <span class="heart-icon">❤️</span>
+              <span class="heart-icon">❤️</span>
+              <span class="heart-icon">❤️</span>
+            </div>
+            <div class="hp-bar-outer">
+              <div class="hp-bar-inner player-hp" id="playerHpBar" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VS Center -->
+        <div class="vs-center">
+          <div class="vs-badge">VS</div>
+          <div style="font-size: 11px; color: rgba(255,255,255,0.78); font-weight: 700;" id="waveIndicator">Wave 1 / 6</div>
+        </div>
+
+        <!-- Enemy Mob -->
+        <div class="fighter-box enemy" id="enemyBox">
+          <div class="avatar-frame" id="enemyAvatar"></div>
+          <div class="fighter-info">
+            <div class="fighter-name" id="enemyName">💥 Creeper Scout</div>
+            <div class="fighter-role" id="enemyRole">Hostile Mob &bull; Answer correctly to strike!</div>
+            <div class="hearts-row" id="enemyHeartsRow">
+              <span class="heart-icon">💚</span>
+              <span class="heart-icon">💚</span>
+              <span class="heart-icon">💚</span>
+            </div>
+            <div class="hp-bar-outer">
+              <div class="hp-bar-inner enemy-hp" id="enemyHpBar" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="battle-log-ticker">
+        <span id="battleLogText">⚔️ Read Tip #1 below and click <strong>Confirm Answer</strong> to deal Critical Damage!</span>
+        <span style="font-weight: 800; color: #80ff20;" id="scoreSummaryText">0 / 17 Quests Cleared</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- Segmented Category Control -->
+  <div class="filter-wrapper">
+    <div class="segmented-control">
+      <button class="segment-btn active" onclick="filterCategory('all', this)">All Tips (17)</button>
+      <button class="segment-btn" onclick="filterCategory('basic', this)">Basic Tips (10)</button>
+      <button class="segment-btn" onclick="filterCategory('survival', this)">Survival Tips (7)</button>
+    </div>
+  </div>
 
   <!-- Main Content -->
   <main class="container">
 
+    <div class="category-divider" id="cat-basic-heading">
+      <span class="category-title">Basic Tips</span>
+      <span class="category-line"></span>
+    </div>
+
     <!-- Tip 1 -->
-    <article class="tip-card" id="card-1">
+    <article class="tip-card" id="card-1" data-category="basic">
       <div class="card-reading-part">
-        <span class="tip-tag">Section 1</span>
+        <span class="tip-tag">Basic Tips &bull; Section 1</span>
         <h2 class="tip-title">
           1. Be informed
           <button class="audio-btn" onclick="readAloud('tip-1-text')">
@@ -556,27 +1087,27 @@
 
       <div class="card-quiz-part">
         <div class="quiz-header">
-          <span class="quiz-pill pill-content">Content Comprehension</span>
+          <span class="quiz-pill pill-content">Reading Comprehension</span>
         </div>
         <div class="quiz-question">
-          In paragraph 1, under what condition does the author warn that <strong>"losing is a very likely outcome"</strong>?
+          According to paragraph 1, what happens if a new player doesn't learn the basics like moving, crafting, farming, and building?
         </div>
         <div class="options-list" id="options-1">
           <div class="option-item" onclick="selectOption(1, 0)">
             <span class="option-indicator">A</span>
-            <span class="option-text">If a player uses a console instead of a personal computer</span>
+            <span class="option-text">The game will automatically get easier</span>
           </div>
           <div class="option-item" onclick="selectOption(1, 1)">
             <span class="option-indicator">B</span>
-            <span class="option-text">If a player does not know basic skills such as moving, crafting, farming, and building</span>
+            <span class="option-text">They will most likely lose the game</span>
           </div>
           <div class="option-item" onclick="selectOption(1, 2)">
             <span class="option-indicator">C</span>
-            <span class="option-text">If a player encounters passive non-player characters in creative mode</span>
+            <span class="option-text">Their computer will freeze and turn off</span>
           </div>
           <div class="option-item" onclick="selectOption(1, 3)">
             <span class="option-indicator">D</span>
-            <span class="option-text">If a player attempts to set up their own multiplayer server</span>
+            <span class="option-text">They will be forced to play creative mode forever</span>
           </div>
         </div>
         <div class="quiz-actions">
@@ -585,16 +1116,16 @@
         <div class="feedback-box" id="feedback-1">
           <div class="feedback-title" id="feedback-title-1"></div>
           <div class="feedback-desc" id="feedback-desc-1">
-            <strong>Correct Answer: B</strong>. The passage directly states: <em>"If you don’t know the basics – such as how to move, craft, farm, and build – losing is a very likely outcome."</em>
+            <strong>Correct Answer: B (They will most likely lose)</strong>. The author clearly writes: <em>"If you don’t know the basics – such as how to move, craft, farm, and build – losing is a very likely outcome."</em>
           </div>
         </div>
       </div>
     </article>
 
     <!-- Tip 2 -->
-    <article class="tip-card" id="card-2">
+    <article class="tip-card" id="card-2" data-category="basic">
       <div class="card-reading-part">
-        <span class="tip-tag">Section 2</span>
+        <span class="tip-tag">Basic Tips &bull; Section 2</span>
         <h2 class="tip-title">
           2. Try a “peaceful” game first
           <button class="audio-btn" onclick="readAloud('tip-2-text')">
@@ -612,24 +1143,24 @@
           <span class="quiz-pill pill-vocab">Idiom in Context</span>
         </div>
         <div class="quiz-question">
-          In paragraph 2, what does the highlighted expression <strong>"have the hang of it"</strong> most nearly mean?
+          In paragraph 2, what does the highlighted idiom <strong>"have the hang of it"</strong> mean?
         </div>
         <div class="options-list" id="options-2">
           <div class="option-item" onclick="selectOption(2, 0)">
             <span class="option-indicator">A</span>
-            <span class="option-text">Become familiar and proficient with handling survival mode challenges</span>
+            <span class="option-text">Learn how to do it well through practice</span>
           </div>
           <div class="option-item" onclick="selectOption(2, 1)">
             <span class="option-indicator">B</span>
-            <span class="option-text">Experience a technical freeze or system crash</span>
+            <span class="option-text">Build blocks that hang from trees</span>
           </div>
           <div class="option-item" onclick="selectOption(2, 2)">
             <span class="option-indicator">C</span>
-            <span class="option-text">Decide to permanently stop playing combat games</span>
+            <span class="option-text">Decide to stop playing the game completely</span>
           </div>
           <div class="option-item" onclick="selectOption(2, 3)">
             <span class="option-indicator">D</span>
-            <span class="option-text">Build high structures that hang in the game environment</span>
+            <span class="option-text">Ask an older friend to do the fighting for you</span>
           </div>
         </div>
         <div class="quiz-actions">
@@ -638,16 +1169,16 @@
         <div class="feedback-box" id="feedback-2">
           <div class="feedback-title" id="feedback-title-2"></div>
           <div class="feedback-desc" id="feedback-desc-2">
-            <strong>Correct Answer: A</strong>. "To have the hang of something" is an idiom meaning to acquire the knack, skill, or practical familiarity with an activity through experience.
+            <strong>Correct Answer: A</strong>. To "have the hang of something" is an idiom that means you have practiced enough to understand it and do it well.
           </div>
         </div>
       </div>
     </article>
 
     <!-- Tip 3 -->
-    <article class="tip-card" id="card-3">
+    <article class="tip-card" id="card-3" data-category="basic">
       <div class="card-reading-part">
-        <span class="tip-tag">Section 3</span>
+        <span class="tip-tag">Basic Tips &bull; Section 3</span>
         <h2 class="tip-title">
           3. Which Minecraft version are you playing?
           <button class="audio-btn" onclick="readAloud('tip-3-text')">
@@ -665,24 +1196,24 @@
           <span class="quiz-pill pill-content">Detail & Contrast</span>
         </div>
         <div class="quiz-question">
-          According to paragraph 3, what aspect of the game remains practically the same despite changes across different versions?
+          According to paragraph 3, what stays the same in Minecraft no matter which version or device you play on?
         </div>
         <div class="options-list" id="options-3">
           <div class="option-item" onclick="selectOption(3, 0)">
             <span class="option-indicator">A</span>
-            <span class="option-text">The price and distribution platform for tablet computers</span>
+            <span class="option-text">The price of the game on different devices</span>
           </div>
           <div class="option-item" onclick="selectOption(3, 1)">
             <span class="option-indicator">B</span>
-            <span class="option-text">The hardware requirements and graphics card settings</span>
+            <span class="option-text">The exact computer parts you need to run it</span>
           </div>
           <div class="option-item" onclick="selectOption(3, 2)">
             <span class="option-indicator">C</span>
-            <span class="option-text">Creating and destroying blocks in a 3D environment</span>
+            <span class="option-text">Creating and destroying blocks in a 3D world</span>
           </div>
           <div class="option-item" onclick="selectOption(3, 3)">
             <span class="option-indicator">D</span>
-            <span class="option-text">The specific rules and procedures for setting up servers</span>
+            <span class="option-text">The step-by-step steps for setting up private servers</span>
           </div>
         </div>
         <div class="quiz-actions">
@@ -691,16 +1222,16 @@
         <div class="feedback-box" id="feedback-3">
           <div class="feedback-title" id="feedback-title-3"></div>
           <div class="feedback-desc" id="feedback-desc-3">
-            <strong>Correct Answer: C</strong>. The text highlights: <em>"While the structure of the game remains practically the same – you’ll be creating and destroying blocks in a 3d environment – certain elements change from one version to another."</em>
+            <strong>Correct Answer: C</strong>. The text explains that even though versions differ: <em>"While the structure of the game remains practically the same – you’ll be creating and destroying blocks in a 3d environment..."</em>
           </div>
         </div>
       </div>
     </article>
 
     <!-- Tip 4 -->
-    <article class="tip-card" id="card-4">
+    <article class="tip-card" id="card-4" data-category="basic">
       <div class="card-reading-part">
-        <span class="tip-tag">Section 4</span>
+        <span class="tip-tag">Basic Tips &bull; Section 4</span>
         <h2 class="tip-title">
           4. Do research on your enemies
           <button class="audio-btn" onclick="readAloud('tip-4-text')">
@@ -715,27 +1246,27 @@
 
       <div class="card-quiz-part">
         <div class="quiz-header">
-          <span class="quiz-pill pill-content">Textual Purpose</span>
+          <span class="quiz-pill pill-content">Reading Comprehension</span>
         </div>
         <div class="quiz-question">
-          In paragraph 4, why does the author state that you must be familiar with the regular hostile and unique hostile classes <strong>"if you want your character to survive"</strong>?
+          According to paragraph 4, why is it important to learn about the regular hostile and unique hostile mobs?
         </div>
         <div class="options-list" id="options-4">
           <div class="option-item" onclick="selectOption(4, 0)">
             <span class="option-indicator">A</span>
-            <span class="option-text">Because they are aggressive enemies that present a direct threat to your character's life</span>
+            <span class="option-text">So you know how to protect your character and stay alive</span>
           </div>
           <div class="option-item" onclick="selectOption(4, 1)">
             <span class="option-indicator">B</span>
-            <span class="option-text">Because they can be easily tamed to become helpful guard pets</span>
+            <span class="option-text">So you can tame them and keep them as household pets</span>
           </div>
           <div class="option-item" onclick="selectOption(4, 2)">
             <span class="option-indicator">C</span>
-            <span class="option-text">Because they provide the essential ingredients needed to craft iron golems</span>
+            <span class="option-text">Because they drop iron blocks needed to build golems</span>
           </div>
           <div class="option-item" onclick="selectOption(4, 3)">
             <span class="option-indicator">D</span>
-            <span class="option-text">Because they offer valuable trading goods inside peaceful villages</span>
+            <span class="option-text">Because they trade valuable gems with players in villages</span>
           </div>
         </div>
         <div class="quiz-actions">
@@ -744,16 +1275,16 @@
         <div class="feedback-box" id="feedback-4">
           <div class="feedback-title" id="feedback-title-4"></div>
           <div class="feedback-desc" id="feedback-desc-4">
-            <strong>Correct Answer: A</strong>. Unlike the first four classes which are "generally passive," the regular hostile and unique hostile classes are enemies that attack the player, making knowledge of them essential to stay alive.
+            <strong>Correct Answer: A</strong>. Unlike friendly creatures, hostile mobs attack players, so knowing about them is necessary "if you want your character to survive."
           </div>
         </div>
       </div>
     </article>
 
     <!-- Tip 5 -->
-    <article class="tip-card" id="card-5">
+    <article class="tip-card" id="card-5" data-category="basic">
       <div class="card-reading-part">
-        <span class="tip-tag">Section 5</span>
+        <span class="tip-tag">Basic Tips &bull; Section 5</span>
         <h2 class="tip-title">
           5. Know how multiplayer works
           <button class="audio-btn" onclick="readAloud('tip-5-text')">
@@ -768,19 +1299,19 @@
 
       <div class="card-quiz-part">
         <div class="quiz-header">
-          <span class="quiz-pill pill-vocab">Reference & Cohesion</span>
+          <span class="quiz-pill pill-vocab">Reference Words</span>
         </div>
         <div class="quiz-question">
-          In paragraph 5, what does the highlighted grammatical phrase <strong>"the latter"</strong> refer to?
+          In paragraph 5, the author writes: <em>"you can either join or set up a server... if you’re tasked to do <strong>the latter</strong>..."</em> What does <strong>"the latter"</strong> mean here?
         </div>
         <div class="options-list" id="options-5">
           <div class="option-item" onclick="selectOption(5, 0)">
             <span class="option-indicator">A</span>
-            <span class="option-text">Searching online for troubleshooting guides</span>
+            <span class="option-text">Searching online for help guides</span>
           </div>
           <div class="option-item" onclick="selectOption(5, 1)">
             <span class="option-indicator">B</span>
-            <span class="option-text">Joining an already existing server</span>
+            <span class="option-text">Joining an existing server</span>
           </div>
           <div class="option-item" onclick="selectOption(5, 2)">
             <span class="option-indicator">C</span>
@@ -788,7 +1319,7 @@
           </div>
           <div class="option-item" onclick="selectOption(5, 3)">
             <span class="option-indicator">D</span>
-            <span class="option-text">Playing Minecraft with friends in single-player mode</span>
+            <span class="option-text">Playing alone in creative mode</span>
           </div>
         </div>
         <div class="quiz-actions">
@@ -797,16 +1328,16 @@
         <div class="feedback-box" id="feedback-5">
           <div class="feedback-title" id="feedback-title-5"></div>
           <div class="feedback-desc" id="feedback-desc-5">
-            <strong>Correct Answer: C (Setting up a server)</strong>. In English, "the former" refers to the first of two items (joining a server), and "the latter" refers to the second of two items (setting up a server).
+            <strong>Correct Answer: C (Setting up a server)</strong>. When two choices are given, "the former" refers to the first one (joining), and "the latter" refers to the second one (setting up a server).
           </div>
         </div>
       </div>
     </article>
 
     <!-- Tip 6 -->
-    <article class="tip-card" id="card-6">
+    <article class="tip-card" id="card-6" data-category="basic">
       <div class="card-reading-part">
-        <span class="tip-tag">Section 6</span>
+        <span class="tip-tag">Basic Tips &bull; Section 6</span>
         <h2 class="tip-title">
           6. Have the best possible computer set-up
           <button class="audio-btn" onclick="readAloud('tip-6-text')">
@@ -821,27 +1352,27 @@
 
       <div class="card-quiz-part">
         <div class="quiz-header">
-          <span class="quiz-pill pill-vocab">Vocabulary in Context</span>
+          <span class="quiz-pill pill-vocab">Words in Context</span>
         </div>
         <div class="quiz-question">
-          In paragraph 6, what does the highlighted expression <strong>"RAM-hungry"</strong> tell the reader about Minecraft?
+          In paragraph 6, what does the author mean by saying Minecraft is <strong>"RAM-hungry"</strong>?
         </div>
         <div class="options-list" id="options-6">
           <div class="option-item" onclick="selectOption(6, 0)">
             <span class="option-indicator">A</span>
-            <span class="option-text">The game requires a large amount of computer memory (RAM) to run smoothly without lag</span>
+            <span class="option-text">It needs a lot of computer memory (RAM) to run smoothly without lag</span>
           </div>
           <div class="option-item" onclick="selectOption(6, 1)">
             <span class="option-indicator">B</span>
-            <span class="option-text">The game automatically consumes and deletes system RAM files upon character death</span>
+            <span class="option-text">It eats food items stored inside your game inventory</span>
           </div>
           <div class="option-item" onclick="selectOption(6, 2)">
             <span class="option-indicator">C</span>
-            <span class="option-text">The game cannot be installed on computers with more than 4 GB of memory</span>
+            <span class="option-text">It deletes computer files every time your character dies</span>
           </div>
           <div class="option-item" onclick="selectOption(6, 3)">
             <span class="option-indicator">D</span>
-            <span class="option-text">The game is designed exclusively for high-end corporate server hardware</span>
+            <span class="option-text">It only works on computers with small laptop screens</span>
           </div>
         </div>
         <div class="quiz-actions">
@@ -850,16 +1381,16 @@
         <div class="feedback-box" id="feedback-6">
           <div class="feedback-title" id="feedback-title-6"></div>
           <div class="feedback-desc" id="feedback-desc-6">
-            <strong>Correct Answer: A</strong>. In computing, "RAM-hungry" describes software that consumes a substantial amount of system memory (RAM) to deliver adequate performance.
+            <strong>Correct Answer: A</strong>. Describing software as "RAM-hungry" is a playful way of saying it requires a large amount of computer memory (RAM) to play without slowdowns.
           </div>
         </div>
       </div>
     </article>
 
     <!-- Tip 7 -->
-    <article class="tip-card" id="card-7">
+    <article class="tip-card" id="card-7" data-category="basic">
       <div class="card-reading-part">
-        <span class="tip-tag">Section 7</span>
+        <span class="tip-tag">Basic Tips &bull; Section 7</span>
         <h2 class="tip-title">
           7. Make sure that you have a good mouse
           <button class="audio-btn" onclick="readAloud('tip-7-text')">
@@ -877,24 +1408,24 @@
           <span class="quiz-pill pill-vocab">Idiom in Context</span>
         </div>
         <div class="quiz-question">
-          In paragraph 7, what does the highlighted expression <strong>"in the heat of battle"</strong> most nearly mean?
+          In paragraph 7, what does the expression <strong>"in the heat of battle"</strong> mean?
         </div>
         <div class="options-list" id="options-7">
           <div class="option-item" onclick="selectOption(7, 0)">
             <span class="option-indicator">A</span>
-            <span class="option-text">In a warm or poorly cooled computer room</span>
+            <span class="option-text">Sitting in a room that is hot and stuffy</span>
           </div>
           <div class="option-item" onclick="selectOption(7, 1)">
             <span class="option-indicator">B</span>
-            <span class="option-text">During the most intense, critical moments of active combat</span>
+            <span class="option-text">During the most exciting, fast-paced moments of a fight</span>
           </div>
           <div class="option-item" onclick="selectOption(7, 2)">
             <span class="option-indicator">C</span>
-            <span class="option-text">While discussing game settings with other players</span>
+            <span class="option-text">Standing near a pool of hot lava in the game</span>
           </div>
           <div class="option-item" onclick="selectOption(7, 3)">
             <span class="option-indicator">D</span>
-            <span class="option-text">While gathering crafting resources in a quiet area</span>
+            <span class="option-text">While quietly gathering wood in the forest</span>
           </div>
         </div>
         <div class="quiz-actions">
@@ -903,7 +1434,543 @@
         <div class="feedback-box" id="feedback-7">
           <div class="feedback-title" id="feedback-title-7"></div>
           <div class="feedback-desc" id="feedback-desc-7">
-            <strong>Correct Answer: B (During the most intense, critical moments of active combat)</strong>. "In the heat of battle" describes the most intense, high-pressure, and fast-moving phase of a fight or confrontation.
+            <strong>Correct Answer: B (During the most exciting, fast-paced moments of a fight)</strong>. "In the heat of battle" is an idiom describing the most intense and active part of a contest or fight.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Tip 8 -->
+    <article class="tip-card" id="card-8" data-category="basic">
+      <div class="card-reading-part">
+        <span class="tip-tag">Basic Tips &bull; Section 8</span>
+        <h2 class="tip-title">
+          8. Take note of crafting patterns
+          <button class="audio-btn" onclick="readAloud('tip-8-text')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            Listen
+          </button>
+        </h2>
+        <p class="tip-body" id="tip-8-text">
+          Crafting is one of the essential skills you should learn when playing Minecraft. That said, the more sophisticated the tool, the more complicated the crafting pattern – and the more likely that you’ll make mistakes. If you want to decrease the chance of wasting your resources by crafting the wrong tool or material, you need not look at a cheat sheet or alternate between your game and the guide you opened in your PC. All you need to do is <span class="highlight-keyword">remember the shape of whatever it is you want to make</span>. While this isn’t always the case, be comforted by the fact that majority of the things you’ll be crafting follows this rule. So if you want to craft a fishing pole, for instance, you just need to arrange the string and sticks in a way that resembles the real thing.
+        </p>
+      </div>
+
+      <div class="card-quiz-part">
+        <div class="quiz-header">
+          <span class="quiz-pill pill-content">Reading Comprehension</span>
+        </div>
+        <div class="quiz-question">
+          According to paragraph 8, what is the best trick for remembering how to craft an item without checking a guide or cheat sheet?
+        </div>
+        <div class="options-list" id="options-8">
+          <div class="option-item" onclick="selectOption(8, 0)">
+            <span class="option-indicator">A</span>
+            <span class="option-text">Memorize code numbers for every block</span>
+          </div>
+          <div class="option-item" onclick="selectOption(8, 1)">
+            <span class="option-indicator">B</span>
+            <span class="option-text">Arrange the materials in the shape of the real object you want to make</span>
+          </div>
+          <div class="option-item" onclick="selectOption(8, 2)">
+            <span class="option-indicator">C</span>
+            <span class="option-text">Only build simple tools made out of wood</span>
+          </div>
+          <div class="option-item" onclick="selectOption(8, 3)">
+            <span class="option-indicator">D</span>
+            <span class="option-text">Guess randomly until the item appears</span>
+          </div>
+        </div>
+        <div class="quiz-actions">
+          <button class="btn-confirm" id="btn-8" onclick="checkAnswer(8, 1)" disabled>Confirm Answer</button>
+        </div>
+        <div class="feedback-box" id="feedback-8">
+          <div class="feedback-title" id="feedback-title-8"></div>
+          <div class="feedback-desc" id="feedback-desc-8">
+            <strong>Correct Answer: B</strong>. The text explains: <em>"All you need to do is remember the shape of whatever it is you want to make... arrange the string and sticks in a way that resembles the real thing."</em>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Tip 9 -->
+    <article class="tip-card" id="card-9" data-category="basic">
+      <div class="card-reading-part">
+        <span class="tip-tag">Basic Tips &bull; Section 9</span>
+        <h2 class="tip-title">
+          9. Read up on weapons and equipment
+          <button class="audio-btn" onclick="readAloud('tip-9-text')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            Listen
+          </button>
+        </h2>
+        <p class="tip-body" id="tip-9-text">
+          When in PvP mode, you don’t have the luxury of experimenting with various types of armor and weapons. If you are confronted by an enemy unexpectedly – something that can and will happen if you won’t be playing in an arena and there’s no need to issue a challenge among players – there’s a good chance you’ll lose if you’re ill-equipped. Thus, it is very important that you have an idea of which weapon best suits you and <span class="highlight-keyword">which armor to don</span> for maximum protection.
+        </p>
+      </div>
+
+      <div class="card-quiz-part">
+        <div class="quiz-header">
+          <span class="quiz-pill pill-vocab">Vocabulary in Context</span>
+        </div>
+        <div class="quiz-question">
+          In paragraph 9, what does the word <strong>"don"</strong> mean in the phrase <em>"which armor to <strong>don</strong> for maximum protection"</em>?
+        </div>
+        <div class="options-list" id="options-9">
+          <div class="option-item" onclick="selectOption(9, 0)">
+            <span class="option-indicator">A</span>
+            <span class="option-text">To sell or trade away</span>
+          </div>
+          <div class="option-item" onclick="selectOption(9, 1)">
+            <span class="option-indicator">B</span>
+            <span class="option-text">To clean and polish</span>
+          </div>
+          <div class="option-item" onclick="selectOption(9, 2)">
+            <span class="option-indicator">C</span>
+            <span class="option-text">To put on or wear</span>
+          </div>
+          <div class="option-item" onclick="selectOption(9, 3)">
+            <span class="option-indicator">D</span>
+            <span class="option-text">To drop on the ground</span>
+          </div>
+        </div>
+        <div class="quiz-actions">
+          <button class="btn-confirm" id="btn-9" onclick="checkAnswer(9, 2)" disabled>Confirm Answer</button>
+        </div>
+        <div class="feedback-box" id="feedback-9">
+          <div class="feedback-title" id="feedback-title-9"></div>
+          <div class="feedback-desc" id="feedback-desc-9">
+            <strong>Correct Answer: C (To put on or wear)</strong>. "Don" is a vocabulary word that means to put on clothing or armor (the opposite word is "doff", which means to take off).
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Tip 10 -->
+    <article class="tip-card" id="card-10" data-category="basic">
+      <div class="card-reading-part">
+        <span class="tip-tag">Basic Tips &bull; Section 10</span>
+        <h2 class="tip-title">
+          10. Know what type of PvP game you’ll be doing
+          <button class="audio-btn" onclick="readAloud('tip-10-text')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            Listen
+          </button>
+        </h2>
+        <p class="tip-body" id="tip-10-text">
+          There are basically two types: organized and unorganized games. Organized PvP games often make use of an arena where players fight on definite terms. Unorganized games, on the other hand, <span class="highlight-keyword">give free rein to players</span> regarding when and how to attack opponents. There are also friendly PvP games, where any items lost by the losing player will be returned to him after the fight. Knowing which type you’ll engage in is important because it will dictate what combat and survival strategies you should employ.
+        </p>
+      </div>
+
+      <div class="card-quiz-part">
+        <div class="quiz-header">
+          <span class="quiz-pill pill-vocab">Idiom in Context</span>
+        </div>
+        <div class="quiz-question">
+          In paragraph 10, the author writes that unorganized games <strong>"give free rein to players."</strong> What does <strong>"give free rein"</strong> mean?
+        </div>
+        <div class="options-list" id="options-10">
+          <div class="option-item" onclick="selectOption(10, 0)">
+            <span class="option-indicator">A</span>
+            <span class="option-text">Give players horses and riding saddles</span>
+          </div>
+          <div class="option-item" onclick="selectOption(10, 1)">
+            <span class="option-indicator">B</span>
+            <span class="option-text">Give players complete freedom to choose when and how to attack</span>
+          </div>
+          <div class="option-item" onclick="selectOption(10, 2)">
+            <span class="option-indicator">C</span>
+            <span class="option-text">Force players to fight only inside closed arenas</span>
+          </div>
+          <div class="option-item" onclick="selectOption(10, 3)">
+            <span class="option-indicator">D</span>
+            <span class="option-text">Ban players from ever keeping their items</span>
+          </div>
+        </div>
+        <div class="quiz-actions">
+          <button class="btn-confirm" id="btn-10" onclick="checkAnswer(10, 1)" disabled>Confirm Answer</button>
+        </div>
+        <div class="feedback-box" id="feedback-10">
+          <div class="feedback-title" id="feedback-title-10"></div>
+          <div class="feedback-desc" id="feedback-desc-10">
+            <strong>Correct Answer: B (Complete freedom to choose)</strong>. The idiom "give free rein" means allowing someone full freedom to act however they choose without strict rules holding them back.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Survival Tips Category Divider -->
+    <div class="category-divider" id="cat-survival-heading">
+      <span class="category-title survival">Survival Tips</span>
+      <span class="category-line"></span>
+    </div>
+
+    <!-- Survival Tip 1 -->
+    <article class="tip-card" id="card-11" data-category="survival">
+      <div class="card-reading-part">
+        <span class="tip-tag" style="color: #FF9500;">Survival Tips &bull; Section 1</span>
+        <h2 class="tip-title">
+          1. Construct a shelter before nightfall...
+          <button class="audio-btn" onclick="readAloud('tip-11-text')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            Listen
+          </button>
+        </h2>
+        <p class="tip-body" id="tip-11-text">
+          Most hostile mobs appear at night, so you don’t want to be caught outside and without a safe haven. There are players, though, who prefer <span class="highlight-keyword">nomadism</span> instead of spending their resources on creating shelter. If you are just new to the game, this method is not advisable.
+        </p>
+      </div>
+
+      <div class="card-quiz-part">
+        <div class="quiz-header">
+          <span class="quiz-pill pill-vocab">Vocabulary & Context</span>
+        </div>
+        <div class="quiz-question">
+          In paragraph 1, what does the word <strong>"nomadism"</strong> mean when describing how some players play?
+        </div>
+        <div class="options-list" id="options-11">
+          <div class="option-item" onclick="selectOption(11, 0)">
+            <span class="option-indicator">A</span>
+            <span class="option-text">Moving around from place to place instead of building a permanent shelter</span>
+          </div>
+          <div class="option-item" onclick="selectOption(11, 1)">
+            <span class="option-indicator">B</span>
+            <span class="option-text">Teaming up with friends to build giant castles</span>
+          </div>
+          <div class="option-item" onclick="selectOption(11, 2)">
+            <span class="option-indicator">C</span>
+            <span class="option-text">Playing only during the daytime and sleeping at night</span>
+          </div>
+          <div class="option-item" onclick="selectOption(11, 3)">
+            <span class="option-indicator">D</span>
+            <span class="option-text">Refusing to collect wood or craft any tools</span>
+          </div>
+        </div>
+        <div class="quiz-actions">
+          <button class="btn-confirm" id="btn-11" onclick="checkAnswer(11, 0)" disabled>Confirm Answer</button>
+        </div>
+        <div class="feedback-box" id="feedback-11">
+          <div class="feedback-title" id="feedback-title-11"></div>
+          <div class="feedback-desc" id="feedback-desc-11">
+            <strong>Correct Answer: A</strong>. A "nomad" is someone who travels from place to place rather than living in one home. Here, "nomadism" means wandering the game world without a fixed shelter.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Survival Tip 2 -->
+    <article class="tip-card" id="card-12" data-category="survival">
+      <div class="card-reading-part">
+        <span class="tip-tag" style="color: #FF9500;">Survival Tips &bull; Section 2</span>
+        <h2 class="tip-title">
+          2. But don’t make this your top priority!
+          <button class="audio-btn" onclick="readAloud('tip-12-text')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            Listen
+          </button>
+        </h2>
+        <p class="tip-body" id="tip-12-text">
+          In regular survival mode it is important that you are able to build a house or any form of accommodation as soon as possible. But if you’re playing in PvP mode, it’s highly likely that you’ll get killed if you prioritize this task. Most PvP players <span class="highlight-keyword">stage an escape first</span> – that is, they run away from the majority of the other players – in order to secure food and do some crafting. Tips regarding these will be given in the latter part of this guide.
+        </p>
+      </div>
+
+      <div class="card-quiz-part">
+        <div class="quiz-header">
+          <span class="quiz-pill pill-content">Detail & Strategy</span>
+        </div>
+        <div class="quiz-question">
+          According to paragraph 2, why do PvP players <strong>"stage an escape first"</strong> (run away) instead of building a house right away?
+        </div>
+        <div class="options-list" id="options-12">
+          <div class="option-item" onclick="selectOption(12, 0)">
+            <span class="option-indicator">A</span>
+            <span class="option-text">Because players are not allowed to build anything in PvP mode</span>
+          </div>
+          <div class="option-item" onclick="selectOption(12, 1)">
+            <span class="option-indicator">B</span>
+            <span class="option-text">To get away from other players so they can safely find food and craft tools without getting killed</span>
+          </div>
+          <div class="option-item" onclick="selectOption(12, 2)">
+            <span class="option-indicator">C</span>
+            <span class="option-text">Because monsters only spawn around newly built houses</span>
+          </div>
+          <div class="option-item" onclick="selectOption(12, 3)">
+            <span class="option-indicator">D</span>
+            <span class="option-text">To search for a hidden treasure chest on the other side of the map</span>
+          </div>
+        </div>
+        <div class="quiz-actions">
+          <button class="btn-confirm" id="btn-12" onclick="checkAnswer(12, 1)" disabled>Confirm Answer</button>
+        </div>
+        <div class="feedback-box" id="feedback-12">
+          <div class="feedback-title" id="feedback-title-12"></div>
+          <div class="feedback-desc" id="feedback-desc-12">
+            <strong>Correct Answer: B</strong>. The text explains that in PvP mode you will likely get killed if you stop to build right away; players run away first "in order to secure food and do some crafting."
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Survival Tip 3 (Image Section 1) -->
+    <article class="tip-card" id="card-13" data-category="survival">
+      <div class="card-reading-part">
+        <span class="tip-tag" style="color: #FF9500;">Survival Tips &bull; Section 3</span>
+        <h2 class="tip-title">
+          3. Never go on an adventure unprepared
+          <button class="audio-btn" onclick="readAloud('tip-13-text')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            Listen
+          </button>
+        </h2>
+        <p class="tip-body" id="tip-13-text">
+          Make sure that you have the tools and resources needed to create basic housing in your backpack before you venture out of your shelter. Even if you’re certain that you’ll be able to go back before sundown, <span class="highlight-keyword">it still pays to be prepared</span>. What if you went too far, got lost, or were chased by another player to what seems to be the ends of the world?
+        </p>
+      </div>
+
+      <div class="card-quiz-part">
+        <div class="quiz-header">
+          <span class="quiz-pill pill-vocab">Idiom in Context</span>
+        </div>
+        <div class="quiz-question">
+          In paragraph 1, what does the author mean by saying <strong>"it still pays to be prepared"</strong>?
+        </div>
+        <div class="options-list" id="options-13">
+          <div class="option-item" onclick="selectOption(13, 0)">
+            <span class="option-indicator">A</span>
+            <span class="option-text">Being prepared rewards you with gold and emeralds in the game</span>
+          </div>
+          <div class="option-item" onclick="selectOption(13, 1)">
+            <span class="option-indicator">B</span>
+            <span class="option-text">It is always wise and helpful to be ready for unexpected problems</span>
+          </div>
+          <div class="option-item" onclick="selectOption(13, 2)">
+            <span class="option-indicator">C</span>
+            <span class="option-text">You must pay other players to build a shelter for you</span>
+          </div>
+          <div class="option-item" onclick="selectOption(13, 3)">
+            <span class="option-indicator">D</span>
+            <span class="option-text">You have to spend real money before leaving your house</span>
+          </div>
+        </div>
+        <div class="quiz-actions">
+          <button class="btn-confirm" id="btn-13" onclick="checkAnswer(13, 1)" disabled>Confirm Answer</button>
+        </div>
+        <div class="feedback-box" id="feedback-13">
+          <div class="feedback-title" id="feedback-title-13"></div>
+          <div class="feedback-desc" id="feedback-desc-13">
+            <strong>Correct Answer: B (It is always wise and helpful to be ready)</strong>. The phrase "it pays to be prepared" means being prepared is very worthwhile and protects you if you get lost or chased.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Survival Tip 4 (Image Section 2) -->
+    <article class="tip-card" id="card-14" data-category="survival">
+      <div class="card-reading-part">
+        <span class="tip-tag" style="color: #FF9500;">Survival Tips &bull; Section 4</span>
+        <h2 class="tip-title">
+          4. Always have food with you
+          <button class="audio-btn" onclick="readAloud('tip-14-text')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            Listen
+          </button>
+        </h2>
+        <p class="tip-body" id="tip-14-text">
+          Farm animals such as pigs, chickens, and cows may be everywhere, but you won’t always have the time to kill them for food. That said, it is important that you always have food in your backpack <span class="highlight-keyword">in case you lose track of time</span> – that is, nighttime approaches and your character still hasn’t eaten.
+        </p>
+      </div>
+
+      <div class="card-quiz-part">
+        <div class="quiz-header">
+          <span class="quiz-pill pill-content">Reading Comprehension</span>
+        </div>
+        <div class="quiz-question">
+          According to paragraph 2, why should players keep food in their backpack <strong>"in case you lose track of time"</strong>?
+        </div>
+        <div class="options-list" id="options-14">
+          <div class="option-item" onclick="selectOption(14, 0)">
+            <span class="option-indicator">A</span>
+            <span class="option-text">Because farm animals will permanently run away from you</span>
+          </div>
+          <div class="option-item" onclick="selectOption(14, 1)">
+            <span class="option-indicator">B</span>
+            <span class="option-text">Because night might arrive before you know it, leaving your character hungry with no time to hunt</span>
+          </div>
+          <div class="option-item" onclick="selectOption(14, 2)">
+            <span class="option-indicator">C</span>
+            <span class="option-text">Because your backpack will drop all your items if you do not feed it</span>
+          </div>
+          <div class="option-item" onclick="selectOption(14, 3)">
+            <span class="option-indicator">D</span>
+            <span class="option-text">Because food spoils inside your shelter after sundown</span>
+          </div>
+        </div>
+        <div class="quiz-actions">
+          <button class="btn-confirm" id="btn-14" onclick="checkAnswer(14, 1)" disabled>Confirm Answer</button>
+        </div>
+        <div class="feedback-box" id="feedback-14">
+          <div class="feedback-title" id="feedback-title-14"></div>
+          <div class="feedback-desc" id="feedback-desc-14">
+            <strong>Correct Answer: B</strong>. The text explains that if you lose track of time, night falls and your character hasn't eaten, so having food on hand prevents starvation when hunting isn't safe.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Survival Tip 5 (Image Section 3) -->
+    <article class="tip-card" id="card-15" data-category="survival">
+      <div class="card-reading-part">
+        <span class="tip-tag" style="color: #FF9500;">Survival Tips &bull; Section 5</span>
+        <h2 class="tip-title">
+          5. Always have a weapon
+          <button class="audio-btn" onclick="readAloud('tip-15-text')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            Listen
+          </button>
+        </h2>
+        <p class="tip-body" id="tip-15-text">
+          This tip does not only apply to PvP, but also to survival mode games. Although most hostile mobs only spawn at night, there are classes – such as zombies and skeletons – that <span class="highlight-keyword">can persist even during daytime</span>. As such, even if you haven’t ventured far from your home and can go back easily, bring a bow or a sword with you so that you can protect yourself.
+        </p>
+      </div>
+
+      <div class="card-quiz-part">
+        <div class="quiz-header">
+          <span class="quiz-pill pill-vocab">Words in Context</span>
+        </div>
+        <div class="quiz-question">
+          In paragraph 3, what does the word <strong>"persist"</strong> mean when describing zombies and skeletons?
+        </div>
+        <div class="options-list" id="options-15">
+          <div class="option-item" onclick="selectOption(15, 0)">
+            <span class="option-indicator">A</span>
+            <span class="option-text">Go to sleep quietly under trees</span>
+          </div>
+          <div class="option-item" onclick="selectOption(15, 1)">
+            <span class="option-indicator">B</span>
+            <span class="option-text">Turn into friendly village pets</span>
+          </div>
+          <div class="option-item" onclick="selectOption(15, 2)">
+            <span class="option-indicator">C</span>
+            <span class="option-text">Continue to stay around and remain active during daylight</span>
+          </div>
+          <div class="option-item" onclick="selectOption(15, 3)">
+            <span class="option-indicator">D</span>
+            <span class="option-text">Melt away as soon as the sun rises</span>
+          </div>
+        </div>
+        <div class="quiz-actions">
+          <button class="btn-confirm" id="btn-15" onclick="checkAnswer(15, 2)" disabled>Confirm Answer</button>
+        </div>
+        <div class="feedback-box" id="feedback-15">
+          <div class="feedback-title" id="feedback-title-15"></div>
+          <div class="feedback-desc" id="feedback-desc-15">
+            <strong>Correct Answer: C (Continue to stay around)</strong>. In this context, "persist" means to continue to exist or linger, meaning those monsters can still be outside to attack you during daytime.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Survival Tip 6 (Image Section 4) -->
+    <article class="tip-card" id="card-16" data-category="survival">
+      <div class="card-reading-part">
+        <span class="tip-tag" style="color: #FF9500;">Survival Tips &bull; Section 6</span>
+        <h2 class="tip-title">
+          6. Take note of your tool's and weapon's durability
+          <button class="audio-btn" onclick="readAloud('tip-16-text')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            Listen
+          </button>
+        </h2>
+        <p class="tip-body" id="tip-16-text">
+          Much like in real life, you can’t go on using the same tools forever. Having said that, you should always <span class="highlight-keyword">look at the durability of your tools and weapons</span> before you decide to go out of your shelter to do some work or to stage a surprise attack on the enemy. Getting caught outside by hostile mobs or by your enemies without tools and/or weapons is akin to suicide. On a related note,
+        </p>
+      </div>
+
+      <div class="card-quiz-part">
+        <div class="quiz-header">
+          <span class="quiz-pill pill-vocab">Words in Context</span>
+        </div>
+        <div class="quiz-question">
+          According to paragraph 4, why should you check the <strong>"durability"</strong> of your tools before heading outside?
+        </div>
+        <div class="options-list" id="options-16">
+          <div class="option-item" onclick="selectOption(16, 0)">
+            <span class="option-indicator">A</span>
+            <span class="option-text">To check how much use or strength they have left before breaking</span>
+          </div>
+          <div class="option-item" onclick="selectOption(16, 1)">
+            <span class="option-indicator">B</span>
+            <span class="option-text">To count how many gold coins they are worth</span>
+          </div>
+          <div class="option-item" onclick="selectOption(16, 2)">
+            <span class="option-indicator">C</span>
+            <span class="option-text">To trade old tools for food in villages</span>
+          </div>
+          <div class="option-item" onclick="selectOption(16, 3)">
+            <span class="option-indicator">D</span>
+            <span class="option-text">To paint new colors onto your sword</span>
+          </div>
+        </div>
+        <div class="quiz-actions">
+          <button class="btn-confirm" id="btn-16" onclick="checkAnswer(16, 0)" disabled>Confirm Answer</button>
+        </div>
+        <div class="feedback-box" id="feedback-16">
+          <div class="feedback-title" id="feedback-title-16"></div>
+          <div class="feedback-desc" id="feedback-desc-16">
+            <strong>Correct Answer: A</strong>. "Durability" means how long something lasts. Because tools wear down and break, checking durability ensures you don't get caught outside with a broken weapon.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Survival Tip 7 (Image Section 5) -->
+    <article class="tip-card" id="card-17" data-category="survival">
+      <div class="card-reading-part">
+        <span class="tip-tag" style="color: #FF9500;">Survival Tips &bull; Section 7</span>
+        <h2 class="tip-title">
+          7. Stock up on tools/weapons
+          <button class="audio-btn" onclick="readAloud('tip-17-text')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            Listen
+          </button>
+        </h2>
+        <p class="tip-body" id="tip-17-text">
+          Since your implements won’t last forever, you should always, always have <span class="highlight-keyword">back-ups in your inventory</span>. This way, you won’t waste time going back to your shelter to craft or retrieve more items which you can use to gather resources, attack hostiles, and defend yourself. Also,
+        </p>
+      </div>
+
+      <div class="card-quiz-part">
+        <div class="quiz-header">
+          <span class="quiz-pill pill-content">Reading Comprehension</span>
+        </div>
+        <div class="quiz-question">
+          According to paragraph 5, what is the main benefit of keeping <strong>"back-ups in your inventory"</strong>?
+        </div>
+        <div class="options-list" id="options-17">
+          <div class="option-item" onclick="selectOption(17, 0)">
+            <span class="option-indicator">A</span>
+            <span class="option-text">It makes your character run twice as fast</span>
+          </div>
+          <div class="option-item" onclick="selectOption(17, 1)">
+            <span class="option-indicator">B</span>
+            <span class="option-text">You won’t waste time running all the way back to your shelter when an item breaks</span>
+          </div>
+          <div class="option-item" onclick="selectOption(17, 2)">
+            <span class="option-indicator">C</span>
+            <span class="option-text">You get bonus points for carrying extra weight</span>
+          </div>
+          <div class="option-item" onclick="selectOption(17, 3)">
+            <span class="option-indicator">D</span>
+            <span class="option-text">It scares monsters away from coming near you</span>
+          </div>
+        </div>
+        <div class="quiz-actions">
+          <button class="btn-confirm" id="btn-17" onclick="checkAnswer(17, 1)" disabled>Confirm Answer</button>
+        </div>
+        <div class="feedback-box" id="feedback-17">
+          <div class="feedback-title" id="feedback-title-17"></div>
+          <div class="feedback-desc" id="feedback-desc-17">
+            <strong>Correct Answer: B</strong>. The text explains that carrying backups keeps you working smoothly: <em>"This way, you won’t waste time going back to your shelter to craft or retrieve more items..."</em>
           </div>
         </div>
       </div>
@@ -912,7 +1979,7 @@
     <!-- Summary Box -->
     <div class="summary-card">
       <h3 class="summary-title">Ready to Review?</h3>
-      <p class="summary-text" id="summaryStatus">Answer all 7 questions above to review your score.</p>
+      <p class="summary-text" id="summaryStatus">Answer all 17 questions above to review your score.</p>
       <button class="btn-reset" onclick="resetAll()">Reset & Try Again</button>
     </div>
 
@@ -921,8 +1988,8 @@
   <script>
     // State management
     const state = {
-      selected: { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null },
-      confirmed: { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false },
+      selected: { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null, 8: null, 9: null, 10: null, 11: null, 12: null, 13: null, 14: null, 15: null, 16: null, 17: null },
+      confirmed: { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false, 10: false, 11: false, 12: false, 13: false, 14: false, 15: false, 16: false, 17: false },
       correctCount: 0
     };
 
@@ -966,11 +2033,13 @@
       if (userChoice === correctIdx) {
         state.correctCount++;
         feedback.className = 'feedback-box correct';
-        feedbackTitle.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Excellent! That's correct.`;
+        feedbackTitle.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> ⚔️ Critical Hit! +20 XP & +1 Emerald!`;
+        handleBattleResult(true, questionNum);
       } else {
         items[userChoice].classList.add('incorrect');
         feedback.className = 'feedback-box incorrect';
-        feedbackTitle.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Not quite. Take a look at the correct answer below:`;
+        feedbackTitle.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> 💥 Mob Counter-Attack! Check the explanation below:`;
+        handleBattleResult(false, questionNum);
       }
 
       updateScore();
@@ -981,38 +2050,68 @@
       for (let key in state.confirmed) {
         if (state.confirmed[key]) totalAnswered++;
       }
-      document.getElementById('scoreCount').innerText = `${state.correctCount} / 7`;
+      document.getElementById('scoreCount').innerText = `${state.correctCount} / 17`;
 
       const summary = document.getElementById('summaryStatus');
-      if (totalAnswered === 7) {
-        summary.innerHTML = `You completed all questions! Final Score: <strong>${state.correctCount} out of 7</strong> (${Math.round((state.correctCount / 7) * 100)}%).`;
+      if (totalAnswered === 17) {
+        summary.innerHTML = `You completed all questions! Final Score: <strong>${state.correctCount} out of 17</strong> (${Math.round((state.correctCount / 17) * 100)}%).`;
       } else {
-        summary.innerText = `You have answered ${totalAnswered} of 7 questions.`;
+        summary.innerText = `You have answered ${totalAnswered} of 17 questions.`;
       }
     }
 
     function resetAll() {
-      state.selected = { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null };
-      state.confirmed = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false };
+      state.selected = { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null, 8: null, 9: null, 10: null, 11: null, 12: null, 13: null, 14: null, 15: null, 16: null, 17: null };
+      state.confirmed = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false, 10: false, 11: false, 12: false, 13: false, 14: false, 15: false, 16: false, 17: false };
       state.correctCount = 0;
 
-      for (let i = 1; i <= 7; i++) {
+      for (let i = 1; i <= 17; i++) {
         const container = document.getElementById(`options-${i}`);
-        const items = container.getElementsByClassName('option-item');
-        for (let j = 0; j < items.length; j++) {
-          items[j].className = 'option-item';
+        if (container) {
+          const items = container.getElementsByClassName('option-item');
+          for (let j = 0; j < items.length; j++) {
+            items[j].className = 'option-item';
+          }
         }
 
         const btn = document.getElementById(`btn-${i}`);
-        btn.disabled = true;
-        btn.style.opacity = '1';
-        btn.innerText = 'Confirm Answer';
+        if (btn) {
+          btn.disabled = true;
+          btn.style.opacity = '1';
+          btn.innerText = 'Confirm Answer';
+        }
 
         const feedback = document.getElementById(`feedback-${i}`);
-        feedback.className = 'feedback-box';
+        if (feedback) {
+          feedback.className = 'feedback-box';
+        }
       }
 
       updateScore();
+    }
+
+    // Category Filter Handler
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.segment-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.tip-card');
+      const basicHead = document.getElementById('cat-basic-heading');
+      const survivalHead = document.getElementById('cat-survival-heading');
+
+      if (cat === 'all') {
+        cards.forEach(c => c.style.display = 'block');
+        if (basicHead) basicHead.style.display = 'flex';
+        if (survivalHead) survivalHead.style.display = 'flex';
+      } else if (cat === 'basic') {
+        cards.forEach(c => c.style.display = (c.dataset.category === 'basic' ? 'block' : 'none'));
+        if (basicHead) basicHead.style.display = 'flex';
+        if (survivalHead) survivalHead.style.display = 'none';
+      } else if (cat === 'survival') {
+        cards.forEach(c => c.style.display = (c.dataset.category === 'survival' ? 'block' : 'none'));
+        if (basicHead) basicHead.style.display = 'none';
+        if (survivalHead) survivalHead.style.display = 'flex';
+      }
     }
 
     // Audio text-to-speech for accessibility
@@ -1028,6 +2127,299 @@
         alert('Speech synthesis is not supported on this browser.');
       }
     }
+
+    // =========================================================================
+    // MINECRAFT BATTLE ARENA, SFX & INVENTORY ENGINE
+    // =========================================================================
+    const mobs = [
+      {
+        name: "💥 Creeper Scout",
+        role: "Silent Explosive Mob · 3 Hearts",
+        maxHp: 3,
+        svg: `<svg width="44" height="44" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="2" y="2" width="12" height="12" fill="#28cd41"/>
+          <rect x="3" y="3" width="3" height="3" fill="#6bff9c" opacity="0.4"/>
+          <rect x="4" y="5" width="2" height="2" fill="#111"/>
+          <rect x="10" y="5" width="2" height="2" fill="#111"/>
+          <rect x="6" y="7" width="4" height="3" fill="#111"/>
+          <rect x="5" y="9" width="2" height="3" fill="#111"/>
+          <rect x="9" y="9" width="2" height="3" fill="#111"/>
+        </svg>`
+      },
+      {
+        name: "🧟 Night Zombie",
+        role: "Undead Siege Mob · 3 Hearts",
+        maxHp: 3,
+        svg: `<svg width="44" height="44" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="2" y="2" width="12" height="12" fill="#3a7d44"/>
+          <rect x="3" y="2" width="10" height="3" fill="#254d2b"/>
+          <rect x="4" y="6" width="2" height="2" fill="#111"/>
+          <rect x="10" y="6" width="2" height="2" fill="#111"/>
+          <rect x="6" y="10" width="4" height="1" fill="#1b3b20"/>
+        </svg>`
+      },
+      {
+        name: "🏹 Skeleton Archer",
+        role: "Ranged Bone Sniper · 3 Hearts",
+        maxHp: 3,
+        svg: `<svg width="44" height="44" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="2" y="2" width="12" height="12" fill="#d4d4d8"/>
+          <rect x="4" y="5" width="3" height="2" fill="#18181b"/>
+          <rect x="9" y="5" width="3" height="2" fill="#18181b"/>
+          <rect x="7" y="8" width="2" height="1" fill="#3f3f46"/>
+          <rect x="4" y="10" width="8" height="1" fill="#27272a"/>
+        </svg>`
+      },
+      {
+        name: "🕷️ Cave Spider",
+        role: "Venomous Climber · 3 Hearts",
+        maxHp: 3,
+        svg: `<svg width="44" height="44" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="2" y="3" width="12" height="10" fill="#1e293b"/>
+          <rect x="3" y="5" width="2" height="2" fill="#ef4444"/>
+          <rect x="6" y="6" width="1" height="1" fill="#ef4444"/>
+          <rect x="9" y="6" width="1" height="1" fill="#ef4444"/>
+          <rect x="11" y="5" width="2" height="2" fill="#ef4444"/>
+        </svg>`
+      },
+      {
+        name: "🔮 Enderman Teleporter",
+        role: "Void Stalker · 3 Hearts",
+        maxHp: 3,
+        svg: `<svg width="44" height="44" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="2" y="2" width="12" height="12" fill="#09090b"/>
+          <rect x="3" y="6" width="4" height="2" fill="#d946ef"/>
+          <rect x="4" y="6" width="2" height="2" fill="#f5d0fe"/>
+          <rect x="9" y="6" width="4" height="2" fill="#d946ef"/>
+          <rect x="10" y="6" width="2" height="2" fill="#f5d0fe"/>
+        </svg>`
+      },
+      {
+        name: "🐉 Ender Dragon Boss",
+        role: "Final Survival Boss · 2 Hearts",
+        maxHp: 2,
+        svg: `<svg width="44" height="44" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <rect x="2" y="3" width="12" height="10" fill="#18181b"/>
+          <rect x="3" y="1" width="2" height="2" fill="#a855f7"/>
+          <rect x="11" y="1" width="2" height="2" fill="#a855f7"/>
+          <rect x="3" y="6" width="3" height="2" fill="#c084fc"/>
+          <rect x="10" y="6" width="3" height="2" fill="#c084fc"/>
+          <rect x="5" y="11" width="6" height="1" fill="#7e22ce"/>
+        </svg>`
+      }
+    ];
+
+    const battle = {
+      playerHp: 5,
+      playerMaxHp: 5,
+      xp: 0,
+      level: 1,
+      streak: 0,
+      emeralds: 0,
+      books: 0,
+      apples: 3,
+      totems: 1,
+      mobIdx: 0,
+      mobHp: 3,
+      mobsDefeated: 0,
+      soundOn: true
+    };
+
+    let audioCtx = null;
+    function playTone(type) {
+      if (!battle.soundOn) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        if (type === 'hit') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(520, now);
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.14);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.16);
+          osc.start(now);
+          osc.stop(now + 0.16);
+        } else if (type === 'hurt') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(190, now);
+          osc.frequency.exponentialRampToValueAtTime(95, now + 0.22);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.24);
+          osc.start(now);
+          osc.stop(now + 0.24);
+        } else if (type === 'heal') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(440, now);
+          osc.frequency.exponentialRampToValueAtTime(660, now + 0.18);
+          gain.gain.setValueAtTime(0.1, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+          osc.start(now);
+          osc.stop(now + 0.2);
+        }
+      } catch (e) {}
+    }
+
+    function showFloatingBadge(targetId, text, cls) {
+      const frame = document.getElementById(targetId);
+      if (!frame) return;
+      const badge = document.createElement('div');
+      badge.className = `floating-dmg ${cls}`;
+      badge.textContent = text;
+      frame.appendChild(badge);
+      setTimeout(() => badge.remove(), 1100);
+    }
+
+    function renderBattleHud() {
+      const mob = mobs[battle.mobIdx];
+      document.getElementById('playerLevel').textContent = battle.level;
+      document.getElementById('playerXP').textContent = battle.xp;
+      document.getElementById('playerStreak').textContent = battle.streak;
+      document.getElementById('mobsDefeated').textContent = battle.mobsDefeated;
+
+      document.getElementById('slotApples').textContent = battle.apples;
+      document.getElementById('appleCountNav').textContent = battle.apples;
+      document.getElementById('slotEmeralds').textContent = battle.emeralds;
+      document.getElementById('slotBooks').textContent = battle.books;
+      document.getElementById('slotTotems').textContent = battle.totems;
+
+      // Player hearts
+      let pHearts = '';
+      for (let i = 0; i < battle.playerMaxHp; i++) {
+        pHearts += `<span class="heart-icon ${i < battle.playerHp ? '' : 'lost'}">❤️</span>`;
+      }
+      document.getElementById('playerHeartsRow').innerHTML = pHearts;
+      document.getElementById('playerHpBar').style.width = `${(battle.playerHp / battle.playerMaxHp) * 100}%`;
+
+      // Enemy Mob
+      document.getElementById('waveIndicator').textContent = `Wave ${battle.mobIdx + 1} / ${mobs.length}`;
+      document.getElementById('enemyName').textContent = mob.name;
+      document.getElementById('enemyRole').textContent = mob.role;
+      document.getElementById('enemyAvatar').innerHTML = mob.svg;
+
+      let eHearts = '';
+      for (let i = 0; i < mob.maxHp; i++) {
+        eHearts += `<span class="heart-icon ${i < battle.mobHp ? '' : 'lost'}">💚</span>`;
+      }
+      document.getElementById('enemyHeartsRow').innerHTML = eHearts;
+      document.getElementById('enemyHpBar').style.width = `${(battle.mobHp / mob.maxHp) * 100}%`;
+
+      let answered = 0;
+      for (let k in state.confirmed) if (state.confirmed[k]) answered++;
+      document.getElementById('scoreSummaryText').textContent = `${state.correctCount} / ${answered} Correct (${answered}/17)`;
+    }
+
+    function handleBattleResult(isCorrect, qNum) {
+      const card = document.getElementById('battleArenaCard');
+      const mob = mobs[battle.mobIdx];
+      battle.books++;
+
+      if (isCorrect) {
+        playTone('hit');
+        battle.streak++;
+        battle.xp += 20 + (battle.streak > 1 ? 5 : 0);
+        battle.emeralds += 1;
+        battle.level = 1 + Math.floor(battle.xp / 60);
+        battle.mobHp = Math.max(0, battle.mobHp - 1);
+
+        card.classList.remove('flash-hurt');
+        card.classList.add('flash-hit');
+        setTimeout(() => card.classList.remove('flash-hit'), 450);
+        showFloatingBadge('enemyAvatar', '-1 💚 CRIT!', 'hit');
+
+        if (battle.mobHp === 0) {
+          battle.mobsDefeated++;
+          const defeatedName = mob.name;
+          if (battle.mobIdx < mobs.length - 1) {
+            battle.mobIdx++;
+            battle.mobHp = mobs[battle.mobIdx].maxHp;
+            document.getElementById('battleLogText').innerHTML = `🏆 <strong>${defeatedName}</strong> defeated! Next challenger: <strong>${mobs[battle.mobIdx].name}</strong>!`;
+          } else {
+            battle.mobHp = mob.maxHp;
+            document.getElementById('battleLogText').innerHTML = `👑 <strong>ENDER DRAGON DEFEATED!</strong> Armyere conquered all 17 Reading Quests!`;
+          }
+        } else {
+          document.getElementById('battleLogText').innerHTML = `⚔️ Direct hit on <strong>${mob.name}</strong>! (+20 XP, Streak 🔥${battle.streak})`;
+        }
+      } else {
+        playTone('hurt');
+        battle.streak = 0;
+        battle.playerHp = Math.max(0, battle.playerHp - 1);
+
+        card.classList.remove('flash-hit');
+        card.classList.add('flash-hurt');
+        setTimeout(() => card.classList.remove('flash-hurt'), 450);
+        showFloatingBadge('playerAvatar', '-1 ❤️ OUCH!', 'hurt');
+
+        if (battle.playerHp === 0) {
+          if (battle.totems > 0) {
+            battle.totems--;
+            battle.playerHp = 3;
+            document.getElementById('battleLogText').innerHTML = `🗿 <strong>Totem of Undying</strong> activated! Armyere revived with 3 ❤️!`;
+          } else {
+            battle.playerHp = 2;
+            document.getElementById('battleLogText').innerHTML = `✨ Respawned at Survival Bed with 2 ❤️! Keep reading carefully!`;
+          }
+        } else {
+          document.getElementById('battleLogText').innerHTML = `💥 <strong>${mob.name}</strong> counter-attacked! Eat a 🍎 Golden Apple if your HP gets low!`;
+        }
+      }
+
+      renderBattleHud();
+    }
+
+    function useGoldenApple() {
+      if (battle.apples <= 0) {
+        document.getElementById('battleLogText').innerHTML = `🍎 No Golden Apples left in your hotbar!`;
+        return;
+      }
+      if (battle.playerHp >= battle.playerMaxHp) {
+        document.getElementById('battleLogText').innerHTML = `❤️ Armyere already has full health (5/5 Hearts)!`;
+        return;
+      }
+      battle.apples--;
+      battle.playerHp = Math.min(battle.playerMaxHp, battle.playerHp + 1);
+      playTone('heal');
+      showFloatingBadge('playerAvatar', '+1 ❤️ HEAL', 'hit');
+      document.getElementById('battleLogText').innerHTML = `🍎 Ate an Enchanted Golden Apple! Restored +1 ❤️!`;
+      renderBattleHud();
+    }
+
+    function toggleSound() {
+      battle.soundOn = !battle.soundOn;
+      document.getElementById('soundBtn').textContent = battle.soundOn ? '🔊 SFX: ON' : '🔇 SFX: OFF';
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      document.getElementById('themeBtn').textContent = isDark ? '☀️ Light' : '🌙 Dark';
+    }
+
+    // Hook into resetAll so the battle arena also resets cleanly
+    const _origResetAll = resetAll;
+    resetAll = function() {
+      _origResetAll();
+      battle.playerHp = 5;
+      battle.xp = 0;
+      battle.level = 1;
+      battle.streak = 0;
+      battle.emeralds = 0;
+      battle.books = 0;
+      battle.apples = 3;
+      battle.totems = 1;
+      battle.mobIdx = 0;
+      battle.mobHp = mobs[0].maxHp;
+      battle.mobsDefeated = 0;
+      document.getElementById('battleLogText').innerHTML = `⚔️ Arena reset! Read Tip #1 below and click <strong>Confirm Answer</strong> to strike!`;
+      renderBattleHud();
+    };
+
+    renderBattleHud();
+
   </script>
 </body>
 </html>

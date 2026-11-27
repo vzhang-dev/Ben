@@ -1073,6 +1073,230 @@
       padding-top: 8px;
       border-top: 1px solid var(--apple-border);
     }
+
+    /* U2 L1 Weekly Science Revision Styles */
+    .l1-banner {
+      background: linear-gradient(135deg, #101935 0%, #1e2952 55%, #173753 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      margin: 28px 0 18px;
+      box-shadow: var(--shadow-md);
+      border: 1.5px solid rgba(61, 224, 232, 0.3);
+    }
+
+    .l1-banner-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #3de0e8;
+      margin-bottom: 4px;
+    }
+
+    .l1-banner h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .l1-banner p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .unit-legend-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      background: var(--apple-card);
+      border: 1px solid var(--apple-border);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm);
+      font-size: 13px;
+    }
+
+    .unit-pill {
+      background: var(--apple-blue-soft);
+      color: var(--apple-blue);
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12.5px;
+    }
+
+    .table-card {
+      background: var(--apple-card);
+      border: 1px solid var(--apple-border);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+      overflow-x: auto;
+    }
+
+    .planet-data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      min-width: 660px;
+    }
+
+    .planet-data-table th {
+      text-align: left;
+      padding: 11px 12px;
+      background: rgba(0, 113, 227, 0.08);
+      color: var(--apple-blue);
+      font-weight: 800;
+      border-bottom: 2px solid var(--apple-border);
+      white-space: nowrap;
+    }
+
+    .planet-data-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--apple-border);
+      vertical-align: middle;
+    }
+
+    .planet-data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .planet-data-table tr:hover td {
+      background: rgba(120, 120, 128, 0.05);
+    }
+
+    .type-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-left: 6px;
+    }
+
+    .type-badge.rocky {
+      background: rgba(255, 149, 0, 0.15);
+      color: #d97706;
+    }
+
+    body.dark-mode .type-badge.rocky {
+      color: #fbbf24;
+    }
+
+    .type-badge.gas {
+      background: rgba(175, 82, 222, 0.15);
+      color: #9333ea;
+    }
+
+    body.dark-mode .type-badge.gas {
+      color: #c084fc;
+    }
+
+    .sun-moon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .sun-moon-card {
+      background: var(--apple-card);
+      border: 1px solid var(--apple-border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .sun-moon-icon {
+      font-size: 34px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .compare-card {
+      background: var(--apple-card);
+      border: 1.5px solid var(--apple-border);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .compare-card.rocky-card {
+      border-top: 4px solid #ff9500;
+    }
+
+    .compare-card.gas-card {
+      border-top: 4px solid #af52de;
+    }
+
+    .compare-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin: 6px 0 12px;
+      background: rgba(120, 120, 128, 0.12);
+    }
+
+    .planet-feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .planet-feature-list li {
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(120, 120, 128, 0.06);
+      border-left: 3px solid var(--apple-blue);
+    }
+
+    .read-more-links a {
+      color: var(--apple-blue);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .read-more-links a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes mobDeathAnim {
+      0% { transform: scale(1) rotate(0deg); filter: brightness(1.8) saturate(2); opacity: 1; }
+      40% { transform: scale(1.08) rotate(-12deg); filter: hue-rotate(-40deg) brightness(1.5); opacity: 0.85; }
+      100% { transform: scale(0.55) rotate(22deg) translateY(14px); filter: grayscale(1) brightness(0.6); opacity: 0.2; }
+    }
+
+    .anim-mob-death {
+      animation: mobDeathAnim 0.85s ease forwards;
+    }
+
+    .hotbar-slot.sword-slot {
+      border-color: rgba(61, 224, 232, 0.65);
+      background: linear-gradient(135deg, rgba(61, 224, 232, 0.25), rgba(0, 113, 227, 0.25));
+      box-shadow: 0 0 12px rgba(61, 224, 232, 0.35);
+    }
+
+    .hotbar-slot.sword-slot:active {
+      transform: scale(0.92) rotate(-12deg);
+    }
   </style>
 </head>
 <body>
@@ -1080,6 +1304,7 @@
   <nav class="top-nav">
     <div class="top-nav-inner">
       <div class="brand-title">
+        <a href="index.html" class="icon-btn" title="Back to Armyere's Learning Park">🏰 Park Home</a>
         <span class="brand-badge">G5 Science · Unit 2</span>
         <span>🌍 Earth & Space × ⚔️ Armyere Quest</span>
       </div>
@@ -1088,6 +1313,9 @@
         <button class="nav-tab" id="tabBtnStudy" onclick="switchMainTab('study')">📚 Knowledge Organiser (知识复习)</button>
       </div>
       <div class="nav-actions">
+        <button class="icon-btn" onclick="useDiamondSword()" title="Swing Enchanted Diamond Sword to slay the current mob!">
+          ⚔️ Sword Strike
+        </button>
         <button class="icon-btn" onclick="useGoldenApple()" title="Use a Golden Apple to restore 1 Heart!">
           🍎 Heal (<span id="appleCountNav">3</span>)
         </button>
@@ -1117,13 +1345,13 @@
           <span class="mc-pill streak">🔥 Streak: <span id="playerStreak">0</span></span>
           <span class="mc-pill">🏆 Mobs Defeated: <span id="mobsDefeated">0</span></span>
         </div>
-        <div class="hotbar-wrap" title="Armyere's Minecraft Hotbar Inventory (Click Golden Apple to Heal!)">
-          <div class="hotbar-slot" title="Enchanted Diamond Sword (+25 DMG)">⚔️<span class="hotbar-count">I</span></div>
+        <div class="hotbar-wrap" title="Armyere's Minecraft Hotbar Inventory — Click ⚔️ Diamond Sword to Slay Mob or 🍎 to Heal!">
+          <div class="hotbar-slot sword-slot" onclick="useDiamondSword()" title="Click to swing Enchanted Diamond Sword & SLAY the current mob!">⚔️<span class="hotbar-count" id="slotSwordLvl">I</span></div>
           <div class="hotbar-slot" onclick="useGoldenApple()" title="Click to eat Golden Apple (+1 ❤️)">🍎<span class="hotbar-count" id="slotApples">3</span></div>
-          <div class="hotbar-slot" title="Space Shield (Blocks mob counter-attacks)">🛡️<span class="hotbar-count" id="slotShields">1</span></div>
-          <div class="hotbar-slot" title="Emeralds Earned">💚<span class="hotbar-count" id="slotEmeralds">0</span></div>
-          <div class="hotbar-slot" title="Astronomer's Spyglass">🔭<span class="hotbar-count" id="slotStars">0</span></div>
-          <div class="hotbar-slot" title="Totem of Undying (Auto-revive)">🗿<span class="hotbar-count" id="slotTotems">1</span></div>
+          <div class="hotbar-slot" onclick="useSpaceShield()" title="Space Shield (Blocks mob counter-attacks — Click to inspect)">🛡️<span class="hotbar-count" id="slotShields">1</span></div>
+          <div class="hotbar-slot" onclick="useEmeralds()" title="Click to trade 2 Emeralds for +1 🍎 Golden Apple!">💚<span class="hotbar-count" id="slotEmeralds">0</span></div>
+          <div class="hotbar-slot" onclick="useSpyglass()" title="Click Astronomer's Spyglass to jump to next unanswered question!">🔭<span class="hotbar-count" id="slotStars">0</span></div>
+          <div class="hotbar-slot" onclick="useTotem()" title="Click Totem of Undying for full ❤️❤️❤️❤️❤️ restore!">🗿<span class="hotbar-count" id="slotTotems">1</span></div>
         </div>
       </div>
 
@@ -1181,7 +1409,7 @@
 
         <!-- Enemy Mob -->
         <div class="fighter-box enemy" id="enemyBox">
-          <div class="avatar-frame" id="enemyAvatar">
+          <div class="avatar-frame" id="enemyAvatar" onclick="useDiamondSword()" style="cursor:pointer;" title="Click to slash with Enchanted Diamond Sword!">
             <!-- Injected dynamically by JS based on current mob -->
           </div>
           <div class="fighter-info">
@@ -1215,11 +1443,12 @@
     <section class="quiz-section active" id="sectionQuiz">
       <div class="filter-bar">
         <div class="filter-pills">
-          <button class="filter-pill active" onclick="filterQuestions('all', this)">🌟 All Quests (全部 36 题)</button>
+          <button class="filter-pill active" onclick="filterQuestions('all', this)">🌟 All Quests (全部 50 题)</button>
           <button class="filter-pill" onclick="filterQuestions('vocab', this)">📖 Key Vocabulary (重点词汇 14 题)</button>
           <button class="filter-pill" onclick="filterQuestions('solar', this)">🪐 Solar System & Moon (太阳系与月球 8 题)</button>
           <button class="filter-pill" onclick="filterQuestions('earth', this)">🌍 Earth's Rotation & Orbit (地球自转与公转 8 题)</button>
           <button class="filter-pill" onclick="filterQuestions('models', this)">🔭 Models & Astronomers (日心说与天文学家 6 题)</button>
+          <button class="filter-pill" onclick="filterQuestions('l1rev', this)">🚀 U2 L1 Solar System (第1课太阳系复习 14 题)</button>
           <button class="filter-pill" onclick="filterQuestions('wrong', this)">🔥 Mistake Retry (错题重练 <span id="wrongCountBadge">0</span>)</button>
         </div>
         <div>
@@ -1268,6 +1497,11 @@
             <span class="planet-emoji">🌍</span>
             <span class="planet-name-en">3. Earth</span>
             <span class="planet-name-zh">地球 (岩石)</span>
+          </div>
+          <div class="planet-chip" onclick="showPlanetInfo('moon', this)">
+            <span class="planet-emoji">🌙</span>
+            <span class="planet-name-en">The Moon</span>
+            <span class="planet-name-zh">月球 (卫星)</span>
           </div>
           <div class="planet-chip" onclick="showPlanetInfo('mars', this)">
             <span class="planet-emoji">🔴</span>
@@ -1376,9 +1610,19 @@
           <div class="vocab-def-zh">研究天文学（空间科学）或是天文学专家的人。</div>
         </div>
         <div class="vocab-card">
-          <div class="vocab-top"><span class="vocab-word">14. Celestial bodies</span><span class="vocab-zh-tag">天体</span></div>
-          <div class="vocab-def-en">Natural objects visible in space, such as the Sun, Moon, planets, and stars.</div>
-          <div class="vocab-def-zh">宇宙空间中的天然天体（如太阳、月球、行星和恒星）。</div>
+          <div class="vocab-top"><span class="vocab-word">14. Celestial body</span><span class="vocab-zh-tag">天体 · L1 Star Word</span></div>
+          <div class="vocab-def-en">Any natural object we can see in space (such as the Sun, Moon, planets, and stars).</div>
+          <div class="vocab-def-zh">太空中我们能看到的天然物体（如太阳、月球、行星和恒星）。</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">15. Solar System</span><span class="vocab-zh-tag">太阳系 · L1 Star Word</span></div>
+          <div class="vocab-def-en">The Sun and everything that orbits it.</div>
+          <div class="vocab-def-zh">太阳和绕它运行的一切天体。</div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-top"><span class="vocab-word">16. Spherical</span><span class="vocab-zh-tag">球形的 · L1 Star Word</span></div>
+          <div class="vocab-def-en">Shaped like a ball, round in every direction.</div>
+          <div class="vocab-def-zh">像球一样，各个方向都是圆的。</div>
         </div>
       </div>
 
@@ -1419,6 +1663,196 @@
           <p><strong>Astronomers:</strong> The work and ideas of many astronomers (such as <strong>Nicolaus Copernicus</strong> and <strong>Kepler</strong>) combined over many years to develop the <strong>heliocentric model</strong>. <strong>Galileo’s work on gravity</strong> allowed astronomers to understand how planets stayed in orbit.</p>
           <div class="zh-block">
             <strong>中文精讲：</strong>太阳看起来在天空中移动，但<strong>太阳根本没有移动</strong>，这是因为<strong>地球的运动</strong>造成的。<strong>哥白尼（Copernicus）和开普勒（Kepler）</strong>等天文学家多年的研究发展出了<strong>日心说</strong>；而<strong>伽利略（Galileo）对引力（gravity）的研究</strong>让天文学家明白了行星如何保持在轨道上运行。
+          </div>
+        </div>
+      </div>
+
+      <!-- =============================================================== -->
+      <!-- U2 L1 WEEKLY SCIENCE REVISION: THE SOLAR SYSTEM (完整增补内容)  -->
+      <!-- =============================================================== -->
+      <div class="l1-banner">
+        <div class="l1-banner-eyebrow">Weekly Science Revision · 每周科学课程概览 (Weekly Science Overview)</div>
+        <h2>🪐 第二单元 第1课 —— 太阳系 (U2 L1 — The Solar System)</h2>
+        <p>完整收录第1课《The Solar System》行星数据表、课堂比例模型活动、Star Words 核心词汇、岩石行星 vs. 气态巨行星对比及太阳/月球数据。</p>
+      </div>
+
+      <!-- 1. 行星数据表 (Planet Data Table) & 6. 太阳与月球数据 (Sun & Moon Facts) -->
+      <h2 class="section-heading">📊 1. 行星数据表与太阳/月球数据 (Planet Data Table & Sun/Moon Facts)</h2>
+      <div class="unit-legend-bar">
+        <strong>📏 单位说明 (Units Legend)：</strong>
+        <span class="unit-pill">km = 千米 (直径与距离单位)</span>
+        <span class="unit-pill">M = million (百万)</span>
+        <span class="unit-pill">B = billion (十亿)</span>
+        <span class="unit-pill">d = day (天)</span>
+        <span class="unit-pill">h = hour (小时)</span>
+        <span class="unit-pill">y = year (年)</span>
+      </div>
+
+      <div class="sun-moon-grid">
+        <div class="sun-moon-card">
+          <span class="sun-moon-icon">☀️</span>
+          <div>
+            <h3 style="font-size:16px; font-weight:800; color:var(--apple-blue); margin-bottom:4px;">Sun 太阳 (Star at the Centre)</h3>
+            <p style="font-size:14px; margin-bottom:4px;"><strong>Diameter 直径：</strong>1,392,700 km</p>
+            <p style="font-size:13.5px; color:var(--apple-subtext);">相当于 <strong>109 个地球并排的宽度</strong> (<strong>109 Earths wide</strong>)。</p>
+          </div>
+        </div>
+        <div class="sun-moon-card">
+          <span class="sun-moon-icon">🌙</span>
+          <div>
+            <h3 style="font-size:16px; font-weight:800; color:var(--apple-blue); margin-bottom:4px;">Moon 月球 (Earth's Natural Satellite)</h3>
+            <p style="font-size:14px; margin-bottom:4px;"><strong>Diameter 直径：</strong>3,475 km</p>
+            <p style="font-size:13.5px; color:var(--apple-subtext);">约为<strong>地球直径的 0.27 倍</strong> (<strong>0.27× Earth</strong>)。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <table class="planet-data-table">
+          <thead>
+            <tr>
+              <th>Planet 行星</th>
+              <th>Diameter 直径 (km)</th>
+              <th>To Sun 距太阳</th>
+              <th>Day 一天 (自转)</th>
+              <th>Year 一年 (公转)</th>
+              <th>Moons 卫星数量</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>🪨 Mercury 水星</strong> <span class="type-badge rocky">Rocky 岩石</span></td>
+              <td>4,879</td>
+              <td>58 M</td>
+              <td>59 d</td>
+              <td>88 d</td>
+              <td><strong>0</strong></td>
+            </tr>
+            <tr>
+              <td><strong>🌕 Venus 金星</strong> <span class="type-badge rocky">Rocky 岩石</span></td>
+              <td>12,104</td>
+              <td>108 M</td>
+              <td>243 d</td>
+              <td>225 d</td>
+              <td><strong>0</strong></td>
+            </tr>
+            <tr>
+              <td><strong>🌍 Earth 地球</strong> <span class="type-badge rocky">Rocky 岩石</span></td>
+              <td>12,756</td>
+              <td>150 M</td>
+              <td>24 h</td>
+              <td>365 d</td>
+              <td><strong>1</strong></td>
+            </tr>
+            <tr>
+              <td><strong>🔴 Mars 火星</strong> <span class="type-badge rocky">Rocky 岩石</span></td>
+              <td>6,792</td>
+              <td>228 M</td>
+              <td>24.6 h</td>
+              <td>687 d</td>
+              <td><strong>2</strong></td>
+            </tr>
+            <tr>
+              <td><strong>🟠 Jupiter 木星</strong> <span class="type-badge gas">Gas Giant 气态</span></td>
+              <td>142,984</td>
+              <td>778 M</td>
+              <td>9.9 h</td>
+              <td>12 y</td>
+              <td><strong>95+</strong></td>
+            </tr>
+            <tr>
+              <td><strong>🪐 Saturn 土星</strong> <span class="type-badge gas">Gas Giant 气态</span></td>
+              <td>120,536</td>
+              <td>1.4 B</td>
+              <td>10.7 h</td>
+              <td>29 y</td>
+              <td><strong>140+</strong></td>
+            </tr>
+            <tr>
+              <td><strong>🧊 Uranus 天王星</strong> <span class="type-badge gas">Gas Giant 气态</span></td>
+              <td>51,118</td>
+              <td>2.9 B</td>
+              <td>17 h</td>
+              <td>84 y</td>
+              <td><strong>28</strong></td>
+            </tr>
+            <tr>
+              <td><strong>🔵 Neptune 海王星</strong> <span class="type-badge gas">Gas Giant 气态</span></td>
+              <td>49,528</td>
+              <td>4.5 B</td>
+              <td>16 h</td>
+              <td>165 y</td>
+              <td><strong>16</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 5. 行星分类与特性对比 (Rocky Planets vs. Gas Giants) -->
+      <h2 class="section-heading">⚖️ 2. 行星分类与特性对比 (Rocky Planets vs. Gas Giants)</h2>
+      <div class="compare-grid">
+        <div class="compare-card rocky-card">
+          <h3 style="font-size:18px; font-weight:800; color:#d97706;">🪨 岩石行星 (Rocky planets)</h3>
+          <div class="compare-tag">特征：内侧、小、主要由岩石构成 (Inner · small · made of rock)</div>
+          <ul class="planet-feature-list">
+            <li><strong>Mercury 水星：</strong>最小最快 (smallest & fastest)；白天 <strong>430 °C</strong>，夜晚 <strong>−180 °C</strong>。</li>
+            <li><strong>Venus 金星：</strong>厚厚的云层锁住热量 (thick clouds trap heat)，是<strong>最热的行星 (465 °C)</strong>。</li>
+            <li><strong>Earth 地球：</strong>唯一有<strong>液态水和生命</strong>的行星 (only planet with liquid water and life)。</li>
+            <li><strong>Mars 火星：</strong>覆盖<strong>红色尘土</strong> (red dust)；拥有<strong>太阳系最高的火山</strong> (tallest volcano in the Solar System)。</li>
+          </ul>
+        </div>
+
+        <div class="compare-card gas-card">
+          <h3 style="font-size:18px; font-weight:800; color:#9333ea;">💨 气态巨行星 (Gas giants)</h3>
+          <div class="compare-tag">特征：外侧、巨大、主要由气体构成 (Outer · giant · mostly gas)</div>
+          <ul class="planet-feature-list">
+            <li><strong>Jupiter 木星：</strong>最大 (largest)；<strong>大红斑比整个地球还宽</strong> (Great Red Spot is wider than Earth)。</li>
+            <li><strong>Saturn 土星：</strong>拥有著名的<strong>冰环</strong> (famous icy rings)；<strong>密度小到能浮在水上</strong> (low density — could float on water)。</li>
+            <li><strong>Uranus 天王星：</strong>几乎<strong>躺着自转</strong> (<em>spins on its side</em>)。</li>
+            <li><strong>Neptune 海王星：</strong>距离太阳<strong>最远</strong> (farthest from the Sun)；<strong>风速超过每小时 2,000 千米</strong> (<em>winds over 2,000 km/h</em>)。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 2. 学习总结与课堂活动 & 3. Star Words & 4. 核心知识 & 7. 延伸阅读 -->
+      <h2 class="section-heading">🏫 3. 第1课课堂总结、核心词汇与核心知识 (L1 Overview, Star Words & Key Knowledge)</h2>
+      <div class="knowledge-grid">
+        <div class="ko-card">
+          <h3>🧻 学习总结与课堂活动 (Class Overview & Activities)</h3>
+          <p><strong>学习内容：</strong>学生们认识了太阳和绕它运行的八大行星。他们发现太阳系中一切都绕着太阳运行，并且太阳、地球和月球都近似球形。</p>
+          <p><strong>课堂活动：</strong>学生们分组制作了<strong>太阳系比例模型 (scale model of the Solar System)</strong>。每个小组先选定比例，再计算行星的缩放大小与缩放距离，然后测量并铺在卷纸上。</p>
+          <div class="zh-block">
+            <strong>💡 核心感悟（让学生们惊叹的两件事）：</strong><br/>
+            1. 与太阳相比行星竟然那么小 (<em>how small the planets are next to the Sun</em>)。<br/>
+            2. 它们之间又隔着那么空旷的空间 (<em>how much empty space lies between them</em>)。
+          </div>
+        </div>
+
+        <div class="ko-card">
+          <h3>⭐ 第1课核心词汇 (U2 L1 Star Words)</h3>
+          <p>1. <strong>Solar System 太阳系：</strong>the Sun and everything that orbits it. (太阳和绕它运行的一切天体。)</p>
+          <p>2. <strong>Planet 行星：</strong>a large, round body that orbits a star. (绕恒星运行的大型球状天体。)</p>
+          <p>3. <strong>Orbit 轨道：</strong>the curved path of an object around a star. (天体绕恒星运行的弯曲路径。)</p>
+          <p>4. <strong>Celestial body 天体：</strong>any natural object we can see in space. (太空中我们能看到的天然物体。)</p>
+          <p>5. <strong>Spherical 球形的：</strong>shaped like a ball, round in every direction. (像球一样，各个方向都是圆的。)</p>
+        </div>
+
+        <div class="ko-card">
+          <h3>🔑 第1课核心知识 (U2 L1 Key Knowledge)</h3>
+          <p>• <strong>太阳中心说：</strong>太阳是位于太阳系中心的恒星 (<em>The Sun is a star at the centre of the Solar System</em>)。</p>
+          <p>• <strong>八大行星顺序：</strong>水星、金星、地球、火星、木星、土星、天王星、海王星 (<em>Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune</em>)。</p>
+          <p>• <strong>体积分级：</strong>岩石行星很小，气态巨行星巨大 (<em>Rocky planets are small; gas giants are huge</em>)。</p>
+          <p>• <strong>公转与分布：</strong>卫星绕行星运行；<strong>小行星带位于火星与木星之间</strong> (<em>Moons orbit planets; asteroids lie between Mars and Jupiter</em>)。</p>
+          <p>• <strong>天体形状：</strong>太阳、地球和月球都近似球形 (<em>The Sun, Earth and Moon are approximately spherical</em>)。</p>
+        </div>
+
+        <div class="ko-card read-more-links">
+          <h3>🚀 延伸阅读 (Read More — NASA Science)</h3>
+          <p>探索更多来自 NASA 官方的太阳系与行星科学资料：</p>
+          <p>🔗 <a href="https://science.nasa.gov/solar-system" target="_blank" rel="noopener noreferrer">science.nasa.gov/solar-system</a></p>
+          <p>🔗 <a href="https://science.nasa.gov/solar-system/planets/what-is-a-planet/" target="_blank" rel="noopener noreferrer">science.nasa.gov/solar-system/planets/what-is-a-planet/</a></p>
+          <div class="zh-block">
+            <strong>复习小贴士：</strong>切换到顶部 <strong>⚔️ Battle Quiz (闯关刷题)</strong> 并点击 <strong>🚀 U2 L1 Solar System (第1课太阳系复习 14 题)</strong> 即可专项挑战本课全部考点！
           </div>
         </div>
       </div>
@@ -2084,6 +2518,260 @@
         expEn: "VICTORY STRIKE! In the Geocentric model (old belief), planets and the Sun orbited Earth. In the Heliocentric model (true Solar System structure), the planets orbit around the Sun!",
         expZh: "终极胜利一击！在地心说（Geocentric model，过去的观念）中，人们认为行星和太阳绕地球转；而在日心说（Heliocentric model，真实的太阳系结构）中，行星围绕太阳运行！",
         keyPoint: "Final Mastery: Geocentric (Earth-centered old belief) vs. Heliocentric (Sun-centered true structure)."
+      },
+
+      // ---------------- STAGE 5: U2 L1 THE SOLAR SYSTEM REVISION (14 Questions) ----------------
+      {
+        id: 37,
+        category: "l1rev",
+        catLabel: "🚀 U2 L1 Solar System · 第1课太阳系复习",
+        reward: "+30 DMG · +15 XP",
+        qEn: "In the U2 L1 Star Words, how is 'Solar System (太阳系)' defined?",
+        qZh: "在第1课核心词汇（Star Words）中，“Solar System（太阳系）”的定义是什么？",
+        options: [
+          "The Sun and everything that orbits it (太阳和绕它运行的一切天体).",
+          "Only the Earth and the Moon.",
+          "A group of stars that never move.",
+          "The curved path of an object around a planet."
+        ],
+        answer: 0,
+        expEn: "Direct Hit! In U2 L1 Star Words, Solar System is defined as 'the Sun and everything that orbits it.'",
+        expZh: "命中目标！在第1课核心词汇中，Solar System（太阳系）的定义是“the Sun and everything that orbits it（太阳和绕它运行的一切天体）”。",
+        keyPoint: "L1 Star Word: Solar System = the Sun and everything that orbits it."
+      },
+      {
+        id: 38,
+        category: "l1rev",
+        catLabel: "🚀 U2 L1 Solar System · 第1课太阳系复习",
+        reward: "+30 DMG · +15 XP",
+        qEn: "Which U2 L1 Star Word means 'shaped like a ball, round in every direction'?",
+        qZh: "哪一个第1课核心词汇（Star Word）的意思是“shaped like a ball, round in every direction（像球一样，各个方向都是圆的）”？",
+        options: [
+          "Orbit (轨道)",
+          "Spherical (球形的)",
+          "Celestial body (天体)",
+          "Asteroid (小行星)"
+        ],
+        answer: 1,
+        expEn: "Awesome strike! 'Spherical' means shaped like a ball, round in every direction. The Sun, Earth and Moon are approximately spherical!",
+        expZh: "漂亮的一击！“Spherical（球形的）”意为像球一样，各个方向都是圆的。太阳、地球和月球都近似球形（approximately spherical）！",
+        keyPoint: "L1 Star Word: Spherical = shaped like a ball, round in every direction."
+      },
+      {
+        id: 39,
+        category: "l1rev",
+        catLabel: "🚀 U2 L1 Solar System · 第1课太阳系复习",
+        reward: "+30 DMG · +15 XP",
+        qEn: "When students built a scale model of the Solar System on toilet paper in Lesson 1, what TWO things amazed them?",
+        qZh: "在第1课课堂活动中，学生们用卷纸制作了太阳系比例模型，哪【两件事】最让他们惊叹？",
+        options: [
+          "How small the planets are next to the Sun, and how much empty space lies between them.",
+          "How large the rocky planets are compared to the Sun, and how close together all planets are.",
+          "That all 8 planets are the exact same size and touch each other.",
+          "That the Moon is wider than the Sun."
+        ],
+        answer: 0,
+        expEn: "Spot on! Building the scale model showed: (1) how small the planets are next to the Sun, and (2) how much empty space lies between them!",
+        expZh: "完全正确！制作太阳系比例模型让学生们惊叹的两件事是：(1) 与太阳相比行星竟然那么小（how small the planets are next to the Sun）；(2) 它们之间又隔着那么空旷的空间（how much empty space lies between them）！",
+        keyPoint: "L1 Class Activity: Planets are tiny next to the Sun & huge empty space lies between them."
+      },
+      {
+        id: 40,
+        category: "l1rev",
+        catLabel: "🚀 U2 L1 Solar System · 第1课太阳系复习",
+        reward: "+30 DMG · +15 XP",
+        qEn: "According to the U2 L1 Sun & Moon Facts, how wide is the Sun (1,392,700 km) and how wide is the Moon (3,475 km) compared to Earth?",
+        qZh: "根据第1课太阳与月球数据，太阳（直径 1,392,700 km）和月球（直径 3,475 km）分别相当于地球直径的多少倍？",
+        options: [
+          "The Sun is 109 Earths wide; the Moon is about 0.27× Earth's diameter.",
+          "The Sun is 10 Earths wide; the Moon is 2× Earth's diameter.",
+          "The Sun and Moon are both the exact same size as Earth (1× Earth).",
+          "The Sun is 0.27× Earth; the Moon is 109 Earths wide."
+        ],
+        answer: 0,
+        expEn: "Brilliant calculation! The Sun has a diameter of 1,392,700 km (109 Earths wide), while the Moon has a diameter of 3,475 km (about 0.27× Earth)!",
+        expZh: "计算精准！太阳直径为 1,392,700 km（相当于 109 个地球并排的宽度 / 109 Earths wide），而月球直径为 3,475 km（约为地球直径的 0.27 倍 / 0.27× Earth）！",
+        keyPoint: "Sun = 1,392,700 km (109 Earths wide) · Moon = 3,475 km (0.27× Earth)."
+      },
+      {
+        id: 41,
+        category: "l1rev",
+        catLabel: "🚀 U2 L1 Solar System · 第1课太阳系复习",
+        reward: "+30 DMG · +15 XP",
+        qEn: "According to U2 L1 Key Knowledge, where do asteroids lie in our Solar System?",
+        qZh: "根据第1课核心知识（Key Knowledge），小行星带（asteroids）位于哪两颗行星之间？",
+        options: [
+          "Between Earth and Venus (地球与金星之间)",
+          "Between Mars and Jupiter (火星与木星之间)",
+          "Between Saturn and Uranus (土星与天王星之间)",
+          "Between Mercury and the Sun (水星与太阳之间)"
+        ],
+        answer: 1,
+        expEn: "Bullseye! Moons orbit planets, and asteroids lie between Mars (the last rocky planet) and Jupiter (the first gas giant)!",
+        expZh: "正中靶心！卫星绕行星运行，而小行星带位于火星（Mars）与木星（Jupiter）之间！",
+        keyPoint: "Key Knowledge: Moons orbit planets; asteroids lie between Mars and Jupiter."
+      },
+      {
+        id: 42,
+        category: "l1rev",
+        catLabel: "🚀 U2 L1 Solar System · 第1课太阳系复习",
+        reward: "+30 DMG · +15 XP",
+        qEn: "Which rocky planet is the SMALLEST (4,879 km) and FASTEST (88-day year), with 430 °C days and −180 °C nights?",
+        qZh: "哪一颗岩石行星体积最小（直径 4,879 km）、公转最快（一年仅 88 天），且白天高达 430 °C、夜晚低至 −180 °C？",
+        options: [
+          "Mercury (水星)",
+          "Venus (金星)",
+          "Mars (火星)",
+          "Neptune (海王星)"
+        ],
+        answer: 0,
+        expEn: "Super strike! Mercury is the smallest (4,879 km) and fastest planet (88-day orbit), reaching 430 °C in the day and −180 °C at night!",
+        expZh: "超强一击！水星（Mercury）最小最快（直径 4,879 km，公转周期 88 天），白天温度达 430 °C，夜晚低至 −180 °C！",
+        keyPoint: "Mercury: Smallest & fastest rocky planet; 430 °C day, −180 °C night; 0 moons."
+      },
+      {
+        id: 43,
+        category: "l1rev",
+        catLabel: "🚀 U2 L1 Solar System · 第1课太阳系复习",
+        reward: "+35 DMG · +15 XP",
+        qEn: "Which planet is the HOTTEST planet (465 °C) because thick clouds trap heat, and has a day (243 d) longer than its year (225 d)?",
+        qZh: "哪颗行星因为厚厚的云层锁住热量而成为【最热的行星（465 °C）】，而且它自转一天（243 天）比公转一年（225 天）还要长？",
+        options: [
+          "Mercury (水星)",
+          "Venus (金星)",
+          "Mars (火星)",
+          "Jupiter (木星)"
+        ],
+        answer: 1,
+        expEn: "Critical Hit! Even though Mercury is closer to the Sun, Venus is the hottest planet (465 °C) because its thick clouds trap heat! Its day is 243 Earth days and its year is 225 Earth days.",
+        expZh: "暴击伤害！虽然水星离太阳最近，但金星（Venus）因为厚厚的云层锁住热量，是太阳系最热的行星（465 °C）！它的一天（自转 243 d）比一年（公转 225 d）还长。",
+        keyPoint: "Venus: Thick clouds trap heat -> hottest planet (465 °C); Day = 243 d, Year = 225 d, Moons = 0."
+      },
+      {
+        id: 44,
+        category: "l1rev",
+        catLabel: "🚀 U2 L1 Solar System · 第1课太阳系复习",
+        reward: "+35 DMG · +15 XP",
+        qEn: "Which rocky planet is covered in red dust, has 2 moons, and boasts the tallest volcano in the Solar System?",
+        qZh: "哪颗岩石行星覆盖着红色尘土（red dust），拥有 2 颗卫星，并且拥有太阳系最高的火山？",
+        options: [
+          "Earth (地球)",
+          "Mars (火星)",
+          "Venus (金星)",
+          "Saturn (土星)"
+        ],
+        answer: 1,
+        expEn: "Great job! Mars is covered in red dust, has 2 moons, a 24.6-hour day, a 687-day year, and the tallest volcano in the Solar System!",
+        expZh: "干得漂亮！火星（Mars）覆盖红色尘土，有 2 颗卫星，自转一天 24.6 小时，公转一年 687 天，拥有太阳系最高的火山！",
+        keyPoint: "Mars: Red dust + tallest volcano in the Solar System + 2 moons."
+      },
+      {
+        id: 45,
+        category: "l1rev",
+        catLabel: "🚀 U2 L1 Solar System · 第1课太阳系复习",
+        reward: "+35 DMG · +15 XP",
+        qEn: "Which gas giant is the LARGEST planet (diameter 142,984 km), has the shortest day (9.9 hours), 95+ moons, and a Great Red Spot wider than Earth?",
+        qZh: "哪颗气态巨行星体积最大（直径 142,984 km）、自转最快（一天仅 9.9 小时）、有 95+ 颗卫星，并且它的大红斑比整个地球还宽？",
+        options: [
+          "Jupiter (木星)",
+          "Saturn (土星)",
+          "Uranus (天王星)",
+          "Neptune (海王星)"
+        ],
+        answer: 0,
+        expEn: "Mega Slash! Jupiter is the largest planet (142,984 km), spins in just 9.9 hours, has 95+ moons, and its Great Red Spot is wider than Earth!",
+        expZh: "强力斩击！木星（Jupiter）是最大的行星（直径 142,984 km），一天仅 9.9 小时，拥有 95+ 颗卫星，它的大红斑（Great Red Spot）比整个地球还宽！",
+        keyPoint: "Jupiter: Largest planet (142,984 km), shortest day (9.9 h), 95+ moons, Great Red Spot wider than Earth."
+      },
+      {
+        id: 46,
+        category: "l1rev",
+        catLabel: "🚀 U2 L1 Solar System · 第1课太阳系复习",
+        reward: "+35 DMG · +15 XP",
+        qEn: "Which gas giant has famous icy rings, the MOST moons in the data table (140+), and a density so low it could float on water?",
+        qZh: "哪颗气态巨行星拥有著名的冰环（icy rings）、数据表中最多的卫星数量（140+ 颗），且密度小到能浮在水上？",
+        options: [
+          "Jupiter (木星)",
+          "Saturn (土星)",
+          "Uranus (天王星)",
+          "Mars (火星)"
+        ],
+        answer: 1,
+        expEn: "Diamond Sword Strike! Saturn has famous icy rings, 140+ moons (the most in the Solar System!), and its density is so low it could float on water!",
+        expZh: "钻石剑暴击！土星（Saturn）拥有著名的冰环、最多的卫星（140+ 颗），而且密度小到能浮在水上！",
+        keyPoint: "Saturn: Famous icy rings, 140+ moons, low density (can float on water)."
+      },
+      {
+        id: 47,
+        category: "l1rev",
+        catLabel: "🚀 U2 L1 Solar System · 第1课太阳系复习",
+        reward: "+35 DMG · +15 XP",
+        qEn: "Which gas giant (2.9 B km from the Sun, 84-year orbit, 28 moons) is famous because it 'spins on its side (几乎躺着自转)'?",
+        qZh: "哪颗气态巨行星（距太阳 29 亿千米，公转周期 84 年，28 颗卫星）以“几乎躺着自转（spins on its side）”而闻名？",
+        options: [
+          "Uranus (天王星)",
+          "Neptune (海王星)",
+          "Saturn (土星)",
+          "Venus (金星)"
+        ],
+        answer: 0,
+        expEn: "Spot on! Uranus (2.9 B km from the Sun, 17-hour day, 84-year orbit, 28 moons) famously spins on its side!",
+        expZh: "完全正确！天王星（Uranus，距太阳 2.9 B km，一天 17 小时，一年 84 年，28 颗卫星）几乎躺着自转（spins on its side）！",
+        keyPoint: "Uranus: Spins on its side; 2.9 B km from Sun; 84-year orbit; 28 moons."
+      },
+      {
+        id: 48,
+        category: "l1rev",
+        catLabel: "🚀 U2 L1 Solar System · 第1课太阳系复习",
+        reward: "+40 DMG · +20 XP",
+        qEn: "Which gas giant is FARTHEST from the Sun (4.5 B km, 165-year orbit, 16 moons) and has supersonic winds over 2,000 km/h?",
+        qZh: "哪颗气态巨行星距离太阳最远（45 亿千米，公转一年需要 165 年，16 颗卫星），并且风速超过每小时 2,000 千米（winds over 2,000 km/h）？",
+        options: [
+          "Mercury (水星)",
+          "Jupiter (木星)",
+          "Uranus (天王星)",
+          "Neptune (海王星)"
+        ],
+        answer: 3,
+        expEn: "Boom! Neptune is the farthest planet from the Sun (4.5 billion km, taking 165 years to orbit once) and has winds over 2,000 km/h!",
+        expZh: "完美命中！海王星（Neptune）距离太阳最远（4.5 B km，公转一圈需 165 年），风速超过每小时 2,000 千米（winds over 2,000 km/h）！",
+        keyPoint: "Neptune: Farthest from the Sun (4.5 B km, 165 y orbit); winds over 2,000 km/h."
+      },
+      {
+        id: 49,
+        category: "l1rev",
+        catLabel: "🚀 U2 L1 Solar System · 第1课太阳系复习",
+        reward: "+40 DMG · +20 XP",
+        qEn: "Look at the Planet Data Table: Which TWO planets in our Solar System have ZERO (0) moons?",
+        qZh: "根据行星数据表（Planet Data Table），太阳系中哪【两颗】行星的卫星数量为 0（没有天然卫星）？",
+        options: [
+          "Mercury and Venus (水星和金星)",
+          "Earth and Mars (地球和火星)",
+          "Uranus and Neptune (天王星和海王星)",
+          "Jupiter and Saturn (木星和土星)"
+        ],
+        answer: 0,
+        expEn: "Sharp eyes! According to the Planet Data Table, Mercury (0 moons) and Venus (0 moons) are the only two planets with no moons! Earth has 1, and Mars has 2.",
+        expZh: "火眼金睛！根据行星数据表，水星（Mercury，0 颗）和金星（Venus，0 颗）是仅有的两颗没有卫星的行星！地球有 1 颗，火星有 2 颗。",
+        keyPoint: "Planet Data Table Moons: Mercury = 0, Venus = 0, Earth = 1, Mars = 2, Jupiter = 95+, Saturn = 140+, Uranus = 28, Neptune = 16."
+      },
+      {
+        id: 50,
+        category: "l1rev",
+        catLabel: "🚀 U2 L1 Solar System · 第1课太阳系复习",
+        reward: "+50 DMG · +30 XP (L1 BOSS)",
+        qEn: "U2 L1 BOSS CHALLENGE: How does the Lesson 1 Revision sheet contrast Rocky Planets vs. Gas Giants?",
+        qZh: "【第1课终极挑战】第1课复习资料是如何对比“岩石行星（Rocky planets）”与“气态巨行星（Gas giants）”的三大特征的？",
+        options: [
+          "Rocky planets: Inner · small · made of rock | Gas giants: Outer · giant · mostly gas.",
+          "Rocky planets: Outer · giant · mostly gas | Gas giants: Inner · small · made of rock.",
+          "Both Rocky planets and Gas giants are small, inner planets made of solid ice.",
+          "Rocky planets have 100+ moons each, while Gas giants have 0 moons."
+        ],
+        answer: 0,
+        expEn: "ULTIMATE L1 VICTORY! Rocky planets (Mercury, Venus, Earth, Mars) are Inner · small · made of rock, while Gas giants (Jupiter, Saturn, Uranus, Neptune) are Outer · giant · mostly gas!",
+        expZh: "第1课终极胜利！岩石行星（水、金、地、火）的特征是：内侧、小、主要由岩石构成（Inner · small · made of rock）；气态巨行星（木、土、天、海）的特征是：外侧、巨大、主要由气体构成（Outer · giant · mostly gas）！",
+        keyPoint: "Rocky planets = Inner · small · made of rock | Gas giants = Outer · giant · mostly gas."
       }
     ];
 
@@ -2188,40 +2876,44 @@
     // =========================================================================
     const PLANET_INFO = {
       sun: {
-        en: "☀️ <strong>The Sun (太阳):</strong> A huge star that Earth and the other planets in our solar system orbit around. A Star is a giant ball of gas held together by its own gravity. The Sun does NOT move across the sky—it seems to move because of the movements (rotation) of Earth!",
-        zh: "中文考点：太阳是一颗巨大的恒星（huge star），由自身引力聚集在一起的巨大气体球。太阳本身根本没有移动，白天太阳看起来东升西落是因为地球的自转！"
+        en: "☀️ <strong>The Sun (太阳):</strong> A huge star at the centre of the Solar System (giant ball of gas held together by gravity). <strong>Diameter: 1,392,700 km (109 Earths wide!)</strong>. The Sun does NOT move across the sky—it seems to move because of Earth's rotation!",
+        zh: "中文考点：太阳是位于太阳系中心的巨大恒星，直径 1,392,700 km（相当于 109 个地球并排的宽度）。太阳本身不移动，东升西落是地球自转造成的！"
+      },
+      moon: {
+        en: "🌙 <strong>The Moon (月球):</strong> Earth's natural satellite, approximately spherical. <strong>Diameter: 3,475 km (0.27× Earth)</strong>. Orbits Earth in an oval-shaped path while spinning on its axis; appears different shapes as the Sun lights up different parts of it.",
+        zh: "中文考点：地球的天然卫星，近似球形，直径 3,475 km（约为地球直径的 0.27 倍）。以椭圆形轨道绕地球运行，月相变化是因为太阳照亮了月球的不同部分。"
       },
       mercury: {
-        en: "🪨 <strong>1. Mercury (水星):</strong> The closest planet to the Sun and one of the 4 <strong>rocky planets</strong> (with Venus, Earth, and Mars). Mostly made up of <strong>metal and rock</strong>.",
-        zh: "中文考点：距离太阳第1近的行星，属于四颗岩石行星（rocky planets）之一，主要由金属和岩石（metal and rock）构成。"
+        en: "🪨 <strong>1. Mercury (水星):</strong> Inner <strong>rocky planet</strong> (metal & rock) — <strong>smallest and fastest</strong>! <strong>Diameter:</strong> 4,879 km · <strong>To Sun:</strong> 58 M km · <strong>Day:</strong> 59 d · <strong>Year:</strong> 88 d · <strong>Moons:</strong> 0. Extreme temps: <strong>430 °C in the day, −180 °C at night</strong>.",
+        zh: "中文考点：第1颗岩石行星，最小最快！直径 4,879 km，距太阳 58 M km，自转 59 天，公转 88 天，0 颗卫星；白天 430 °C，夜晚 −180 °C。"
       },
       venus: {
-        en: "🌕 <strong>2. Venus (金星):</strong> The 2nd planet from the Sun and one of the 4 <strong>rocky planets</strong>. Mostly made up of <strong>metal and rock</strong>.",
-        zh: "中文考点：距离太阳第2近的行星，属于岩石行星，主要由金属和岩石构成。"
+        en: "🌕 <strong>2. Venus (金星):</strong> Inner <strong>rocky planet</strong> (metal & rock). <strong>Thick clouds trap heat</strong>, making it the <strong>hottest planet (465 °C)</strong>! <strong>Diameter:</strong> 12,104 km · <strong>To Sun:</strong> 108 M km · <strong>Day:</strong> 243 d · <strong>Year:</strong> 225 d · <strong>Moons:</strong> 0.",
+        zh: "中文考点：第2颗岩石行星。厚厚的云层锁住热量，是最热的行星（465 °C）！直径 12,104 km，距太阳 108 M km，一天 243 天（比一年 225 天还长），0 颗卫星。"
       },
       earth: {
-        en: "🌍 <strong>3. Earth (地球):</strong> Our home! A <strong>rocky planet</strong> (made of metal and rock). Earth <strong>rotates (spins) on its axis once every 24 hours</strong> (causing Day and Night) while <strong>orbiting the Sun in a little more than 365 days</strong>.",
-        zh: "中文考点：距离太阳第3近的岩石行星。每 24 小时绕地轴（North Pole 到 South Pole 的假想线）自转一周产生昼夜；同时绕太阳公转，耗时 365 天多一点。"
+        en: "🌍 <strong>3. Earth (地球):</strong> Inner <strong>rocky planet</strong> — the <strong>only planet with liquid water and life</strong>! <strong>Diameter:</strong> 12,756 km · <strong>To Sun:</strong> 150 M km · <strong>Day (Rotation):</strong> 24 h · <strong>Year (Orbit):</strong> 365 d (a little more than 365 days) · <strong>Moons:</strong> 1.",
+        zh: "中文考点：第3颗岩石行星，唯一有液态水和生命的行星！直径 12,756 km，距太阳 150 M km，每 24 小时绕地轴自转一周，绕太阳公转约 365 天，有 1 颗卫星（月球）。"
       },
       mars: {
-        en: "🔴 <strong>4. Mars (火星):</strong> The 4th planet from the Sun and the last of the 4 <strong>rocky planets</strong> (Mercury, Venus, Earth, Mars). Mostly made up of <strong>metal and rock</strong>.",
-        zh: "中文考点：距离太阳第4近的行星，也是四颗岩石行星（水、金、地、火）中的最后一颗，主要由金属和岩石构成。"
+        en: "🔴 <strong>4. Mars (火星):</strong> The 4th <strong>rocky planet</strong>, covered in <strong>red dust</strong> and home to the <strong>tallest volcano in the Solar System</strong>! (Asteroids lie between Mars and Jupiter.) <strong>Diameter:</strong> 6,792 km · <strong>To Sun:</strong> 228 M km · <strong>Day:</strong> 24.6 h · <strong>Year:</strong> 687 d · <strong>Moons:</strong> 2.",
+        zh: "中文考点：第4颗岩石行星，覆盖红色尘土，拥有太阳系最高的火山！（小行星带位于火星与木星之间。）直径 6,792 km，距太阳 228 M km，一天 24.6 h，一年 687 d，2 颗卫星。"
       },
       jupiter: {
-        en: "🟠 <strong>5. Jupiter (木星):</strong> The largest planet and the 5th from the Sun. Mostly made up of <strong>gases (helium and hydrogen)</strong>, although it has a <strong>core made up of rock and metal</strong>.",
-        zh: "中文考点：距离太阳第5近的气态巨行星。主要由气体（氦气 helium 和氢气 hydrogen）组成，但它的核心（core）由岩石和金属组成！"
+        en: "🟠 <strong>5. Jupiter (木星):</strong> Outer <strong>gas giant</strong> (helium & hydrogen with a rock/metal core) — the <strong>largest planet</strong>! Its <strong>Great Red Spot is wider than Earth</strong>. <strong>Diameter:</strong> 142,984 km · <strong>To Sun:</strong> 778 M km · <strong>Day:</strong> 9.9 h · <strong>Year:</strong> 12 y · <strong>Moons:</strong> 95+.",
+        zh: "中文考点：最大的气态巨行星（氦和氢组成，核心为岩石和金属），大红斑比整个地球还宽！直径 142,984 km，距太阳 778 M km，自转最快（一天 9.9 小时），公转 12 年，95+ 颗卫星。"
       },
       saturn: {
-        en: "🪐 <strong>6. Saturn (土星):</strong> The 6th planet from the Sun. Like Jupiter, Uranus, and Neptune, it is mostly made up of <strong>gases (helium and hydrogen)</strong> with a <strong>core made up of rock and metal</strong>.",
-        zh: "中文考点：距离太阳第6近的行星，主要由氦气和氢气组成，核心由岩石和金属构成。"
+        en: "🪐 <strong>6. Saturn (土星):</strong> Outer <strong>gas giant</strong> with <strong>famous icy rings</strong> and density so low it <strong>could float on water</strong>! <strong>Diameter:</strong> 120,536 km · <strong>To Sun:</strong> 1.4 B km · <strong>Day:</strong> 10.7 h · <strong>Year:</strong> 29 y · <strong>Moons:</strong> 140+ (most moons!).",
+        zh: "中文考点：第6颗气态巨行星，拥有著名的冰环，密度小到能浮在水上！直径 120,536 km，距太阳 1.4 B km，一天 10.7 小时，一年 29 年，拥有 140+ 颗卫星。"
       },
       uranus: {
-        en: "🧊 <strong>7. Uranus (天王星):</strong> The 7th planet from the Sun. Mostly made up of <strong>gases (helium and hydrogen)</strong>, with a <strong>core made up of rock and metal</strong>.",
-        zh: "中文考点：距离太阳第7近的行星，同样主要由气体（氦和氢）组成，核心由岩石和金属组成。"
+        en: "🧊 <strong>7. Uranus (天王星):</strong> Outer <strong>gas giant</strong> that famously <strong>spins on its side</strong>! <strong>Diameter:</strong> 51,118 km · <strong>To Sun:</strong> 2.9 B km · <strong>Day:</strong> 17 h · <strong>Year:</strong> 84 y · <strong>Moons:</strong> 28.",
+        zh: "中文考点：第7颗气态巨行星，几乎躺着自转（spins on its side）！直径 51,118 km，距太阳 2.9 B km，一天 17 小时，一年 84 年，28 颗卫星。"
       },
       neptune: {
-        en: "🔵 <strong>8. Neptune (海王星):</strong> The 8th and farthest planet from the Sun. Mostly made up of <strong>gases (helium and hydrogen)</strong>, with a <strong>core made up of rock and metal</strong>.",
-        zh: "中文考点：距离太阳第8近（最远）的行星，主要由气体（氦和氢）组成，核心由岩石和金属组成。"
+        en: "🔵 <strong>8. Neptune (海王星):</strong> Outer <strong>gas giant</strong> — <strong>farthest from the Sun</strong> with <strong>winds over 2,000 km/h</strong>! <strong>Diameter:</strong> 49,528 km · <strong>To Sun:</strong> 4.5 B km · <strong>Day:</strong> 16 h · <strong>Year:</strong> 165 y · <strong>Moons:</strong> 16.",
+        zh: "中文考点：距离太阳最远的第8颗气态巨行星，风速超过每小时 2,000 千米！直径 49,528 km，距太阳 4.5 B km，一天 16 小时，公转一年需 165 年，16 颗卫星。"
       },
       pluto: {
         en: "❄️ <strong>Pluto (冥王星):</strong> Pluto used to be considered a planet, but was <strong>reclassified as a dwarf planet in 2006</strong>!",
@@ -2355,9 +3047,18 @@
       document.getElementById("enemyRole").textContent = mob.role;
       document.getElementById("enemyAvatar").innerHTML = mob.svg;
 
+      const romanNumerals = ["I", "II", "III", "IV", "V", "MAX"];
+      const swordTier = romanNumerals[Math.min(romanNumerals.length - 1, Math.floor(state.mobsDefeated / 2))];
+      const swordSlotEl = document.getElementById("slotSwordLvl");
+      if (swordSlotEl) swordSlotEl.textContent = swordTier;
+
       const eHeartsHtml = [];
       for (let i = 0; i < mob.maxHearts; i++) {
-        eHeartsHtml.push(`<span class="heart-icon ${i < state.enemyHearts ? "" : "lost"}">${mob.heartIcon}</span>`);
+        if (state.enemyHearts <= 0) {
+          eHeartsHtml.push(`<span class="heart-icon">💀</span>`);
+        } else {
+          eHeartsHtml.push(`<span class="heart-icon ${i < state.enemyHearts ? "" : "lost"}">${mob.heartIcon}</span>`);
+        }
       }
       document.getElementById("enemyHeartsRow").innerHTML = eHeartsHtml.join("");
       const ePct = Math.max(0, Math.round((state.enemyHearts / mob.maxHearts) * 100));
@@ -2386,7 +3087,7 @@
             <div style="font-size:42px; margin-bottom:10px;">🏆</div>
             <h3 style="font-size:20px; font-weight:800; margin-bottom:6px;">No Mistakes in the Retry Camp! (当前没有错题！)</h3>
             <p style="color:var(--apple-subtext); font-size:14.5px;">
-              Player Armyere has cleared all mistakes! Switch back to <strong>All Quests (全部 36 题)</strong> to keep battling!
+              Player Armyere has cleared all mistakes! Switch back to <strong>All Quests (全部 50 题)</strong> to keep battling!
             </p>
           </div>
         `;
@@ -2535,14 +3236,7 @@
         }
 
         if (state.enemyHearts <= 0) {
-          playSFX("kill");
-          state.mobsDefeated += 1;
-          state.xp += 25;
-          state.shields += 1;
-          const defeatedName = currentMob.name;
-          state.currentMobIdx = (state.currentMobIdx + 1) % MOBS.length;
-          state.enemyHearts = MOBS[state.currentMobIdx].maxHearts;
-          logEl.innerHTML = `🏆 <strong>VICTORY!</strong> Armyere defeated <strong>${defeatedName}</strong> & looted +1 🛡️ Space Shield! Next wave: <strong>${MOBS[state.currentMobIdx].name}</strong>!`;
+          triggerMobKill(currentMob.name, bonusMsg);
         } else {
           playSFX("hit");
           logEl.innerHTML = `⚔️ <strong>Direct Hit!</strong> Armyere slashed <strong>${currentMob.name}</strong> for -1 Heart! (+15 XP, +1 💚 Emerald)${bonusMsg}`;
@@ -2593,7 +3287,8 @@
       if (targetAvatar) {
         const badge = document.createElement("div");
         badge.className = "floating-dmg " + (isCorrect ? "hit" : "hurt");
-        badge.textContent = isCorrect ? "⚔️ -1 HP! +15 XP" : "💥 -1 ❤️";
+        const killedNow = isCorrect && state.enemyHearts <= 0;
+        badge.textContent = killedNow ? "💀 MOB SLAIN! +40 XP" : (isCorrect ? "⚔️ -1 HP! +15 XP" : "💥 -1 ❤️");
         targetAvatar.appendChild(badge);
         setTimeout(() => badge.remove(), 1200);
       }
@@ -2613,6 +3308,128 @@
       delete state.selectedOptions[qId];
       delete state.battleSnapshots[qId];
       renderQuestions();
+      updateHUD();
+    }
+
+    let mobSpawnTimer = null;
+
+    function triggerMobKill(defeatedName, extraMsg = "") {
+      const logEl = document.getElementById("battleLogText");
+      const enemyAvatar = document.getElementById("enemyAvatar");
+      state.enemyHearts = 0;
+      state.mobsDefeated += 1;
+      state.xp += 25;
+      state.emeralds += 1;
+      state.shields += 1;
+      state.level = 1 + Math.floor(state.xp / 60);
+
+      playSFX("kill");
+      const nextMobIdx = (state.currentMobIdx + 1) % MOBS.length;
+      const nextMobName = MOBS[nextMobIdx].name;
+      logEl.innerHTML = `🏆 <strong>MOB SLAIN!</strong> Armyere's Enchanted Diamond Sword defeated <strong>${defeatedName}</strong>! (+25 XP, +1 🛡️ Space Shield, +1 💚 Emerald)${extraMsg} Spawning <strong>${nextMobName}</strong>...`;
+
+      updateHUD();
+
+      if (enemyAvatar) {
+        enemyAvatar.classList.remove("anim-shake", "anim-mob-death");
+        void enemyAvatar.offsetWidth;
+        enemyAvatar.classList.add("anim-mob-death");
+      }
+
+      if (mobSpawnTimer) clearTimeout(mobSpawnTimer);
+      mobSpawnTimer = setTimeout(() => {
+        state.currentMobIdx = nextMobIdx;
+        state.enemyHearts = MOBS[state.currentMobIdx].maxHearts;
+        if (enemyAvatar) {
+          enemyAvatar.classList.remove("anim-mob-death");
+        }
+        logEl.innerHTML = `⚔️ <strong>Wave ${state.currentMobIdx + 1}: ${MOBS[state.currentMobIdx].name}</strong> entered the arena! Answer a question or click <strong>⚔️ Diamond Sword</strong> to strike!`;
+        updateHUD();
+        mobSpawnTimer = null;
+      }, 900);
+    }
+
+    function useDiamondSword() {
+      // If previous mob is mid-death animation, immediately finish spawning next wave so rapid clicks work smoothly
+      if (mobSpawnTimer) {
+        clearTimeout(mobSpawnTimer);
+        mobSpawnTimer = null;
+        state.currentMobIdx = (state.currentMobIdx + 1) % MOBS.length;
+        state.enemyHearts = MOBS[state.currentMobIdx].maxHearts;
+      }
+
+      const playerAvatar = document.getElementById("playerAvatar");
+      const enemyAvatar = document.getElementById("enemyAvatar");
+      const arenaCard = document.getElementById("battleArenaCard");
+      const currentMob = MOBS[state.currentMobIdx];
+
+      playerAvatar.classList.remove("anim-lunge");
+      void playerAvatar.offsetWidth;
+      playerAvatar.classList.add("anim-lunge");
+
+      arenaCard.classList.remove("flash-hit", "flash-hurt");
+      void arenaCard.offsetWidth;
+      arenaCard.classList.add("flash-hit");
+
+      state.streak += 1;
+      triggerMobKill(currentMob.name, " ⚡ (Enchanted Diamond Sword Instant Slay!)");
+
+      if (enemyAvatar) {
+        const badge = document.createElement("div");
+        badge.className = "floating-dmg hit";
+        badge.textContent = "⚔️ SLAIN! 💀 +25 XP";
+        enemyAvatar.appendChild(badge);
+        setTimeout(() => badge.remove(), 1100);
+      }
+    }
+
+    function useSpaceShield() {
+      const logEl = document.getElementById("battleLogText");
+      logEl.innerHTML = `🛡️ <strong>Space Shield Status:</strong> Armyere has <strong>${state.shields}</strong> Shield(s) ready to automatically block mob counter-attacks! (Slay mobs to earn more!)`;
+    }
+
+    function useEmeralds() {
+      const logEl = document.getElementById("battleLogText");
+      if (state.emeralds >= 2) {
+        state.emeralds -= 2;
+        state.apples += 1;
+        playSFX("heal");
+        logEl.innerHTML = `💚 <strong>Villager Trade Complete!</strong> Traded 2 Emeralds for +1 🍎 Golden Apple!`;
+        updateHUD();
+      } else {
+        logEl.innerHTML = `💚 <strong>Space Villager Trade:</strong> Need 2 Emeralds to trade for +1 🍎 Golden Apple (You have ${state.emeralds} 💚). Answer questions or slay mobs to earn Emeralds!`;
+      }
+    }
+
+    function useSpyglass() {
+      const unanswered = QUESTIONS.find(q => state.answeredStatus[q.id] === undefined);
+      const logEl = document.getElementById("battleLogText");
+      if (unanswered) {
+        switchMainTab("quiz");
+        const card = document.getElementById("qCard_" + unanswered.id);
+        if (card) {
+          card.scrollIntoView({ behavior: "smooth", block: "center" });
+          logEl.innerHTML = `🔭 <strong>Astronomer's Spyglass:</strong> Locked onto Quest #${unanswered.id}!`;
+          return;
+        }
+      }
+      logEl.innerHTML = `🔭 <strong>Astronomer's Spyglass:</strong> You've explored all visible quests in this filter!`;
+    }
+
+    function useTotem() {
+      const logEl = document.getElementById("battleLogText");
+      if (state.totems <= 0) {
+        logEl.innerHTML = `🗿 No Totems of Undying left!`;
+        return;
+      }
+      if (state.playerHearts >= state.maxPlayerHearts) {
+        logEl.innerHTML = `🗿 <strong>Totem of Undying:</strong> Armed and ready! It will automatically revive Armyere to 5 ❤️ Hearts if health drops to 0.`;
+        return;
+      }
+      state.totems -= 1;
+      state.playerHearts = state.maxPlayerHearts;
+      playSFX("heal");
+      logEl.innerHTML = `🗿 <strong>Totem of Undying Activated!</strong> Armyere restored to full ❤️❤️❤️❤️❤️ Hearts!`;
       updateHUD();
     }
 

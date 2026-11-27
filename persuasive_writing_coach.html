@@ -1,0 +1,2915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grade 5 Persuasive Writing Coach | 五年级说服性写作闯关训练</title>
+  <style>
+    :root {
+      --bg: #f4f7f4;
+      --card: #ffffff;
+      --primary: #2d6a4f;
+      --primary-light: #d8f3dc;
+      --primary-dark: #1b4332;
+      --accent: #f4a261;
+      --accent-light: #fff3e0;
+      --danger: #e76f51;
+      --danger-light: #fde8e2;
+      --info: #219ebc;
+      --info-light: #e0f7fa;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius: 16px;
+      --shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* Top Header */
+    header {
+      background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 60%, #40916c 100%);
+      color: #fff;
+      padding: 24px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .title-area h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .park-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+
+    .park-home-btn:hover {
+      background: rgba(255, 255, 255, 0.28);
+      border-color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .title-area p {
+      font-size: 0.92rem;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .score-pill {
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-toggle-cn {
+      background: #fff;
+      color: var(--primary-dark);
+      border: none;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-toggle-cn:hover {
+      transform: translateY(-1px);
+      background: var(--primary-light);
+    }
+
+    /* Navigation Tabs (5 Progressive Levels) */
+    .level-nav {
+      max-width: 1100px;
+      margin: 20px auto 0;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+      gap: 10px;
+    }
+
+    .level-tab {
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 14px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .level-tab:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .level-tab.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary-dark);
+      box-shadow: 0 6px 14px rgba(45, 106, 79, 0.25);
+    }
+
+    .level-tab .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 99px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .level-tab.active .badge {
+      background: rgba(255, 255, 255, 0.22);
+      color: #fff;
+    }
+
+    .level-tab .tab-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: block;
+    }
+
+    .level-tab .tab-sub {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      display: block;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+
+    .level-section {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .level-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      color: var(--primary-dark);
+      margin: 16px 0 10px;
+    }
+
+    .cn-hint {
+      color: #4b5563;
+      font-size: 0.92rem;
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+      margin: 8px 0 14px;
+    }
+
+    body.hide-cn .cn-hint,
+    body.hide-cn .cn-inline {
+      display: none !important;
+    }
+
+    .cn-inline {
+      color: var(--muted);
+      font-size: 0.88em;
+      font-weight: 400;
+    }
+
+    /* Pill / Chip Buttons */
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 12px 0;
+    }
+
+    .chip {
+      background: #f3f4f6;
+      border: 2px solid #d1d5db;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .chip:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .chip.selected {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary-dark);
+    }
+
+    .chip.correct {
+      background: #2d6a4f !important;
+      color: #fff !important;
+      border-color: #1b4332 !important;
+    }
+
+    .chip.wrong {
+      background: var(--danger) !important;
+      color: #fff !important;
+      border-color: #b5381a !important;
+    }
+
+    /* Modality Meter */
+    .modality-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .modality-box {
+      border-radius: 12px;
+      padding: 16px;
+      border: 2px solid transparent;
+    }
+
+    .modality-high {
+      background: #ecfdf5;
+      border-color: #10b981;
+    }
+
+    .modality-med {
+      background: #fffbeb;
+      border-color: #f59e0b;
+    }
+
+    .modality-low {
+      background: #fef2f2;
+      border-color: #ef4444;
+    }
+
+    .word-tag {
+      display: inline-block;
+      background: #fff;
+      padding: 4px 10px;
+      border-radius: 8px;
+      margin: 4px 4px 0 0;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    /* Interactive Question Row */
+    .q-item {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .q-sentence {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .blank-slot {
+      display: inline-block;
+      min-width: 90px;
+      border-bottom: 3px solid var(--primary);
+      text-align: center;
+      font-weight: 700;
+      color: var(--primary-dark);
+      padding: 0 8px;
+      margin: 0 4px;
+      background: var(--primary-light);
+      border-radius: 6px 6px 0 0;
+    }
+
+    .feedback {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 8px;
+      min-height: 22px;
+    }
+
+    .feedback.ok { color: #15803d; }
+    .feedback.err { color: #b91c1c; }
+
+    /* Buttons */
+    .btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #1f2937;
+    }
+
+    .btn-secondary:hover {
+      background: #d1d5db;
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Vocab Filter Grid */
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .vocab-card {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+
+    .vocab-card:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .vocab-en {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .vocab-cn {
+      font-size: 0.92rem;
+      color: #475569;
+      margin-top: 4px;
+    }
+
+    .vocab-type {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-top: 6px;
+      display: inline-block;
+      background: #e2e8f0;
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+
+    /* Word Swapper / Upgrader */
+    .upgrade-box {
+      background: #fffbeb;
+      border: 2px dashed #f59e0b;
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 14px;
+    }
+
+    .weak-word {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      text-decoration: line-through;
+    }
+
+    .strong-slot {
+      background: #dcfce7;
+      color: #166534;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      border: 1px solid #86efac;
+    }
+
+
+    /* Inline Difficult Word Gloss */
+    .w-gloss {
+      border-bottom: 2px dotted #059669;
+      padding: 0 2px;
+      border-radius: 4px;
+      transition: background 0.15s ease;
+    }
+    .w-gloss:hover {
+      background: #d1fae5;
+    }
+    .w-gloss-cn {
+      font-size: 0.85em;
+      color: #047857;
+      font-weight: 600;
+      margin-left: 2px;
+    }
+    body.hide-cn .w-gloss-cn,
+    body.hide-cn .vocab-helper-bar {
+      display: none !important;
+    }
+    .vocab-helper-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin: 8px 0 10px;
+      padding: 8px 12px;
+      background: #f0fdf4;
+      border: 1px dashed #86efac;
+      border-radius: 10px;
+      font-size: 0.85rem;
+    }
+    .vocab-helper-title {
+      font-weight: 700;
+      color: #166534;
+      margin-right: 4px;
+    }
+    .vocab-mini-pill {
+      background: #ffffff;
+      border: 1px solid #bbf7d0;
+      border-radius: 999px;
+      padding: 2px 10px;
+      color: #14532d;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.1s ease, background 0.15s ease;
+    }
+    .vocab-mini-pill:hover {
+      background: #dcfce7;
+      transform: translateY(-1px);
+    }
+
+
+    /* Concept Mini-Game Box */
+    .mini-game-box {
+      background: linear-gradient(135deg, #f0fdf4 0%, #ecfeff 100%);
+      border: 2px solid #34d399;
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin: 14px 0 22px;
+      box-shadow: 0 3px 10px rgba(16, 185, 129, 0.08);
+    }
+    .mini-game-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .mini-game-title {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: #065f46;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .mini-game-badge {
+      background: #059669;
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    .mini-row {
+      background: #ffffff;
+      border: 1px solid #d1fae5;
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .mini-row-text {
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: #1f2937;
+      flex: 1 1 260px;
+    }
+    /* Power Battery Meter for Level 1 */
+    .battery-wrap {
+      background: #1f2937;
+      border-radius: 12px;
+      padding: 6px;
+      margin: 10px 0;
+      position: relative;
+      height: 38px;
+      overflow: hidden;
+    }
+    .battery-fill {
+      height: 100%;
+      border-radius: 8px;
+      transition: width 0.35s ease, background 0.35s ease;
+      display: flex;
+      align-items: center;
+      padding-left: 12px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    .step-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="title-area">
+      <h1>
+        <a href="index.html" class="park-home-btn" title="Back to Armyere's Learning Park">🏰 Park Home</a>
+        <span>🌱 Persuasive Writing Coach <span class="cn-inline">| 五年级说服性写作闯关</span></span>
+      </h1>
+      <p>Step-by-step from Easy Word Choices to Full Paragraphs <span class="cn-inline">(从选词填空到完整段落，一步步轻松写！)</span></p>
+    </div>
+    <div class="header-controls">
+      <div class="score-pill">⭐ Stars Earned: <span id="starCount">0</span></div>
+      <button class="btn-toggle-cn" onclick="toggleChinese()">中 / EN 提示开关</button>
+    </div>
+  </div>
+</header>
+
+<nav class="level-nav">
+  <button class="level-tab active" onclick="switchLevel(0)">
+    <span class="badge">Warm-Up 预热</span>
+    <span class="tab-title">0. Word Bank & Big Picture</span>
+    <span class="tab-sub cn-inline">双语词库 + 范文拆解</span>
+  </button>
+  <button class="level-tab" onclick="switchLevel(1)">
+    <span class="badge">Level 1 最简单</span>
+    <span class="tab-title">1. Power Words (Modality)</span>
+    <span class="tab-sub cn-inline">语气词：让态度变坚定</span>
+  </button>
+  <button class="level-tab" onclick="switchLevel(2)">
+    <span class="badge">Level 2 进阶词</span>
+    <span class="tab-title">2. Emotion Upgrader</span>
+    <span class="tab-sub cn-inline">情感词：把平淡词变高级</span>
+  </button>
+  <button class="level-tab" onclick="switchLevel(3)">
+    <span class="badge">Level 3 造句</span>
+    <span class="tab-title">3. Questions & Rule of 3</span>
+    <span class="tab-sub cn-inline">反问句 + 三连排比句</span>
+  </button>
+  <button class="level-tab" onclick="switchLevel(4)">
+    <span class="badge">Level 4 扩句</span>
+    <span class="tab-title">4. Noun Phrase Lego</span>
+    <span class="tab-sub cn-inline">像搭积木一样扩写名词</span>
+  </button>
+  <button class="level-tab" onclick="switchLevel(5)">
+    <span class="badge">Level 5 实战写作</span>
+    <span class="tab-title">5. Guided Paragraph Writer</span>
+    <span class="tab-sub cn-inline">填空式向导：写出高分段落</span>
+  </button>
+</nav>
+
+<main>
+  <!-- ================= LEVEL 0: WARM UP & VOCAB BANK ================= -->
+  <section class="level-section active" id="level-0">
+    <div class="card">
+      <h2>🎯 What is Persuasive Writing? <span class="cn-inline">什么是说服性写作？（指南第1-4页）</span></h2>
+      <p>
+        <span class="w-gloss">Persuasive writing<span class="w-gloss-cn">(说服性写作)</span></span> tries to
+        <strong><span class="w-gloss">convince<span class="w-gloss-cn">(说服)</span></span> someone to agree with your <span class="w-gloss">opinion<span class="w-gloss-cn">(观点/看法)</span></span></strong> or
+        <strong><span class="w-gloss">take action<span class="w-gloss-cn">(采取行动)</span></span></strong>!
+        You are not just sharing plain facts — you are trying to change minds and <span class="w-gloss">inspire<span class="w-gloss-cn">(激励/鼓舞)</span></span> others to help the <span class="w-gloss">community<span class="w-gloss-cn">(社区)</span></span> and world around them.
+      </p>
+      <div class="cn-hint">
+        💡 <strong>一句话记住：</strong> 普通句子只是“讲事实”，而<strong>说服性写作 (Persuasive Writing)</strong> 是用<strong>坚定的语气 + 打动人的情感词 + 充足的理由</strong>，让读者产生共鸣并立刻行动！（点击下方任意带绿色虚线的难词胶囊可听发音 🔊）
+      </div>
+
+      <h3>👀 See the Difference: Plain Fact vs. Persuasive Writing! <span class="cn-inline">一眼看懂：普通句子 vs. 说服性句子</span></h3>
+      <div class="modality-grid" style="margin-bottom:18px;">
+        <div class="modality-box modality-low">
+          <strong>😐 Plain Fact (普通陈述句 — 只讲事实，不够打动人)</strong>
+          <p style="margin-top:8px; font-size:0.98rem;">"People cut down many trees every day. Animals live in the forest. Cutting trees is bad for the air."</p>
+          <p class="cn-inline" style="margin-top:4px;">（人们每天砍很多树。动物住在森林里。砍树对空气不好。—— 词汇简单，读者看完没有紧迫感。）</p>
+        </div>
+        <div class="modality-box modality-high" style="cursor:pointer;" onclick="speakText('Forests are the lungs of our planet, yet they are disappearing fast. This cruel destruction harms innocent animals and pollutes the air we breathe. Shouldn’t we act now to protect them?')">
+          <strong>🔥 Persuasive Writing (高分说服句 — 点击可听朗读 🔊)</strong>
+          <p style="margin-top:8px; font-size:0.98rem;">
+            "Forests are the <strong><span class="w-gloss">lungs<span class="w-gloss-cn">(肺)</span></span> of our planet</strong> — yet they are <strong><span class="w-gloss">disappearing<span class="w-gloss-cn">(消失)</span></span> fast</strong>!
+            This <strong><span class="w-gloss">cruel<span class="w-gloss-cn">(残忍的)</span></span> <span class="w-gloss">destruction<span class="w-gloss-cn">(破坏)</span></span></strong> <span class="w-gloss">harms<span class="w-gloss-cn">(伤害)</span></span> <span class="w-gloss">innocent<span class="w-gloss-cn">(无辜的)</span></span> animals and <span class="w-gloss">affects<span class="w-gloss-cn">(影响)</span></span> the air we all <span class="w-gloss">breathe<span class="w-gloss-cn">(呼吸)</span></span>.
+            <strong>Shouldn’t we act now to protect them?</strong>"
+          </p>
+          <p class="cn-inline" style="margin-top:4px;">（用了比喻 lungs of our planet + 情感词 cruel/innocent + 反问句 Shouldn't we...，立刻让读者想要保护森林！）</p>
+        </div>
+      </div>
+
+      <!-- Mini-Game 0A: Fact vs Persuasive Radar -->
+      <div class="mini-game-box">
+        <div class="mini-game-header">
+          <div class="mini-game-title">🎮 知识点小闯关 1：Fact or Persuasive Radar! <span class="cn-inline">（火眼金睛：是普通事实还是说服句？）</span></div>
+          <span class="mini-game-badge">边学边练 +3⭐</span>
+        </div>
+        <div id="miniGame0AContainer"></div>
+      </div>
+
+      <h3>📢 5 Types of Persuasive Texts & Examples <span class="cn-inline">五种常见的说服性文体及例子（指南第1页）</span></h3>
+      <div class="modality-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom:18px;">
+        <div class="q-item" style="margin-bottom:0;">
+          <strong>🎤 1. Speeches (演讲稿)</strong>
+          <p style="font-size:0.86rem; color:var(--muted);">To <span class="w-gloss">inspire<span class="w-gloss-cn">(鼓舞)</span></span> an <span class="w-gloss">audience<span class="w-gloss-cn">(听众)</span></span> to care or act.</p>
+          <p style="font-size:0.9rem; margin-top:6px; background:#ecfdf5; padding:6px 8px; border-radius:8px;"><em>Example:</em> "<span class="w-gloss">Fellow<span class="w-gloss-cn">(各位/同伴)</span></span> students, we <strong>must</strong> stop wasting paper in our classrooms today!"</p>
+          <p class="cn-inline" style="margin-top:4px;">在全校集会呼吁同学们节约用纸。</p>
+        </div>
+        <div class="q-item" style="margin-bottom:0;">
+          <strong>📰 2. Opinion Pieces (观点文章)</strong>
+          <p style="font-size:0.86rem; color:var(--muted);">To share your view about an <span class="w-gloss">issue<span class="w-gloss-cn">(议题/问题)</span></span>.</p>
+          <p style="font-size:0.9rem; margin-top:6px; background:#ecfdf5; padding:6px 8px; border-radius:8px;"><em>Example:</em> "Why Every City <strong>Should</strong> <span class="w-gloss">Ban<span class="w-gloss-cn">(禁止)</span></span> <span class="w-gloss">Single-Use<span class="w-gloss-cn">(一次性的)</span></span> Plastic Bags <span class="w-gloss">Immediately<span class="w-gloss-cn">(立刻)</span></span>."</p>
+          <p class="cn-inline" style="margin-top:4px;">在报纸/校刊发表为什么应该禁塑。</p>
+        </div>
+        <div class="q-item" style="margin-bottom:0;">
+          <strong>✉️ 3. Letters / Emails (倡议信)</strong>
+          <p style="font-size:0.86rem; color:var(--muted);">To <span class="w-gloss">persuade<span class="w-gloss-cn">(说服)</span></span> a person or group.</p>
+          <p style="font-size:0.9rem; margin-top:6px; background:#ecfdf5; padding:6px 8px; border-radius:8px;"><em>Example:</em> "Dear <span class="w-gloss">Principal<span class="w-gloss-cn">(校长)</span></span>, our <span class="w-gloss">cafeteria<span class="w-gloss-cn">(食堂)</span></span> <strong>needs to</strong> <span class="w-gloss">replace<span class="w-gloss-cn">(替换)</span></span> plastic <span class="w-gloss">straws<span class="w-gloss-cn">(吸管)</span></span> with paper ones."</p>
+          <p class="cn-inline" style="margin-top:4px;">给校长写信建议食堂停用塑料吸管。</p>
+        </div>
+        <div class="q-item" style="margin-bottom:0;">
+          <strong>🪧 4. Campaign Posters (宣传海报)</strong>
+          <p style="font-size:0.86rem; color:var(--muted);">To <span class="w-gloss">promote<span class="w-gloss-cn">(宣传/推动)</span></span> a <span class="w-gloss">cause<span class="w-gloss-cn">(公益事业/目标)</span></span>.</p>
+          <p style="font-size:0.9rem; margin-top:6px; background:#ecfdf5; padding:6px 8px; border-radius:8px;"><em>Example:</em> "<strong>Stop the <span class="w-gloss">waste<span class="w-gloss-cn">(浪费/垃圾)</span></span>. Save the sea. Save our future!</strong>"</p>
+          <p class="cn-inline" style="margin-top:4px;">用简短有力的三连排比做环保海报。</p>
+        </div>
+        <div class="q-item" style="margin-bottom:0;">
+          <strong>⭐ 5. Reviews (评论/推荐)</strong>
+          <p style="font-size:0.86rem; color:var(--muted);">To <span class="w-gloss">recommend<span class="w-gloss-cn">(推荐)</span></span> or <span class="w-gloss">warn<span class="w-gloss-cn">(警告)</span></span> others.</p>
+          <p style="font-size:0.9rem; margin-top:6px; background:#ecfdf5; padding:6px 8px; border-radius:8px;"><em>Example:</em> "You <strong>must</strong> watch this <strong><span class="w-gloss">inspiring<span class="w-gloss-cn">(鼓舞人心的)</span></span></strong> nature <span class="w-gloss">documentary<span class="w-gloss-cn">(纪录片)</span></span> — it will change how you see oceans!"</p>
+          <p class="cn-inline" style="margin-top:4px;">强烈推荐一部环保纪录片或生态友好产品。</p>
+        </div>
+      </div>
+
+      <!-- Mini-Game 0B: Match the Persuasive Text Type -->
+      <div class="mini-game-box">
+        <div class="mini-game-header">
+          <div class="mini-game-title">🎮 知识点小闯关 2：Pick the Right Text Type! <span class="cn-inline">（遇到下面情况，该用哪种说服性文体？）</span></div>
+          <span class="mini-game-badge">文体配对 +3⭐</span>
+        </div>
+        <div id="miniGame0BContainer"></div>
+      </div>
+
+      <h3>🍔 The Complete Essay Structure with Real Examples <span class="cn-inline">文章五步结构 + 范文实例与难词翻译（指南第1、3、4页）</span></h3>
+      <p style="margin-bottom:10px;">Every great persuasive text follows this clear step-by-step recipe. Click any box to hear the example sentence read aloud! 🔊</p>
+
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div class="modality-box modality-high" style="cursor:pointer;" onclick="speakText('Protect Our Planet’s Forests')">
+          <strong>📌 Step 1: Title (标题 — 吸引眼球 + 亮明态度)</strong>
+          <p style="font-size:0.92rem; margin-top:4px;"><strong>What to do:</strong> Use a strong action verb so readers immediately know your topic and <span class="w-gloss">opinion<span class="w-gloss-cn">(观点)</span></span>.</p>
+          <p style="margin-top:6px; background:#fff; padding:8px 12px; border-radius:8px; font-weight:700; color:var(--primary-dark);">
+            ✅ Example 1: "Protect Our <span class="w-gloss">Planet’s<span class="w-gloss-cn">(星球的/地球的)</span></span> Forests" (保护我们星球的森林)<br/>
+            ✅ Example 2: "Say No to <span class="w-gloss">Harmful<span class="w-gloss-cn">(有害的)</span></span> Plastic <span class="w-gloss">Straws<span class="w-gloss-cn">(吸管)</span></span>!" (向有害的塑料吸管说不！)
+          </p>
+        </div>
+
+        <div class="modality-box modality-high" style="cursor:pointer;" onclick="speakText('Forests are the lungs of our planet — yet they are disappearing fast. Every minute, we lose an area of forest the size of twenty football fields. Shouldn’t we do something about it?')">
+          <strong>🪝 Step 2: Introduction = Hook + Shocking Fact + Rhetorical Question (开头段三件套)</strong>
+          <p style="font-size:0.92rem; margin-top:4px;"><strong>What to do:</strong> Introduce the problem, share a surprising fact, and end with a <span class="w-gloss">rhetorical question<span class="w-gloss-cn">(反问句)</span></span> that makes the reader care.</p>
+          <p style="margin-top:6px; background:#fff; padding:8px 12px; border-radius:8px;">
+            ✅ <strong>Example (from Page 3):</strong><br/>
+            • <em>Hook (吸引人的比喻):</em> "Forests are the <span class="w-gloss">lungs<span class="w-gloss-cn">(肺)</span></span> of our planet — yet they are <span class="w-gloss">disappearing<span class="w-gloss-cn">(消失)</span></span> fast."<br/>
+            • <em>Fact (震撼的事实):</em> "Every minute, we lose an <span class="w-gloss">area<span class="w-gloss-cn">(面积/区域)</span></span> of forest the size of twenty <span class="w-gloss">football fields<span class="w-gloss-cn">(足球场)</span></span>."<br/>
+            • <em>Rhetorical Question (反问句收尾):</em> "<strong>Shouldn’t we do something about it? (难道我们不该做点什么吗？)</strong>"
+          </p>
+          <p class="cn-inline" style="margin-top:4px;">💡 写作困难的同学只要记住：开头写 <strong>1句问题 + 1句危害/事实 + 1句反问句</strong> 就稳拿高分！</p>
+        </div>
+
+        <div class="modality-box modality-med" style="cursor:pointer;" onclick="speakText('We must act now. Governments should create stronger laws to stop illegal logging, and companies must use natural resources responsibly. Clearly, we cannot keep destroying what keeps us alive.')">
+          <strong>🏛️ Step 3: Body Paragraph 1 — Big Reason & What Leaders Must Do (理由段1：政府与企业该怎么做)</strong>
+          <p style="font-size:0.92rem; margin-top:4px;"><strong>What to do:</strong> Give your first strong reason and use <strong>High Modality words</strong> (<em>must, should, Clearly</em>) to explain what <span class="w-gloss">governments<span class="w-gloss-cn">(政府)</span></span> and <span class="w-gloss">companies<span class="w-gloss-cn">(公司/企业)</span></span> must do.</p>
+          <p style="margin-top:6px; background:#fff; padding:8px 12px; border-radius:8px;">
+            ✅ <strong>Example (from Page 3):</strong> "We <strong>must</strong> act now.
+            <span class="w-gloss">Governments<span class="w-gloss-cn">(政府)</span></span> <strong>should</strong> create <span class="w-gloss">stronger laws<span class="w-gloss-cn">(更严格的法律)</span></span> to stop <span class="w-gloss">illegal logging<span class="w-gloss-cn">(非法砍伐树木)</span></span>, and <span class="w-gloss">companies<span class="w-gloss-cn">(企业/公司)</span></span> <strong>must</strong> use <span class="w-gloss">natural resources<span class="w-gloss-cn">(自然资源)</span></span> <span class="w-gloss">responsibly<span class="w-gloss-cn">(负责任地)</span></span>.
+            <strong>Clearly (显然)</strong>, we cannot keep <span class="w-gloss">destroying<span class="w-gloss-cn">(摧毁)</span></span> what keeps us <span class="w-gloss">alive<span class="w-gloss-cn">(活着)</span></span>."
+          </p>
+          <p class="cn-inline" style="margin-top:4px;">💡 第一段理由专门写“大机构”：记住黄金搭配 <code>Governments must create stronger laws...</code>（政府必须制定更严格的法律……）！</p>
+        </div>
+
+        <div class="modality-box modality-med" style="cursor:pointer;" onclick="speakText('Each of us can make a difference. By planting trees, reducing paper waste, and supporting eco-friendly brands, we can protect the forests that so many living things depend on.')">
+          <strong>🙋 Step 4: Body Paragraph 2 — Everyday Actions for Each of Us (理由段2：我们每个人能做什么)</strong>
+          <p style="font-size:0.92rem; margin-top:4px;"><strong>What to do:</strong> Involve the reader personally (<em>"Each of us..."</em>) and list <strong>3 concrete actions</strong> they can follow.</p>
+          <p style="margin-top:6px; background:#fff; padding:8px 12px; border-radius:8px;">
+            ✅ <strong>Example (from Page 3):</strong> "<strong>Each of us can <span class="w-gloss">make a difference<span class="w-gloss-cn">(带来改变/发挥作用)</span></span>.</strong> By <u>planting trees (种树)</u>, <u><span class="w-gloss">reducing<span class="w-gloss-cn">(减少)</span></span> paper waste (减少纸张浪费)</u>, and <u><span class="w-gloss">supporting<span class="w-gloss-cn">(支持)</span></span> <span class="w-gloss">eco-friendly brands<span class="w-gloss-cn">(环保品牌)</span></span></u>, we can protect the forests that so many <span class="w-gloss">living things<span class="w-gloss-cn">(生物)</span></span> <span class="w-gloss">depend on<span class="w-gloss-cn">(依赖/依靠)</span></span>."
+          </p>
+          <p class="cn-inline" style="margin-top:4px;">💡 第二段理由从“我们每个人”写：用 <code>By doing A, B, and C, we can...</code> 列出3个简单小行动！</p>
+        </div>
+
+        <div class="modality-box modality-low" style="background:#eff6ff; border-color:#3b82f6; cursor:pointer;" onclick="speakText('Together, we can make a future where nature and people thrive.')">
+          <strong>🚀 Step 5: Conclusion — Final Thought & Call to Action (结尾段：重申观点 + 号召行动)</strong>
+          <p style="font-size:0.92rem; margin-top:4px;"><strong>What to do:</strong> Leave the reader feeling hopeful and <span class="w-gloss">responsible<span class="w-gloss-cn">(有责任感的)</span></span> for change with a memorable final sentence.</p>
+          <p style="margin-top:6px; background:#fff; padding:8px 12px; border-radius:8px;">
+            ✅ <strong>Example 1 (Page 3):</strong> "<strong>Together, we can</strong> make a future where nature and people <span class="w-gloss">thrive<span class="w-gloss-cn">(共同繁荣/茁壮成长)</span></span>."<br/>
+            ✅ <strong>Example 2 (Rule of 3):</strong> "<strong>Stop the waste. Save the sea. Protect our planet today!</strong>"
+          </p>
+          <p class="cn-inline" style="margin-top:4px;">💡 万能结尾金句：<code>Together, we can make a difference!</code>（携手努力，我们定能有所作为！）</p>
+        </div>
+      </div>
+
+      <!-- Mini-Game 0C: Build the Persuasive Burger -->
+      <div class="mini-game-box">
+        <div class="mini-game-header">
+          <div class="mini-game-title">🎮 知识点小闯关 3：Build the Persuasive Burger! <span class="cn-inline">（给下面4句话贴上正确的“汉堡结构”标签）</span></div>
+          <span class="mini-game-badge">结构闯关 +4⭐</span>
+        </div>
+        <div id="miniGame0CContainer"></div>
+      </div>
+
+      <!-- Mini Intro Warm-up Check -->
+      <div class="q-item" style="margin-top:16px; background:#fffbeb; border-color:#f59e0b;">
+        <div class="q-sentence">⚡ <strong>Quick Warm-Up Check (热身小测):</strong> Which opening sentence is a strong <strong>Persuasive Hook</strong>?</div>
+        <div class="vocab-helper-bar">
+          <span class="vocab-helper-title">📖 生词点击发音:</span>
+          <span class="vocab-mini-pill" onclick="speakText('toxic')">🔊 toxic 有毒的</span>
+          <span class="vocab-mini-pill" onclick="speakText('plastic waste')">🔊 plastic waste 塑料垃圾</span>
+          <span class="vocab-mini-pill" onclick="speakText('innocent')">🔊 innocent 无辜的</span>
+          <span class="vocab-mini-pill" onclick="speakText('heartbreaking')">🔊 heartbreaking 令人心碎的</span>
+        </div>
+        <div class="cn-inline" style="margin-bottom:8px;">下面哪一句才是优秀的“说服性文章开头”？点击选出正确答案拿第一颗星⭐：</div>
+        <div class="chip-group">
+          <button class="chip" onclick="checkMcq('intro-q1', 'plain', 'persuasive', 'Look for emotive words and a rhetorical question!', this)">A. This essay is about plastic in the ocean and why it is bad.</button>
+          <button class="chip" onclick="checkMcq('intro-q1', 'persuasive', 'persuasive', 'It uses strong emotion (heartbreaking, innocent) + a rhetorical question!', this)">B. Every year, toxic plastic waste kills thousands of innocent sea animals — isn’t it time we stopped this heartbreaking pollution?</button>
+        </div>
+        <span id="slot-intro-q1" style="display:none;"></span>
+        <div class="feedback" id="fb-intro-q1"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📚 Interactive Bilingual Word Bank <span class="cn-inline">单元核心双语词库（含指南难词 + 点击发音）</span></h2>
+      <p>Click any category below to filter words from your Unit Companion. Click a word card to hear it read aloud!</p>
+      <div class="cn-hint">💡 遇到不认识的词（如 government, illegal logging, renewable energy）？点下面的 <strong>“Hard Essay Words 常见难词”</strong> 就能看到并听发音！</div>
+
+      <div class="chip-group" id="vocabFilterGroup">
+        <button class="chip selected" onclick="filterVocab('all', this)">All Words 全部</button>
+        <button class="chip" onclick="filterVocab('hard', this)">🔑 Hard Essay Words 常见难词</button>
+        <button class="chip" onclick="filterVocab('emotive', this)">Emotive Adjectives 情感形容词</button>
+        <button class="chip" onclick="filterVocab('verbs', this)">Persuasive Verbs 说服性动词</button>
+        <button class="chip" onclick="filterVocab('modality', this)">Modality & Adverbs 情态与副词</button>
+        <button class="chip" onclick="filterVocab('connectives', this)">Connectives 连接词</button>
+        <button class="chip" onclick="filterVocab('topic', this)">Environment Topic 环保主题词</button>
+      </div>
+
+      <div class="vocab-grid" id="vocabGrid"></div>
+
+      <div class="step-footer">
+        <span>Ready to try easy clicking games?</span>
+        <button class="btn" onclick="switchLevel(1)">Start Level 1: Power Words →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LEVEL 1: MODALITY WORDS (PAGES 5-6) ================= -->
+  <section class="level-section" id="level-1">
+    <div class="card">
+      <h2>⚡ Level 1: Modality Words — Sound Confident! <span class="cn-inline">第一关：情态词（让语气变坚定）</span></h2>
+      <p>When you want to persuade someone, don't sound unsure! Use <strong>High Modality</strong> words so your reader knows it is urgent.</p>
+      <div class="cn-hint">
+        💡 <strong>写作秘诀：</strong> 说服别人时，不要说“也许(might/maybe)”，要用<strong>高强度情态词 (High Modality)</strong>，如 <code>must (必须)</code>、<code>will (将会)</code>、<code>have to (不得不)</code>、<code>definitely (肯定地)</code>！
+      </div>
+
+      <div class="modality-grid">
+        <div class="modality-box modality-high">
+          <h4>🔥 High Modality (Strong & Sure - Best!)</h4>
+          <p class="cn-inline">最坚定有力，写作首选！</p>
+          <div style="margin-top:8px;">
+            <span class="word-tag">must 必须</span>
+            <span class="word-tag">will 将会</span>
+            <span class="word-tag">have to 必须</span>
+            <span class="word-tag">need to 需要</span>
+            <span class="word-tag">definitely 肯定地</span>
+            <span class="word-tag">certainly 当然</span>
+            <span class="word-tag">clearly 明显地</span>
+            <span class="word-tag">always 总是</span>
+            <span class="word-tag">never 绝不</span>
+          </div>
+        </div>
+        <div class="modality-box modality-med">
+          <h4>🌤️ Medium Modality (Helpful for Advice)</h4>
+          <p class="cn-inline">中等语气，适合提建议</p>
+          <div style="margin-top:8px;">
+            <span class="word-tag">should 应该</span>
+            <span class="word-tag">probably 很可能</span>
+            <span class="word-tag">likely 可能的</span>
+            <span class="word-tag">often 经常</span>
+            <span class="word-tag">usually 通常</span>
+            <span class="word-tag">would 会</span>
+          </div>
+        </div>
+        <div class="modality-box modality-low">
+          <h4>💧 Low Modality (Too Weak - Avoid!)</h4>
+          <p class="cn-inline">太弱、不自信，说服文尽量少用</p>
+          <div style="margin-top:8px;">
+            <span class="word-tag">might 也许</span>
+            <span class="word-tag">maybe 可能吧</span>
+            <span class="word-tag">perhaps 或许</span>
+            <span class="word-tag">could 也许能</span>
+            <span class="word-tag">may 可能</span>
+          </div>
+        </div>
+      </div>
+      <!-- Mini-Game 1.0: Modality Power Battery Charger -->
+      <div class="mini-game-box">
+        <div class="mini-game-header">
+          <div class="mini-game-title">🎮 知识点互动实验：Charge the Persuasion Battery to 100%! <span class="cn-inline">（点击不同情态词，看看说服力电量条怎么变！）</span></div>
+          <span class="mini-game-badge">互动实验 +2⭐</span>
+        </div>
+        <div style="font-size:1.05rem; font-weight:700; margin-bottom:8px;">
+          Sentence Test: "We <span id="batterySlot" class="blank-slot">?</span> stop dumping toxic plastic into our oceans!"
+        </div>
+        <div class="chip-group" id="batteryBtnGroup">
+          <button class="chip" onclick="testBattery('might (也许)', 20, '#ef4444', '💧 Low Modality (20%) — Too weak! Readers won’t feel it is urgent.', this)">might (也许)</button>
+          <button class="chip" onclick="testBattery('could possibly (可能可以)', 30, '#f97316', '💧 Low Modality (30%) — Sounds unsure and hesitant.', this)">could possibly (可能可以)</button>
+          <button class="chip" onclick="testBattery('should (应该)', 70, '#f59e0b', '🌤️ Medium Modality (70%) — Good polite advice, but can be even stronger!', this)">should (应该)</button>
+          <button class="chip" onclick="testBattery('must (必须)', 100, '#10b981', '🔥 High Modality (100% MAX POWER!) — Super confident and urgent!', this)">must (必须)</button>
+          <button class="chip" onclick="testBattery('definitely have to (绝对必须)', 100, '#059669', '🔥 High Modality (100% MAX POWER!) — Unstoppable persuasive force!', this)">definitely have to (绝对必须)</button>
+        </div>
+        <div class="battery-wrap">
+          <div id="batteryFill" class="battery-fill" style="width:15%; background:#6b7280;">⚡ Click a word above to test power!</div>
+        </div>
+        <div id="batteryFeedback" class="feedback" style="margin-top:4px;"></div>
+      </div>
+    </div>
+
+    <!-- Exercise 1A: Pick the Strongest Modal Verb (PDF Page 6) -->
+    <div class="card">
+      <h2>🎯 Practice 1A: Pick the Strongest Word <span class="cn-inline">练习1A：选出最坚定的词（对应指南第6页）</span></h2>
+      <p>Click the word that sounds the <strong>most certain and persuasive</strong> about protecting our planet.</p>
+      <div id="modalityMcqContainer" style="margin-top:14px;"></div>
+    </div>
+
+    <!-- Exercise 1B: Say No to Plastic Straws! (PDF Page 6) -->
+    <div class="card">
+      <h2>🥤 Practice 1B: Say No to Plastic Straws! <span class="cn-inline">练习1B：向塑料吸管说不（点击选词填空）</span></h2>
+      <p>Complete each sentence from Page 6 of your guide by clicking the best modal word.</p>
+      <div id="plasticStrawsContainer" style="margin-top:14px;"></div>
+
+      <div class="step-footer">
+        <button class="btn btn-secondary" onclick="switchLevel(0)">← Back to Word Bank</button>
+        <button class="btn" onclick="switchLevel(2)">Next: Level 2 Emotion Upgrader →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LEVEL 2: EMOTIVE VOCABULARY (PAGES 7-8) ================= -->
+  <section class="level-section" id="level-2">
+    <div class="card">
+      <h2>❤️ Level 2: Emotive Vocabulary — Touch the Reader's Heart! <span class="cn-inline">第二关：情感词汇（打动读者的心）</span></h2>
+      <p>Plain words like <em>"big, good, bad"</em> are boring. <strong>Emotive words</strong> make the reader feel sadness, anger, hope, or urgency!</p>
+      <div class="cn-hint">
+        💡 <strong>对比一下：</strong><br/>
+        ❌ 平淡句：<em>"Plastic pollution affects sea turtles."</em> (塑料污染影响海龟。)<br/>
+        ✅ 高分说服句：<em>"Plastic pollution <strong>kills</strong> thousands of <strong>innocent</strong> sea turtles each year — a <strong>heartbreaking</strong> consequence of our <strong>careless</strong> habits."</em>
+      </div>
+
+      <div class="modality-grid">
+        <div class="modality-box modality-high">
+          <h4>🌟 Positive Emotion Words (Hope, Care, Value)</h4>
+          <div style="margin-top:8px;">
+            <span class="word-tag">precious 珍贵的</span>
+            <span class="word-tag">essential 必不可少的</span>
+            <span class="word-tag">inspiring 鼓舞人心的</span>
+            <span class="word-tag">valuable 宝贵的</span>
+            <span class="word-tag">vital 至关重要的</span>
+            <span class="word-tag">courageous 勇敢的</span>
+          </div>
+        </div>
+        <div class="modality-box modality-low">
+          <h4>🚨 Negative Emotion Words (Urgency, Harm, Sadness)</h4>
+          <div style="margin-top:8px;">
+            <span class="word-tag">cruel 残忍的</span>
+            <span class="word-tag">heartbreaking 令人心碎的</span>
+            <span class="word-tag">harmful 有害的</span>
+            <span class="word-tag">fragile 脆弱的</span>
+            <span class="word-tag">unfair 不公平的</span>
+            <span class="word-tag">destructive 破坏性的</span>
+            <span class="word-tag">urgent 紧急的</span>
+          </div>
+        </div>
+      </div>
+      <!-- Mini-Game 2.0: Emotion Mood Sorter -->
+      <div class="mini-game-box">
+        <div class="mini-game-header">
+          <div class="mini-game-title">🎮 知识点小闯关：Positive 🌟 or Negative 🚨 Emotion? <span class="cn-inline">（判断下面的情感词是“带来希望”还是“引发危机感”）</span></div>
+          <span class="mini-game-badge">情感分类 +4⭐</span>
+        </div>
+        <div id="miniGame2Container"></div>
+      </div>
+    </div>
+
+    <!-- Exercise 2A: Spot the Emotion (PDF Page 8) -->
+    <div class="card">
+      <h2>🔍 Practice 2A: Spot the Emotion Word <span class="cn-inline">练习2A：找出句子里的情感形容词（指南第8页）</span></h2>
+      <p>Click on the <strong>emotive adjective</strong> in each sentence that makes you feel something!</p>
+      <div id="spotEmotionContainer" style="margin-top:14px;"></div>
+    </div>
+
+    <!-- Exercise 2B: Transform the Boring Sentence (PDF Page 8) -->
+    <div class="card">
+      <h2>✨ Practice 2B: Upgrade Weak Words! <span class="cn-inline">练习2B：把简单词升级为高分情感词（指南第8页）</span></h2>
+      <p>Students who struggle with writing often use <em>big, small, good, bad</em>. Click a stronger emotive phrase to transform each sentence from Page 8!</p>
+      <div id="transformSentenceContainer" style="margin-top:14px;"></div>
+
+      <div class="step-footer">
+        <button class="btn btn-secondary" onclick="switchLevel(1)">← Back to Level 1</button>
+        <button class="btn" onclick="switchLevel(3)">Next: Level 3 Sentence Tricks →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Placeholders for Batch 2 & Batch 3 sections -->
+    <!-- ================= LEVEL 3: RHETORICAL QUESTIONS & REPETITION (PAGES 9-11) ================= -->
+  <section class="level-section" id="level-3">
+    <div class="card">
+      <h2>❓ Level 3A: Rhetorical Questions — Make Readers Think! <span class="cn-inline">第三关(上)：反问句（不用回答，但直击人心）</span></h2>
+      <p>A <strong>rhetorical question</strong> doesn’t need an answer — we ask it because we want people to <em>feel</em> the answer!</p>
+      <div class="cn-hint">
+        💡 <strong>反问句万能公式（指南第9页）：</strong><br/>
+        把普通陈述句套进这 4 个开头，立刻变成高分反问句：<br/>
+        • <code>Do we really need... ?</code> (我们真的需要……吗？)<br/>
+        • <code>If we don’t..., who will?</code> (如果我们不……，谁会呢？)<br/>
+        • <code>How can we stand by and watch...?</code> (我们怎么能袖手旁观看着……？)<br/>
+        • <code>Isn’t it time we all...?</code> (难道不是我们所有人该……的时候了吗？)
+      </div>
+
+      <!-- Mini-Game 3A.0: Real Question vs Rhetorical Question -->
+      <div class="mini-game-box">
+        <div class="mini-game-header">
+          <div class="mini-game-title">🎮 知识点小闯关：Normal Question or Rhetorical Question? <span class="cn-inline">（区分“需要回答的普通问题”和“不需要回答的反问句”）</span></div>
+          <span class="mini-game-badge">概念辨析 +3⭐</span>
+        </div>
+        <div id="miniGame3AContainer"></div>
+      </div>
+
+      <h3>🔄 Practice 3A: Turn Plain Statements into Rhetorical Questions <span class="cn-inline">练习3A：把平淡句变成有力的反问句</span></h3>
+      <p>Click the best rhetorical question that matches each plain statement from Page 9!</p>
+      <div id="rhetoricalMatchContainer" style="margin-top:14px;"></div>
+
+      <h3>🧩 Practice 3B: Build Your Own Rhetorical Question (Click-to-Build) <span class="cn-inline">练习3B：三步拼出反问句（不用打字！）</span></h3>
+      <p>Pick 1 Starter + 1 Action + 1 Ending below to assemble a persuasive rhetorical question:</p>
+      <div class="q-item">
+        <div><strong>Step 1: Choose a Question Starter (选反问开头)</strong></div>
+        <div class="chip-group" id="rqPart1">
+          <button class="chip selected" onclick="selectRqPart(1, 'Isn’t it time', this)">Isn’t it time (难道不是时候...)</button>
+          <button class="chip" onclick="selectRqPart(1, 'How could we', this)">How could we (我们怎么能...)</button>
+          <button class="chip" onclick="selectRqPart(1, 'Could you imagine', this)">Could you imagine (你能想象...)</button>
+          <button class="chip" onclick="selectRqPart(1, 'What if', this)">What if (如果...会怎样)</button>
+        </div>
+
+        <div style="margin-top:10px;"><strong>Step 2: Choose the Middle Idea (选中间内容)</strong></div>
+        <div class="chip-group" id="rqPart2">
+          <button class="chip selected" onclick="selectRqPart(2, 'we all worked together to protect', this)">we all worked together to protect (我们一起保护)</button>
+          <button class="chip" onclick="selectRqPart(2, 'ignore the heartbreaking loss of', this)">ignore the heartbreaking loss of (忽视令人心碎的消失)</button>
+          <button class="chip" onclick="selectRqPart(2, 'a future without', this)">a future without (一个没有...的未来)</button>
+          <button class="chip" onclick="selectRqPart(2, 'it becomes too late to save', this)">it becomes too late to save (太晚而无法拯救)</button>
+        </div>
+
+        <div style="margin-top:10px;"><strong>Step 3: Choose the Ending Topic (选结尾环保主题)</strong></div>
+        <div class="chip-group" id="rqPart3">
+          <button class="chip selected" onclick="selectRqPart(3, 'our planet’s precious rainforests?', this)">our planet’s precious rainforests? (珍贵的雨林？)</button>
+          <button class="chip" onclick="selectRqPart(3, 'innocent sea turtles in our oceans?', this)">innocent sea turtles in our oceans? (海洋里无辜的海龟？)</button>
+          <button class="chip" onclick="selectRqPart(3, 'the fragile coral reefs of the Pacific?', this)">the fragile coral reefs of the Pacific? (太平洋脆弱的珊瑚礁？)</button>
+        </div>
+
+        <div style="margin-top:14px; padding:14px; background:var(--primary-light); border-radius:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div style="font-size:0.8rem; color:var(--primary-dark); font-weight:700;">YOUR RHETORICAL QUESTION:</div>
+            <div id="rqBuiltOutput" style="font-size:1.15rem; font-weight:700; color:var(--primary-dark);">Isn’t it time we all worked together to protect our planet’s precious rainforests?</div>
+          </div>
+          <button class="btn" onclick="speakBuiltRq()">🔊 Read Aloud & Earn Star</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Repetition & Rule of Three (Pages 10-11) -->
+    <div class="card">
+      <h2>🔁 Level 3B: Repetition & The Rule of Three <span class="cn-inline">第三关(下)：重复的力量与“三连排比”（指南第10-11页）</span></h2>
+      <p>Repeating key words or using <strong>three short, powerful phrases (Rule of Three)</strong> builds rhythm and makes your message impossible to forget!</p>
+      <div class="cn-hint">
+        💡 <strong>指南第10-11页核心技巧：</strong><br/>
+        • <strong>Rule of Three (三连短句)：</strong> <code>"Reduce. Reuse. Recycle."</code> / <code>"Stop the waste. Save the sea. Save our future."</code><br/>
+        • <strong>Phrase Repetition (开头重复)：</strong> 连续三句用 <code>"We must protect..."</code> 开头，气势瞬间拉满！
+      </div>
+
+      <div class="modality-grid" style="grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin-bottom:14px;">
+        <div class="q-item" style="margin-bottom:0;">
+          <strong>1️⃣ Word Repetition (单词重复)</strong>
+          <p style="font-size:0.9rem; margin-top:4px;">"<strong>Protect, protect, protect</strong> our planet."</p>
+          <p class="cn-inline">重复同一个核心词，强调重点。</p>
+        </div>
+        <div class="q-item" style="margin-bottom:0;">
+          <strong>2️⃣ Phrase Repetition (短语重复)</strong>
+          <p style="font-size:0.9rem; margin-top:4px;">"<strong>We must act</strong> now. <strong>We must act</strong> together."</p>
+          <p class="cn-inline">重复相同的句首短语，增强节奏。</p>
+        </div>
+        <div class="q-item" style="margin-bottom:0;">
+          <strong>3️⃣ Sentence Repetition (整句重复)</strong>
+          <p style="font-size:0.9rem; margin-top:4px;">"<strong>We can make a difference. We can make a difference.</strong>"</p>
+          <p class="cn-inline">整句重复，加深情感共鸣。</p>
+        </div>
+        <div class="q-item" style="margin-bottom:0;">
+          <strong>4️⃣ The Rule of Three (三连排比)</strong>
+          <p style="font-size:0.9rem; margin-top:4px;">"<strong>Reduce. Reuse. Recycle.</strong>"</p>
+          <p class="cn-inline">三个短促有力的动作，朗朗上口！</p>
+        </div>
+      </div>
+
+      <!-- Mini-Game 3B.0: Spot the Repetition Type -->
+      <div class="mini-game-box">
+        <div class="mini-game-header">
+          <div class="mini-game-title">🎮 知识点小闯关：Spot the Repetition Trick! <span class="cn-inline">（看看下面句子用了指南第10页的哪种重复技巧？）</span></div>
+          <span class="mini-game-badge">招式识别 +3⭐</span>
+        </div>
+        <div id="miniGame3BContainer"></div>
+      </div>
+
+      <h3>⚡ Practice 3C: Complete the "Power of Three" Slogans <span class="cn-inline">练习3C：选出最有节奏感的“三连金句”</span></h3>
+      <div id="ruleOfThreeContainer" style="margin-top:14px;"></div>
+
+      <div class="step-footer">
+        <button class="btn btn-secondary" onclick="switchLevel(2)">← Back to Level 2</button>
+        <button class="btn" onclick="switchLevel(4)">Next: Level 4 Noun Phrase Lego →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LEVEL 4: EXPANDED NOUN PHRASES (PAGES 12-13) ================= -->
+  <section class="level-section" id="level-4">
+    <div class="card">
+      <h2>🧱 Level 4: Expanded Noun Phrases — Build Sentences Like Lego! <span class="cn-inline">第四关：扩展名词短语（像搭积木一样把短词变长句）</span></h2>
+      <p>Don’t just write a plain noun like <em>"the forests"</em>. Add adjectives and extra details so the reader can picture it clearly!</p>
+      <div class="cn-hint">
+        💡 <strong>指南第12页黄金公式（3块积木）：</strong><br/>
+        <strong>积木1 (Article/Starter 冠词/限定词)</strong> + <strong>积木2 (Adjectives 情感形容词 + Head Noun 核心名词)</strong> + <strong>积木3 (Extra Detail / Prepositional Phrase 在哪里/正在做什么)</strong><br/>
+        👉 例子：<code>the</code> + <code>fragile coral reefs</code> + <code>of the Pacific Ocean</code> (太平洋上脆弱的珊瑚礁)
+      </div>
+
+      <!-- Mini-Game 4.0: Sentence Grower Magic Wand -->
+      <div class="mini-game-box">
+        <div class="mini-game-header">
+          <div class="mini-game-title">🪄 知识点魔法演示：Watch a Plain Noun Grow in 3 Steps! <span class="cn-inline">（依次点击 Step 1 → Step 2 → Step 3，看简单词如何变成高分长句！）</span></div>
+          <span class="mini-game-badge">三步扩句魔法 +2⭐</span>
+        </div>
+        <div class="chip-group" id="growerStepGroup">
+          <button class="chip selected" onclick="setGrowerStage(1, this)">Step 1: Simple Noun (只有光秃秃的名词)</button>
+          <button class="chip" onclick="setGrowerStage(2, this)">Step 2: + Emotive Adjectives (+ 情感形容词)</button>
+          <button class="chip" onclick="setGrowerStage(3, this)">Step 3: + Prepositional Detail (+ 在哪里/做什么的细节)</button>
+        </div>
+        <div id="growerDisplayBox" style="background:#fff; border:2px solid #6ee7b7; border-radius:12px; padding:14px; margin-top:8px;"></div>
+      </div>
+
+      <h3>🧱 Practice 4A: Interactive Noun Phrase Lego Builder <span class="cn-inline">练习4A：动手搭积木（指南第13页5个核心词：trees, rivers, animals, homes, people）</span></h3>
+      <p>Pick a simple noun from Page 13, then click Adjectives and Extra Details to expand it!</p>
+
+      <div class="q-item">
+        <div><strong>1. Pick a Simple Noun from Page 13 (选一个简单名词):</strong></div>
+        <div class="chip-group" id="npNounGroup"></div>
+
+        <div style="margin-top:10px;"><strong>2. Add Powerful Adjectives Before the Noun (加上形容词):</strong></div>
+        <div class="chip-group" id="npAdjGroup"></div>
+
+        <div style="margin-top:10px;"><strong>3. Add Extra Detail After the Noun (加上后置细节短语):</strong></div>
+        <div class="chip-group" id="npDetailGroup"></div>
+
+        <div style="margin-top:14px; padding:16px; background:#eff6ff; border:2px solid #93c5fd; border-radius:12px;">
+          <div style="font-size:0.82rem; font-weight:700; color:#1e40af;">🧱 YOUR EXPANDED NOUN PHRASE + FULL SENTENCE:</div>
+          <div id="npResultPhrase" style="font-size:1.15rem; font-weight:700; color:#1e3a8a; margin-top:4px;"></div>
+          <div id="npResultSentence" style="font-size:1rem; color:#334155; margin-top:6px;"></div>
+          <button class="btn" style="margin-top:10px;" onclick="speakExpandedNoun()">🔊 Listen & Collect Star</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 4B: Find the Expanded Noun Phrase & Head Noun (PDF Page 13) -->
+    <div class="card">
+      <h2>🎯 Practice 4B: Find the Head Noun! <span class="cn-inline">练习4B：找出扩展短语里的“核心名词”（指南第13页原题）</span></h2>
+      <p>In each sentence from Page 13, the <u>expanded noun phrase</u> is underlined. Click the <strong>Head Noun (核心名词 — the main thing/person being described)</strong>!</p>
+      <div id="headNounContainer" style="margin-top:14px;"></div>
+
+      <div class="step-footer">
+        <button class="btn btn-secondary" onclick="switchLevel(3)">← Back to Level 3</button>
+        <button class="btn" onclick="switchLevel(5)">Next: Level 5 Guided Paragraph Writer →</button>
+      </div>
+    </div>
+  </section>
+    <!-- ================= LEVEL 5: MODEL ESSAY X-RAY & GUIDED WRITER (PAGES 3-4, 8, 13, 16) ================= -->
+  <section class="level-section" id="level-5">
+    <!-- Part 1: Model Essay X-Ray (Pages 3-4) -->
+    <div class="card">
+      <h2>🔬 Model Essay X-Ray: "Protect Our Planet’s Forests" <span class="cn-inline">第五关(上)：满分范文透视镜（指南第3-4页）</span></h2>
+      <p>Click the highlight buttons below to see <strong>why</strong> this short essay from Page 3 gets top marks!</p>
+      <div class="chip-group">
+        <button class="chip selected" onclick="highlightEssay('all', this)">Show All Colors 全部高亮</button>
+        <button class="chip" onclick="highlightEssay('modality', this)">🔥 Modality 情态词</button>
+        <button class="chip" onclick="highlightEssay('emotive', this)">❤️ Emotive 情感词</button>
+        <button class="chip" onclick="highlightEssay('rhetorical', this)">❓ Rhetorical Question 反问句</button>
+        <button class="chip" onclick="highlightEssay('noun', this)">🧱 Expanded Noun Phrases 扩展名词</button>
+        <button class="chip" onclick=" speakText(document.getElementById('modelEssayBox').innerText)">🔊 Listen to Full Essay 朗读全文</button>
+      </div>
+
+      <div id="modelEssayBox" style="background:#f8fafc; border:2px solid #cbd5e1; border-radius:14px; padding:20px; margin-top:12px; font-size:1.05rem; line-height:1.85;">
+        <h3 style="margin-top:0; color:#1b4332;">Protect <span class="hl-noun" style="background:#dbeafe; padding:2px 6px; border-radius:5px;">Our Planet’s Forests <span class="w-gloss-cn">(我们星球的森林)</span></span></h3>
+        <p style="margin-bottom:12px;">
+          <strong>[Introduction 开头: Hook + Fact + Rhetorical Question]</strong><br/>
+          Forests are the <span class="w-gloss">lungs<span class="w-gloss-cn">(肺)</span></span> of our planet — yet they are <span class="hl-emotive" style="background:#fce7f3; padding:2px 6px; border-radius:5px;"><span class="w-gloss">disappearing<span class="w-gloss-cn">(消失)</span></span> fast</span>.
+          Every minute, we lose an <span class="w-gloss">area<span class="w-gloss-cn">(面积)</span></span> of forest the size of twenty football fields.
+          This <span class="hl-emotive" style="background:#fce7f3; padding:2px 6px; border-radius:5px;"><span class="w-gloss">destruction<span class="w-gloss-cn">(破坏)</span></span> <span class="w-gloss">harms<span class="w-gloss-cn">(伤害)</span></span></span> animals and <span class="w-gloss">affects<span class="w-gloss-cn">(影响)</span></span> the air we all <span class="w-gloss">breathe<span class="w-gloss-cn">(呼吸)</span></span>.
+          <span class="hl-rhetorical" style="background:#fef3c7; padding:2px 6px; border-radius:5px; font-weight:600;">Shouldn’t we do something about it? <span class="w-gloss-cn">(难道我们不该做点什么吗？)</span></span>
+        </p>
+        <p style="margin-bottom:12px;">
+          <strong>[Body Reason 1 理由段1: Governments & Companies]</strong><br/>
+          We <span class="hl-modality" style="background:#dcfce7; padding:2px 6px; border-radius:5px; font-weight:600;">must</span> act now.
+          <span class="w-gloss">Governments<span class="w-gloss-cn">(政府)</span></span> <span class="hl-modality" style="background:#dcfce7; padding:2px 6px; border-radius:5px; font-weight:600;">should</span> create <span class="w-gloss">stronger laws<span class="w-gloss-cn">(更严格的法律)</span></span> to stop <span class="w-gloss">illegal logging<span class="w-gloss-cn">(非法砍伐)</span></span>, and <span class="w-gloss">companies<span class="w-gloss-cn">(公司/企业)</span></span> <span class="hl-modality" style="background:#dcfce7; padding:2px 6px; border-radius:5px; font-weight:600;">must</span> use <span class="hl-noun" style="background:#dbeafe; padding:2px 6px; border-radius:5px;"><span class="w-gloss">natural resources<span class="w-gloss-cn">(自然资源)</span></span></span> <span class="w-gloss">responsibly<span class="w-gloss-cn">(负责任地)</span></span>.
+          <span class="hl-modality" style="background:#dcfce7; padding:2px 6px; border-radius:5px; font-weight:600;">Clearly <span class="w-gloss-cn">(显然)</span></span>, we <span class="hl-modality" style="background:#dcfce7; padding:2px 6px; border-radius:5px; font-weight:600;">cannot</span> keep <span class="hl-emotive" style="background:#fce7f3; padding:2px 6px; border-radius:5px;"><span class="w-gloss">destroying<span class="w-gloss-cn">(摧毁)</span></span> what keeps us <span class="w-gloss">alive<span class="w-gloss-cn">(活着)</span></span></span>.
+        </p>
+        <p style="margin-bottom:12px;">
+          <strong>[Body Reason 2 理由段2: What Each of Us Can Do]</strong><br/>
+          Each of us <span class="hl-modality" style="background:#dcfce7; padding:2px 6px; border-radius:5px; font-weight:600;">can</span> <span class="w-gloss">make a difference<span class="w-gloss-cn">(带来改变/发挥作用)</span></span>.
+          By planting trees, <span class="w-gloss">reducing paper waste<span class="w-gloss-cn">(减少纸张浪费)</span></span>, and <span class="w-gloss">supporting<span class="w-gloss-cn">(支持)</span></span> <span class="hl-noun" style="background:#dbeafe; padding:2px 6px; border-radius:5px;"><span class="w-gloss">eco-friendly brands<span class="w-gloss-cn">(环保品牌)</span></span></span>, we <span class="hl-modality" style="background:#dcfce7; padding:2px 6px; border-radius:5px; font-weight:600;">can</span> protect the forests that <span class="hl-noun" style="background:#dbeafe; padding:2px 6px; border-radius:5px;">so many <span class="w-gloss">living things<span class="w-gloss-cn">(生物)</span></span></span> <span class="w-gloss">depend on<span class="w-gloss-cn">(依赖)</span></span>.
+        </p>
+        <p style="margin-bottom:0;">
+          <strong>[Conclusion 结尾: Inspiring Call to Action]</strong><br/>
+          Together, we <span class="hl-modality" style="background:#dcfce7; padding:2px 6px; border-radius:5px; font-weight:600;">can</span> make a future where nature and people <span class="hl-emotive" style="background:#fce7f3; padding:2px 6px; border-radius:5px;"><span class="w-gloss">thrive<span class="w-gloss-cn">(共同繁荣/茁壮成长)</span></span></span>.
+        </p>
+      </div>
+      <!-- Mini-Game 5.0: Model Essay Detective -->
+      <div class="mini-game-box" style="margin-top:16px;">
+        <div class="mini-game-header">
+          <div class="mini-game-title">🕵️ 范文小侦探：Spot the Secret Weapons in the Model Essay! <span class="cn-inline">（看看上面的范文是怎么拿高分的？）</span></div>
+          <span class="mini-game-badge">范文拆解 +3⭐</span>
+        </div>
+        <div id="miniGame5Container"></div>
+      </div>
+    </div>
+
+    <!-- Part 2: Step-by-Step Guided Paragraph Builder (For Weak Writers!) -->
+    <div class="card">
+      <h2>✍️ Guided 5-Sentence Paragraph Builder <span class="cn-inline">第五关(下)：五步填空式写作器（专为写作困难学生设计）</span></h2>
+      <p>The PDF asks you to write a <strong>5–7 sentence persuasive paragraph</strong> on one of 4 topics (Pages 8 & 13). Pick a topic below, click the sentence starters for each step, and customize it in the box!</p>
+      <div class="cn-hint">
+        💡 <strong>再也不怕写不出作文！</strong> 只需要按照下面 <strong>第1句 → 第5句</strong> 依次点击你喜欢的句子，系统会自动帮你拼成一段完整的 5–7 句高分段落，你还可以自由修改！
+      </div>
+
+      <div><strong>Step 0: Choose Your Topic (选一个单元必考主题):</strong></div>
+      <div class="chip-group" id="writerTopicGroup">
+        <button class="chip selected" onclick="selectWriterTopic('plastic', this)">🥤 Plastic Pollution (塑料污染)</button>
+        <button class="chip" onclick="selectWriterTopic('forests', this)">🌳 Deforestation (保护森林)</button>
+        <button class="chip" onclick="selectWriterTopic('ice', this)">🐻‍❄️ Melting Ice Caps (冰川融化)</button>
+        <button class="chip" onclick="selectWriterTopic('animals', this)">🐢 Endangered Species (濒危动物)</button>
+      </div>
+
+      <div id="guidedStepsContainer" style="margin-top:16px;"></div>
+
+      <!-- Live Editable Output + Persuasive Checklist -->
+      <div style="margin-top:20px; background:#f0fdf4; border:2px solid #2d6a4f; border-radius:14px; padding:20px;">
+        <h3 style="margin-top:0;">📝 Your Persuasive Paragraph (可直接在下方框内修改或补充句子):</h3>
+        <textarea id="finalEssayTextarea" rows="6" oninput="updateLiveChecklist()" style="width:100%; border:2px solid #cbd5e1; border-radius:10px; padding:14px; font-size:1.05rem; font-family:inherit; line-height:1.6; margin-top:8px;"></textarea>
+
+        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;">
+          <button class="btn" onclick="speakText(document.getElementById('finalEssayTextarea').value); awardStar('final-essay');">🔊 Read My Paragraph Aloud</button>
+          <button class="btn btn-secondary" onclick="copyEssayText()">📋 Copy Paragraph</button>
+        </div>
+        <div id="copyFeedback" class="feedback ok"></div>
+
+        <h3 style="margin-top:18px;">✅ Live Grade 5 Persuasive Checklist <span class="cn-inline">实时高分自查表（对应指南第16页）</span></h3>
+        <div id="liveChecklist" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px; margin-top:10px;"></div>
+      </div>
+
+      <div class="step-footer">
+        <button class="btn btn-secondary" onclick="switchLevel(4)">← Back to Level 4</button>
+        <button class="btn" onclick="switchLevel(0)">🎉 Back to Overview</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  let stars = 0;
+  const completedTasks = new Set();
+
+
+  function escAttr(s) {
+    return String(s || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+  }
+
+  function awardStar(taskId) {
+    if (!completedTasks.has(taskId)) {
+      completedTasks.add(taskId);
+      stars++;
+      document.getElementById('starCount').textContent = stars;
+    }
+  }
+
+  function toggleChinese() {
+    document.body.classList.toggle('hide-cn');
+  }
+
+  function switchLevel(lvl) {
+    document.querySelectorAll('.level-tab').forEach((tab, idx) => {
+      tab.classList.toggle('active', idx === lvl);
+    });
+    document.querySelectorAll('.level-section').forEach((sec, idx) => {
+      sec.classList.toggle('active', idx === lvl);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  let currentAudio = null;
+
+  function speakWebSpeech(cleanText) {
+    if (!('speechSynthesis' in window)) return;
+    try {
+      window.speechSynthesis.cancel();
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+      }
+      const utter = new SpeechSynthesisUtterance(cleanText);
+      utter.lang = 'en-US';
+      utter.rate = 0.9;
+      utter.volume = 1.0;
+      const voices = window.speechSynthesis.getVoices ? window.speechSynthesis.getVoices() : [];
+      const enVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('en') && (v.name.includes('Samantha') || v.name.includes('Alex') || v.default))
+                   || voices.find(v => v.lang && v.lang.toLowerCase().startsWith('en'));
+      if (enVoice) utter.voice = enVoice;
+      window.speechSynthesis.speak(utter);
+    } catch (e) {}
+  }
+
+  function speakText(rawText, evt) {
+    if (evt && evt.stopPropagation) {
+      evt.stopPropagation();
+    }
+    const cleanText = String(rawText || '')
+      .replace(/[\u4e00-\u9fa5（）()【】「」🔊✨❓🔁🧱🌱🎯⚡❤️🪄🕵️📌🪝🏛️🚀🌟🚨😐🔥🎤📰✉️🪧⭐📋⏳✅]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (!cleanText) return;
+
+    showAudioToast(cleanText);
+
+    // Stop any previous audio
+    if (currentAudio) {
+      try {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      } catch (e) {}
+    }
+
+    // Use online English pronunciation audio (works even when macOS browser speechSynthesis is silent)
+    // and automatically fall back to Web Speech API if offline or blocked
+    try {
+      const url = 'https://dict.youdao.com/dictvoice?type=2&audio=' + encodeURIComponent(cleanText);
+      const audio = new Audio(url);
+      currentAudio = audio;
+      let fallbackTriggered = false;
+      const triggerFallback = () => {
+        if (!fallbackTriggered) {
+          fallbackTriggered = true;
+          speakWebSpeech(cleanText);
+        }
+      };
+      audio.onerror = triggerFallback;
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(triggerFallback);
+      }
+    } catch (e) {
+      speakWebSpeech(cleanText);
+    }
+  }
+
+  function showAudioToast(text) {
+    let toast = document.getElementById('audioToast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'audioToast';
+      toast.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#1b4332;color:#fff;padding:10px 16px;border-radius:999px;font-weight:600;font-size:0.9rem;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:9999;transition:opacity 0.25s ease;pointer-events:none;';
+      document.body.appendChild(toast);
+    }
+    const shortText = text.length > 48 ? text.slice(0, 48) + '...' : text;
+    toast.textContent = '🔊 Reading: "' + shortText + '"';
+    toast.style.opacity = '1';
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(() => {
+      toast.style.opacity = '0';
+    }, 2200);
+  }
+
+  // Make all .w-gloss (inline translated difficult words) and .word-tag clickable to speak!
+  function bindClickableWords() {
+    document.querySelectorAll('.w-gloss').forEach(el => {
+      el.style.cursor = 'pointer';
+      el.title = 'Click to pronounce 🔊 点击听发音';
+      el.onclick = function(e) {
+        // Extract only the English text node before .w-gloss-cn
+        const clone = el.cloneNode(true);
+        clone.querySelectorAll('.w-gloss-cn').forEach(cn => cn.remove());
+        speakText(clone.textContent, e);
+      };
+    });
+    document.querySelectorAll('.word-tag').forEach(el => {
+      el.style.cursor = 'pointer';
+      el.title = 'Click to pronounce 🔊 点击听发音';
+      el.onclick = function(e) {
+        speakText(el.textContent, e);
+      };
+    });
+  }
+
+  // ================= VOCABULARY DATA (FROM PDF PAGES 14-15) =================
+  const vocabData = [
+    { en: "government", cn: "政府", cat: "hard" },
+    { en: "company / companies", cn: "公司 / 企业", cat: "hard" },
+    { en: "illegal logging", cn: "非法砍伐树木", cat: "hard" },
+    { en: "natural resources", cn: "自然资源", cat: "hard" },
+    { en: "responsibly", cn: "负责任地", cat: "hard" },
+    { en: "eco-friendly brands", cn: "环保品牌", cat: "hard" },
+    { en: "thrive", cn: "茁壮成长 / 繁荣", cat: "hard" },
+    { en: "stricter laws", cn: "更严格的法律", cat: "hard" },
+    { en: "single-use plastics", cn: "一次性塑料", cat: "hard" },
+    { en: "reusable", cn: "可重复使用的", cat: "hard" },
+    { en: "marine life", cn: "海洋生物", cat: "hard" },
+    { en: "awareness campaign", cn: "宣传活动", cat: "hard" },
+    { en: "global warming", cn: "全球变暖", cat: "hard" },
+    { en: "rising sea levels", cn: "海平面上升", cat: "hard" },
+    { en: "carbon emissions", cn: "碳排放", cat: "hard" },
+    { en: "renewable energy", cn: "可再生能源", cat: "hard" },
+    { en: "ice caps", cn: "冰盖 / 极地冰川", cat: "hard" },
+    { en: "consequence", cn: "后果 / 结果", cat: "hard" },
+    { en: "innocent", cn: "无辜的", cat: "hard" },
+    { en: "activists", cn: "环保行动者", cat: "hard" },
+    { en: "coral reefs", cn: "珊瑚礁", cat: "hard" },
+    { en: "sanctuary", cn: "保护区 / 避难所", cat: "hard" },
+    { en: "habitats", cn: "栖息地 / 家园", cat: "hard" },
+    { en: "poaching", cn: "偷猎", cat: "hard" },
+    { en: "make a difference", cn: "带来改变 / 发挥作用", cat: "hard" },
+    { en: "crucial", cn: "关键的", cat: "emotive" },
+    { en: "essential", cn: "必要的", cat: "emotive" },
+    { en: "unfair", cn: "不公平的", cat: "emotive" },
+    { en: "harmful", cn: "有害的", cat: "emotive" },
+    { en: "valuable", cn: "有价值的", cat: "emotive" },
+    { en: "inspiring", cn: "鼓舞人心的", cat: "emotive" },
+    { en: "urgent", cn: "紧急的", cat: "emotive" },
+    { en: "fragile", cn: "脆弱的", cat: "emotive" },
+    { en: "precious", cn: "珍贵的", cat: "emotive" },
+    { en: "heartbreaking", cn: "令人心碎的", cat: "emotive" },
+    { en: "protect", cn: "保护", cat: "verbs" },
+    { en: "save", cn: "拯救", cat: "verbs" },
+    { en: "rescue", cn: "救助", cat: "verbs" },
+    { en: "reduce", cn: "减少", cat: "verbs" },
+    { en: "recycle", cn: "回收", cat: "verbs" },
+    { en: "endanger", cn: "危及", cat: "verbs" },
+    { en: "pollute", cn: "污染", cat: "verbs" },
+    { en: "destroy", cn: "毁坏", cat: "verbs" },
+    { en: "preserve", cn: "维护 / 保护", cat: "verbs" },
+    { en: "defend", cn: "捍卫", cat: "verbs" },
+    { en: "must", cn: "必须 (强)", cat: "modality" },
+    { en: "should", cn: "应该", cat: "modality" },
+    { en: "have to", cn: "不得不 (强)", cat: "modality" },
+    { en: "definitely", cn: "肯定地", cat: "modality" },
+    { en: "clearly", cn: "清楚地 / 显然", cat: "modality" },
+    { en: "undoubtedly", cn: "毫无疑问地", cat: "modality" },
+    { en: "strongly", cn: "强烈地", cat: "modality" },
+    { en: "because", cn: "因为", cat: "connectives" },
+    { en: "therefore", cn: "因此", cat: "connectives" },
+    { en: "as a result", cn: "结果", cat: "connectives" },
+    { en: "however", cn: "然而", cat: "connectives" },
+    { en: "for example", cn: "例如", cat: "connectives" },
+    { en: "in conclusion", cn: "总之", cat: "connectives" },
+    { en: "on the other hand", cn: "另一方面", cat: "connectives" },
+    { en: "pollution", cn: "污染", cat: "topic" },
+    { en: "deforestation", cn: "砍伐森林", cat: "topic" },
+    { en: "plastic waste", cn: "塑料废弃物", cat: "topic" },
+    { en: "climate change", cn: "气候变化", cat: "topic" },
+    { en: "ecosystem", cn: "生态系统", cat: "topic" },
+    { en: "wildlife", cn: "野生动物", cat: "topic" },
+    { en: "extinction", cn: "灭绝", cat: "topic" },
+    { en: "biodiversity", cn: "生物多样性", cat: "topic" },
+    { en: "sustainability", cn: "可持续性", cat: "topic" }
+  ];
+
+
+  // Dictionary of difficult words for automatic per-question vocabulary helper bars
+  const hardWordList = [
+    { key: "governments", en: "governments", cn: "政府" },
+    { key: "government", en: "government", cn: "政府" },
+    { key: "companies", en: "companies", cn: "公司/企业" },
+    { key: "stricter laws", en: "stricter laws", cn: "更严格的法律" },
+    { key: "strict laws", en: "strict laws", cn: "严格的法律" },
+    { key: "illegal logging", en: "illegal logging", cn: "非法砍伐" },
+    { key: "natural resources", en: "natural resources", cn: "自然资源" },
+    { key: "responsibly", en: "responsibly", cn: "负责任地" },
+    { key: "single-use plastics", en: "single-use plastics", cn: "一次性塑料" },
+    { key: "single-use", en: "single-use", cn: "一次性的" },
+    { key: "plastic straws", en: "plastic straws", cn: "塑料吸管" },
+    { key: "straws", en: "straws", cn: "吸管" },
+    { key: "reusable", en: "reusable", cn: "可重复使用的" },
+    { key: "marine life", en: "marine life", cn: "海洋生物" },
+    { key: "marine", en: "marine", cn: "海洋的" },
+    { key: "communities", en: "communities", cn: "社区" },
+    { key: "community", en: "community", cn: "社区" },
+    { key: "awareness campaign", en: "awareness campaign", cn: "宣传活动" },
+    { key: "global warming", en: "global warming", cn: "全球变暖" },
+    { key: "scientists", en: "scientists", cn: "科学家" },
+    { key: "rising sea levels", en: "rising sea levels", cn: "海平面上升" },
+    { key: "carbon emissions", en: "carbon emissions", cn: "碳排放" },
+    { key: "renewable energy", en: "renewable energy", cn: "可再生能源" },
+    { key: "ice caps", en: "ice caps", cn: "冰盖/冰川" },
+    { key: "suffer", en: "suffer", cn: "受苦/遭殃" },
+    { key: "fragile", en: "fragile", cn: "脆弱的" },
+    { key: "precious", en: "precious", cn: "珍贵的" },
+    { key: "coral reefs", en: "coral reefs", cn: "珊瑚礁" },
+    { key: "inspiring", en: "inspiring", cn: "鼓舞人心的" },
+    { key: "activists", en: "activists", cn: "行动者/积极分子" },
+    { key: "harmful", en: "harmful", cn: "有害的" },
+    { key: "sanctuary", en: "sanctuary", cn: "保护区/避难所" },
+    { key: "breathtaking", en: "breathtaking", cn: "壮观的/令人赞叹的" },
+    { key: "innocent", en: "innocent", cn: "无辜的" },
+    { key: "habitats", en: "habitats", cn: "栖息地" },
+    { key: "destructive", en: "destructive", cn: "破坏性的" },
+    { key: "poisoning", en: "poisoning", cn: "毒害/污染" },
+    { key: "vital", en: "vital", cn: "至关重要的" },
+    { key: "responsible", en: "responsible", cn: "负责任的" },
+    { key: "heartbreaking", en: "heartbreaking", cn: "令人心碎的" },
+    { key: "urgent crisis", en: "urgent crisis", cn: "紧急危机" },
+    { key: "stand by", en: "stand by", cn: "袖手旁观" },
+    { key: "rainforests", en: "rainforests", cn: "热带雨林" },
+    { key: "rainforest", en: "rainforest", cn: "热带雨林" },
+    { key: "disappear", en: "disappear", cn: "消失" },
+    { key: "endangered", en: "endangered", cn: "濒危的" },
+    { key: "wildlife", en: "wildlife", cn: "野生动物" },
+    { key: "ancient", en: "ancient", cn: "古老的" },
+    { key: "towering", en: "towering", cn: "高耸的" },
+    { key: "toxic", en: "toxic", cn: "有毒的" },
+    { key: "extinction", en: "extinction", cn: "灭绝" },
+    { key: "irreplaceable", en: "irreplaceable", cn: "不可替代的" },
+    { key: "deforestation", en: "deforestation", cn: "砍伐森林" },
+    { key: "compassionate", en: "compassionate", cn: "有同情心的/有爱心的" },
+    { key: "survive", en: "survive", cn: "生存/活下来" },
+    { key: "deserves", en: "deserves", cn: "值得/应得" },
+    { key: "seaweed", en: "seaweed", cn: "海藻" },
+    { key: "poaching", en: "poaching", cn: "偷猎" },
+    { key: "vulnerable", en: "vulnerable", cn: "脆弱易受伤害的" },
+    { key: "ecosystems", en: "ecosystems", cn: "生态系统" },
+    { key: "thrive", en: "thrive", cn: "茁壮成长/繁荣" }
+  ];
+
+  function buildVocabHelperHtml(rawText) {
+    const lower = rawText.toLowerCase();
+    const matched = [];
+    const usedWords = new Set();
+    for (const item of hardWordList) {
+      if (lower.includes(item.key) && !usedWords.has(item.cn)) {
+        usedWords.add(item.cn);
+        matched.push(item);
+      }
+      if (matched.length >= 6) break;
+    }
+    if (matched.length === 0) return '';
+    return `
+      <div class="vocab-helper-bar">
+        <span class="vocab-helper-title">📖 难词点读:</span>
+        ${matched.map(m => `<span class="vocab-mini-pill" onclick="speakText('${m.en}')">🔊 ${m.en} = ${m.cn}</span>`).join('')}
+      </div>
+    `;
+  }
+
+  function renderVocab(category = 'all') {
+    const grid = document.getElementById('vocabGrid');
+    const items = category === 'all' ? vocabData : vocabData.filter(v => v.cat === category);
+    grid.innerHTML = items.map(item => `
+      <div class="vocab-card" onclick="speakText('${item.en}')">
+        <div class="vocab-en">🔊 ${item.en}</div>
+        <div class="vocab-cn">${item.cn}</div>
+        <span class="vocab-type">${item.cat}</span>
+      </div>
+    `).join('');
+  }
+
+  function filterVocab(cat, btn) {
+    document.querySelectorAll('#vocabFilterGroup .chip').forEach(c => c.classList.remove('selected'));
+    btn.classList.add('selected');
+    renderVocab(cat);
+  }
+
+  // ================= LEVEL 1 EXERCISES (PDF PAGE 6) =================
+  const modalityMcqData = [
+    {
+      id: "m1",
+      before: "1. We must ",
+      after: " take action now to slow down global warming.",
+      cn: "我们现在必须（肯定地）采取行动减缓全球变暖。",
+      options: ["definitely", "generally", "probably"],
+      answer: "definitely",
+      explain: "'definitely' (肯定地) shows 100% certainty!"
+    },
+    {
+      id: "m2",
+      before: "2. Scientists ",
+      after: " warn people about the danger of rising sea levels.",
+      cn: "科学家必须警告人们海平面上升的危险。",
+      options: ["could", "have to", "may"],
+      answer: "have to",
+      explain: "'have to' (必须/不得不) is strong high modality!"
+    },
+    {
+      id: "m3",
+      before: "3. Governments ",
+      after: " work together to reduce carbon emissions.",
+      cn: "各国政府需要合作减少碳排放。",
+      options: ["normally", "typically", "need to"],
+      answer: "need to",
+      explain: "'need to' (需要/必须) urges action!"
+    },
+    {
+      id: "m4",
+      before: "4. If people use renewable energy, the ice caps ",
+      after: " melt more slowly.",
+      cn: "如果人们使用可再生能源，冰盖将会融化得更慢。",
+      options: ["will", "can", "might"],
+      answer: "will",
+      explain: "'will' (将会) sounds much more confident than 'might'!"
+    }
+  ];
+
+  function renderModalityMcq() {
+    const container = document.getElementById('modalityMcqContainer');
+    container.innerHTML = modalityMcqData.map(q => `
+      <div class="q-item">
+        <div class="q-sentence">
+          ${q.before}<span class="blank-slot" id="slot-${q.id}">?</span>${q.after}
+          <div class="cn-inline">${q.cn}</div>
+        </div>
+        ${buildVocabHelperHtml(q.before + ' ' + q.after + ' ' + q.options.join(' '))}
+        <div class="chip-group">
+          ${q.options.map(opt => `
+            <button class="chip" onclick="checkMcq('${q.id}', '${opt}', '${q.answer}', '${escAttr(q.explain)}', this)">${opt}</button>
+          `).join('')}
+        </div>
+        <div class="feedback" id="fb-${q.id}"></div>
+      </div>
+    `).join('');
+  }
+
+  function checkMcq(qId, chosen, answer, explain, btn) {
+    const parent = btn.parentElement;
+    parent.querySelectorAll('.chip').forEach(c => c.classList.remove('correct', 'wrong'));
+    const slot = document.getElementById('slot-' + qId);
+    const fb = document.getElementById('fb-' + qId);
+    slot.textContent = chosen;
+    speakText(chosen);
+    if (chosen === answer) {
+      btn.classList.add('correct');
+      fb.className = 'feedback ok';
+      fb.textContent = '✅ Great job! ' + explain;
+      awardStar(qId);
+    } else {
+      btn.classList.add('wrong');
+      fb.className = 'feedback err';
+      fb.textContent = '💡 Try a stronger, more certain word!';
+    }
+  }
+
+  const plasticStrawsData = [
+    {
+      id: "ps1",
+      before: "1. We ",
+      after: " stop using plastic straws to protect sea life.",
+      cn: "为了保护海洋生物，我们【必须】停止使用塑料吸管。",
+      options: ["must", "might", "may"],
+      answer: "must"
+    },
+    {
+      id: "ps2",
+      before: "2. Governments ",
+      after: " create stricter laws to limit single-use plastics.",
+      cn: "政府【应该/必须】制定更严格的法律来限制一次性塑料。",
+      options: ["should", "could", "rarely"],
+      answer: "should"
+    },
+    {
+      id: "ps3",
+      before: "3. If plastic pollution continues, many sea animals ",
+      after: " be harmed.",
+      cn: "如果塑料污染继续下去，许多海洋动物【将会】受到伤害。",
+      options: ["will", "maybe", "can"],
+      answer: "will"
+    },
+    {
+      id: "ps4",
+      before: "4. People everywhere ",
+      after: " bring their own reusable cups and straws.",
+      cn: "各地的人们都【需要/应该】自带可重复使用的杯子和吸管。",
+      options: ["need to", "might", "perhaps"],
+      answer: "need to"
+    },
+    {
+      id: "ps5",
+      before: "5. You ",
+      after: " feel proud knowing your choices help save marine life.",
+      cn: "知道你的选择能拯救海洋生物，你【肯定】会感到自豪。",
+      options: ["will definitely", "might possibly", "rarely"],
+      answer: "will definitely"
+    }
+  ];
+
+  function renderPlasticStraws() {
+    const container = document.getElementById('plasticStrawsContainer');
+    container.innerHTML = plasticStrawsData.map(q => `
+      <div class="q-item">
+        <div class="q-sentence">
+          ${q.before}<span class="blank-slot" id="slot-${q.id}">?</span>${q.after}
+          <div class="cn-inline">${q.cn}</div>
+        </div>
+        ${buildVocabHelperHtml(q.before + ' ' + q.after + ' ' + q.options.join(' '))}
+        <div class="chip-group">
+          ${q.options.map(opt => `
+            <button class="chip" onclick="checkMcq('${q.id}', '${opt}', '${q.answer}', 'Strong persuasive choice!', this)">${opt}</button>
+          `).join('')}
+        </div>
+        <div class="feedback" id="fb-${q.id}"></div>
+      </div>
+    `).join('');
+  }
+
+  // ================= LEVEL 2 EXERCISES (PDF PAGE 8) =================
+  const spotEmotionData = [
+    {
+      id: "se1",
+      words: ["It", "is", "unfair", "that", "animals", "suffer", "because", "of", "our", "choices."],
+      targets: ["unfair"],
+      nounHint: "Describes the situation of animals suffering (不公平的)"
+    },
+    {
+      id: "se2",
+      words: ["We", "must", "protect", "these", "fragile", "forests", "before", "they", "are", "gone", "forever."],
+      targets: ["fragile"],
+      nounHint: "Describes the noun 'forests' (脆弱的森林)"
+    },
+    {
+      id: "se3",
+      words: ["The", "precious", "coral", "reefs", "are", "dying."],
+      targets: ["precious"],
+      nounHint: "Describes the noun 'coral reefs' (珍贵的珊瑚礁)"
+    },
+    {
+      id: "se4",
+      words: ["The", "inspiring", "work", "of", "young", "activists", "gives", "us", "hope."],
+      targets: ["inspiring"],
+      nounHint: "Describes the noun 'work' (鼓舞人心的工作)"
+    },
+    {
+      id: "se5",
+      words: ["Cutting", "down", "trees", "is", "a", "harmful", "habit", "we", "must", "stop."],
+      targets: ["harmful"],
+      nounHint: "Describes the noun 'habit' (有害的习惯)"
+    }
+  ];
+
+  function renderSpotEmotion() {
+    const container = document.getElementById('spotEmotionContainer');
+    container.innerHTML = spotEmotionData.map((item, idx) => `
+      <div class="q-item">
+        <div style="font-size:0.9rem; color:var(--muted); margin-bottom:6px;">Sentence ${idx + 1}: Click the emotive adjective!</div>
+        ${buildVocabHelperHtml(item.words.join(' '))}
+        <div class="chip-group">
+          ${item.words.map(w => {
+            const clean = w.replace(/[.,]/g, '');
+            return `<button class="chip" onclick="checkSpotEmotion('${item.id}', '${clean}', this)">${w}</button>`;
+          }).join('')}
+        </div>
+        <div class="feedback" id="fb-${item.id}"></div>
+      </div>
+    `).join('');
+  }
+
+  function checkSpotEmotion(id, word, btn) {
+    const item = spotEmotionData.find(x => x.id === id);
+    const fb = document.getElementById('fb-' + id);
+    speakText(word);
+    if (item.targets.includes(word.toLowerCase())) {
+      btn.classList.add('correct');
+      fb.className = 'feedback ok';
+      fb.textContent = `✅ Spot on! "${word}" is the emotive adjective! (${item.nounHint})`;
+      awardStar(id);
+    } else {
+      btn.classList.add('wrong');
+      setTimeout(() => btn.classList.remove('wrong'), 700);
+      fb.className = 'feedback err';
+      fb.textContent = `💡 "${word}" is not the main emotive adjective. Look for a word that shows strong feeling!`;
+    }
+  }
+
+  const transformData = [
+    {
+      id: "tr1",
+      boring: "1. The forest is a <span class='weak-word'>big and green</span> place.",
+      cn: "原句太普通：森林是一个又大又绿的地方。请选择更有感染力的升级版：",
+      options: [
+        { text: "precious and breathtaking", full: "The forest is a precious and breathtaking sanctuary for wildlife." },
+        { text: "normal and okay", full: "The forest is a normal and okay place." }
+      ],
+      answerIdx: 0
+    },
+    {
+      id: "tr2",
+      boring: "2. The animals live in <span class='weak-word'>small</span> homes.",
+      cn: "原句太普通：动物住在小小的家里。请选择更能打动人心的升级版：",
+      options: [
+        { text: "fragile, disappearing", full: "Innocent animals struggle to survive in fragile, disappearing habitats." },
+        { text: "little and nice", full: "The animals live in little and nice homes." }
+      ],
+      answerIdx: 0
+    },
+    {
+      id: "tr3",
+      boring: "3. We must stop the <span class='weak-word'>bad</span> pollution.",
+      cn: "原句太普通：我们必须停止坏的污染。把 bad 升级为强力情感词：",
+      options: [
+        { text: "deadly and destructive", full: "We must stop the deadly and destructive pollution poisoning our planet." },
+        { text: "not good", full: "We must stop the not good pollution." }
+      ],
+      answerIdx: 0
+    },
+    {
+      id: "tr4",
+      boring: "4. Recycling is a <span class='weak-word'>good</span> habit.",
+      cn: "原句太普通：回收是个好习惯。把 good 升级为高分形容词：",
+      options: [
+        { text: "vital and responsible", full: "Recycling is a vital and responsible habit that protects our future." },
+        { text: "fine and okay", full: "Recycling is a fine and okay habit." }
+      ],
+      answerIdx: 0
+    },
+    {
+      id: "tr5",
+      boring: "5. Plastic waste is a <span class='weak-word'>serious</span> problem.",
+      cn: "原句：塑料垃圾是个严重的问题。升级为更有紧迫感的表达：",
+      options: [
+        { text: "heartbreaking and urgent crisis", full: "Plastic waste is a heartbreaking and urgent crisis destroying marine life." },
+        { text: "big thing", full: "Plastic waste is a big thing." }
+      ],
+      answerIdx: 0
+    }
+  ];
+
+  function renderTransformSentences() {
+    const container = document.getElementById('transformSentenceContainer');
+    container.innerHTML = transformData.map(item => `
+      <div class="upgrade-box">
+        <div class="q-sentence">${item.boring}</div>
+        <div class="cn-inline" style="margin-bottom:8px;">${item.cn}</div>
+        ${buildVocabHelperHtml(item.options.map(o => o.full).join(' '))}
+        <div class="chip-group">
+          ${item.options.map((opt, idx) => `
+            <button class="chip" onclick="checkTransform('${item.id}', ${idx}, ${item.answerIdx}, this)">✨ Upgrade to: "${opt.text}"</button>
+          `).join('')}
+        </div>
+        <div class="feedback" id="fb-${item.id}"></div>
+      </div>
+    `).join('');
+  }
+
+  function checkTransform(id, idx, ansIdx, btn) {
+    const item = transformData.find(x => x.id === id);
+    const fb = document.getElementById('fb-' + id);
+    btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('correct', 'wrong'));
+    if (idx === ansIdx) {
+      btn.classList.add('correct');
+      fb.className = 'feedback ok';
+      fb.innerHTML = `🌟 Upgraded Sentence: <span class="strong-slot">${item.options[idx].full}</span>`;
+      speakText(item.options[idx].full);
+      awardStar(id);
+    } else {
+      btn.classList.add('wrong');
+      fb.className = 'feedback err';
+      fb.textContent = '💡 That word is still too plain! Pick the phrase with stronger emotion.';
+    }
+  }
+
+
+  // ================= LEVEL 3 EXERCISES (PDF PAGES 9-11) =================
+  const rhetoricalMatchData = [
+    {
+      id: "rqm1",
+      plain: "1. Plain Statement: We need to stop using plastic straws. (我们需要停止使用塑料吸管。)",
+      options: [
+        "Do we really need a plastic straw for every single drink?",
+        "Where can I buy a box of plastic straws today?"
+      ],
+      answerIdx: 0
+    },
+    {
+      id: "rqm2",
+      plain: "2. Plain Statement: People should protect sea turtles. (人们应该保护海龟。)",
+      options: [
+        "How many sea turtles live in the ocean?",
+        "If we don’t protect innocent sea turtles now, who will?"
+      ],
+      answerIdx: 1
+    },
+    {
+      id: "rqm3",
+      plain: "3. Plain Statement: The rainforest is being destroyed. (雨林正在被破坏。)",
+      options: [
+        "How can we stand by and watch our precious rainforest disappear?",
+        "Is it raining in the forest right now?"
+      ],
+      answerIdx: 0
+    },
+    {
+      id: "rqm4",
+      plain: "4. Plain Statement: Everyone must recycle. (每个人都必须回收利用。)",
+      options: [
+        "What color is the recycling bin?",
+        "Isn’t it time we all started caring about our planet?"
+      ],
+      answerIdx: 1
+    }
+  ];
+
+  function renderRhetoricalMatch() {
+    const container = document.getElementById('rhetoricalMatchContainer');
+    container.innerHTML = rhetoricalMatchData.map(item => `
+      <div class="q-item">
+        <div class="q-sentence">${item.plain}</div>
+        ${buildVocabHelperHtml(item.plain + ' ' + item.options.join(' '))}
+        <div class="chip-group">
+          ${item.options.map((opt, idx) => `
+            <button class="chip" onclick="checkRqMatch('${item.id}', ${idx}, ${item.answerIdx}, this)">❓ ${opt}</button>
+          `).join('')}
+        </div>
+        <div class="feedback" id="fb-${item.id}"></div>
+      </div>
+    `).join('');
+  }
+
+  function checkRqMatch(id, idx, ansIdx, btn) {
+    const item = rhetoricalMatchData.find(x => x.id === id);
+    const fb = document.getElementById('fb-' + id);
+    btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('correct', 'wrong'));
+    if (idx === ansIdx) {
+      btn.classList.add('correct');
+      fb.className = 'feedback ok';
+      fb.textContent = '✅ Powerful! That question makes the reader pause and care.';
+      speakText(item.options[idx]);
+      awardStar(id);
+    } else {
+      btn.classList.add('wrong');
+      fb.className = 'feedback err';
+      fb.textContent = '💡 That is just a normal information question. Pick the one that persuades the reader!';
+    }
+  }
+
+  const rqParts = {
+    1: "Isn’t it time",
+    2: "we all worked together to protect",
+    3: "our planet’s precious rainforests?"
+  };
+
+  function selectRqPart(partNum, text, btn) {
+    rqParts[partNum] = text;
+    btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById('rqBuiltOutput').textContent = `${rqParts[1]} ${rqParts[2]} ${rqParts[3]}`;
+  }
+
+  function speakBuiltRq() {
+    const text = document.getElementById('rqBuiltOutput').textContent;
+    speakText(text);
+    awardStar('rq-builder');
+  }
+
+  const ruleOfThreeData = [
+    {
+      id: "rot1",
+      topic: "Topic A: Saving Forests (保护森林 - 指南第11页)",
+      starter: "We must protect our forests — protect them from illegal logging, protect them for endangered wildlife, and ",
+      cn: "我们必须保护森林——保护它们免受非法砍伐，为濒危野生动物保护它们，并且……",
+      options: [
+        "protect them for our children’s future!",
+        "maybe look at some trees sometimes."
+      ],
+      answerIdx: 0
+    },
+    {
+      id: "rot2",
+      topic: "Topic B: Plastic Pollution in the Sea (海洋塑料污染 - 三连短句)",
+      starter: "Choose the strongest Rule-of-Three slogan: ",
+      cn: "选出最有力的“三连口号”：",
+      options: [
+        "Stop the waste. Save the sea. Protect our future!",
+        "Plastic is bad. Water is wet. Fish swim."
+      ],
+      answerIdx: 0
+    },
+    {
+      id: "rot3",
+      topic: "Topic C: Melting Ice Caps & Endangered Animals (冰川融化与濒危动物)",
+      starter: "Every action matters: ",
+      cn: "每一个行动都很重要：",
+      options: [
+        "Save the ice. Save the polar bears. Save our planet!",
+        "Ice is cold and bears are white."
+      ],
+      answerIdx: 0
+    }
+  ];
+
+  function renderRuleOfThree() {
+    const container = document.getElementById('ruleOfThreeContainer');
+    container.innerHTML = ruleOfThreeData.map(item => `
+      <div class="q-item">
+        <div style="font-size:0.85rem; font-weight:700; color:var(--primary);">${item.topic}</div>
+        <div class="q-sentence" style="margin-top:4px;">${item.starter}</div>
+        <div class="cn-inline" style="margin-bottom:8px;">${item.cn}</div>
+        ${buildVocabHelperHtml(item.starter + ' ' + item.options.join(' '))}
+        <div class="chip-group">
+          ${item.options.map((opt, idx) => `
+            <button class="chip" onclick="checkRot('${item.id}', ${idx}, ${item.answerIdx}, this)">🔁 ${opt}</button>
+          `).join('')}
+        </div>
+        <div class="feedback" id="fb-${item.id}"></div>
+      </div>
+    `).join('');
+  }
+
+  function checkRot(id, idx, ansIdx, btn) {
+    const item = ruleOfThreeData.find(x => x.id === id);
+    const fb = document.getElementById('fb-' + id);
+    btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('correct', 'wrong'));
+    if (idx === ansIdx) {
+      btn.classList.add('correct');
+      fb.className = 'feedback ok';
+      fb.textContent = '✅ Awesome rhythm! The Rule of Three makes your writing memorable!';
+      speakText(item.options[idx]);
+      awardStar(id);
+    } else {
+      btn.classList.add('wrong');
+      fb.className = 'feedback err';
+      fb.textContent = '💡 Pick the option that repeats powerful words in 3 rhythmic parts!';
+    }
+  }
+
+  // ================= LEVEL 4 EXERCISES (PDF PAGES 12-13) =================
+  const nounLegoData = {
+    trees: {
+      label: "trees (树木)",
+      adjs: ["Our planet’s ancient, towering", "Countless precious green", "These fragile, life-giving"],
+      details: ["in the Amazon rainforest", "that clean the air we breathe", "disappearing every single minute"],
+      verbEnding: "must be protected from illegal logging."
+    },
+    rivers: {
+      label: "rivers (河流)",
+      adjs: ["Our once-sparkling, crystal-clear", "The polluted, choking", "These vital freshwater"],
+      details: ["flowing into our oceans", "full of toxic plastic waste", "that communities depend on for life"],
+      verbEnding: "need our urgent care and protection right now."
+    },
+    animals: {
+      label: "animals (动物)",
+      adjs: ["Countless innocent, endangered", "These helpless marine", "Courageous wild"],
+      details: ["struggling to survive in polluted oceans", "losing their forest homes", "on the brink of extinction"],
+      verbEnding: "deserve a safe and healthy planet."
+    },
+    homes: {
+      label: "homes (家园/栖息地)",
+      adjs: ["The fragile natural", "These irreplaceable woodland", "Our wildlife’s precious"],
+      details: ["of thousands of forest creatures", "under threat from deforestation", "in the melting Arctic ice"],
+      verbEnding: "cannot be replaced once they are destroyed."
+    },
+    people: {
+      label: "people (人们)",
+      adjs: ["Compassionate, responsible", "Determined young", "Everyday caring"],
+      details: ["in communities around the world", "who refuse to ignore climate change", "working together for a greener future"],
+      verbEnding: "can make a powerful difference every day."
+    }
+  };
+
+  let currentNounKey = 'trees';
+  let currentAdjIdx = 0;
+  let currentDetailIdx = 0;
+
+  function renderNounLego() {
+    const nounGroup = document.getElementById('npNounGroup');
+    nounGroup.innerHTML = Object.keys(nounLegoData).map(k => `
+      <button class="chip ${k === currentNounKey ? 'selected' : ''}" onclick="selectLegoNoun('${k}')">${nounLegoData[k].label}</button>
+    `).join('');
+
+    const item = nounLegoData[currentNounKey];
+    const adjGroup = document.getElementById('npAdjGroup');
+    adjGroup.innerHTML = item.adjs.map((a, idx) => `
+      <button class="chip ${idx === currentAdjIdx ? 'selected' : ''}" onclick="selectLegoAdj(${idx})">${a}</button>
+    `).join('');
+
+    const detailGroup = document.getElementById('npDetailGroup');
+    detailGroup.innerHTML = item.details.map((d, idx) => `
+      <button class="chip ${idx === currentDetailIdx ? 'selected' : ''}" onclick="selectLegoDetail(${idx})">${d}</button>
+    `).join('');
+
+    const phrase = `${item.adjs[currentAdjIdx]} ${currentNounKey} ${item.details[currentDetailIdx]}`;
+    const fullSent = `${phrase} ${item.verbEnding}`;
+    document.getElementById('npResultPhrase').innerHTML = `Expanded Noun Phrase: <span style="background:#dbeafe; padding:2px 8px; border-radius:6px;">${phrase}</span>`;
+    document.getElementById('npResultSentence').innerHTML = `<div>Full Persuasive Sentence: "${fullSent}"</div>${buildVocabHelperHtml(item.adjs.join(' ') + ' ' + item.details.join(' ') + ' ' + item.verbEnding)}`;
+  }
+
+  function selectLegoNoun(k) {
+    currentNounKey = k;
+    currentAdjIdx = 0;
+    currentDetailIdx = 0;
+    renderNounLego();
+  }
+
+  function selectLegoAdj(idx) {
+    currentAdjIdx = idx;
+    renderNounLego();
+  }
+
+  function selectLegoDetail(idx) {
+    currentDetailIdx = idx;
+    renderNounLego();
+  }
+
+  function speakExpandedNoun() {
+    const text = document.getElementById('npResultSentence').textContent.replace('Full Persuasive Sentence: ', '').replace(/"/g, '');
+    speakText(text);
+    awardStar('lego-' + currentNounKey);
+  }
+
+  const headNounData = [
+    {
+      id: "hn1",
+      phraseWords: ["The", "fragile", "coral", "reefs", "of", "the", "Pacific"],
+      rest: "are disappearing fast.",
+      answer: "reefs",
+      cn: "太平洋上脆弱的【珊瑚礁】正在迅速消失。（核心被修饰的名词是 reefs）"
+    },
+    {
+      id: "hn2",
+      phraseWords: ["Our", "planet’s", "precious", "rainforests"],
+      rest: "clean the air we breathe.",
+      answer: "rainforests",
+      cn: "我们星球珍贵的【雨林】净化我们呼吸的空气。（核心名词是 rainforests）"
+    },
+    {
+      id: "hn3",
+      phraseWords: ["Every", "endangered", "animal", "struggling", "to", "survive"],
+      rest: "deserves protection.",
+      answer: "animal",
+      cn: "每一个挣扎求生的濒危【动物】都值得保护。（核心名词是 animal）"
+    },
+    {
+      id: "hn4",
+      phraseWords: ["The", "powerful", "waves", "of", "the", "storm"],
+      rest: "crashed against the beach.",
+      answer: "waves",
+      cn: "风暴中猛烈的【海浪】拍打着海滩。（核心名词是 waves）"
+    },
+    {
+      id: "hn5",
+      phraseWords: ["The", "gentle", "breeze", "from", "the", "ocean"],
+      rest: "carried the salty smell of seaweed.",
+      answer: "breeze",
+      cn: "来自海洋的轻柔【微风】带着海藻咸咸的气味。（核心名词是 breeze）"
+    }
+  ];
+
+  function renderHeadNounExercise() {
+    const container = document.getElementById('headNounContainer');
+    container.innerHTML = headNounData.map((item, idx) => `
+      <div class="q-item">
+        <div style="font-size:0.88rem; color:var(--muted);">Sentence ${idx + 1}: Click the Head Noun inside the underlined phrase!</div>
+        <div style="margin:8px 0; font-size:1.05rem;">
+          <span style="border-bottom:3px solid var(--primary); padding-bottom:4px;">
+            ${item.phraseWords.map(w => `<button class="chip" style="padding:4px 10px; margin:2px;" onclick="checkHeadNoun('${item.id}', '${w}', '${item.answer}', this)">${w}</button>`).join('')}
+          </span>
+          <span style="margin-left:6px; font-weight:600;">${item.rest}</span>
+        </div>
+        <div class="cn-inline">${item.cn}</div>
+        ${buildVocabHelperHtml(item.phraseWords.join(' ') + ' ' + item.rest)}
+        <div class="feedback" id="fb-${item.id}"></div>
+      </div>
+    `).join('');
+  }
+
+  function checkHeadNoun(id, word, answer, btn) {
+    const fb = document.getElementById('fb-' + id);
+    speakText(word);
+    if (word.toLowerCase() === answer.toLowerCase()) {
+      btn.classList.add('correct');
+      fb.className = 'feedback ok';
+      fb.textContent = `✅ Correct! "${word}" is the Head Noun! All the other words in the phrase describe "${word}".`;
+      awardStar(id);
+    } else {
+      btn.classList.add('wrong');
+      setTimeout(() => btn.classList.remove('wrong'), 700);
+      fb.className = 'feedback err';
+      fb.textContent = `💡 "${word}" adds detail, but what is the main thing/noun being described?`;
+    }
+  }
+
+  renderRhetoricalMatch();
+  renderRuleOfThree();
+  renderNounLego();
+  renderHeadNounExercise();
+
+
+  // ================= LEVEL 5: MODEL ESSAY & GUIDED WRITER =================
+  function highlightEssay(type, btn) {
+    btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    btn.classList.add('selected');
+    const map = {
+      modality: { selector: '.hl-modality', bg: '#dcfce7' },
+      emotive: { selector: '.hl-emotive', bg: '#fce7f3' },
+      rhetorical: { selector: '.hl-rhetorical', bg: '#fef3c7' },
+      noun: { selector: '.hl-noun', bg: '#dbeafe' }
+    };
+    Object.keys(map).forEach(k => {
+      document.querySelectorAll(map[k].selector).forEach(el => {
+        el.style.background = (type === 'all' || type === k) ? map[k].bg : 'transparent';
+      });
+    });
+  }
+
+  const writerTemplates = {
+    plastic: {
+      title: "Stop Plastic Pollution Now!",
+      steps: [
+        {
+          label: "Sentence 1 — Hook & Problem (用情感词和扩展名词引出问题)",
+          options: [
+            "Every single day, tons of toxic plastic waste pollute our planet’s precious oceans.",
+            "The fragile coral reefs of the Pacific Ocean are choking on careless plastic waste."
+          ]
+        },
+        {
+          label: "Sentence 2 — Rhetorical Question (用反问句引发读者思考)",
+          options: [
+            "How can we stand by and watch innocent sea turtles suffer because of our habits?",
+            "Do we really need a single-use plastic bag or straw for only a few minutes?"
+          ]
+        },
+        {
+          label: "Sentence 3 — High Modality Solution for Governments/Schools (用强情态词提建议)",
+          options: [
+            "Clearly, governments must create stricter laws to ban harmful single-use plastics.",
+            "Undoubtedly, restaurants and schools have to switch to eco-friendly, reusable materials now."
+          ]
+        },
+        {
+          label: "Sentence 4 — Personal Action + Expanded Noun Phrase (我们每个人能做什么)",
+          options: [
+            "Each of us can protect helpless marine animals struggling to survive by bringing reusable bottles and recycling.",
+            "Everyone has a part to play in keeping our sparkling blue rivers and beaches clean."
+          ]
+        },
+        {
+          label: "Sentence 5 — Rule of Three & Call to Action (三连排比+结尾号召)",
+          options: [
+            "Stop the waste. Save the sea. Together, we can make a difference!",
+            "Reduce. Reuse. Recycle — together, we will protect our oceans for the future!"
+          ]
+        }
+      ]
+    },
+    forests: {
+      title: "Protect Our Planet’s Precious Forests!",
+      steps: [
+        {
+          label: "Sentence 1 — Hook & Problem (用情感词和扩展名词引出问题)",
+          options: [
+            "Our planet’s ancient green rainforests clean the air we breathe, yet they are disappearing fast.",
+            "The fragile woodland homes of thousands of wild creatures are being destroyed by cruel deforestation."
+          ]
+        },
+        {
+          label: "Sentence 2 — Rhetorical Question (用反问句引发读者思考)",
+          options: [
+            "If we don’t protect these essential forests today, who will?",
+            "Could you imagine a heartbreaking world without towering green trees and vibrant wildlife?"
+          ]
+        },
+        {
+          label: "Sentence 3 — High Modality Solution (用强情态词提建议)",
+          options: [
+            "Governments must definitely stop illegal logging, and companies have to protect natural ecosystems.",
+            "Clearly, we cannot ignore this urgent crisis — we must defend our forests before it is too late."
+          ]
+        },
+        {
+          label: "Sentence 4 — Personal Action + Expanded Noun Phrase (我们每个人能做什么)",
+          options: [
+            "By planting new trees and reducing paper waste, caring people in every community can save wildlife habitats.",
+            "Each of us should support eco-friendly products to preserve the vital lungs of our planet."
+          ]
+        },
+        {
+          label: "Sentence 5 — Rule of Three & Call to Action (三连排比+结尾号召)",
+          options: [
+            "Plant a tree. Save a forest. Protect our future together!",
+            "We must act now, we must act boldly, and together we will help nature thrive!"
+          ]
+        }
+      ]
+    },
+    ice: {
+      title: "Save the Melting Arctic Ice Caps!",
+      steps: [
+        {
+          label: "Sentence 1 — Hook & Problem (用情感词和扩展名词引出问题)",
+          options: [
+            "The frozen white ice caps of the Arctic are melting rapidly because of harmful climate change.",
+            "Global warming is a devastating and urgent threat to our planet’s fragile polar ecosystems."
+          ]
+        },
+        {
+          label: "Sentence 2 — Rhetorical Question (用反问句引发读者思考)",
+          options: [
+            "Isn’t it time we all took action to stop rising sea levels and save polar bears?",
+            "How could we ignore the heartbreaking loss of our planet’s icy habitats?"
+          ]
+        },
+        {
+          label: "Sentence 3 — High Modality Solution (用强情态词提建议)",
+          options: [
+            "Countries around the world must work together to reduce carbon emissions immediately.",
+            "Undoubtedly, we have to switch to clean, renewable energy to slow down global warming."
+          ]
+        },
+        {
+          label: "Sentence 4 — Personal Action + Expanded Noun Phrase (我们每个人能做什么)",
+          options: [
+            "By saving electricity and walking more, responsible students in every school can protect endangered Arctic animals.",
+            "Everyone can help preserve the icy homes of courageous polar bears by wasting less energy."
+          ]
+        },
+        {
+          label: "Sentence 5 — Rule of Three & Call to Action (三连排比+结尾号召)",
+          options: [
+            "Save energy. Cool the Earth. Protect our future!",
+            "Together, we can protect the ice, rescue wildlife, and heal our planet!"
+          ]
+        }
+      ]
+    },
+    animals: {
+      title: "Rescue Endangered Animals Before It’s Too Late!",
+      steps: [
+        {
+          label: "Sentence 1 — Hook & Problem (用情感词和扩展名词引出问题)",
+          options: [
+            "Every endangered animal struggling to survive deserves our urgent protection and respect.",
+            "Countless precious wild species are facing extinction because of pollution and habitat loss."
+          ]
+        },
+        {
+          label: "Sentence 2 — Rhetorical Question (用反问句引发读者思考)",
+          options: [
+            "What if our children grow up in a silent world where tigers, sea turtles, and elephants are gone forever?",
+            "Isn’t it unfair that innocent animals suffer because of careless human choices?"
+          ]
+        },
+        {
+          label: "Sentence 3 — High Modality Solution (用强情态词提建议)",
+          options: [
+            "We must definitely enforce strict laws against poaching and preserve natural wildlife sanctuaries.",
+            "Clearly, governments and communities have to defend vulnerable ecosystems from destruction."
+          ]
+        },
+        {
+          label: "Sentence 4 — Personal Action + Expanded Noun Phrase (我们每个人能做什么)",
+          options: [
+            "Compassionate young people around the world can help by reducing waste and protecting nature.",
+            "Each of us should respect wildlife habitats so that endangered creatures in forests and oceans can thrive."
+          ]
+        },
+        {
+          label: "Sentence 5 — Rule of Three & Call to Action (三连排比+结尾号召)",
+          options: [
+            "Protect their homes. Defend their lives. Save our wildlife today!",
+            "Surely we all agree that together, we can make a safe future for every living thing!"
+          ]
+        }
+      ]
+    }
+  };
+
+  let currentWriterTopic = 'plastic';
+  let chosenStepIndices = [0, 0, 0, 0, 0];
+
+  function selectWriterTopic(topicKey, btn) {
+    currentWriterTopic = topicKey;
+    chosenStepIndices = [0, 0, 0, 0, 0];
+    btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    btn.classList.add('selected');
+    renderGuidedWriter();
+  bindClickableWords();
+  }
+
+  function renderGuidedWriter() {
+    const t = writerTemplates[currentWriterTopic];
+    const container = document.getElementById('guidedStepsContainer');
+    container.innerHTML = t.steps.map((st, sIdx) => `
+      <div class="q-item" style="margin-bottom:10px;">
+        <div style="font-weight:700; color:var(--primary-dark); margin-bottom:6px;">${st.label}</div>
+        ${buildVocabHelperHtml(st.options.join(' '))}
+        <div class="chip-group">
+          ${st.options.map((opt, oIdx) => `
+            <button class="chip ${chosenStepIndices[sIdx] === oIdx ? 'selected' : ''}" onclick="pickWriterSentence(${sIdx}, ${oIdx})">${opt}</button>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+    syncTextareaFromChoices();
+  }
+
+  function pickWriterSentence(stepIdx, optIdx) {
+    chosenStepIndices[stepIdx] = optIdx;
+    renderGuidedWriter();
+  bindClickableWords();
+    awardStar('writer-step-' + stepIdx);
+  }
+
+  function syncTextareaFromChoices() {
+    const t = writerTemplates[currentWriterTopic];
+    const sentences = t.steps.map((st, sIdx) => st.options[chosenStepIndices[sIdx]]);
+    const fullText = `${t.title}\n\n${sentences.join(' ')}`;
+    document.getElementById('finalEssayTextarea').value = fullText;
+    updateLiveChecklist();
+  }
+
+  function updateLiveChecklist() {
+    const text = document.getElementById('finalEssayTextarea').value.toLowerCase();
+    const checks = [
+      {
+        label: "High Modality (must, have to, will, clearly)",
+        cn: "包含高强度情态词",
+        pass: /\b(must|have to|need to|will|definitely|clearly|undoubtedly|should)\b/.test(text)
+      },
+      {
+        label: "Emotive Words (precious, fragile, urgent, cruel...)",
+        cn: "包含打动人的情感词",
+        pass: /\b(precious|fragile|urgent|cruel|heartbreaking|harmful|innocent|essential|devastating|vital|unfair|toxic)\b/.test(text)
+      },
+      {
+        label: "Rhetorical Question (?)",
+        cn: "包含引发思考的反问句 (?)",
+        pass: text.includes('?')
+      },
+      {
+        label: "Expanded Noun Phrase (Detailed descriptions)",
+        cn: "包含扩展名词短语",
+        pass: /\b(planet’s|planet's|reefs of|homes of|animals struggling|people in|forests that|creatures in)\b/.test(text) || text.split(' ').length > 35
+      },
+      {
+        label: "5+ Sentences & Call to Action (Together, we can...)",
+        cn: "达到 5 句以上且有结尾号召",
+        pass: (text.match(/[.!?]/g) || []).length >= 5
+      }
+    ];
+
+    document.getElementById('liveChecklist').innerHTML = checks.map(c => `
+      <div style="background:${c.pass ? '#dcfce7' : '#fee2e2'}; border:1px solid ${c.pass ? '#22c55e' : '#ef4444'}; padding:10px 12px; border-radius:10px; font-size:0.9rem;">
+        <strong>${c.pass ? '✅' : '⏳'} ${c.label}</strong>
+        <div class="cn-inline">${c.cn}</div>
+      </div>
+    `).join('');
+  }
+
+  function copyEssayText() {
+    const textarea = document.getElementById('finalEssayTextarea');
+    navigator.clipboard.writeText(textarea.value);
+    const fb = document.getElementById('copyFeedback');
+    fb.textContent = '✅ Copied to clipboard! You can now paste it into a document or write it down in your notebook.';
+    setTimeout(() => { fb.textContent = ''; }, 3000);
+  }
+
+  renderGuidedWriter();
+  bindClickableWords();
+
+
+  // ================= CONCEPT MINI-GAMES (知识点随堂小闯关) =================
+  const mini0AData = [
+    {
+      id: "mg0a-1",
+      text: "1. “There are many plastic bottles in the ocean.”",
+      cn: "海里有很多塑料瓶。",
+      ans: "fact",
+      explain: "It only states a plain fact without emotion or a call to action."
+    },
+    {
+      id: "mg0a-2",
+      text: "2. “We must stop dumping toxic plastic waste before it kills more innocent sea turtles!”",
+      cn: "在毒塑料害死更多无辜海龟之前，我们必须停止倾倒塑料垃圾！",
+      ans: "persuasive",
+      explain: "Uses 'must' (High Modality) + 'toxic / innocent' (Emotive Words)!"
+    },
+    {
+      id: "mg0a-3",
+      text: "3. “Isn’t it time we all worked together to protect our planet’s fragile forests?”",
+      cn: "难道不是我们所有人一起保护脆弱森林的时候了吗？",
+      ans: "persuasive",
+      explain: "Uses a Rhetorical Question + 'fragile' to persuade the reader!"
+    }
+  ];
+
+  function renderMini0A() {
+    const c = document.getElementById('miniGame0AContainer');
+    if (!c) return;
+    c.innerHTML = mini0AData.map(item => `
+      <div class="mini-row">
+        <div class="mini-row-text" style="cursor:pointer;" title="Click to listen 🔊" onclick="speakText('${escAttr(item.text)}')">
+          🔊 ${item.text}
+          <div class="cn-inline">${item.cn}</div>
+        </div>
+        <div class="chip-group" style="margin:0;">
+          <button class="chip" onclick="checkMini('${item.id}', 'fact', '${item.ans}', '${escAttr(item.explain)}', this)">😐 Plain Fact 只讲事实</button>
+          <button class="chip" onclick="checkMini('${item.id}', 'persuasive', '${item.ans}', '${escAttr(item.explain)}', this)">🔥 Persuasive 说服句</button>
+        </div>
+        <div class="feedback" id="fb-${item.id}" style="width:100%; margin-top:2px;"></div>
+      </div>
+    `).join('');
+  }
+
+  const mini0BData = [
+    {
+      id: "mg0b-1",
+      text: "1. You want to put a big colorful sign on the school wall with a short slogan: “Save Water, Save Life!”",
+      cn: "你想在学校墙上贴一张带简短口号的大彩色宣传画。",
+      options: [
+        { k: "poster", label: "🪧 Campaign Poster (宣传海报)" },
+        { k: "letter", label: "✉️ Letter (信件)" }
+      ],
+      ans: "poster",
+      explain: "Posters use big visuals and short slogans to promote a cause!"
+    },
+    {
+      id: "mg0b-2",
+      text: "2. You write directly to your school Principal asking for more recycling bins in classrooms.",
+      cn: "你直接写信给校长，请求在教室里增加分类回收桶。",
+      options: [
+        { k: "review", label: "⭐ Review (评论)" },
+        { k: "letter", label: "✉️ Letter / Email (倡议信/邮件)" }
+      ],
+      ans: "letter",
+      explain: "Letters or emails persuade a specific person or leader!"
+    },
+    {
+      id: "mg0b-3",
+      text: "3. You stand on stage in front of 200 students to inspire them to plant trees on Earth Day.",
+      cn: "你站在舞台上面对200名同学发表演说，号召大家在地球日种树。",
+      options: [
+        { k: "speech", label: "🎤 Speech (演讲稿)" },
+        { k: "review", label: "⭐ Review (评论)" }
+      ],
+      ans: "speech",
+      explain: "Speeches are spoken aloud to inspire an audience!"
+    }
+  ];
+
+  function renderMini0B() {
+    const c = document.getElementById('miniGame0BContainer');
+    if (!c) return;
+    c.innerHTML = mini0BData.map(item => `
+      <div class="mini-row">
+        <div class="mini-row-text" style="cursor:pointer;" title="Click to listen 🔊" onclick="speakText('${escAttr(item.text)}')">
+          🔊 ${item.text}
+          <div class="cn-inline">${item.cn}</div>
+        </div>
+        <div class="chip-group" style="margin:0;">
+          ${item.options.map(o => `
+            <button class="chip" onclick="checkMini('${item.id}', '${o.k}', '${item.ans}', '${escAttr(item.explain)}', this)">${o.label}</button>
+          `).join('')}
+        </div>
+        <div class="feedback" id="fb-${item.id}" style="width:100%; margin-top:2px;"></div>
+      </div>
+    `).join('');
+  }
+
+  const mini0CData = [
+    {
+      id: "mg0c-1",
+      text: "1. “Save Our Oceans from Plastic Waste!”",
+      cn: "拯救我们的海洋免受塑料污染！（简短有力、点明主题）",
+      ans: "title",
+      explain: "Short, punchy headline = Title!"
+    },
+    {
+      id: "mg0c-2",
+      text: "2. “Every year, millions of tons of plastic enter the sea. Shouldn’t we stop this crisis before it’s too late?”",
+      cn: "每年有数百万吨塑料进入海洋。难道我们不该在太晚之前阻止这场危机吗？",
+      ans: "intro",
+      explain: "Fact + Rhetorical Question = Introduction (Hook)!"
+    },
+    {
+      id: "mg0c-3",
+      text: "3. “First, governments must ban single-use plastic bags, and each of us should bring reusable bottles.”",
+      cn: "首先，政府必须禁止一次性塑料袋，而且我们每个人都应该自带可重复使用的水杯。",
+      ans: "body",
+      explain: "Gives reasons and solutions = Body Paragraph!"
+    },
+    {
+      id: "mg0c-4",
+      text: "4. “Together, we can protect marine life and keep our oceans sparkling blue forever!”",
+      cn: "携手努力，我们就能保护海洋生物，让海洋永远蔚蓝清澈！",
+      ans: "conclusion",
+      explain: "Inspiring final Call to Action = Conclusion!"
+    }
+  ];
+
+  function renderMini0C() {
+    const c = document.getElementById('miniGame0CContainer');
+    if (!c) return;
+    const opts = [
+      { k: "title", label: "📌 Title 标题" },
+      { k: "intro", label: "🪝 Intro 开头段" },
+      { k: "body", label: "🏛️ Body 理由段" },
+      { k: "conclusion", label: "🚀 Conclusion 结尾段" }
+    ];
+    c.innerHTML = mini0CData.map(item => `
+      <div class="mini-row">
+        <div class="mini-row-text" style="cursor:pointer;" title="Click to listen 🔊" onclick="speakText('${escAttr(item.text)}')">
+          🔊 ${item.text}
+          <div class="cn-inline">${item.cn}</div>
+        </div>
+        <div class="chip-group" style="margin:0;">
+          ${opts.map(o => `
+            <button class="chip" style="padding:5px 10px; font-size:0.85rem;" onclick="checkMini('${item.id}', '${o.k}', '${item.ans}', '${escAttr(item.explain)}', this)">${o.label}</button>
+          `).join('')}
+        </div>
+        <div class="feedback" id="fb-${item.id}" style="width:100%; margin-top:2px;"></div>
+      </div>
+    `).join('');
+  }
+
+  function testBattery(wordLabel, pct, color, msg, btn) {
+    document.querySelectorAll('#batteryBtnGroup .chip').forEach(c => c.classList.remove('selected'));
+    btn.classList.add('selected');
+    const cleanWord = wordLabel.split(' (')[0];
+    document.getElementById('batterySlot').textContent = cleanWord;
+    speakText(`We ${cleanWord} stop dumping toxic plastic into our oceans!`);
+    const fill = document.getElementById('batteryFill');
+    fill.style.width = pct + '%';
+    fill.style.background = color;
+    fill.textContent = `⚡ Persuasion Power: ${pct}% (${cleanWord})`;
+    const fb = document.getElementById('batteryFeedback');
+    fb.className = pct >= 90 ? 'feedback ok' : 'feedback err';
+    fb.textContent = msg;
+    if (pct === 100) {
+      awardStar('battery-100');
+    }
+  }
+
+  const mini2Data = [
+    { id: "mg2-1", word: "precious (珍贵的)", ex: "our planet’s precious rainforests", ans: "pos", explain: "Makes readers feel how valuable nature is!" },
+    { id: "mg2-2", word: "heartbreaking (令人心碎的)", ex: "a heartbreaking loss of wildlife", ans: "neg", explain: "Makes readers feel sadness and urgency to stop harm!" },
+    { id: "mg2-3", word: "inspiring (鼓舞人心的)", ex: "inspiring young activists", ans: "pos", explain: "Creates hope and pride!" },
+    { id: "mg2-4", word: "cruel & destructive (残忍且具破坏性的)", ex: "cruel and destructive deforestation", ans: "neg", explain: "Creates anger against pollution and destruction!" }
+  ];
+
+  function renderMini2() {
+    const c = document.getElementById('miniGame2Container');
+    if (!c) return;
+    c.innerHTML = mini2Data.map(item => `
+      <div class="mini-row">
+        <div class="mini-row-text" style="cursor:pointer;" title="Click to listen 🔊" onclick="speakText('${escAttr(item.ex)}')">
+          🔊 <strong>${item.word}</strong> — <em>"${item.ex}"</em>
+        </div>
+        <div class="chip-group" style="margin:0;">
+          <button class="chip" onclick="checkMini('${item.id}', 'pos', '${item.ans}', '${escAttr(item.explain)}', this)">🌟 Positive (希望/珍贵)</button>
+          <button class="chip" onclick="checkMini('${item.id}', 'neg', '${item.ans}', '${escAttr(item.explain)}', this)">🚨 Negative (危机/心痛)</button>
+        </div>
+        <div class="feedback" id="fb-${item.id}" style="width:100%; margin-top:2px;"></div>
+      </div>
+    `).join('');
+  }
+
+  const mini3AData = [
+    {
+      id: "mg3a-1",
+      text: "1. “What time does the school library close today?”",
+      cn: "今天学校图书馆几点关门？",
+      ans: "normal",
+      explain: "This just asks for a clock time — it’s a normal question."
+    },
+    {
+      id: "mg3a-2",
+      text: "2. “How can we stand by and watch innocent polar bears lose their icy homes?”",
+      cn: "我们怎么能袖手旁观，看着无辜的北极熊失去冰川家园呢？",
+      ans: "rhetorical",
+      explain: "Rhetorical Question! It doesn’t need an answer — it makes the reader feel guilty and care!"
+    },
+    {
+      id: "mg3a-3",
+      text: "3. “If we don’t protect our planet’s oceans now, who will?”",
+      cn: "如果我们现在不保护地球的海洋，谁会去保护呢？",
+      ans: "rhetorical",
+      explain: "Rhetorical Question! It urges everyone to take responsibility right now."
+    }
+  ];
+
+  function renderMini3A() {
+    const c = document.getElementById('miniGame3AContainer');
+    if (!c) return;
+    c.innerHTML = mini3AData.map(item => `
+      <div class="mini-row">
+        <div class="mini-row-text" style="cursor:pointer;" title="Click to listen 🔊" onclick="speakText('${escAttr(item.text)}')">
+          🔊 ${item.text}
+          <div class="cn-inline">${item.cn}</div>
+        </div>
+        <div class="chip-group" style="margin:0;">
+          <button class="chip" onclick="checkMini('${item.id}', 'normal', '${item.ans}', '${escAttr(item.explain)}', this)">❓ Normal Question 普通提问</button>
+          <button class="chip" onclick="checkMini('${item.id}', 'rhetorical', '${item.ans}', '${escAttr(item.explain)}', this)">💡 Rhetorical Question 反问句</button>
+        </div>
+        <div class="feedback" id="fb-${item.id}" style="width:100%; margin-top:2px;"></div>
+      </div>
+    `).join('');
+  }
+
+  const mini3BData = [
+    {
+      id: "mg3b-1",
+      text: "1. “Reduce. Reuse. Recycle.”",
+      cn: "减少使用。重复利用。循环回收。（三个简短有力的动作）",
+      ans: "rule3",
+      explain: "Three short, memorable ideas = The Rule of Three!"
+    },
+    {
+      id: "mg3b-2",
+      text: "2. “We must act now. We must act together.”",
+      cn: "我们必须现在行动。我们必须一起行动。（重复句首短语）",
+      ans: "phrase",
+      explain: "Repeating 'We must act...' = Phrase Repetition!"
+    },
+    {
+      id: "mg3b-3",
+      text: "3. “Protect, protect, protect our planet!”",
+      cn: "保护、保护、保护我们的星球！（连续重复同一个词）",
+      ans: "word",
+      explain: "Repeating one single word for emphasis = Word Repetition!"
+    }
+  ];
+
+  function renderMini3B() {
+    const c = document.getElementById('miniGame3BContainer');
+    if (!c) return;
+    const opts = [
+      { k: "word", label: "1️⃣ Word Repetition 单词重复" },
+      { k: "phrase", label: "2️⃣ Phrase Repetition 短语重复" },
+      { k: "rule3", label: "4️⃣ Rule of Three 三连排比" }
+    ];
+    c.innerHTML = mini3BData.map(item => `
+      <div class="mini-row">
+        <div class="mini-row-text" style="cursor:pointer;" title="Click to listen 🔊" onclick="speakText('${escAttr(item.text)}')">
+          🔊 ${item.text}
+          <div class="cn-inline">${item.cn}</div>
+        </div>
+        <div class="chip-group" style="margin:0;">
+          ${opts.map(o => `
+            <button class="chip" style="padding:5px 10px; font-size:0.85rem;" onclick="checkMini('${item.id}', '${o.k}', '${item.ans}', '${escAttr(item.explain)}', this)">${o.label}</button>
+          `).join('')}
+        </div>
+        <div class="feedback" id="fb-${item.id}" style="width:100%; margin-top:2px;"></div>
+      </div>
+    `).join('');
+  }
+
+  const growerStages = {
+    1: {
+      title: "Stage 1 — Plain Noun Only (太简单，没有画面感)",
+      html: `We must protect <span style="background:#fee2e2; padding:2px 8px; border-radius:6px; font-weight:700;">animals</span>.`,
+      cn: "我们必须保护【动物】。（只有1个孤零零的名词 animals）",
+      speak: "We must protect animals."
+    },
+    2: {
+      title: "Stage 2 — Add Emotive Adjectives (加上情感形容词，开始打动人！)",
+      html: `We must protect <span style="background:#fef3c7; padding:2px 8px; border-radius:6px; font-weight:700;">innocent, endangered</span> <span style="background:#fee2e2; padding:2px 8px; border-radius:6px; font-weight:700;">animals</span>.`,
+      cn: "我们必须保护【无辜的、濒危的】【动物】。（加上了 adjectives 修饰核心名词）",
+      speak: "We must protect innocent, endangered animals."
+    },
+    3: {
+      title: "Stage 3 — Full Expanded Noun Phrase! (+ 在哪里/正在做什么的后置细节，满分画面感 🌟)",
+      html: `We must protect <span style="background:#fef3c7; padding:2px 8px; border-radius:6px; font-weight:700;">innocent, endangered</span> <span style="background:#fee2e2; padding:2px 8px; border-radius:6px; font-weight:700;">animals</span> <span style="background:#dbeafe; padding:2px 8px; border-radius:6px; font-weight:700;">fighting to survive in our polluted oceans</span>!`,
+      cn: "我们必须保护【无辜的、濒危的】【动物】【在被污染的海洋里苦苦挣扎求生】！（完整三块积木！）",
+      speak: "We must protect innocent, endangered animals fighting to survive in our polluted oceans!"
+    }
+  };
+
+  function setGrowerStage(stageNum, btn) {
+    if (btn) {
+      document.querySelectorAll('#growerStepGroup .chip').forEach(c => c.classList.remove('selected'));
+      btn.classList.add('selected');
+    }
+    const st = growerStages[stageNum];
+    const box = document.getElementById('growerDisplayBox');
+    if (!box) return;
+    box.innerHTML = `
+      <div style="font-size:0.85rem; font-weight:700; color:#047857;">${st.title}</div>
+      <div style="font-size:1.15rem; margin:8px 0;">${st.html}</div>
+      <div class="cn-inline">${st.cn}</div>
+    `;
+    if (btn) {
+      speakText(st.speak);
+      if (stageNum === 3) awardStar('grower-magic');
+    }
+  }
+
+  function checkMini(id, chosen, ans, explain, btn) {
+    const parent = btn.parentElement;
+    parent.querySelectorAll('.chip').forEach(c => c.classList.remove('correct', 'wrong'));
+    const fb = document.getElementById('fb-' + id);
+    if (chosen === ans) {
+      btn.classList.add('correct');
+      fb.className = 'feedback ok';
+      fb.textContent = '✅ Bingo! ' + explain;
+      awardStar(id);
+    } else {
+      btn.classList.add('wrong');
+      fb.className = 'feedback err';
+      fb.textContent = '💡 Not quite — try the other option!';
+    }
+  }
+
+
+  const mini5Data = [
+    {
+      id: "mg5-1",
+      text: "1. How does the Introduction paragraph end to hook the reader?",
+      cn: "范文第一段（开头段）最后一句用了什么技巧来吸引读者？",
+      options: [
+        { k: "rq", label: "❓ A Rhetorical Question (“Shouldn’t we do something about it?”)" },
+        { k: "bye", label: "👋 Saying goodbye" }
+      ],
+      ans: "rq",
+      explain: "Ending the introduction with a rhetorical question makes readers care immediately!"
+    },
+    {
+      id: "mg5-2",
+      text: "2. Who does Body Paragraph 1 say MUST take action first?",
+      cn: "范文第二段（理由段1）指出谁必须先采取行动？",
+      options: [
+        { k: "gov", label: "🏛️ Governments & Companies (政府与企业)" },
+        { k: "pets", label: "🐶 Pet dogs and cats" }
+      ],
+      ans: "gov",
+      explain: "Body Reason 1 focuses on big leaders (Governments & Companies), and Body Reason 2 focuses on 'Each of us'!"
+    },
+    {
+      id: "mg5-3",
+      text: "3. What 3 everyday actions does Body Paragraph 2 say EACH OF US can do?",
+      cn: "范文第三段（理由段2）列出了我们每个人能做的哪 3 件事？",
+      options: [
+        { k: "three", label: "🌱 Planting trees, reducing paper waste, and supporting eco-friendly brands" },
+        { k: "cut", label: "🪓 Cutting down more trees" }
+      ],
+      ans: "three",
+      explain: "Listing 3 specific actions (Rule of Three) makes your advice super clear and persuasive!"
+    }
+  ];
+
+  function renderMini5() {
+    const c = document.getElementById('miniGame5Container');
+    if (!c) return;
+    c.innerHTML = mini5Data.map(item => `
+      <div class="mini-row">
+        <div class="mini-row-text" style="cursor:pointer;" title="Click to listen 🔊" onclick="speakText('${escAttr(item.text)}')">
+          🔊 ${item.text}
+          <div class="cn-inline">${item.cn}</div>
+        </div>
+        <div class="chip-group" style="margin:0;">
+          ${item.options.map(o => `
+            <button class="chip" onclick="checkMini('${item.id}', '${o.k}', '${item.ans}', '${escAttr(item.explain)}', this)">${o.label}</button>
+          `).join('')}
+        </div>
+        <div class="feedback" id="fb-${item.id}" style="width:100%; margin-top:2px;"></div>
+      </div>
+    `).join('');
+  }
+
+  renderMini0A();
+  renderMini5();
+  renderMini0B();
+  renderMini0C();
+  renderMini2();
+  renderMini3A();
+  renderMini3B();
+  setGrowerStage(1, null);
+  // Initialize Batch 1
+  renderVocab('all');
+  renderModalityMcq();
+  renderPlasticStraws();
+  renderSpotEmotion();
+  renderTransformSentences();
+</script>
+</body>
+</html>

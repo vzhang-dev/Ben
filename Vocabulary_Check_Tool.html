@@ -1483,6 +1483,28 @@
       }
     }
 
+
+    .park-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: #f8fafc;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+
+    .park-home-btn:hover {
+      background: rgba(59, 130, 246, 0.35);
+      border-color: #93c5fd;
+      transform: translateY(-1px);
+    }
+
   </style>
 </head>
 <body>
@@ -1490,6 +1512,7 @@
     <!-- Top Header -->
     <header class="top-header">
       <div class="brand-title">
+        <a href="index.html" class="park-home-btn" title="Back to Armyere's Learning Park">🏰 Park Home</a>
         <h1>⛏️ Minecraft Vocab Quest: Armyere</h1>
         <span class="badge-pill" id="deckBadge" style="cursor:pointer;" title="Click to toggle Batch & Filter panel">Batch 4: 50 Words (#151–#200)</span>
       </div>
