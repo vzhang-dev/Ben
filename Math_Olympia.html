@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第 1 讲 整数计算综合（Level 1 & Level 2）</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --level1: #10b981;
+      --level2: #f59e0b;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --solution-bg: #f0fdf4;
+      --solution-border: #86efac;
+      --method-bg: #eff6ff;
+      --star: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px 16px 60px;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    header {
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
+      color: #fff;
+      padding: 28px 32px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    header h1 {
+      margin: 0 0 6px 0;
+      font-size: 26px;
+    }
+    header p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    .header-top-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .park-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+    .park-home-btn:hover {
+      background: rgba(255, 255, 255, 0.28);
+      border-color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-tool {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .btn-tool:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .section-banner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 32px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    .badge {
+      padding: 4px 12px;
+      border-radius: 999px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .badge-l1 { background: var(--level1); }
+    .badge-l2 { background: var(--level2); }
+    .section-banner h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    .q-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      gap: 12px;
+    }
+    .q-title {
+      font-size: 17px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .stars {
+      color: var(--star);
+      letter-spacing: 2px;
+    }
+    .q-body {
+      font-size: 16px;
+    }
+    .sub-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 12px;
+    }
+    .sub-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .sub-expr {
+      font-family: "Cambria Math", "Times New Roman", serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .sub-label {
+      display: inline-block;
+      min-width: 28px;
+      color: var(--primary);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 700;
+    }
+    .math-block {
+      background: #f8fafc;
+      border-left: 4px solid #94a3b8;
+      padding: 10px 16px;
+      margin: 10px 0;
+      font-family: "Cambria Math", "Times New Roman", serif;
+      font-size: 18px;
+      border-radius: 0 8px 8px 0;
+      overflow-x: auto;
+    }
+    .check-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .check-btn:hover {
+      background: var(--primary-hover);
+    }
+    .check-btn.active {
+      background: #475569;
+    }
+    .solution {
+      display: none;
+      margin-top: 12px;
+      padding: 14px 18px;
+      background: var(--solution-bg);
+      border: 1px solid var(--solution-border);
+      border-radius: 10px;
+    }
+    .solution.open {
+      display: block;
+    }
+    .ans-summary {
+      font-weight: 700;
+      color: #166534;
+      font-size: 16px;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed #86efac;
+    }
+    .idea-tag {
+      display: inline-block;
+      background: var(--method-bg);
+      color: #1d4ed8;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+    }
+    .num-table {
+      border-collapse: collapse;
+      margin: 12px 0;
+      width: 100%;
+      max-width: 540px;
+      text-align: center;
+      font-family: "Cambria Math", monospace;
+      font-size: 16px;
+    }
+    .num-table td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      background: #f8fafc;
+    }
+    .num-table tr:nth-child(3) td:nth-child(5) {
+      background: #fef3c7;
+      font-weight: 700;
+    }
+    code.math {
+      font-family: "Cambria Math", "Times New Roman", serif;
+      font-size: 1.05em;
+      background: rgba(255,255,255,0.7);
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <div class="header-top-row">
+          <a href="index.html" class="park-home-btn" title="Back to Armyere's Learning Park">🏰 Park Home</a>
+        </div>
+        <h1>第 1 讲 整数计算综合</h1>
+        <p>高思数学 · Level 1 基础训练题 & Level 2 进阶训练题（每道小题均可独立查看解析）</p>
+      </div>
+      <div class="toolbar">
+        <button class="btn-tool" onclick="toggleAll(true)">展开全部答案 (Show All)</button>
+        <button class="btn-tool" onclick="toggleAll(false)">收起全部答案 (Hide All)</button>
+      </div>
+    </header>
+
+    <!-- ==================== LEVEL 1 ==================== -->
+    <div class="section-banner">
+      <span class="badge badge-l1">Level 1</span>
+      <h2>基础训练题</h2>
+    </div>
+
+    <!-- L1 Q1 -->
+    <div class="card">
+      <div class="q-header">
+        <div class="q-title">1. <span class="stars">★</span> 计算：</div>
+      </div>
+      <div class="q-body">
+        <!-- Q1.1 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(1)</span> 121 × 32 ÷ 8</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】484</div>
+            <span class="idea-tag">解题思路：添括号先算后面的除法（32 ÷ 8 = 4），避免大数相乘</span>
+            <div>
+              <code>原式 = 121 × (32 ÷ 8)</code><br/>
+              <code>= 121 × 4 = 484</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q1.2 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(2)</span> 4 × (250 ÷ 8)</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】125</div>
+            <span class="idea-tag">解题思路：括号前是乘号，去括号不变号，先算 4 × 250 = 1000 凑整</span>
+            <div>
+              <code>原式 = 4 × 250 ÷ 8</code><br/>
+              <code>= 1000 ÷ 8 = 125</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q1.3 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(3)</span> 25 × 83 × 32 × 125</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】8300000</div>
+            <span class="idea-tag">解题思路：“黄金搭档”凑整（25 × 4 = 100，125 × 8 = 1000），将 32 拆成 4 × 8</span>
+            <div>
+              <code>原式 = 25 × 83 × (4 × 8) × 125</code><br/>
+              <code>= (25 × 4) × (8 × 125) × 83</code><br/>
+              <code>= 100 × 1000 × 83 = 8300000</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- L1 Q2 -->
+    <div class="card">
+      <div class="q-header">
+        <div class="q-title">2. <span class="stars">★★</span> 计算：</div>
+      </div>
+      <div class="q-body">
+        <!-- Q2.1 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(1)</span> 56 × 22 + 56 × 33 + 56 × 44</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】5544</div>
+            <span class="idea-tag">解题思路：提取公因数 56，再利用 99 = 100 - 1 凑整计算</span>
+            <div>
+              <code>原式 = 56 × (22 + 33 + 44)</code><br/>
+              <code>= 56 × 99</code><br/>
+              <code>= 56 × (100 - 1) = 5600 - 56 = 5544</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2.2 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(2)</span> 222 × 33 + 889 × 66</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】66000</div>
+            <span class="idea-tag">解题思路：倍数转化构造公因数（将 222 × 33 转化为 111 × 66）</span>
+            <div>
+              观察到 <code>66 = 2 × 33</code>，把 <code>222</code> 拆成 <code>111 × 2</code>：<br/>
+              <code>原式 = 111 × (2 × 33) + 889 × 66</code><br/>
+              <code>= 111 × 66 + 889 × 66</code><br/>
+              <code>= (111 + 889) × 66 = 1000 × 66 = 66000</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- L1 Q3 -->
+    <div class="card qa-box">
+      <div class="q-header">
+        <div class="q-title">3. <span class="stars">★★</span> 计算：</div>
+        <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+      </div>
+      <div class="q-body">
+        <div class="math-block">(25 × 3 + 75 + 5 × 15) ÷ 3</div>
+      </div>
+      <div class="solution">
+        <div class="ans-summary">【答案】75</div>
+        <span class="idea-tag">解题思路：括号内化简 或 除法分配律</span>
+        <p><strong>方法一（括号内化为相同数）：</strong><br/>
+        注意到 <code>25 × 3 = 75</code>，且 <code>5 × 15 = 75</code>：<br/>
+        <code>原式 = (75 + 75 + 75) ÷ 3 = 75 × 3 ÷ 3 = 75</code></p>
+        <p><strong>方法二（除法分配律）：</strong><br/>
+        <code>原式 = 25 × 3 ÷ 3 + 75 ÷ 3 + 5 × 15 ÷ 3 = 25 + 25 + 25 = 75</code></p>
+      </div>
+    </div>
+
+    <!-- L1 Q4 -->
+    <div class="card qa-box">
+      <div class="q-header">
+        <div class="q-title">4. <span class="stars">★★★</span> 计算：</div>
+        <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+      </div>
+      <div class="q-body">
+        <div class="math-block">100 - 99 + 98 - 97 + 96 - 95 + … + 12 - 11 + 10</div>
+      </div>
+      <div class="solution">
+        <div class="ans-summary">【答案】55</div>
+        <span class="idea-tag">解题思路：加减混合分组法（两两配对）</span>
+        <div>
+          <strong>第一步：分组</strong>（把最后的 <code>+ 10</code> 留出，前面每 2 个数一组）<br/>
+          <code>原式 = (100 - 99) + (98 - 97) + (96 - 95) + … + (12 - 11) + 10</code><br/>
+          <strong>第二步：算组数</strong><br/>
+          从 <code>11</code> 到 <code>100</code> 共有 <code>100 - 11 + 1 = 90</code> 个数，每 2 个一组，共 <code>90 ÷ 2 = 45</code> 组。<br/>
+          <strong>第三步：求和</strong><br/>
+          <code>原式 = 1 × 45 + 10 = 45 + 10 = 55</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- L1 Q5 -->
+    <div class="card qa-box">
+      <div class="q-header">
+        <div class="q-title">5. <span class="stars">★★★</span> 计算：</div>
+        <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+      </div>
+      <div class="q-body">
+        <div class="math-block">50 + 49 - 48 - 47 + 46 + 45 - 44 - 43 + … - 4 - 3 + 2 + 1</div>
+      </div>
+      <div class="solution">
+        <div class="ans-summary">【答案】51</div>
+        <span class="idea-tag">解题思路：周期分组法（符号规律“+ + - -”，每 4 个数一组）</span>
+        <div>
+          <strong>第一步：按每 4 个数一组分组</strong>（最后剩下 <code>+ 2 + 1</code>）<br/>
+          <code>原式 = (50 + 49 - 48 - 47) + (46 + 45 - 44 - 43) + … + (6 + 5 - 4 - 3) + 2 + 1</code><br/>
+          <strong>第二步：计算每组的值与组数</strong><br/>
+          每组的值为 <code>(50 - 48) + (49 - 47) = 2 + 2 = 4</code>。<br/>
+          从 <code>3</code> 到 <code>50</code> 共有 <code>50 - 3 + 1 = 48</code> 个数，共有 <code>48 ÷ 4 = 12</code> 组。<br/>
+          <strong>第三步：求和</strong><br/>
+          <code>原式 = 4 × 12 + 2 + 1 = 48 + 3 = 51</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- L1 Q6 -->
+    <div class="card qa-box">
+      <div class="q-header">
+        <div class="q-title">6. <span class="stars">★★★</span> 计算：</div>
+        <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+      </div>
+      <div class="q-body">
+        <div class="math-block">(1 + 3 + 5 + 7 + … + 199 + 201) - (2 + 4 + 6 + 8 + … + 198 + 200)</div>
+      </div>
+      <div class="solution">
+        <div class="ans-summary">【答案】101</div>
+        <span class="idea-tag">解题思路：去括号错位配对相减</span>
+        <div>
+          <strong>第一步：观察两个括号中的数</strong><br/>
+          第一个括号有 <code>101</code> 个奇数（1 到 201），第二个括号有 <code>100</code> 个偶数（2 到 200）。<br/>
+          <strong>第二步：把第一个数 <code>1</code> 留出，其余一一配对相减</strong><br/>
+          <code>原式 = 1 + (3 - 2) + (5 - 4) + (7 - 6) + … + (201 - 200)</code><br/>
+          从 <code>2</code> 到 <code>200</code> 共有 <code>200 ÷ 2 = 100</code> 个偶数，因此共有 <code>100</code> 个括号，每个括号的差都是 <code>1</code>。<br/>
+          <strong>第三步：计算总和</strong><br/>
+          <code>原式 = 1 + 1 × 100 = 101</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- L1 Q7 -->
+    <div class="card qa-box">
+      <div class="q-header">
+        <div class="q-title">7. <span class="stars">★★</span> 解决问题：</div>
+        <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+      </div>
+      <div class="q-body">
+        <p>从 1 开始的 100 个连续奇数的和是多少？</p>
+      </div>
+      <div class="solution">
+        <div class="ans-summary">【答案】10000</div>
+        <span class="idea-tag">解题思路：连续奇数求和结论 / 等差数列求和</span>
+        <p>
+          <strong>方法一（奇数求和规律）：</strong><br/>
+          从 <code>1</code> 开始的 <code>n</code> 个连续奇数的和等于个数的平方，即 <code>n²</code>：<br/>
+          <code>1 = 1²</code>，<code>1 + 3 = 2²</code>，<code>1 + 3 + 5 = 3²</code>，……<br/>
+          因此 100 个连续奇数的和为：<code>100 × 100 = 10000</code>。
+        </p>
+        <p>
+          <strong>方法二（等差数列求和）：</strong><br/>
+          第 100 个奇数是 <code>2 × 100 - 1 = 199</code>。<br/>
+          <code>和 = (首项 + 末项) × 项数 ÷ 2 = (1 + 199) × 100 ÷ 2 = 200 × 100 ÷ 2 = 10000</code>。
+        </p>
+      </div>
+    </div>
+
+    <!-- L1 Q8 -->
+    <div class="card qa-box">
+      <div class="q-header">
+        <div class="q-title">8. <span class="stars">★★★</span> 计算：</div>
+        <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+      </div>
+      <div class="q-body">
+        <div class="math-block">1 + 2 + 3 + 4 + … + 48 + 49 + 50 + 49 + 48 + … + 4 + 3 + 2 + 1</div>
+      </div>
+      <div class="solution">
+        <div class="ans-summary">【答案】2500</div>
+        <span class="idea-tag">解题思路：“金字塔数列”（山顶数列）求和公式</span>
+        <div>
+          <strong>规律总结：</strong><br/>
+          从 <code>1</code> 连续加到 <code>n</code> 再连续加回 <code>1</code>，其总和等于中间最高峰“山顶数”的平方 <code>n²</code>。<br/>
+          （推导：可将左右对称的数配成 49 个 50，加上中间的 50，共有 50 个 50）<br/>
+          <strong>计算：</strong><br/>
+          本题的“山顶数”是 <code>50</code>，所以：<br/>
+          <code>原式 = 50 × 50 = 2500</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- L1 Q9 -->
+    <div class="card">
+      <div class="q-header">
+        <div class="q-title">9. <span class="stars">★★</span> 定义新运算：</div>
+      </div>
+      <div class="q-body">
+        <p>规定运算“∇”为：<code class="math">a ∇ b = (a + 1) × (b - 1)</code>。请计算：</p>
+
+        <!-- Q9.1 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(1)</span> 8 ∇ 10</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】81</div>
+            <span class="idea-tag">解题思路：将 a = 8，b = 10 代入新运算公式 (a + 1) × (b - 1)</span>
+            <div>
+              <code>8 ∇ 10 = (8 + 1) × (10 - 1)</code><br/>
+              <code>= 9 × 9 = 81</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q9.2 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(2)</span> 10 ∇ 8</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】77</div>
+            <span class="idea-tag">解题思路：将 a = 10，b = 8 代入新运算公式 (a + 1) × (b - 1)，注意顺序变化</span>
+            <div>
+              <code>10 ∇ 8 = (10 + 1) × (8 - 1)</code><br/>
+              <code>= 11 × 7 = 77</code><br/>
+              <em>（提示：8 ∇ 10 ≠ 10 ∇ 8，说明该新运算不满足交换律）</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- L1 Q10 -->
+    <div class="card">
+      <div class="q-header">
+        <div class="q-title">10. <span class="stars">★★</span> 定义新运算：</div>
+      </div>
+      <div class="q-body">
+        <p>规定运算“⊙”为：<code class="math">a ⊙ b = a × b - (a + b)</code>。请计算：</p>
+
+        <!-- Q10.1 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(1)</span> 5 ⊙ 8</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】27</div>
+            <span class="idea-tag">解题思路：将 a = 5，b = 8 代入公式 a × b - (a + b)</span>
+            <div>
+              <code>5 ⊙ 8 = 5 × 8 - (5 + 8)</code><br/>
+              <code>= 40 - 13 = 27</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q10.2 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(2)</span> 8 ⊙ 5</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】27</div>
+            <span class="idea-tag">解题思路：将 a = 8，b = 5 代入公式 a × b - (a + b)</span>
+            <div>
+              <code>8 ⊙ 5 = 8 × 5 - (8 + 5)</code><br/>
+              <code>= 40 - 13 = 27</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q10.3 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(3)</span> (6 ⊙ 5) ⊙ 4</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】53</div>
+            <span class="idea-tag">解题思路：有括号先算括号里面的 6 ⊙ 5，再将结果与 4 进行“⊙”运算</span>
+            <div>
+              <strong>第一步：先算括号内 <code>6 ⊙ 5</code></strong><br/>
+              <code>6 ⊙ 5 = 6 × 5 - (6 + 5) = 30 - 11 = 19</code><br/>
+              <strong>第二步：再算外层 <code>19 ⊙ 4</code></strong><br/>
+              <code>19 ⊙ 4 = 19 × 4 - (19 + 4) = 76 - 23 = 53</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q10.4 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(4)</span> 6 ⊙ (5 ⊙ 4)</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】49</div>
+            <span class="idea-tag">解题思路：有括号先算括号里面的 5 ⊙ 4，再算 6 与该结果的“⊙”运算</span>
+            <div>
+              <strong>第一步：先算括号内 <code>5 ⊙ 4</code></strong><br/>
+              <code>5 ⊙ 4 = 5 × 4 - (5 + 4) = 20 - 9 = 11</code><br/>
+              <strong>第二步：再算外层 <code>6 ⊙ 11</code></strong><br/>
+              <code>6 ⊙ 11 = 6 × 11 - (6 + 11) = 66 - 17 = 49</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== LEVEL 2 ==================== -->
+    <div class="section-banner">
+      <span class="badge badge-l2">Level 2</span>
+      <h2>进阶训练题</h2>
+    </div>
+
+    <!-- L2 Q1 -->
+    <div class="card">
+      <div class="q-header">
+        <div class="q-title">1. <span class="stars">★★</span> 计算：</div>
+      </div>
+      <div class="q-body">
+        <!-- L2 Q1.1 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(1)</span> 72 × 27 × 88 ÷ (9 × 11 × 12)</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】144</div>
+            <span class="idea-tag">解题思路：除号后去括号变号法则 & 带符号搬家配对约分</span>
+            <div>
+              括号前面是除号，去掉括号后括号内的乘号都变成除号：<br/>
+              <code>原式 = 72 × 27 × 88 ÷ 9 ÷ 11 ÷ 12</code><br/>
+              <code>= (72 ÷ 12) × (27 ÷ 9) × (88 ÷ 11)</code><br/>
+              <code>= 6 × 3 × 8 = 144</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- L2 Q1.2 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(2)</span> 31 × 121 - 88 × 125 ÷ (1000 ÷ 121)</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】2420</div>
+            <span class="idea-tag">解题思路：除号后去括号（÷ 121 变 × 121）+ 提取公因数 121</span>
+            <div>
+              先化简减号后面的部分（利用 <code>88 × 125 = 11 × 8 × 125 = 11 × 1000</code>）：<br/>
+              <code>原式 = 31 × 121 - 11 × (8 × 125) ÷ 1000 × 121</code><br/>
+              <code>= 31 × 121 - 11 × 1000 ÷ 1000 × 121</code><br/>
+              <code>= 31 × 121 - 11 × 121</code><br/>
+              <code>= (31 - 11) × 121 = 20 × 121 = 2420</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- L2 Q2 -->
+    <div class="card">
+      <div class="q-header">
+        <div class="q-title">2. <span class="stars">★★★</span> 计算：</div>
+      </div>
+      <div class="q-body">
+        <!-- L2 Q2.1 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(1)</span> 555 × 445 - 556 × 444</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】111</div>
+            <span class="idea-tag">解题思路：差 1 拆数法构造相同乘积项</span>
+            <div>
+              将 <code>445</code> 拆成 <code>444 + 1</code>，将 <code>556</code> 拆成 <code>555 + 1</code>：<br/>
+              <code>原式 = 555 × (444 + 1) - (555 + 1) × 444</code><br/>
+              <code>= 555 × 444 + 555 - 555 × 444 - 444</code><br/>
+              <code>= 555 - 444 = 111</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- L2 Q2.2 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(2)</span> 42 × 137 - 80 ÷ 15 + 58 × 138 - 70 ÷ 15</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】13748</div>
+            <span class="idea-tag">解题思路：乘法项与除法项分别组合 + 拆数构造公因数 + 除法分配律</span>
+            <div>
+              把乘法项和除法项分别放在一起，并将 <code>138</code> 拆成 <code>137 + 1</code>：<br/>
+              <code>原式 = (42 × 137 + 58 × 138) - (80 ÷ 15 + 70 ÷ 15)</code><br/>
+              <code>= 42 × 137 + 58 × (137 + 1) - (80 + 70) ÷ 15</code><br/>
+              <code>= (42 + 58) × 137 + 58 - 150 ÷ 15</code><br/>
+              <code>= 100 × 137 + 58 - 10 = 13700 + 48 = 13748</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- L2 Q3 -->
+    <div class="card qa-box">
+      <div class="q-header">
+        <div class="q-title">3. <span class="stars">★★</span> 计算：</div>
+        <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+      </div>
+      <div class="q-body">
+        <div class="math-block">20092009 × 2009 - 20092008 × 2008 - 20092008</div>
+      </div>
+      <div class="solution">
+        <div class="ans-summary">【答案】2009</div>
+        <span class="idea-tag">解题思路：分步提取公因数</span>
+        <div>
+          <strong>第一步：把后两项合并，提取公因数 <code>20092008</code></strong><br/>
+          最后一项 <code>20092008</code> 可看作 <code>20092008 × 1</code>：<br/>
+          <code>原式 = 20092009 × 2009 - 20092008 × (2008 + 1)</code><br/>
+          <code>= 20092009 × 2009 - 20092008 × 2009</code><br/>
+          <strong>第二步：再次提取公因数 <code>2009</code></strong><br/>
+          <code>= (20092009 - 20092008) × 2009</code><br/>
+          <code>= 1 × 2009 = 2009</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- L2 Q4 -->
+    <div class="card">
+      <div class="q-header">
+        <div class="q-title">4. <span class="stars">★★★</span> 计算：</div>
+      </div>
+      <div class="q-body">
+        <!-- L2 Q4.1 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(1)</span> 37 × 47 + 36 × 53</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】3647</div>
+            <span class="idea-tag">解题思路：观察 47 + 53 = 100，将 37 拆成 36 + 1 构造公因数 36</span>
+            <div>
+              <code>原式 = (36 + 1) × 47 + 36 × 53</code><br/>
+              <code>= 36 × 47 + 47 + 36 × 53</code><br/>
+              <code>= 36 × (47 + 53) + 47</code><br/>
+              <code>= 36 × 100 + 47 = 3647</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- L2 Q4.2 -->
+        <div class="sub-item qa-box">
+          <div class="sub-row">
+            <div class="sub-expr"><span class="sub-label">(2)</span> 123 × 76 - 124 × 75</div>
+            <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+          </div>
+          <div class="solution">
+            <div class="ans-summary">【答案】48</div>
+            <span class="idea-tag">解题思路：差 1 拆数法（将 76 拆成 75 + 1，将 124 拆成 123 + 1）</span>
+            <div>
+              <code>原式 = 123 × (75 + 1) - (123 + 1) × 75</code><br/>
+              <code>= 123 × 75 + 123 - 123 × 75 - 75</code><br/>
+              <code>= 123 - 75 = 48</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- L2 Q5 -->
+    <div class="card qa-box">
+      <div class="q-header">
+        <div class="q-title">5. <span class="stars">★★</span> 计算：</div>
+        <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+      </div>
+      <div class="q-body">
+        <div class="math-block">1 + 2 - 3 + 4 + 5 - 6 + 7 + 8 - 9 + … + 97 + 98 - 99</div>
+      </div>
+      <div class="solution">
+        <div class="ans-summary">【答案】1584</div>
+        <span class="idea-tag">解题思路：周期分组 + 等差数列求和</span>
+        <div>
+          <strong>第一步：按符号规律每 3 个数分一组</strong><br/>
+          从 <code>1</code> 到 <code>99</code> 共 <code>99</code> 个数，每 3 个数一组，恰好分成 <code>99 ÷ 3 = 33</code> 组：<br/>
+          <code>原式 = (1 + 2 - 3) + (4 + 5 - 6) + (7 + 8 - 9) + … + (97 + 98 - 99)</code><br/>
+          <strong>第二步：计算每组的结果，寻找规律</strong><br/>
+          第 1 组：<code>1 + 2 - 3 = 0</code><br/>
+          第 2 组：<code>4 + 5 - 6 = 3</code><br/>
+          第 3 组：<code>7 + 8 - 9 = 6</code><br/>
+          ……<br/>
+          第 33 组：<code>97 + 98 - 99 = 96</code><br/>
+          <strong>第三步：等差数列求和</strong><br/>
+          各组结果构成首项为 <code>0</code>、末项为 <code>96</code>、项数为 <code>33</code> 的等差数列：<br/>
+          <code>原式 = 0 + 3 + 6 + … + 96 = (0 + 96) × 33 ÷ 2 = 48 × 33 = 1584</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- L2 Q6 -->
+    <div class="card qa-box">
+      <div class="q-header">
+        <div class="q-title">6. <span class="stars">★★★</span> 计算：</div>
+        <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+      </div>
+      <div class="q-body">
+        <div class="math-block">100 × 99 - 99 × 98 + 98 × 97 - 97 × 96 + … + 4 × 3 - 3 × 2 + 2 × 1</div>
+      </div>
+      <div class="solution">
+        <div class="ans-summary">【答案】5000</div>
+        <span class="idea-tag">解题思路：相邻两项分组提取公因数 + 连续奇数求和</span>
+        <div>
+          <strong>第一步：把相邻两项分为一组并提取公因数</strong><br/>
+          <code>原式 = (100 × 99 - 99 × 98) + (98 × 97 - 97 × 96) + … + (4 × 3 - 3 × 2) + 2 × 1</code><br/>
+          <code>= 99 × (100 - 98) + 97 × (98 - 96) + … + 3 × (4 - 2) + 1 × 2</code><br/>
+          <code>= 99 × 2 + 97 × 2 + … + 3 × 2 + 1 × 2</code><br/>
+          <strong>第二步：整体提取公因数 <code>2</code>，括号内为连续奇数之和</strong><br/>
+          <code>= 2 × (99 + 97 + 95 + … + 3 + 1)</code><br/>
+          从 <code>1</code> 到 <code>99</code> 共有 <code>(99 + 1) ÷ 2 = 50</code> 个连续奇数，其和为 <code>50² = 2500</code>：<br/>
+          <code>= 2 × 2500 = 5000</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- L2 Q7 -->
+    <div class="card qa-box">
+      <div class="q-header">
+        <div class="q-title">7. <span class="stars">★★★</span> 解决问题：</div>
+        <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+      </div>
+      <div class="q-body">
+        <p>在不大于 1000 的自然数中，<code>A</code> 为所有个位数字为 8 的数之和，<code>B</code> 为所有个位数字为 3 的数之和。<code>A</code> 与 <code>B</code> 的差是多少？</p>
+      </div>
+      <div class="solution">
+        <div class="ans-summary">【答案】500</div>
+        <span class="idea-tag">解题思路：列举观察 + 一一对应配对相减法</span>
+        <div>
+          <strong>第一步：列出 A 和 B 包含的数</strong><br/>
+          不大于 1000 的自然数中，每 10 个数（0~9, 10~19, …, 990~999）里都有 1 个个位为 8 的数和 1 个个位为 3 的数，各 <code>100</code> 个：<br/>
+          <code>A = 8 + 18 + 28 + 38 + … + 998</code>（共 100 个数）<br/>
+          <code>B = 3 + 13 + 23 + 33 + … + 993</code>（共 100 个数）<br/>
+          <strong>第二步：对应位置两两相减</strong><br/>
+          <code>A - B = (8 - 3) + (18 - 13) + (28 - 23) + … + (998 - 993)</code><br/>
+          共有 <code>100</code> 个括号，每个括号的差都是 <code>5</code>：<br/>
+          <code>A - B = 5 × 100 = 500</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- L2 Q8 -->
+    <div class="card qa-box">
+      <div class="q-header">
+        <div class="q-title">8. <span class="stars">★★★</span> 解决问题：</div>
+        <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+      </div>
+      <div class="q-body">
+        <p>求图 1-1 中所有数的和。</p>
+        <p><strong>图 1-1：</strong></p>
+        <table class="num-table">
+          <tr><td>1</td><td>3</td><td>5</td><td>7</td><td>9</td><td>11</td><td>13</td><td>15</td><td>17</td></tr>
+          <tr><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td><td>14</td><td>16</td><td>18</td></tr>
+          <tr><td>3</td><td>5</td><td>7</td><td>9</td><td>11</td><td>13</td><td>15</td><td>17</td><td>19</td></tr>
+          <tr><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td><td>14</td><td>16</td><td>18</td><td>20</td></tr>
+          <tr><td>5</td><td>7</td><td>9</td><td>11</td><td>13</td><td>15</td><td>17</td><td>19</td><td>21</td></tr>
+        </table>
+      </div>
+      <div class="solution">
+        <div class="ans-summary">【答案】495</div>
+        <span class="idea-tag">解题思路：等差数阵“中心数法”（中间数 × 总个数）</span>
+        <p>
+          <strong>方法一（整体中心数法 —— 最快）：</strong><br/>
+          观察数表可知，每一行、每一列都是等差数列，数表关于正中心完全对称。<br/>
+          正中心的数（第 3 行第 5 列，已高亮）是 <code>11</code>，它是整个数表所有数的平均数。<br/>
+          数表共有 <code>5 × 9 = 45</code> 个数，因此：<br/>
+          <code>所有数的和 = 中心数 × 总个数 = 11 × 45 = 495</code>。
+        </p>
+        <p>
+          <strong>方法二（分行求和法）：</strong><br/>
+          每行有 9 个数（等差数列），每行的和 = 该行中间数 × 9：<br/>
+          第 1 行和：<code>9 × 9 = 81</code><br/>
+          第 2 行和：<code>10 × 9 = 90</code><br/>
+          第 3 行和：<code>11 × 9 = 99</code><br/>
+          第 4 行和：<code>12 × 9 = 108</code><br/>
+          第 5 行和：<code>13 × 9 = 117</code><br/>
+          <code>总和 = 81 + 90 + 99 + 108 + 117 = 99 × 5 = 495</code>。
+        </p>
+      </div>
+    </div>
+
+    <!-- L2 Q9 -->
+    <div class="card qa-box">
+      <div class="q-header">
+        <div class="q-title">9. <span class="stars">★★★</span> 规定/公式应用：</div>
+        <button class="check-btn" onclick="toggleSolution(this)">Check Answer</button>
+      </div>
+      <div class="q-body">
+        <p>已知平方差公式：<code class="math">a² - b² = (a + b) × (a - b)</code>。计算：</p>
+        <div class="math-block">20² - 19² + 18² - 17² + 16² - 15² + … + 2² - 1²</div>
+      </div>
+      <div class="solution">
+        <div class="ans-summary">【答案】210</div>
+        <span class="idea-tag">解题思路：两两分组套用平方差公式 + 等差数列求和</span>
+        <div>
+          <strong>第一步：将相邻两项分为一组，共 10 组</strong><br/>
+          <code>原式 = (20² - 19²) + (18² - 17²) + (16² - 15²) + … + (2² - 1²)</code><br/>
+          <strong>第二步：对每一组应用平方差公式 <code>a² - b² = (a + b) × (a - b)</code></strong><br/>
+          <code>= (20 + 19) × (20 - 19) + (18 + 17) × (18 - 17) + … + (2 + 1) × (2 - 1)</code><br/>
+          因为每组中的 <code>(a - b)</code> 都等于 <code>1</code>，所以化简为：<br/>
+          <code>= (20 + 19) × 1 + (18 + 17) × 1 + … + (2 + 1) × 1</code><br/>
+          <code>= 20 + 19 + 18 + 17 + … + 2 + 1</code><br/>
+          <strong>第三步：等差数列求和</strong><br/>
+          <code>= (20 + 1) × 20 ÷ 2 = 210</code>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleSolution(btn) {
+      const box = btn.closest('.qa-box');
+      const sol = box.querySelector('.solution');
+      const isOpen = sol.classList.toggle('open');
+      btn.classList.toggle('active', isOpen);
+      btn.textContent = isOpen ? 'Hide Answer' : 'Check Answer';
+    }
+
+    function toggleAll(show) {
+      document.querySelectorAll('.qa-box').forEach(box => {
+        const sol = box.querySelector('.solution');
+        const btn = box.querySelector('.check-btn');
+        sol.classList.toggle('open', show);
+        btn.classList.toggle('active', show);
+        btn.textContent = show ? 'Hide Answer' : 'Check Answer';
+      });
+    }
+  </script>
+</body>
+</html>
